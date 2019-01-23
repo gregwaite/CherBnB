@@ -1,6 +1,6 @@
 import * as APIUtil from '../util/session_api_util';
 
-export const RECEIVE_CURRRENT_USER = "RECEIVE_CURRRENT_USER";
+export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
@@ -8,19 +8,19 @@ const receiveCurrentUser = (user) => {
   return {
     type: RECEIVE_CURRRENT_USER,
     user,
-  }
-}
+  };
+};
 const logoutCurrentUser = () => {
   return {
     type: LOGOUT_CURRENT_USER,
-  }
-}
+  };
+};
 const receiveErrors = (errors) => {
   return {
     type: RECEIVE_ERRORS,
     errors,
-  }
-}
+  };
+};
 
 
 

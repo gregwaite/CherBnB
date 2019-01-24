@@ -538,11 +538,12 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         onClick: this.props.closeModal,
         className: "close-x"
-      }, "X"), "Please ", this.props.formType, " or ", this.props.otherModalForm, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h2", null, this.props.formType, " to continue"), labels, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", {
-        className: "session-submit",
+      }, "X"), "Please ", this.props.formType, " or ", this.props.otherModalForm, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h2", null, this.props.formType, " to continue"), labels, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
         type: "submit",
-        value: this.formType
-      })));
+        class: "login-button"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
+        class: "login-type-buttom"
+      }, this.props.formType))));
     }
   }]);
 

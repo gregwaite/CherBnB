@@ -40,47 +40,63 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    let link = "";
-    let text = "";
-    switch(this.formType) {
-      case "Login":
+    let name = ( 
+      <label className="login-name" key="name">Name
+            <input
+          type="text"
+          onChange={this.update('username')}
+          value={this.state.username} />
+      </label>
+    )
+
+    let email = (
+      <label className="login-email" key="email">Email Address
+            <input
+          type="text"
+          onChange={this.update('email')}
+          value={this.state.email} />
+      </label>
+    )
+
+    let password = (
+      <label className="login-password" key="password">Password
+            <input
+          type="text"
+          onChange={this.update('password')}
+          value={this.state.password} />
+      </label>
+    )
+    let link;
+    let text;
+    let labels;
+    if (this.props.formType === "Login") {
         link = "/signup";
-        text="Signup instead";
-      case "Signup":
-        link= "/login";
+        text ="Signup instead";
+        labels = (
+          [ email,
+          <br/>,
+          password,
+          <br/>]
+        );
+     } else if (this.props.formType === "Signup") {
+        link = "/login";
         text = "Login instead";
-      default:
-        link;
+        labels = (
+        [email,
+          <br/>,
+          name ,
+          <br/>,
+          password,
+          <br/>,
+        ]
+        )
     }
     return (
     <div className="login-form-container">
       {this.renderErrors()}
-      <h2>{this.formType}</h2>
+      <h2>{this.props.formType} to continue</h2>
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          <label>Email: 
-            <input
-            type="text"
-            onChange={this.update('email')}
-            value={this.state.email} />
-          </label>
-          <br/>
-
-          <label>Username: 
-            <input
-            type="text"
-            onChange={this.update('username')}
-            value={this.state.username} />
-          </label>
-          <br/>
-
-          <label>Password: 
-            <input  
-              type="text" 
-              onChange={this.update('password')}
-              value={this.state.password}/>
-          </label>
-          <br/>
-
+          {labels}
         <input className="session-submit" type="submit" value={this.formType}/>
         </form>
         <Link to={link}>{text}</Link>

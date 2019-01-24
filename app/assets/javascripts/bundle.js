@@ -447,40 +447,50 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var link = "";
-      var text = "";
+      var name = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", {
+        className: "login-name",
+        key: "name"
+      }, "Name", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", {
+        type: "text",
+        onChange: this.update('username'),
+        value: this.state.username
+      }));
+      var email = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", {
+        className: "login-email",
+        key: "email"
+      }, "Email Address", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", {
+        type: "text",
+        onChange: this.update('email'),
+        value: this.state.email
+      }));
+      var password = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", {
+        className: "login-password",
+        key: "password"
+      }, "Password", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", {
+        type: "text",
+        onChange: this.update('password'),
+        value: this.state.password
+      }));
+      var link;
+      var text;
+      var labels;
 
-      switch (this.formType) {
-        case "Login":
-          link = "/signup";
-          text = "Signup instead";
-
-        case "Signup":
-          link = "/login";
-          text = "Login instead";
-
-        default:
-          link;
+      if (this.props.formType === "Login") {
+        link = "/signup";
+        text = "Signup instead";
+        labels = [email, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null), password, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null)];
+      } else if (this.props.formType === "Signup") {
+        link = "/login";
+        text = "Login instead";
+        labels = [email, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null), name, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null), password, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null)];
       }
 
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "login-form-container"
-      }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h2", null, this.formType), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("form", {
+      }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h2", null, this.props.formType, " to continue"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "login-form-box"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", null, "Email:", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", {
-        type: "text",
-        onChange: this.update('email'),
-        value: this.state.email
-      })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", null, "Username:", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", {
-        type: "text",
-        onChange: this.update('username'),
-        value: this.state.username
-      })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", null, "Password:", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", {
-        type: "text",
-        onChange: this.update('password'),
-        value: this.state.password
-      })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", {
+      }, labels, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", {
         className: "session-submit",
         type: "submit",
         value: this.formType

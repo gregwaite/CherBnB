@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+@import "variables";
+
+
+.login-form-container {
+  border: solid, black, 10px;
+}

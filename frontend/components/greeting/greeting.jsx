@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { openModal } from '../../actions/modal_actions';
 
 const Greeting = ({currentUser, logout}) => {
   const sessionLinks = () => {
     return (
       <nav className="login-signup">
-        <Link to="/login">
-          Login Sugar
-        </Link>
+        <button onClick={() => dispatch(openModal('login'))}>
+          Log in sugar
+        </button>
         <br/>
-        <Link to="/signup">
+        <button onClick={() => dispatch(openModal('signup'))}>
           Sign Up Honey
-        </Link>
-
+        </button>
       </nav>
     );
   };

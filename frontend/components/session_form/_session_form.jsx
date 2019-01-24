@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import React from 'react';
 
 class SessionForm extends React.Component {
@@ -17,7 +17,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     
     const user = merge({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm(user).then(this.props.closeModal);
   }
 
   update(field) {
@@ -40,70 +40,70 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    let name = ( 
-      <label className="login-name" key="name">Name
+    const name = ( 
+      <label className="login-name" key="Username">Name
             <input
           type="text"
           onChange={this.update('username')}
-          value={this.state.username} />
+          value={this.state.username} 
+          />
       </label>
     )
 
-    let email = (
-      <label className="login-email" key="email">Email Address
+    const email = (
+      <label className="login-email" key="Email">Email Address
             <input
           type="text"
           onChange={this.update('email')}
-          value={this.state.email} />
+          value={this.state.email}/>
       </label>
     )
 
-    let password = (
-      <label className="login-password" key="password">Password
+    const password = (
+      <label className="login-password" key="Password">Password
             <input
           type="text"
           onChange={this.update('password')}
-          value={this.state.password} />
+          value={this.state.password} 
+          />
       </label>
     )
-    let link;
-    let text;
     let labels;
     if (this.props.formType === "Login") {
-        link = "/signup";
-        text ="Signup instead";
         labels = (
-          [ email,
-          <br/>,
+          [email,
+          <br key="1"/>,
           password,
-          <br/>]
+          <br key="2"/>]
         );
      } else if (this.props.formType === "Signup") {
-        link = "/login";
-        text = "Login instead";
         labels = (
         [email,
-          <br/>,
-          name ,
-          <br/>,
-          password,
-          <br/>,
-        ]
-        )
+          <br key="1"/>,
+        name,
+          <br key="2" />,
+        password,
+          <br key="3" />,]
+        );
     }
+
     return (
-    <div className="login-form-container">
-      {this.renderErrors()}
-      <h2>{this.props.formType} to continue</h2>
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          {labels}
-        <input className="session-submit" type="submit" value={this.formType}/>
-        </form>
-        <Link to={link}>{text}</Link>
-    </div>)
+      <div className="login-form-container">
+          <form onSubmit={this.handleSubmit} className="login-form-box">
+            <div onClick={this.props.closeModal} className="close-x">X</div>
+            Please {this.props.formType} or {this.props.otherModalForm}
+            {this.renderErrors()}
+            <h2>{this.props.formType} to continue</h2>
+
+            {labels}
+          <input className="session-submit" type="submit" value={this.formType}/>
+          </form>
+      </div>
+    )
+
 
   }
 
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);

@@ -513,14 +513,16 @@ function (_React$Component) {
         value: this.state.password
       }));
       var labels;
+      var text;
 
-      if (this.props.formType === "Login") {
+      if (this.props.formType === "Log in") {
         labels = [email, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", {
           key: "1"
         }), password, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", {
           key: "2"
         })];
-      } else if (this.props.formType === "Signup") {
+        text = "Not yet a Cher?";
+      } else if (this.props.formType === "Sign up") {
         labels = [email, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", {
           key: "1"
         }), name, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", {
@@ -528,6 +530,7 @@ function (_React$Component) {
         }), password, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", {
           key: "3"
         })];
+        text = "Already a Cher?";
       }
 
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
@@ -538,12 +541,12 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         onClick: this.props.closeModal,
         className: "close-x"
-      }, "X"), "Please ", this.props.formType, " or ", this.props.otherModalForm, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h2", null, this.props.formType, " to continue"), labels, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
+      }, "X"), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h2", null, this.props.formType, " to continue"), labels, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
         type: "submit",
         class: "login-button"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
         class: "login-type-buttom"
-      }, this.props.formType))));
+      }, this.props.formType))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, text, " ", this.props.otherModalForm));
     }
   }]);
 
@@ -578,7 +581,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     errors: state.errors,
-    formType: 'Login'
+    formType: 'Log in'
   };
 };
 
@@ -591,7 +594,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       onClick: function onClick() {
         return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])('signup'));
       }
-    }, "Signup"),
+    }, "Sign up"),
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     }
@@ -699,7 +702,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     errors: state.errors,
-    formType: 'Signup'
+    formType: "Sign up"
   };
 };
 
@@ -712,7 +715,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       onClick: function onClick() {
         return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])('login'));
       }
-    }, "Login"),
+    }, "Log in"),
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     }

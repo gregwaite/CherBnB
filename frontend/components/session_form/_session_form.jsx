@@ -69,14 +69,17 @@ class SessionForm extends React.Component {
       </label>
     )
     let labels;
-    if (this.props.formType === "Login") {
+    let text;
+    
+    if (this.props.formType === "Log in") {
         labels = (
           [email,
           <br key="1"/>,
           password,
           <br key="2"/>]
         );
-     } else if (this.props.formType === "Signup") {
+        text = "Not yet a Cher?";
+     } else if (this.props.formType === "Sign up") {
         labels = (
         [email,
           <br key="1"/>,
@@ -85,13 +88,12 @@ class SessionForm extends React.Component {
         password,
           <br key="3" />,]
         );
+        text = "Already a Cher?";
     }
-
     return (
       <div className="login-form-container">
           <form onSubmit={this.handleSubmit} className="login-form-box">
             <div onClick={this.props.closeModal} className="close-x">X</div>
-            Please {this.props.formType} or {this.props.otherModalForm}
             {this.renderErrors()}
             <h2>{this.props.formType} to continue</h2>
 
@@ -102,6 +104,8 @@ class SessionForm extends React.Component {
             </span>
           </button>
           </form>
+          <br/>
+        <p>{text} {this.props.otherModalForm}</p>
       </div>
     )
 

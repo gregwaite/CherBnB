@@ -8,6 +8,7 @@ const Greeting = ({currentUser, logout}) => {
         <Link to="/login">
           Login Sugar
         </Link>
+        <br/>
         <Link to="/signup">
           Sign Up Honey
         </Link>
@@ -22,6 +23,7 @@ const Greeting = ({currentUser, logout}) => {
         <h2 className="header-name">
           Hello, {currentUser.username}. Care to find life after love?
         </h2>
+        <br/>
         <button className="header-button" onClick={logout}>Logout</button>
       </hgroup>
     );

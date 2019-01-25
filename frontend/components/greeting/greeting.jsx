@@ -6,13 +6,15 @@ const Greeting = ({currentUser, logout}) => {
   const sessionLinks = () => {
     return (
       <nav className="login-signup">
-        <button onClick={() => dispatch(openModal('login'))}>
-          Log in sugar
-        </button>
-        <br/>
-        <button onClick={() => dispatch(openModal('signup'))}>
-          Sign Up Honey
-        </button>
+        <section className='session-menu'>
+          <button onClick={() => dispatch(openModal('login'))}>
+            Log In Sugar
+          </button>
+          <br/>
+          <button onClick={() => dispatch(openModal('signup'))}>
+            Sign Up Honey
+          </button>
+        </section>
       </nav>
     );
   };
@@ -21,7 +23,7 @@ const Greeting = ({currentUser, logout}) => {
     return (
       <hgroup className="header-group">
         <h2 className="header-name">
-          Hello, {currentUser.username}. Care to find life after love?
+          What can I, Cher, do for you, {currentUser.username}? I am Cher.
         </h2>
         <br/>
         <button className="header-button" onClick={logout}>Logout</button>

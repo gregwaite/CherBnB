@@ -29,7 +29,6 @@ class SessionForm extends React.Component {
   }
 
   handleKeyDown(e) {
-    debugger
     if (e.keyCode === 27) {
       this.props.closeModal();
     }
@@ -46,7 +45,14 @@ class SessionForm extends React.Component {
       </ul>
     );
   }
+
+  componentDidMount(){
+    document.addEventListener("keydown", (e) => this.handleKeyDown(e))
+  }
   
+  componentWillUnmount() {
+    document.removeEventListener("keydown", (e) => this.handleKeyDown(e));
+  }
 
   render() {
     const name = ( 

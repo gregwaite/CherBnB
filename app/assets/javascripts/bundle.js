@@ -458,6 +458,7 @@ function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleKeyDown = _this.handleKeyDown.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.demoCher = _this.demoCher.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -466,7 +467,7 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var user = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["merge"])({}, this.state);
-      this.props.processForm(user).then(this.props.closeModal);
+      this.props.processForm(user);
     }
   }, {
     key: "update",
@@ -494,21 +495,69 @@ function (_React$Component) {
       }));
     }
   }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "demoCher",
+    value: function demoCher(e) {
       var _this3 = this;
 
-      document.addEventListener("keydown", function (e) {
-        return _this3.handleKeyDown(e);
+      e.preventDefault();
+      var email = 'yeezyyeezywhatsgood@ye.ye'.split('');
+      var password = 'hurryupwithmydamncroissants'.split('');
+      var submit = document.getElementById('login-button');
+      this.setState({
+        email: '',
+        password: ''
+      }, function () {
+        return _this3.demoCherHelper(email, password, submit);
       });
+    }
+  }, {
+    key: "demoCherHelper",
+    value: function demoCherHelper(email, password, submit) {
+      var _this4 = this;
+
+      if (email.length > 0) {
+        this.setState({
+          email: this.state.email + email.shift()
+        }, function () {
+          window.setTimeout(function () {
+            return _this4.demoCherHelper(email, password, submit);
+          }, 10);
+        });
+      } else if (password.length > 0) {
+        this.setState({
+          password: this.state.password + password.shift()
+        }, function () {
+          window.setTimeout(function () {
+            return _this4.demoCherHelper(email, password, submit);
+          }, 10);
+        });
+      } else {
+        submit.click();
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this5 = this;
+
+      document.addEventListener("keydown", function (e) {
+        return _this5.handleKeyDown(e);
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      if (this.props.loggedIn) {
+        this.props.closeModal();
+      }
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      var _this4 = this;
+      var _this6 = this;
 
       document.removeEventListener("keydown", function (e) {
-        return _this4.handleKeyDown(e);
+        return _this6.handleKeyDown(e);
       });
     }
   }, {
@@ -541,6 +590,22 @@ function (_React$Component) {
         value: this.state.password,
         placeholder: "Password"
       }));
+      var submitbutton = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
+        id: "login-button",
+        type: "submit",
+        className: "login-button"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
+        className: "login-type-button"
+      }, this.props.formType));
+      var demoUser = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
+        key: "eleven",
+        type: "button",
+        id: "cher-demo-button",
+        onClick: this.demoCher,
+        className: "demo-login-button"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
+        className: "login-type-button-demo"
+      }, "Demo Cher"));
       var labels;
       var text;
 
@@ -549,6 +614,10 @@ function (_React$Component) {
           key: "1"
         }), password, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", {
           key: "2"
+        }), submitbutton, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", {
+          key: "3"
+        }), demoUser, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", {
+          key: "4"
         })];
         text = "Not yet a Cher?";
       } else if (this.props.formType === "Sign up") {
@@ -558,6 +627,8 @@ function (_React$Component) {
           key: "2"
         }), password, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", {
           key: "3"
+        }), submitbutton, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", {
+          key: "4"
         })];
         text = "Already a Cher?";
       }
@@ -570,12 +641,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         onClick: this.props.closeModal,
         className: "close-x"
-      }, "X"), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h2", null, this.props.formType, " to continue"), labels, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
-        type: "submit",
-        className: "login-button"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
-        className: "login-type-button"
-      }, this.props.formType))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+      }, "X"), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h2", null, this.props.formType, " to continue"), labels), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "other-modal"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, text), this.props.otherModalForm));
     }
@@ -612,7 +678,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     errors: state.errors,
-    formType: 'Log in'
+    formType: 'Log in',
+    loggedIn: Boolean(state.session.id)
   };
 };
 
@@ -620,7 +687,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     processForm: function processForm(user) {
       dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["login"])(user));
-      dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     },
     otherModalForm: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       onClick: function onClick() {
@@ -731,10 +797,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
+var mapStateToProps = function mapStateToProps(state) {
   return {
     errors: state.errors,
-    formType: "Sign up"
+    formType: "Sign up",
+    loggedIn: Boolean(state.session.id)
   };
 };
 
@@ -742,7 +809,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     processForm: function processForm(user) {
       dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["signup"])(user));
-      dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     },
     otherModalForm: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       onClick: function onClick() {

@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
   return {
     errors: state.errors,
     formType: 'Log in',
+    loggedIn: Boolean(state.session.id),
   };
 };
 
@@ -15,7 +16,6 @@ const mapDispatchToProps = dispatch => {
   return {
     processForm: user => {
       dispatch(login(user))
-      dispatch(closeModal())
     },
     otherModalForm: (
       <a onClick={() => dispatch(openModal('signup'))}>Sign up</a>

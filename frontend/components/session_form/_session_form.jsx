@@ -11,6 +11,7 @@ class SessionForm extends React.Component {
       email: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   handleSubmit(e) {
@@ -27,6 +28,13 @@ class SessionForm extends React.Component {
     };
   }
 
+  handleKeyDown(e) {
+    debugger
+    if (e.keyCode === 27) {
+      this.props.closeModal();
+    }
+  }
+
   renderErrors() {
     return (
       <ul>
@@ -38,33 +46,37 @@ class SessionForm extends React.Component {
       </ul>
     );
   }
+  
 
   render() {
     const name = ( 
-      <label className="login-name" key="Username">Name
+      <label className="login-input" key="Username">
             <input
           type="text"
           onChange={this.update('username')}
           value={this.state.username} 
+          placeholder="Name"
           />
       </label>
     )
 
     const email = (
-      <label className="login-email" key="Email">Email Address
+      <label className="login-input" key="Email">
             <input
           type="text"
           onChange={this.update('email')}
-          value={this.state.email}/>
+          value={this.state.email}
+          placeholder="Email Address"/>
       </label>
     )
 
     const password = (
-      <label className="login-password" key="Password">Password
+      <label className="login-input" key="Password">
             <input
           type="text"
           onChange={this.update('password')}
           value={this.state.password} 
+          placeholder="Password"
           />
       </label>
     )
@@ -91,21 +103,24 @@ class SessionForm extends React.Component {
         text = "Already a Cher?";
     }
     return (
-      <div className="login-form-container">
-          <form onSubmit={this.handleSubmit} className="login-form-box">
+      <div className="login-form-container" >
+        <form onSubmit={this.handleSubmit} className="login-form-box">
             <div onClick={this.props.closeModal} className="close-x">X</div>
             {this.renderErrors()}
             <h2>{this.props.formType} to continue</h2>
 
             {labels}
-          <button type="submit" class="login-button">
-            <span class="login-type-buttom">
+          <button type="submit" className="login-button">
+            <span className="login-type-button">
               {this.props.formType}
             </span>
           </button>
           </form>
           <br/>
-        <p>{text} {this.props.otherModalForm}</p>
+        <div className="other-modal">
+          <p>{text}</p>
+          {this.props.otherModalForm}
+        </div>
       </div>
     )
 

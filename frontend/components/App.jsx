@@ -5,12 +5,12 @@ import Modal from './session_form/session_modal';
 import { Link } from 'react-router-dom';
 
 const App = () => (
-  <div>
+  <div className="home-page">
     <Modal />
-    <header>
+    <header className="home-header">
       <Link to="/" className="header-link"></Link>
-      <h1>CherBnB</h1>
       <GreetingContainer></GreetingContainer>
+      <h1>Take Me Home, to CherBnB</h1>
     </header>
 
   </div>

@@ -184,6 +184,71 @@ var logout = function logout() {
 
 /***/ }),
 
+/***/ "./frontend/actions/spot_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/spot_actions.js ***!
+  \******************************************/
+/*! exports provided: RECEIVE_ALL_SPOTS, RECEIVE_SPOT, fetchSpots, fetchSpot, createSpot, updateSpot */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_SPOTS", function() { return RECEIVE_ALL_SPOTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SPOT", function() { return RECEIVE_SPOT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSpots", function() { return fetchSpots; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSpot", function() { return fetchSpot; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createSpot", function() { return createSpot; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateSpot", function() { return updateSpot; });
+/* harmony import */ var _util_spot_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/spot_api_util */ "./frontend/util/spot_api_util.js");
+
+var RECEIVE_ALL_SPOTS = "RECEIVE_ALL_SPOTS";
+var RECEIVE_SPOT = "RECEIVE_SPOT";
+
+var receiveAllSpots = function receiveAllSpots(spots) {
+  return {
+    type: RECEIVE_ALL_SPOTS,
+    spots: spots
+  };
+};
+
+var receivePost = function receivePost(spot) {
+  return {
+    type: RECEIVE_SPOT,
+    spot: spot
+  };
+};
+
+var fetchSpots = function fetchSpots() {
+  return function (dispatch) {
+    return _util_spot_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSpots"]().then(function (spots) {
+      return dispatch(receiveAllSpots(spots));
+    });
+  };
+};
+var fetchSpot = function fetchSpot(id) {
+  return function (dispatch) {
+    return _util_spot_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSpot"](id).then(function (spot) {
+      return dispatch(receiveSpot(spot));
+    });
+  };
+};
+var createSpot = function createSpot(spot) {
+  return function (dispatch) {
+    return _util_spot_api_util__WEBPACK_IMPORTED_MODULE_0__["createSpot"](spot).then(function (spot) {
+      return dispatch(receiveSpot(spot));
+    });
+  };
+};
+var updateSpot = function updateSpot(spot) {
+  return function (dispatch) {
+    return _util_spot_api_util__WEBPACK_IMPORTED_MODULE_0__["updateSpot"](spot).then(function (spot) {
+      return dispatch(receivePost(spot));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/cherbnb.jsx":
 /*!******************************!*\
   !*** ./frontend/cherbnb.jsx ***!
@@ -200,7 +265,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _util_spot_api_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/spot_api_util */ "./frontend/util/spot_api_util.js");
+/* harmony import */ var _actions_spot_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/spot_actions */ "./frontend/actions/spot_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
 
 
 
@@ -226,6 +296,11 @@ document.addEventListener('DOMContentLoaded', function () {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   }
 
+  window.fetchSpots = _actions_spot_actions__WEBPACK_IMPORTED_MODULE_6__["fetchSpots"];
+  window.APISpots = _util_spot_api_util__WEBPACK_IMPORTED_MODULE_5__["fetchSpots"];
+  window.fetchSpot = _util_spot_api_util__WEBPACK_IMPORTED_MODULE_5__["fetchSpot"];
+  window.createSpot = _util_spot_api_util__WEBPACK_IMPORTED_MODULE_5__["createSpot"];
+  window.updateSpot = _util_spot_api_util__WEBPACK_IMPORTED_MODULE_5__["updateSpot"];
   window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["login"];
   window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["signup"];
   window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["logout"];
@@ -252,6 +327,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./greeting/greeting_container */ "./frontend/components/greeting/greeting_container.jsx");
 /* harmony import */ var _session_form_session_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/session_modal */ "./frontend/components/session_form/session_modal.jsx");
+/* harmony import */ var _spots_spot_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./spots/spot_index_container */ "./frontend/components/spots/spot_index_container.jsx");
+
 
 
 
@@ -266,7 +343,11 @@ var App = function App() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/",
     className: "header-link"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Take Me Home, to CherBnB")));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Take Me Home, to CherBnB")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/",
+    component: _spots_spot_index_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -825,6 +906,108 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/spots/spot_index.jsx":
+/*!**************************************************!*\
+  !*** ./frontend/components/spots/spot_index.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var SpotIndex =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SpotIndex, _React$Component);
+
+  function SpotIndex() {
+    _classCallCheck(this, SpotIndex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SpotIndex).apply(this, arguments));
+  }
+
+  _createClass(SpotIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchSpots();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var spots = this.props.spots.map(function (spot) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          key: spot.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: spot.id
+        }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.address));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, spots);
+    }
+  }]);
+
+  return SpotIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (SpotIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/spots/spot_index_container.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/spots/spot_index_container.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _spot_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./spot_index */ "./frontend/components/spots/spot_index.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_spot_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/spot_actions */ "./frontend/actions/spot_actions.js");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    spots: Object.values(state.entities.spots)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchSpots: function fetchSpots() {
+      return dispatch(Object(_actions_spot_actions__WEBPACK_IMPORTED_MODULE_2__["fetchSpots"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_spot_index__WEBPACK_IMPORTED_MODULE_0__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/reducers/entities_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/entities_reducer.js ***!
@@ -836,10 +1019,13 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _spots_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./spots_reducer */ "./frontend/reducers/spots_reducer.js");
+
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  spots: _spots_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -998,6 +1184,44 @@ var sessionReducer = function sessionReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/spots_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/spots_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_spot_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/spot_actions */ "./frontend/actions/spot_actions.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var spotsReducer = function spotsReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+  var newState = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, oldState);
+
+  switch (action.type) {
+    case _actions_spot_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_SPOTS"]:
+      return action.spots;
+
+    case _actions_spot_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SPOT"]:
+      newState[action.spot.id] = action.spot;
+      return newState;
+
+    default:
+      return oldState;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (spotsReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/ui_reducer.js":
 /*!*****************************************!*\
   !*** ./frontend/reducers/ui_reducer.js ***!
@@ -1115,6 +1339,52 @@ var logout = function logout() {
   return $.ajax({
     method: "delete",
     url: "api/session"
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/spot_api_util.js":
+/*!****************************************!*\
+  !*** ./frontend/util/spot_api_util.js ***!
+  \****************************************/
+/*! exports provided: fetchSpots, fetchSpot, createSpot, updateSpot */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSpots", function() { return fetchSpots; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSpot", function() { return fetchSpot; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createSpot", function() { return createSpot; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateSpot", function() { return updateSpot; });
+var fetchSpots = function fetchSpots() {
+  return $.ajax({
+    method: "GET",
+    url: 'api/spots'
+  });
+};
+var fetchSpot = function fetchSpot(id) {
+  return $.ajax({
+    method: "GET",
+    url: "api/spots/".concat(id)
+  });
+};
+var createSpot = function createSpot(spot) {
+  return $.ajax({
+    method: "POST",
+    url: 'api/spots',
+    data: {
+      spot: spot
+    }
+  });
+};
+var updateSpot = function updateSpot(spot) {
+  return $.ajax({
+    method: "PATCH",
+    url: "api/spots/".concat(spot.id),
+    data: {
+      spot: spot
+    }
   });
 };
 

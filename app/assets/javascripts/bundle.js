@@ -1480,12 +1480,9 @@ function () {
 
   _createClass(MarkerManager, [{
     key: "updateMarkers",
-    value: function updateMarkers(spots) {
-      var _this = this;
-
-      spots.forEach(function (spot) {
-        return _this.marker[spot.id] = spot;
-      });
+    value: function updateMarkers(spots) {// spots.forEach(spot => 
+      //   this.marker[spot.id] = spot
+      // );
     }
   }]);
 

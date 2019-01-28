@@ -5,8 +5,8 @@ export default class MarkerManager {
   }
 
   updateMarkers(spots) {
-    spots.forEach(spot => 
-      this.marker[spot.id] = spot
-    );
+    // spots.forEach(spot => 
+    //   this.marker[spot.id] = spot
+    // );
   }
 }

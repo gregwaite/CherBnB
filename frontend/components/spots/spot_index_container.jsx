@@ -1,4 +1,4 @@
-import SpotIndex from './spot_index';
+import Search from './search';
 import { connect } from 'react-redux';
 import { fetchSpots } from '../../actions/spot_actions';
 
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SpotIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

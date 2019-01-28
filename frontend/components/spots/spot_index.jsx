@@ -13,7 +13,7 @@ class SpotIndex extends React.Component {
           {spot.title}
         </li>
         <li>
-          {spot.address}
+          {spot.description}
         </li>
       </ul>
       )

@@ -906,6 +906,69 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/spots/search.jsx":
+/*!**********************************************!*\
+  !*** ./frontend/components/spots/search.jsx ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _spot_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./spot_index */ "./frontend/components/spots/spot_index.jsx");
+/* harmony import */ var _spot_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./spot_map */ "./frontend/components/spots/spot_map.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Search =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Search, _React$Component);
+
+  function Search() {
+    _classCallCheck(this, Search);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Search).apply(this, arguments));
+  }
+
+  _createClass(Search, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spot_map__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spot_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        spots: this.props.spots,
+        fetchSpots: this.props.fetchSpots
+      })));
+    }
+  }]);
+
+  return Search;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Search);
+
+/***/ }),
+
 /***/ "./frontend/components/spots/spot_index.jsx":
 /*!**************************************************!*\
   !*** ./frontend/components/spots/spot_index.jsx ***!
@@ -961,7 +1024,7 @@ function (_React$Component) {
           key: spot.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: spot.id
-        }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.address));
+        }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, spots);
     }
@@ -983,7 +1046,7 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _spot_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./spot_index */ "./frontend/components/spots/spot_index.jsx");
+/* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./search */ "./frontend/components/spots/search.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_spot_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/spot_actions */ "./frontend/actions/spot_actions.js");
 
@@ -1004,7 +1067,91 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_spot_index__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_search__WEBPACK_IMPORTED_MODULE_0__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/spots/spot_map.jsx":
+/*!************************************************!*\
+  !*** ./frontend/components/spots/spot_map.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/marker_manager */ "./frontend/util/marker_manager.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var SpotMap =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SpotMap, _React$Component);
+
+  function SpotMap() {
+    _classCallCheck(this, SpotMap);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SpotMap).apply(this, arguments));
+  }
+
+  _createClass(SpotMap, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var mapOptions = {
+        center: {
+          lat: 37.7758,
+          lng: -122.435
+        },
+        zoom: 13
+      };
+      this.map = new google.maps.Map(this.mapNode, mapOptions);
+      this.MarkerManager = new _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__["default"](this.map);
+      this.MarkerManager.updateMarkers(this.props.spots);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.MarkerManager.updateMarkers(this.props.spots);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "map-container",
+        ref: function ref(map) {
+          return _this.mapNode = map;
+        }
+      });
+    }
+  }]);
+
+  return SpotMap;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (SpotMap);
 
 /***/ }),
 
@@ -1302,6 +1449,50 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/marker_manager.js":
+/*!*****************************************!*\
+  !*** ./frontend/util/marker_manager.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MarkerManager; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var MarkerManager =
+/*#__PURE__*/
+function () {
+  function MarkerManager(map) {
+    _classCallCheck(this, MarkerManager);
+
+    this.map = map;
+    this.marker = {};
+  }
+
+  _createClass(MarkerManager, [{
+    key: "updateMarkers",
+    value: function updateMarkers(spots) {
+      var _this = this;
+
+      spots.forEach(function (spot) {
+        return _this.marker[spot.id] = spot;
+      });
+    }
+  }]);
+
+  return MarkerManager;
+}();
+
+
 
 /***/ }),
 

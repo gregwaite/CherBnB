@@ -11,8 +11,10 @@ class SpotShow extends React.Component {
     const spot = this.props.spot || {};
     return (
       <div id='show-greeting'>
-        <Modal />
-        <GreetingContainer></GreetingContainer>
+        <section>
+          <Modal />
+          <GreetingContainer></GreetingContainer>
+        </section>
         <ul>
           <li>
             {spot.title}

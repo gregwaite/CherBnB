@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SpotIndex extends React.Component {
   componentDidMount(){
@@ -9,9 +10,9 @@ class SpotIndex extends React.Component {
     const spots = this.props.spots.map(spot => {
       return (
       <div key={spot.id}>
-        <li className= 'spot-title'key={spot.id}>
+        <Link className='spot-link' to={`/spots/${spot.id}`}>
           {spot.title}
-        </li>
+        </Link>
         <li className='spot-address'>
           {spot.address}
         </li>

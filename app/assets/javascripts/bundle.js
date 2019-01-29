@@ -1123,15 +1123,15 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var spots = this.props.spots.map(function (spot) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: spot.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: spot.id
-        }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description));
+        }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.address), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.ammenities), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.price));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index"
-      }, spots);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Some excellent places to be Cher"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, spots));
     }
   }]);
 

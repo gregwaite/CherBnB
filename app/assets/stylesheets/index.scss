@@ -1,7 +1,16 @@
 .index {
-  margin-top: 10%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.index > ul {
-  margin: 10px;
+.index > section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.index > section > div {
+  margin: 30px;
+}
+.index > section > div > ul{
+  width: 80%;
 }

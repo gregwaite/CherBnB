@@ -8,19 +8,31 @@ class SpotIndex extends React.Component {
   render() {
     const spots = this.props.spots.map(spot => {
       return (
-      <ul key={spot.id}>
+      <div key={spot.id}>
         <li key={spot.id}>
           {spot.title}
         </li>
         <li>
           {spot.description}
         </li>
-      </ul>
+        <li>
+          {spot.address}
+        </li>
+        <li>
+          {spot.ammenities}
+        </li>
+        <li>
+          {spot.price}
+        </li>
+      </div>
       )
     });
     return (
       <div className='index'>
+        <h2>Some excellent places to be Cher</h2>
+        <section>
           {spots}
+        </section>
       </div>
     )
   }

@@ -6,6 +6,7 @@ const Greeting = ({currentUser, logout}) => {
   const sessionLinks = () => {
     return (
       <nav className="login-signup">
+        <Link className='home-link' to='/'>Home</Link>
         <section className='session-menu'>
           <button onClick={() => dispatch(openModal('login'))}>
             Log In Sugar
@@ -22,6 +23,7 @@ const Greeting = ({currentUser, logout}) => {
   const personalGreeting = () => {
     return (
       <hgroup className="header-group">
+        <Link className='home-link' to='/'>Home</Link>
         <h2 className="header-name">
           What can I, Cher, do for you, {currentUser.username}? I am Cher.
         </h2>

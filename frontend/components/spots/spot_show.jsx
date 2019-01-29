@@ -15,20 +15,33 @@ class SpotShow extends React.Component {
           <Modal />
           <GreetingContainer></GreetingContainer>
         </section>
-        <ul>
-          <li>
-            {spot.title}
-          </li>
-          <li>
-            {spot.description}
-          </li>
-          <li>
-            {spot.address}
-          </li>
-          <li>
-            {spot.ammenities}
-          </li>
-        </ul>
+        <div className='show-div'>
+
+          <div className='basic-info'>
+            <li className='show-spot-type'>
+              {spot.spot_type}
+            </li>
+            <li className='show-title'>
+              {spot.title}
+            </li>
+            <li className='show-address'>
+              {spot.address}
+            </li>
+          </div>
+
+          <div className='show-description'>
+            <li>
+              {spot.description}
+            </li>
+          </div>  
+
+          <div className='show-ammenities'>
+            <li>
+              {spot.ammenities}
+            </li>
+          </div>
+
+        </div>
       </div>
     )
   }

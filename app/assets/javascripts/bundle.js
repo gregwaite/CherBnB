@@ -1130,9 +1130,9 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "spot-link",
           to: "/spots/".concat(spot.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "spot-address"
-        }, spot.address), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        }, "".concat(spot.spot_type, " : ").concat(spot.address)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "spot-title"
         }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "spot-price"
@@ -1376,7 +1376,21 @@ function (_React$Component) {
       var spot = this.props.spot || {};
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "show-greeting"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.address), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.ammenities)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "basic-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "show-spot-type"
+      }, spot.spot_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "show-title"
+      }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "show-address"
+      }, spot.address)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-description"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-ammenities"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.ammenities))));
     }
   }]);
 

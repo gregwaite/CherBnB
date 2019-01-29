@@ -1124,7 +1124,9 @@ function (_React$Component) {
           key: spot.id
         }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description));
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, spots);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "index"
+      }, spots);
     }
   }]);
 

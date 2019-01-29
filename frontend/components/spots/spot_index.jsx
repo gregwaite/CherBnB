@@ -19,7 +19,7 @@ class SpotIndex extends React.Component {
       )
     });
     return (
-      <div>
+      <div className='index'>
           {spots}
       </div>
     )

@@ -1,3 +1,8 @@
+.app-div {
+  position: absolute;
+  width: 100%;
+}
+
 .home-page {
   width: 100%;
   height: 100vh;
@@ -59,7 +64,7 @@
 
 .header-group {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   height: 100px;
 }
 

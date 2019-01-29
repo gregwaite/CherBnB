@@ -1130,13 +1130,13 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "spot-link",
           to: "/spots/".concat(spot.id)
-        }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "spot-address"
         }, spot.address), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          className: "spot-ammenities"
-        }, spot.ammenities), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "spot-title"
+        }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "spot-price"
-        }, "$", spot.price, ".00"));
+        }, "$", spot.price, " per night")));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index"

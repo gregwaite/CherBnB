@@ -11,17 +11,16 @@ class SpotIndex extends React.Component {
       return (
       <div key={spot.id}>
         <Link className='spot-link' to={`/spots/${spot.id}`}>
-          {spot.title}
-        </Link>
         <li className='spot-address'>
           {spot.address}
         </li>
-        <li className='spot-ammenities'>
-          {spot.ammenities}
+        <li className='spot-title'>
+          {spot.title}
         </li>
         <li className='spot-price'>
-          ${spot.price}.00
+          ${spot.price} per night
         </li>
+        </Link>
       </div>
       )
     });

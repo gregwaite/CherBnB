@@ -9,8 +9,38 @@
   width: 100%;
 }
 .index > section > div {
-  width: 100px;
-  margin-right: 30%;
+  width: 300px;
+  margin-right: 10%;
   margin-left: 10%;
   margin-bottom: 10%;
 }
+
+
+.spot-link {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-size: 14px;
+  list-style: none;
+}
+
+.spot-link > li {
+  text-decoration: none;
+}
+
+.spot-address {
+  font-size: 14px;
+  font-weight: bolder;
+  color: #0a7276; 
+  margin-bottom: 6px;
+}
+.spot-title {
+  font-size: 16px;
+  font-weight: bolder;
+  margin-bottom: 8px;
+}
+
+.spot-price {
+  font-weight: lighter;
+}
+

@@ -13,18 +13,20 @@ class SpotShow extends React.Component {
       <div id='show-greeting'>
         <Modal />
         <GreetingContainer></GreetingContainer>
-        <li>
-          {spot.title}
-        </li>
-        <li>
-          {spot.description}
-        </li>
-        <li>
-          {spot.address}
-        </li>
-        <li>
-          {spot.ammenities}
-        </li>
+        <ul>
+          <li>
+            {spot.title}
+          </li>
+          <li>
+            {spot.description}
+          </li>
+          <li>
+            {spot.address}
+          </li>
+          <li>
+            {spot.ammenities}
+          </li>
+        </ul>
       </div>
     )
   }

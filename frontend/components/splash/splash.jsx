@@ -12,7 +12,7 @@ class Splash extends React.Component {
     <div className="home-page">
       <Modal />
       <header className="home-header">
-        <Link to="/" className="header-link"></Link>
+        <Link className='home-link' to='/'>Home</Link>
         <GreetingContainer></GreetingContainer>
         <h1>Take Me Home, to CherBnB</h1>
       </header>

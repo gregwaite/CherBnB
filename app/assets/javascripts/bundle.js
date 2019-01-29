@@ -368,6 +368,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
 
 
 
@@ -962,9 +964,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "home-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/",
-        className: "header-link"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Take Me Home, to CherBnB")));
+        className: "home-link",
+        to: "/"
+      }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Take Me Home, to CherBnB")));
     }
   }]);
 
@@ -1362,7 +1364,7 @@ function (_React$Component) {
       var spot = this.props.spot || {};
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "show-greeting"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.address), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.ammenities));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.address), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.ammenities)));
     }
   }]);
 

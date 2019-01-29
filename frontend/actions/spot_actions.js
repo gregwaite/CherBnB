@@ -11,10 +11,10 @@ const receiveAllSpots = spots => {
   };
 };
 
-const receivePost = spot => {
+const receiveSpot = spot => {
   return {
     type: RECEIVE_SPOT,
-    spot,
+    spot: spot.spot,
   };
 };
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { openModal } from '../../actions/modal_actions';
 
 const Greeting = ({currentUser, logout}) => {

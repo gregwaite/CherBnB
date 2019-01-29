@@ -8,12 +8,15 @@ class Search extends React.Component {
     return (
       <div>
         <ul>
-          <SpotMap></SpotMap>
+          <SpotMap 
+            spots={this.props.spots} 
+            fetchSpots={this.props.fetchSpots}
+          ></SpotMap>
         </ul>
         <ul>
           <SpotIndex
-          spots={this.props.spots}
-          fetchSpots={this.props.fetchSpots}
+            spots={this.props.spots}
+            fetchSpots={this.props.fetchSpots}
           ></SpotIndex>
         </ul>
       </div>

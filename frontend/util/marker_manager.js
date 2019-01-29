@@ -1,12 +1,42 @@
+/* global google:false */
+
 export default class MarkerManager {
-  constructor(map) {
+  constructor(map, handleClick) {
     this.map = map;
-    this.marker = {};
+    this.markers = {};
+    this.handleClick = handleClick;
   }
 
   updateMarkers(spots) {
-    // spots.forEach(spot => 
-    //   this.marker[spot.id] = spot
-    // );
+    const unmarkedSpots = {};
+    spots.forEach(spot => unmarkedSpots[spot.id] = spot);
+    
+    spots.filter(spot => 
+      (this.markers[spot.id] !== spot)
+    ).forEach(unmarked => 
+      this.createMarkerFromSpot(unmarked)
+    );
+    
+    Object.keys(this.markers).filter(spotId => 
+      !unmarkedSpots[spotId]).forEach(spotId => 
+        this.removeMarker(this.markers[spotId]));
+  }
+
+  createMarkerFromSpot(spot) {
+    const position = new google.maps.LatLng(spot.lat, spot.long);
+    const marker = new google.maps.Marker({
+      position,
+      map: this.map,
+      spotId: spot.id
+    });
+    marker.addListener('click', (event) => {
+      this.handleClick(marker.spotId);
+    });
+  }
+
+
+  removeMarker(marker) {
+    this.markers[marker.spotId].setMap(null);
+    delete this.marks[marker.spotId];
   }
 }

@@ -70,3 +70,15 @@ Spot.create!(
   owner_id: kanye.id, 
   photos:["Greg"],
 )
+Spot.create!(
+  spot_type: "Horseman", 
+  title: "Cher's Horseman", 
+  description: "It's a horseman", 
+  ammenities: ["big old horse"], 
+  price: 7, 
+  lat: 58.423021, 
+  long: -110.083739, 
+  address:"123 Greg Horse", 
+  owner_id: kanye.id, 
+  photos:["Greg"],
+)

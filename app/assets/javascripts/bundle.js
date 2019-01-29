@@ -1126,8 +1126,15 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: spot.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "spot-title",
           key: spot.id
-        }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.address), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.ammenities), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.price));
+        }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "spot-address"
+        }, spot.address), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "spot-ammenities"
+        }, spot.ammenities), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "spot-price"
+        }, "$", spot.price, ".00"));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index"

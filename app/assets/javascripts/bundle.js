@@ -970,15 +970,26 @@ function (_React$Component) {
       openDatePicker: false,
       dropDownMode: 'scroll'
     };
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleStartChange = _this.handleStartChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleEndChange = _this.handleEndChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(Splash, [{
-    key: "handleChange",
-    value: function handleChange(date) {
+    key: "handleStartChange",
+    value: function handleStartChange(date) {
       this.setState({
         startDate: date,
+        focusedInput: 'startDate',
+        calendarFocused: null,
+        openDatePicker: false
+      });
+    }
+  }, {
+    key: "handleEndChange",
+    value: function handleEndChange(date) {
+      this.setState({
+        endDate: date,
         focusedInput: 'startDate',
         calendarFocused: null,
         openDatePicker: false
@@ -1003,10 +1014,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "datepickers"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        onChange: this.handleChange,
+        onChange: this.handleStartChange,
         placeholderText: "mm/dd/yyyy"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        onChange: this.handleChange,
+        onChange: this.handleEndChange,
         placeholderText: "mm/dd/yyyy"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "guests"

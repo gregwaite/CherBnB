@@ -15,12 +15,21 @@ class Splash extends React.Component {
       openDatePicker: false,
       dropDownMode: 'scroll'
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleStartChange = this.handleStartChange.bind(this);
+    this.handleEndChange = this.handleEndChange.bind(this);
   }
 
-  handleChange(date) {
+  handleStartChange(date) {
     this.setState({
       startDate: date,
+      focusedInput: 'startDate',
+      calendarFocused: null,
+      openDatePicker: false,
+    });
+  }
+  handleEndChange(date) {
+    this.setState({
+      endDate: date,
       focusedInput: 'startDate',
       calendarFocused: null,
       openDatePicker: false,
@@ -46,11 +55,11 @@ class Splash extends React.Component {
           </div>
           <section className="datepickers">
             <DatePicker
-              onChange={this.handleChange}
+              onChange={this.handleStartChange}
               placeholderText="mm/dd/yyyy"
             />
             <DatePicker
-              onChange={this.handleChange}
+              onChange={this.handleEndChange}
               placeholderText="mm/dd/yyyy"
             />
           </section>

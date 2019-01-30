@@ -1,0 +1,44 @@
+.bookings-search {
+  margin-left: 40%;
+}
+
+.react-datepicker__input-container {
+  
+}
+
+.react-datepicker {
+  background: white;
+  height: 300px;
+  width: 300px;
+}
+.react-datepicker__header {
+  text-align: center;
+  width: 100%;
+}
+
+.react-datepicker__day-names {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.react-datepicker__day-name {
+  display: flex;
+  justify-content: center;
+  width: 14%;
+}
+
+.react-datepicker__month {
+  display: flex;
+  flex-wrap: wrap;
+}
+.react-datepicker__week {
+  display: flex;
+  width: 100%;
+}
+
+.react-datepicker__day {
+  display: flex;
+  justify-content: center;
+  width: 14%;
+}

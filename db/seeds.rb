@@ -20,7 +20,7 @@ Spot.create!(
   long: -122.083739, 
   address:"123 Greg Rd", 
   owner_id: kanye.id, 
-  photos:["tropical"],
+  photos:["http://i1.ytimg.com/vi/5YzIvji64DA/0.jpg"],
 )
 Spot.create!(
   spot_type: "Apt", 
@@ -32,7 +32,7 @@ Spot.create!(
   long: -123.083739, 
   address:"123 Greg Ave", 
   owner_id: kanye.id, 
-  photos:["apartment.jpg"],
+  photos:["http://www4.pictures.zimbio.com/bg/Cher+Beach+Homes+ufrJvyAjgvPl.jpg"],
 )
 Spot.create!(
   spot_type: "House", 
@@ -44,7 +44,7 @@ Spot.create!(
   long: -125.083739, 
   address:"123 Greg Hole", 
   owner_id: kanye.id, 
-  photos:["seaside.jpg"],
+  photos:["https://media.architecturaldigest.com/photos/55e78857302ba71f3017a639/master/pass/dam-images-celebrity-homes-2002-cher-cher-malibu-06-loggia.jpg"],
 )
 Spot.create!(
   spot_type: "Half House", 
@@ -56,7 +56,7 @@ Spot.create!(
   long: -127.083739, 
   address:"123 Greg St", 
   owner_id: kanye.id, 
-  photos:["snow.jpg"],
+  photos:["https://media.architecturaldigest.com/photos/5745fbc129eb2cc479c98d04/master/pass/cher-aspen-colorado-house-1.jpg"],
 )
 Spot.create!(
   spot_type: "Horse", 
@@ -68,17 +68,17 @@ Spot.create!(
   long: -118.083739, 
   address:"123 Greg Dr", 
   owner_id: kanye.id, 
-  photos:["horseinsuit.jpg"],
+  photos:["https://media.gq.com/photos/56e71c0b14cbe0637b261d7f/3:2/w_560/horseinsuit2.jpg"],
 )
 Spot.create!(
   spot_type: "Horseman", 
   title: "Cher's Horseman", 
   description: "It's a horseman", 
-  ammenities: ["big old horse"], 
+  ammenities: ["big old drunk horse"], 
   price: 7, 
   lat: 58.423021, 
   long: -110.083739, 
   address:"123 Greg Horse", 
   owner_id: kanye.id, 
-  photos:["bojack.jpg"],
+  photos:["https://m.media-amazon.com/images/M/MV5BYTdmOTljNGUtMGJkMC00MmE2LTkwYzEtNmVlYjBmZjliNTlkXkEyXkFqcGdeQW1yb3NzZXI@._V1_UX477_CR0,0,477,268_AL_.jpg"],
 )

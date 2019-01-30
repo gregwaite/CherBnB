@@ -1328,7 +1328,9 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "spot-link",
           to: "/spots/".concat(spot.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: spot.photos[0]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "spot-address"
         }, "".concat(spot.spot_type, " : ").concat(spot.address)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "spot-title"

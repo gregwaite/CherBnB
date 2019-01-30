@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 class SpotIndex extends React.Component {
   componentDidMount(){
     this.props.fetchSpots();
@@ -11,6 +12,7 @@ class SpotIndex extends React.Component {
       return (
       <div key={spot.id}>
         <Link className='spot-link' to={`/spots/${spot.id}`}>
+        <img src={spot.photos[0]}/>
         <span className='spot-address'>
           {`${spot.spot_type} : ${spot.address}`}
         </span>

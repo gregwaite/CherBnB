@@ -20,7 +20,7 @@ Spot.create!(
   long: -122.083739, 
   address:"123 Greg Rd", 
   owner_id: kanye.id, 
-  photos:["Greg"],
+  photos:["tropical"],
 )
 Spot.create!(
   spot_type: "Apt", 
@@ -32,7 +32,7 @@ Spot.create!(
   long: -123.083739, 
   address:"123 Greg Ave", 
   owner_id: kanye.id, 
-  photos:["Greg"],
+  photos:["apartment.jpg"],
 )
 Spot.create!(
   spot_type: "House", 
@@ -44,7 +44,7 @@ Spot.create!(
   long: -125.083739, 
   address:"123 Greg Hole", 
   owner_id: kanye.id, 
-  photos:["Greg"],
+  photos:["seaside.jpg"],
 )
 Spot.create!(
   spot_type: "Half House", 
@@ -56,7 +56,7 @@ Spot.create!(
   long: -127.083739, 
   address:"123 Greg St", 
   owner_id: kanye.id, 
-  photos:["Greg"],
+  photos:["snow.jpg"],
 )
 Spot.create!(
   spot_type: "Horse", 
@@ -68,7 +68,7 @@ Spot.create!(
   long: -118.083739, 
   address:"123 Greg Dr", 
   owner_id: kanye.id, 
-  photos:["Greg"],
+  photos:["horseinsuit.jpg"],
 )
 Spot.create!(
   spot_type: "Horseman", 
@@ -80,5 +80,5 @@ Spot.create!(
   long: -110.083739, 
   address:"123 Greg Horse", 
   owner_id: kanye.id, 
-  photos:["Greg"],
+  photos:["bojack.jpg"],
 )

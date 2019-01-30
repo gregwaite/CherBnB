@@ -8,7 +8,7 @@ class SpotShow extends React.Component {
   }
 
   render(){
-    const spot = this.props.spot || {};
+    const spot = this.props.spot || {photos: []};
     return (
       <div id='show-greeting'>
         <section>
@@ -16,7 +16,7 @@ class SpotShow extends React.Component {
           <GreetingContainer></GreetingContainer>
         </section>
         <div className='show-div'>
-
+          <img src={spot.photos[0]}/>
           <div className='basic-info'>
             <li className='show-spot-type'>
               {spot.spot_type}

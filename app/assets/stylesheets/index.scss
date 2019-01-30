@@ -6,6 +6,10 @@
   flex-wrap: wrap;
 }
 
+.index > h2{
+  margin-bottom: 50px;
+}
+
 .index > section {
   display: flex;
   flex-wrap: wrap;
@@ -28,8 +32,8 @@
 }
 
 .spot-link > img {
-  width: 250px;
-  height: 200px;
+  width: 380px;
+  height: 250px;
   margin-right: 200px;
   margin-bottom: 20px;
   border-radius: 3px;

@@ -14,8 +14,12 @@
 .show-div {
   list-style: none;
   width: 60%;
-  margin-top: 10%;
-  margin-left: 1%;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.show-div > img {
+  border-radius: 3px;
 }
 
 .basic-info {

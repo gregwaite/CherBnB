@@ -1,0 +1,12 @@
+.DayPickerNavigation_svg__horizontal {
+  height: 30px;
+}
+
+.DateRangePickerInput_arrow_svg {
+  height: 30px;
+}
+
+.CalendarMonthGrid {
+  height: 260px;
+  overflow: hidden;
+}

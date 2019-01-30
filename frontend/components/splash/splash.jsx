@@ -3,17 +3,21 @@ import GreetingContainer from '../greeting/greeting_container';
 import Modal from '../session_form/session_modal';
 import DatePicker from 'react-datepicker';
 
+
 class Splash extends React.Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      startDate: new Date(),
-      endDate: new Date(),
+      address: '',
+      lng: 0,
+      lat: 0,
+      startDate: '',
+      endDate: '',
+      numGuests: 1,
       focusedInput: 'startDate',
       calendarFocused: null,
       openDatePicker: false,
-      dropDownMode: 'scroll'
     };
 
     this.betweenDates = (date) => {
@@ -42,6 +46,10 @@ class Splash extends React.Component {
   }
   
   render() {
+    const { startDate, endDate } = this.state;
+    const startDateString = startDate && startDate.format('ddd, MMM Do');
+    const endDateString = endDate && endDate.format('ddd, MMM Do');
+
     return (
     <div className="home-page">
       <Modal />
@@ -59,15 +67,20 @@ class Splash extends React.Component {
             <p>Check Out</p>
           </div>
           <section className="datepickers">
-            <DatePicker
-              selected={this.state.startDate}
-              onChange={this.handleStartChange}
-              
-            />
-            <DatePicker
+            {/* <DateRangePicker
+              startDate={startDate} // momentPropTypes.momentObj or null,
+              startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+              endDate={endDate} // momentPropTypes.momentObj or null,
+              endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+              onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+              focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+              onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+              numberOfMonths={1}
+            /> */}
+            {/* <DatePicker
               selected={this.state.endDate}
               onChange={this.handleEndChange}
-            />
+            /> */}
           </section>
           <section className='guests'>
             <p>Guests</p>

@@ -988,10 +988,10 @@ function (_React$Component) {
       lat: 0,
       startDate: '',
       endDate: '',
-      numGuests: 1,
       focusedInput: 'startDate',
       calendarFocused: null,
-      openDatePicker: false
+      openDatePicker: false,
+      hideKeyboardShortcutsPanel: true
     };
     return _this;
   }
@@ -1036,8 +1036,7 @@ function (_React$Component) {
           });
         } // PropTypes.func.isRequired,
         ,
-        numberOfMonths: 1,
-        hideKeyboardShortcutsPanel: true
+        numberOfMonths: 1
       }));
     }
   }]);
@@ -1098,15 +1097,12 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Splash).call(this, props));
     _this.state = {
-      address: '',
-      lng: 0,
-      lat: 0,
-      startDate: '',
-      endDate: '',
-      numGuests: 1,
+      startDate: new Date(),
+      endDate: new Date(),
       focusedInput: 'startDate',
       calendarFocused: null,
-      openDatePicker: false
+      openDatePicker: false,
+      dropDownMode: 'scroll'
     };
 
     _this.betweenDates = function (date) {
@@ -1141,11 +1137,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$state = this.state,
-          startDate = _this$state.startDate,
-          endDate = _this$state.endDate;
-      var startDateString = startDate && startDate.format('ddd, MMM Do');
-      var endDateString = endDate && endDate.format('ddd, MMM Do');
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "home-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
@@ -1161,7 +1152,13 @@ function (_React$Component) {
         className: "checkin-checkout"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "datepickers"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        selected: this.state.startDate,
+        onChange: this.handleStartChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        selected: this.state.endDate,
+        onChange: this.handleEndChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "guests"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Guests"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",

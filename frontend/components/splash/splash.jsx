@@ -16,10 +16,6 @@ class Splash extends React.Component {
       dropDownMode: 'scroll'
     };
 
-    this.betweenDates = (date) => {
-      return date >= this.state.startDate && date <= this.state.endDate;
-    };
-
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
   }

@@ -13,7 +13,7 @@
 
 .show-div {
   list-style: none;
-  width: 60%;
+  width: 40%;
   margin-top: 5%;
   margin-left: 5%;
 }
@@ -53,4 +53,17 @@
 }
 .show-ammenities {
   margin: 8px;
+}
+
+.whole-show {
+  display: flex;
+  justify-content: space-between
+}
+
+.whole-show .bookings-search {
+  margin-left: 3%;
+  margin-top: 8%;
+  border-radius: 3px;
+  border: .6px solid gray;
+
 }

@@ -1104,11 +1104,6 @@ function (_React$Component) {
       openDatePicker: false,
       dropDownMode: 'scroll'
     };
-
-    _this.betweenDates = function (date) {
-      return date >= _this.state.startDate && date <= _this.state.endDate;
-    };
-
     _this.handleStartChange = _this.handleStartChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleEndChange = _this.handleEndChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -1532,6 +1527,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../greeting/greeting_container */ "./frontend/components/greeting/greeting_container.jsx");
 /* harmony import */ var _session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../session_form/session_modal */ "./frontend/components/session_form/session_modal.jsx");
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1542,13 +1538,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -1559,13 +1556,46 @@ var SpotShow =
 function (_React$Component) {
   _inherits(SpotShow, _React$Component);
 
-  function SpotShow() {
+  function SpotShow(props) {
+    var _this;
+
     _classCallCheck(this, SpotShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SpotShow).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SpotShow).call(this, props));
+    _this.state = {
+      startDate: new Date(),
+      endDate: new Date(),
+      focusedInput: 'startDate',
+      calendarFocused: null,
+      openDatePicker: false,
+      dropDownMode: 'scroll'
+    };
+    _this.handleStartChange = _this.handleStartChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleEndChange = _this.handleEndChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(SpotShow, [{
+    key: "handleStartChange",
+    value: function handleStartChange(date) {
+      this.setState({
+        startDate: date,
+        focusedInput: 'startDate',
+        calendarFocused: null,
+        openDatePicker: false
+      });
+    }
+  }, {
+    key: "handleEndChange",
+    value: function handleEndChange(date) {
+      this.setState({
+        endDate: date,
+        focusedInput: 'startDate',
+        calendarFocused: null,
+        openDatePicker: false
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchSpot(this.props.match.params.spotId);
@@ -1579,6 +1609,8 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "show-greeting"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "whole-show"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: spot.photos[0]
@@ -1594,7 +1626,26 @@ function (_React$Component) {
         className: "show-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-ammenities"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.ammenities))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.ammenities))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bookings-search"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "checkin-checkout"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "datepickers"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        selected: this.state.startDate,
+        onChange: this.handleStartChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        selected: this.state.endDate,
+        onChange: this.handleEndChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "guests"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Guests"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "Guests dropdown will go here"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "search-button"
+      }, "Book"))));
     }
   }]);
 

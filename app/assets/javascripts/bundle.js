@@ -993,11 +993,29 @@ function (_React$Component) {
         className: "home-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Take Me Home, to CherBnB")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bookings-search"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Share homes and experiences exclusively with Cher."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "where"
+      }, "Where"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "Anywhere that you, Cher, own, because you are Cher"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "checkin-checkout"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "datepickers"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        selected: this.state.startDate,
         onChange: this.handleChange,
-        withPortal: true
-      })));
+        placeholderText: "mm/dd/yyyy"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        onChange: this.handleChange,
+        placeholderText: "mm/dd/yyyy"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "guests"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Guests"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "Guests dropdown will go here"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "search-button"
+      }, "Search")));
     }
   }]);
 

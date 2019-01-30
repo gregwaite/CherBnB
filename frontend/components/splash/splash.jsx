@@ -36,11 +36,30 @@ class Splash extends React.Component {
         <h1>Take Me Home, to CherBnB</h1>
       </header>
       <div className='bookings-search'>
-        <DatePicker
-          selected={this.state.startDate}
-          onChange={this.handleChange}
-          withPortal
-        />
+        <h1>Share homes and experiences exclusively with Cher.</h1>
+        <p className='where'>Where</p>
+        <input type="text" placeholder="Anywhere that you, Cher, own, because you are Cher"/>
+          
+          <div className='checkin-checkout'>
+            <p>Check In</p>
+            <p>Check Out</p>
+          </div>
+          <section className="datepickers">
+            <DatePicker
+              onChange={this.handleChange}
+              placeholderText="mm/dd/yyyy"
+            />
+            <DatePicker
+              onChange={this.handleChange}
+              placeholderText="mm/dd/yyyy"
+            />
+          </section>
+          <section className='guests'>
+            <p>Guests</p>
+            <input type="text" placeholder='Guests dropdown will go here'/>
+          </section>
+
+          <button className='search-button'>Search</button>
       </div>
     </div>
     )

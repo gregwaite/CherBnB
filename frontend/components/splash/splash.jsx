@@ -15,6 +15,11 @@ class Splash extends React.Component {
       openDatePicker: false,
       dropDownMode: 'scroll'
     };
+
+    this.betweenDates = (date) => {
+      return date >= this.state.startDate && date <= this.state.endDate;
+    };
+
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
   }
@@ -55,12 +60,13 @@ class Splash extends React.Component {
           </div>
           <section className="datepickers">
             <DatePicker
+              selected={this.state.startDate}
               onChange={this.handleStartChange}
-              placeholderText="mm/dd/yyyy"
+              
             />
             <DatePicker
+              selected={this.state.endDate}
               onChange={this.handleEndChange}
-              placeholderText="mm/dd/yyyy"
             />
           </section>
           <section className='guests'>

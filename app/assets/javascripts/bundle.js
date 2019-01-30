@@ -970,6 +970,11 @@ function (_React$Component) {
       openDatePicker: false,
       dropDownMode: 'scroll'
     };
+
+    _this.betweenDates = function (date) {
+      return date >= _this.state.startDate && date <= _this.state.endDate;
+    };
+
     _this.handleStartChange = _this.handleStartChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleEndChange = _this.handleEndChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -1014,11 +1019,11 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "datepickers"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        onChange: this.handleStartChange,
-        placeholderText: "mm/dd/yyyy"
+        selected: this.state.startDate,
+        onChange: this.handleStartChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        onChange: this.handleEndChange,
-        placeholderText: "mm/dd/yyyy"
+        selected: this.state.endDate,
+        onChange: this.handleEndChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "guests"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Guests"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {

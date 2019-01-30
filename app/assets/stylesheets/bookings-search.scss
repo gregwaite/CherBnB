@@ -67,11 +67,19 @@
 .where {
   margin-left: 7%;
   margin-bottom: 1%;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: #484848
 }
 
 .checkin-checkout {
   display: flex;
   margin-left: 7%;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: #484848
 }
 .checkin-checkout > p {
   margin-bottom: 1%;
@@ -83,6 +91,10 @@
 .guests {
   margin-left: 5%;
   margin-bottom: 8%;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: #484848
 }
 
 .guests > p {

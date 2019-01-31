@@ -671,7 +671,7 @@ function (_React$Component) {
         className: "login-input",
         key: "Email"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", {
-        type: "text",
+        type: "email",
         onChange: this.update('email'),
         value: this.state.email,
         placeholder: "Email Address"
@@ -680,7 +680,7 @@ function (_React$Component) {
         className: "login-input",
         key: "Password"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", {
-        type: "text",
+        type: "password",
         onChange: this.update('password'),
         value: this.state.password,
         placeholder: "Password"
@@ -1427,10 +1427,10 @@ var getCoords = function getCoords(latLong) {
 
 var mapOptions = {
   center: {
-    lat: 37.7758,
+    lat: 44.7758,
     lng: -122.435
   },
-  zoom: 3
+  zoom: 5
 };
 
 var SpotMap =
@@ -1462,13 +1462,6 @@ function (_React$Component) {
     value: function registerListeners() {
       var _this = this;
 
-      // google.maps.event.addListener(this.map, 'idle', () => {
-      //   const {north, south, east, west} = this.map.getBounds().toJSON;
-      //   const bounds = {
-      //     northEast: {lat: north, lng: east},
-      //     southwest: {lat: south, lng: west},};
-      //     this.props.updateFilter('bounds', bounds);
-      // });
       google.maps.event.addListener(this.map, 'click', function (event) {
         var coords = getCoords(event.latLng);
 
@@ -1481,17 +1474,6 @@ function (_React$Component) {
       this.props.history.push({
         pathname: "spots/".concat(spotId)
       });
-    }
-  }, {
-    key: "handleClick",
-    value: function handleClick(coords) {// this.props.history.push({
-      //   pathname: 'spots/new',
-      //   search: `lat=${coords.lat}&lng=${coords.long}`
-      // });
-      // let marker = new google.maps.Marker({
-      //   position: coords,
-      //   map: this.map,
-      // });
     }
   }, {
     key: "render",
@@ -2046,7 +2028,19 @@ function () {
       var marker = new google.maps.Marker({
         position: position,
         map: this.map,
-        spotId: spot.id
+        spotId: spot.id,
+        label: {
+          text: "$".concat(spot.price),
+          fontWeight: 'bolder',
+          fontSize: '12px'
+        },
+        icon: {
+          path: 'M22-48h-44v43h16l6 5 6-5h16z',
+          fillColor: 'white',
+          fillOpacity: 1,
+          labelOrigin: new google.maps.Point(-2, -25),
+          strokeColor: 'gray'
+        }
       });
       marker.addListener('click', function (event) {
         _this2.handleClick(marker.spotId);

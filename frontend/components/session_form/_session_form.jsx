@@ -106,7 +106,7 @@ class SessionForm extends React.Component {
     const email = (
       <label className="login-input" key="Email">
             <input
-          type="text"
+          type="email"
           onChange={this.update('email')}
           value={this.state.email}
           placeholder="Email Address"/>
@@ -116,7 +116,7 @@ class SessionForm extends React.Component {
     const password = (
       <label className="login-input" key="Password">
             <input
-          type="text"
+          type="password"
           onChange={this.update('password')}
           value={this.state.password} 
           placeholder="Password"

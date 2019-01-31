@@ -41,22 +41,22 @@ Spot.create!(
   ammenities: ["big old house"], 
   price: 7, 
   lat: 45.423021, 
-  long: -125.083739, 
+  long: -120.083739, 
   address:"123 Greg Hole", 
   owner_id: kanye.id, 
   photos:["https://media.architecturaldigest.com/photos/55e78857302ba71f3017a639/master/pass/dam-images-celebrity-homes-2002-cher-cher-malibu-06-loggia.jpg"],
 )
 Spot.create!(
-  spot_type: "Half House", 
-  title: "Cher's Half House", 
-  description: "Enormous mansion that you can't afford to live in unless you are Cher, or half at least", 
-  ammenities: ["big old half house"], 
+  spot_type: "Aquatic Fortress", 
+  title: "Cher's Aqueous Domain", 
+  description: "Cher is half mermaid and has this home for visiting relatives", 
+  ammenities: ["big old aquatic fortress"], 
   price: 7, 
   lat: 48.423021, 
   long: -127.083739, 
   address:"123 Greg St", 
   owner_id: kanye.id, 
-  photos:["https://media.architecturaldigest.com/photos/5745fbc129eb2cc479c98d04/master/pass/cher-aspen-colorado-house-1.jpg"],
+  photos:["https://icdn7.digitaltrends.com/image/poseidon-undersea-resorts-970x546-c-640x640.jpg?ver=1.jpg"],
 )
 Spot.create!(
   spot_type: "Horse", 

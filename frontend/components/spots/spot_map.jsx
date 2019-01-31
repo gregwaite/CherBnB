@@ -11,8 +11,8 @@ const getCoords = latLong => {
 };
 
 const mapOptions = {
-  center: {lat: 37.7758, lng: -122.435},
-  zoom: 3,
+  center: {lat: 44.7758, lng: -122.435},
+  zoom: 5,
 };
 
 class SpotMap extends React.Component {
@@ -34,13 +34,6 @@ class SpotMap extends React.Component {
 
 
   registerListeners() {
-    // google.maps.event.addListener(this.map, 'idle', () => {
-    //   const {north, south, east, west} = this.map.getBounds().toJSON;
-    //   const bounds = {
-    //     northEast: {lat: north, lng: east},
-    //     southwest: {lat: south, lng: west},};
-    //     this.props.updateFilter('bounds', bounds);
-    // });
     google.maps.event.addListener(this.map, 'click', (event) => {
       const coords = getCoords(event.latLng);
       this.handleClick(coords);
@@ -52,17 +45,6 @@ class SpotMap extends React.Component {
       pathname: `spots/${spotId}`
     });
     
-  }
-
-  handleClick(coords) {
-    // this.props.history.push({
-    //   pathname: 'spots/new',
-    //   search: `lat=${coords.lat}&lng=${coords.long}`
-    // });
-    // let marker = new google.maps.Marker({
-    //   position: coords,
-    //   map: this.map,
-    // });
   }
 
   render(){

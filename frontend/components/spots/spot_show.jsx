@@ -77,6 +77,7 @@ class SpotShow extends React.Component {
           </div>
 
           <div className="bookings-search">
+            <h1>Book this spot, me. I am Cher.</h1>
             <div className='checkin-checkout'>
               <p>Check In</p>
               <p>Check Out</p>

@@ -1610,7 +1610,7 @@ function (_React$Component) {
         className: "show-ammenities"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.ammenities))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bookings-search"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Book this spot, me. I am Cher."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "checkin-checkout"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "datepickers"

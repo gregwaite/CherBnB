@@ -20,7 +20,7 @@ Spot.create!(
   long: -122.083739, 
   address:"123 Greg Rd", 
   owner_id: kanye.id, 
-  photos:["http://i1.ytimg.com/vi/5YzIvji64DA/0.jpg"],
+  photos:["https://cdn.vox-cdn.com/thumbor/mlY5CB208mKNwbkOGjGUkRvTeSI=/0x0:2500x1663/1200x800/filters:focal(1050x632:1450x1032)/cdn.vox-cdn.com/uploads/chorus_image/image/60707371/9477_Gloaming_Dr_025_copy.0.jpg"],
 )
 Spot.create!(
   spot_type: "Apt", 
@@ -32,7 +32,7 @@ Spot.create!(
   long: -123.083739, 
   address:"123 Greg Ave", 
   owner_id: kanye.id, 
-  photos:["http://www4.pictures.zimbio.com/bg/Cher+Beach+Homes+ufrJvyAjgvPl.jpg"],
+  photos:["https://www.thepinnaclelist.com/wp-content/uploads/2013/02/cher-italian-renaissance-style-mansion-overlooking-the-pacific-ocean-in-malibu-california-920x614-1840-the-pinnacle-list-tpl.jpg"],
 )
 Spot.create!(
   spot_type: "House", 

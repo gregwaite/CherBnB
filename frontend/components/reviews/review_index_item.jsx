@@ -1,4 +1,5 @@
 import React from 'react';
+import EditReviewContainer from './edit_review_container';
 
 class ReviewIndexItem extends React.Component {
   constructor(props){
@@ -6,6 +7,7 @@ class ReviewIndexItem extends React.Component {
     this.state = {
       edit: false
     };
+    this.toggleEdit = this.toggleEdit.bind(this);
   }
 
   toggleEdit() {
@@ -14,7 +16,17 @@ class ReviewIndexItem extends React.Component {
   }
   
   render() {
-    const {title, body, rating, id} = this.props.review;
+    const {updateReview, review} = this.props;
+    const {title, body, rating, id} = review;
+    if (this.state.edit) {
+      return (
+      <EditReviewContainer
+        review={review}
+        updateReview={updateReview}
+        toggleEdit={this.toggleEdit}
+      />
+      )
+    } else {
 
     return (
     <div className="index-item">
@@ -31,9 +43,9 @@ class ReviewIndexItem extends React.Component {
       </ul>
 
       <button onClick={() => this.props.handleDeleteSubmit(id)}>Delete</button>
-      <button onClick={this.handle}>Edit</button>
+      <button onClick={this.toggleEdit}>Edit</button>
     </div>
-    )
+    )}
   }
 
 }

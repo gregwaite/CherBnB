@@ -1,4 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { updateReview } from '../../actions/review_actions';
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateReview: (review) => dispatch(updateReview(review)),
+  };
+};
 
 class EditReview extends React.Component {
   constructor(props) {
@@ -10,7 +18,7 @@ class EditReview extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.updateReview(this.state);
-    this.props.handleClassSwitch();
+    this.props.toggleEdit();
   }
 
   update(field) {
@@ -20,6 +28,7 @@ class EditReview extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div className="edit-index-item">
         <form className="edit-form" onSubmit={this.handleSubmit}>
@@ -58,4 +67,4 @@ class EditReview extends React.Component {
 }
 
 
-export default EditReview
+export default connect(null, mapDispatchToProps)(EditReview);

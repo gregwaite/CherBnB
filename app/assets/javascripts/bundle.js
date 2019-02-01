@@ -691,6 +691,8 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/review_actions */ "./frontend/actions/review_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -713,6 +715,16 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    updateReview: function updateReview(review) {
+      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_2__["updateReview"])(review));
+    }
+  };
+};
+
 var EditReview =
 /*#__PURE__*/
 function (_React$Component) {
@@ -734,7 +746,7 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.updateReview(this.state);
-      this.props.handleClassSwitch();
+      this.props.toggleEdit();
     }
   }, {
     key: "update",
@@ -748,6 +760,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-index-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -779,7 +792,7 @@ function (_React$Component) {
   return EditReview;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (EditReview);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatchToProps)(EditReview));
 
 /***/ }),
 
@@ -795,8 +808,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _create_review_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./create_review_container */ "./frontend/components/reviews/create_review_container.jsx");
-/* harmony import */ var _edit_review_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit_review_container */ "./frontend/components/reviews/edit_review_container.jsx");
-/* harmony import */ var _review_index_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./review_index_item */ "./frontend/components/reviews/review_index_item.jsx");
+/* harmony import */ var _review_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./review_index_item */ "./frontend/components/reviews/review_index_item.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -814,7 +826,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 
 
 
@@ -867,13 +878,9 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: _this2.className,
           key: review.id
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
           review: review,
           handleDeleteSubmit: _this2.handleDeleteSubmit
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_edit_review_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          review: review,
-          updateReview: _this2.props.updateReview,
-          handleClassSwitch: _this2.handleClassSwitch
         }));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, reviews, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_review_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
@@ -950,6 +957,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _edit_review_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit_review_container */ "./frontend/components/reviews/edit_review_container.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -960,13 +968,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -984,6 +993,7 @@ function (_React$Component) {
     _this.state = {
       edit: false
     };
+    _this.toggleEdit = _this.toggleEdit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1000,26 +1010,37 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var _this$props$review = this.props.review,
-          title = _this$props$review.title,
-          body = _this$props$review.body,
-          rating = _this$props$review.rating,
-          id = _this$props$review.id;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "title-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "body-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Review")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "rating-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, rating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Rating")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this2.props.handleDeleteSubmit(id);
-        }
-      }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handle
-      }, "Edit"));
+      var _this$props = this.props,
+          updateReview = _this$props.updateReview,
+          review = _this$props.review;
+      var title = review.title,
+          body = review.body,
+          rating = review.rating,
+          id = review.id;
+
+      if (this.state.edit) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_edit_review_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          review: review,
+          updateReview: updateReview,
+          toggleEdit: this.toggleEdit
+        });
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "index-item"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "title-item"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "body-item"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Review")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "rating-item"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, rating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Rating")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: function onClick() {
+            return _this2.props.handleDeleteSubmit(id);
+          }
+        }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.toggleEdit
+        }, "Edit"));
+      }
     }
   }]);
 

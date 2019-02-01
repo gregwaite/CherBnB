@@ -1,6 +1,6 @@
 import React from 'react';
 import CreateReview from './create_review_container';
-import EditReviewContainer from './edit_review_container';
+
 import ReviewIndexItem from './review_index_item';
 
 class ReviewShow extends React.Component {
@@ -36,12 +36,7 @@ class ReviewShow extends React.Component {
             review={review}
             handleDeleteSubmit={this.handleDeleteSubmit}
           ></ReviewIndexItem>
-          <EditReviewContainer
-            review={review}
-            updateReview={this.props.updateReview}
-            handleClassSwitch={this.handleClassSwitch}
-            >
-          </EditReviewContainer>
+          
         </div>
       )}
       )

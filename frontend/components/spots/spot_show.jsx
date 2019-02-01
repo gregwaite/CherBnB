@@ -101,9 +101,11 @@ class SpotShow extends React.Component {
 
             <button className='search-button'>Book</button>
           </div>
-          <div className="reviews-container">
-            <ReviewIndexContainer></ReviewIndexContainer>
-          </div>
+          
+          
+        </div>
+        <div className="reviews-container">
+          <ReviewIndexContainer></ReviewIndexContainer>
         </div>
       </div>
     )

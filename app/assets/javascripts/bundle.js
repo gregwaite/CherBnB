@@ -2213,9 +2213,9 @@ function (_React$Component) {
         placeholder: "Guests dropdown will go here"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-button"
-      }, "Book")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Book"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reviews-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_review_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_review_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
     }
   }]);
 

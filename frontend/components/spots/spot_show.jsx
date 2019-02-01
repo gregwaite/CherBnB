@@ -2,6 +2,7 @@ import React from 'react';
 import GreetingContainer from '../greeting/greeting_container';
 import Modal from '../session_form/session_modal';
 import DatePicker from 'react-datepicker';
+import ReviewIndexContainer from '../reviews/review_index_container';
 
 class SpotShow extends React.Component {
   constructor(props) {
@@ -99,6 +100,9 @@ class SpotShow extends React.Component {
             </section>
 
             <button className='search-button'>Book</button>
+          </div>
+          <div className="reviews-container">
+            <ReviewIndexContainer></ReviewIndexContainer>
           </div>
         </div>
       </div>

@@ -21,6 +21,8 @@ class Spot < ApplicationRecord
   validates :spot_type, :title, :description, :ammenities, :price, :owner_id, presence: true
   validates :lat, :long, :address, presence: true, uniqueness: true
 
+  has_many :reviews
+
   belongs_to :user,
     class_name: "User",
     foreign_key: :owner_id

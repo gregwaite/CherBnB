@@ -65,7 +65,18 @@
 .whole-show .bookings-search {
   margin-left: 3%;
   margin-top: 8%;
+  margin-right: none;
   border-radius: 3px;
   border: .6px solid gray;
+  height: 360px;
+
+}
+.whole-show .guests  {
+  margin-bottom: 4%;
+}
+.whole-show .bookings-search > button {
+  
+  margin-top: 10px;
+  margin-bottom: 4%;
 
 }

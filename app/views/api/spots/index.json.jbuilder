@@ -3,4 +3,3 @@
     json.partial! 'spot', spot: spot
   end
 end
-

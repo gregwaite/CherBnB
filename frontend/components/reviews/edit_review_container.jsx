@@ -28,7 +28,6 @@ class EditReview extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <div className="edit-index-item">
         <form className="edit-form" onSubmit={this.handleSubmit}>

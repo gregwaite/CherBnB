@@ -760,7 +760,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-index-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {

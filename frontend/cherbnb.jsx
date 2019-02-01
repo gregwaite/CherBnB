@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
+  window.addEventListener('hashchange', () => {
+    window.scrollTo(0, 0);
+  });
+
   window.fetchSpots = fetchSpots; 
 
   window.APISpots = APISpots;

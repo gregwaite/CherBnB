@@ -378,6 +378,9 @@ document.addEventListener('DOMContentLoaded', function () {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   }
 
+  window.addEventListener('hashchange', function () {
+    window.scrollTo(0, 0);
+  });
   window.fetchSpots = _actions_spot_actions__WEBPACK_IMPORTED_MODULE_6__["fetchSpots"];
   window.APISpots = _util_spot_api_util__WEBPACK_IMPORTED_MODULE_5__["fetchSpots"];
   window.fetchSpot = _util_spot_api_util__WEBPACK_IMPORTED_MODULE_5__["fetchSpot"];

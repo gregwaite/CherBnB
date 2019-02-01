@@ -632,6 +632,7 @@ function (_React$Component) {
   _createClass(CreateReview, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      debugger;
       e.preventDefault();
       this.props.createReview(this.state);
     }
@@ -2365,7 +2366,7 @@ var reviewsReducer = function reviewsReducer() {
       return action.reviews;
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:
-      newState.reviews[Object.values(action.review)[0].id] = Object.values(action.review)[0];
+      newState.reviews[action.review.id] = action.review;
       return newState;
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_REVIEW"]:

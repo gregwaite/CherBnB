@@ -635,7 +635,6 @@ function (_React$Component) {
   _createClass(CreateReview, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      debugger;
       e.preventDefault();
       this.props.createReview(this.state);
     }
@@ -916,18 +915,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  var ownReviews;
-
-  if (state.entities.reviews.reviews) {
-    ownReviews = Object.values(state.entities.reviews.reviews).filter(function (review) {
-      return parseInt(ownProps.match.params.spotId) === review.spot_id;
-    });
-  } else {
-    ownReviews = [];
-  }
-
   return {
-    reviews: ownReviews
+    reviews: Object.values(state.entities.reviews).filter(function (review) {
+      return parseInt(ownProps.match.params.spotId) === review.spot_id;
+    })
   };
 };
 
@@ -2369,11 +2360,11 @@ var reviewsReducer = function reviewsReducer() {
       return action.reviews;
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:
-      newState.reviews[action.review.id] = action.review;
+      newState[action.review.id] = action.review;
       return newState;
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_REVIEW"]:
-      delete newState.reviews[action.reviewId];
+      delete newState[action.reviewId];
       return newState;
 
     default:

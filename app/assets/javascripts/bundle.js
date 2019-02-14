@@ -346,18 +346,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _util_spot_api_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/spot_api_util */ "./frontend/util/spot_api_util.js");
-/* harmony import */ var _actions_spot_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/spot_actions */ "./frontend/actions/spot_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
-
-
-
-
+ // import { login, signup, logout } from './actions/session_actions';
+// import { fetchSpot, createSpot, updateSpot} from './util/spot_api_util';
+// import { fetchSpots as APISpots }  from './util/spot_api_util';
+// import { fetchSpots } from './actions/spot_actions';
 
 document.addEventListener('DOMContentLoaded', function () {
   var root = document.getElementById('root');
@@ -380,15 +377,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.addEventListener('hashchange', function () {
     window.scrollTo(0, 0);
-  });
-  window.fetchSpots = _actions_spot_actions__WEBPACK_IMPORTED_MODULE_6__["fetchSpots"];
-  window.APISpots = _util_spot_api_util__WEBPACK_IMPORTED_MODULE_5__["fetchSpots"];
-  window.fetchSpot = _util_spot_api_util__WEBPACK_IMPORTED_MODULE_5__["fetchSpot"];
-  window.createSpot = _util_spot_api_util__WEBPACK_IMPORTED_MODULE_5__["createSpot"];
-  window.updateSpot = _util_spot_api_util__WEBPACK_IMPORTED_MODULE_5__["updateSpot"];
-  window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["login"];
-  window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["signup"];
-  window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["logout"];
+  }); // window.fetchSpots = fetchSpots; 
+  // window.APISpots = APISpots;
+  // window.fetchSpot = fetchSpot; 
+  // window.createSpot = createSpot; 
+  // window.updateSpot = updateSpot; 
+  // window.login = login;
+  // window.signup = signup;
+  // window.logout = logout;
+
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -1266,7 +1263,8 @@ function (_React$Component) {
       var submitbutton = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
         id: "login-button",
         type: "submit",
-        className: "login-button"
+        className: "login-button",
+        key: "button"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
         className: "login-type-button"
       }, this.props.formType));

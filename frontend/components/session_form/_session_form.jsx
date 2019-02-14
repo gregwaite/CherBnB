@@ -125,7 +125,7 @@ class SessionForm extends React.Component {
     )
 
     const submitbutton = (
-      <button id="login-button" type="submit" className="login-button">
+      <button id="login-button" type="submit" className="login-button" key="button">
         <span className="login-type-button">
           {this.props.formType}
         </span>

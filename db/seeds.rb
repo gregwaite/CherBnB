@@ -8,10 +8,11 @@
 User.destroy_all
 Spot.destroy_all
 Review.destroy_all
+Booking.destroy_all
 
 kanye = User.create!(email: "yeezyyeezywhatsgood@ye.ye", username: "Kanye", password: "hurryupwithmydamncroissants")
 
-Spot.create!(
+house = Spot.create!(
   spot_type: "House", 
   title: "Cher's House", 
   description: "Enormous mansion that you can't afford to live in unless you are Cher", 
@@ -82,6 +83,15 @@ Spot.create!(
   address:"123 Greg Horse", 
   owner_id: kanye.id, 
   photos:["https://m.media-amazon.com/images/M/MV5BYTdmOTljNGUtMGJkMC00MmE2LTkwYzEtNmVlYjBmZjliNTlkXkEyXkFqcGdeQW1yb3NzZXI@._V1_UX477_CR0,0,477,268_AL_.jpg"],
+)
+
+Booking.create!(
+  status: "Pending", 
+  start_date: DateTime.new, 
+  end_date: DateTime.new, 
+  spot_id: house.id, 
+  owner_id: kanye.id,
+  guest_id: kanye.id
 )
 
 

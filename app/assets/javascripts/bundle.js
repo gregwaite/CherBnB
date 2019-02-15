@@ -2944,7 +2944,6 @@ var fetchBooking = function fetchBooking(id) {
   });
 };
 var createBooking = function createBooking(booking) {
-  debugger;
   return $.ajax({
     method: "POST",
     url: "api/bookings",

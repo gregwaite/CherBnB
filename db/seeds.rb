@@ -88,24 +88,24 @@ Spot.create!(
 
 Booking.create!(
   status: "Pending", 
-  start_date: DateTime.new, 
-  end_date: DateTime.new, 
+  start_date: '28/02/2019', 
+  end_date: '01/03/2019', 
   spot_id: house.id, 
   owner_id: house.owner_id,
   guest_id: kanye.id
 )
 Booking.create!(
   status: "Pending", 
-  start_date: DateTime.new, 
-  end_date: DateTime.new, 
+  start_date: '28/02/2019', 
+  end_date: '01/03/2019', 
   spot_id: apt.id, 
   owner_id: apt.owner_id,
   guest_id: kanye.id
 )
 Booking.create!(
   status: "Pending", 
-  start_date: DateTime.new, 
-  end_date: DateTime.new, 
+  start_date: '03/03/2019', 
+  end_date: '10/03/2019', 
   spot_id: house.id, 
   owner_id: house.owner_id,
   guest_id: cher.id

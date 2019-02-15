@@ -3,10 +3,8 @@ class Api::BookingsController < ApplicationController
 
   def create
     @booking = Booking.new (booking_params)
-    @guest = @current_user.id
-    @booking.save
-    @owner = User.find(@booking.owner_id)
-    @spot = Spot.find(@booking.spot_id)
+    @booking.guest_id = @current_user.id
+    @booking.save!
     render "api/bookings/show"
   end
 

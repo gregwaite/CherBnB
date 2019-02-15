@@ -14,8 +14,7 @@
 #
 
 class Booking < ApplicationRecord
-  validates :status, :start_date, :end_date, presence: true
-  validates :owner_id, presence: true, uniqueness: true
+  validates :status, :start_date, :end_date, :owner_id, presence: true
 
   belongs_to :user,
     class_name: "User",

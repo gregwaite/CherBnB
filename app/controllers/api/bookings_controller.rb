@@ -16,7 +16,7 @@ class Api::BookingsController < ApplicationController
   end
 
   def index
-    @bookings = Booking.find_by(guest_id: params[:guest_id])
+    @bookings = Booking.where(guest_id: @current_user.id)
     render "api/bookings/index"
   end
 

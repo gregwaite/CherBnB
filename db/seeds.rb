@@ -11,6 +11,7 @@ Review.destroy_all
 Booking.destroy_all
 
 kanye = User.create!(email: "yeezyyeezywhatsgood@ye.ye", username: "Kanye", password: "hurryupwithmydamncroissants")
+cher = User.create!(email: "cher@ye.ye", username: "Cher", password: "chercher")
 
 house = Spot.create!(
   spot_type: "House", 
@@ -24,7 +25,7 @@ house = Spot.create!(
   owner_id: kanye.id, 
   photos:["https://cdn.vox-cdn.com/thumbor/mlY5CB208mKNwbkOGjGUkRvTeSI=/0x0:2500x1663/1200x800/filters:focal(1050x632:1450x1032)/cdn.vox-cdn.com/uploads/chorus_image/image/60707371/9477_Gloaming_Dr_025_copy.0.jpg"],
 )
-Spot.create!(
+apt = Spot.create!(
   spot_type: "Apt", 
   title: "Cher's Apt", 
   description: "Apartment with lights and floors.", 
@@ -90,8 +91,24 @@ Booking.create!(
   start_date: DateTime.new, 
   end_date: DateTime.new, 
   spot_id: house.id, 
-  owner_id: kanye.id,
+  owner_id: house.owner_id,
   guest_id: kanye.id
+)
+Booking.create!(
+  status: "Pending", 
+  start_date: DateTime.new, 
+  end_date: DateTime.new, 
+  spot_id: apt.id, 
+  owner_id: apt.owner_id,
+  guest_id: kanye.id
+)
+Booking.create!(
+  status: "Pending", 
+  start_date: DateTime.new, 
+  end_date: DateTime.new, 
+  spot_id: house.id, 
+  owner_id: house.owner_id,
+  guest_id: cher.id
 )
 
 

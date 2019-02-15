@@ -22,7 +22,7 @@ class Api::BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    @booking.update(booking_params)
+    @booking.update!(booking_params)
     render "api/bookings/show"
   end
 

@@ -1,0 +1,19 @@
+.booking-index-modal {
+  background: white;
+  border-radius: 3px;
+  height: 500px;
+  scroll-behavior: auto;
+  overflow: scroll;
+}
+
+
+
+.booking-index-item {
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+.booking-index-item > ul {
+  list-style: none;
+  margin: 3px;
+  padding: 3px;
+}

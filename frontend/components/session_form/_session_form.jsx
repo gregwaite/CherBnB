@@ -32,6 +32,7 @@ class SessionForm extends React.Component {
   handleKeyDown(e) {
     if (e.keyCode === 27) {
       this.props.closeModal();
+      this.props.destroyErrors();
     }
   }
 
@@ -84,6 +85,7 @@ class SessionForm extends React.Component {
   componentDidUpdate() {
     if (this.props.loggedIn) {
       this.props.closeModal();
+      this.props.destroyErrors();
     }
   }
   

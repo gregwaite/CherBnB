@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../actions/session_actions';
+import { login, destroyErrors } from '../../actions/session_actions';
 import sessionForm from './_session_form';
 import {openModal, closeModal} from '../../actions/modal_actions';
 
@@ -21,6 +21,7 @@ const mapDispatchToProps = dispatch => {
       <a onClick={() => dispatch(openModal('signup'))}>Sign up</a>
     ),
     closeModal: () => dispatch(closeModal()),
+    destroyErrors: () => dispatch(destroyErrors()),
   };
 };
 

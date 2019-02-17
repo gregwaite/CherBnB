@@ -4,6 +4,8 @@ class Api::BookingsController < ApplicationController
   def create
     @booking = Booking.new (booking_params)
     @booking.guest_id = @current_user.id
+    @spot = Spot.find(@booking.spot_id)
+    @booking.owner_id = @spot.owner_id
     @booking.save!
     render "api/bookings/show"
   end
@@ -33,6 +35,6 @@ class Api::BookingsController < ApplicationController
 
 
   def booking_params
-    params.require(:booking).permit(:status, :start_date, :end_date, :spot_id, :owner_id)
+    params.require(:booking).permit(:status, :start_date, :end_date, :spot_id)
   end
 end

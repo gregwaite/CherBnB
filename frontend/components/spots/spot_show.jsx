@@ -18,6 +18,7 @@ class SpotShow extends React.Component {
 
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
+    this.handleBookSubmit = this.handleBookSubmit.bind(this);
   }
 
   handleStartChange(date) {
@@ -35,6 +36,15 @@ class SpotShow extends React.Component {
       calendarFocused: null,
       openDatePicker: false,
     });
+  }
+  handleBookSubmit(){
+    const booking = {
+      start_date: this.state.startDate,
+      end_date: this.state.endDate,
+      status: 'Approved',
+      spot_id: this.props.match.params.spotId,
+    };
+    this.props.createBooking(booking);
   }
   componentDidMount() {
     this.props.fetchSpot(this.props.match.params.spotId);
@@ -99,7 +109,7 @@ class SpotShow extends React.Component {
               <input type="text" placeholder='Guests dropdown will go here' />
             </section>
 
-            <button className='search-button'>Book</button>
+            <button className='search-button' onClick={this.handleBookSubmit}>Book</button>
           </div>
           
           

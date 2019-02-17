@@ -2408,6 +2408,7 @@ function (_React$Component) {
     };
     _this.handleStartChange = _this.handleStartChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleEndChange = _this.handleEndChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleBookSubmit = _this.handleBookSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -2430,6 +2431,17 @@ function (_React$Component) {
         calendarFocused: null,
         openDatePicker: false
       });
+    }
+  }, {
+    key: "handleBookSubmit",
+    value: function handleBookSubmit() {
+      var booking = {
+        start_date: this.state.startDate,
+        end_date: this.state.endDate,
+        status: 'Approved',
+        spot_id: this.props.match.params.spotId
+      };
+      this.props.createBooking(booking);
     }
   }, {
     key: "componentDidMount",
@@ -2480,7 +2492,8 @@ function (_React$Component) {
         type: "text",
         placeholder: "Guests dropdown will go here"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "search-button"
+        className: "search-button",
+        onClick: this.handleBookSubmit
       }, "Book"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reviews-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_review_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
@@ -2507,6 +2520,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _actions_spot_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/spot_actions */ "./frontend/actions/spot_actions.js");
+/* harmony import */ var _actions_booking_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/booking_actions */ "./frontend/actions/booking_actions.js");
+
 
 
 
@@ -2520,6 +2535,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    createBooking: function createBooking(booking) {
+      return dispatch(Object(_actions_booking_actions__WEBPACK_IMPORTED_MODULE_4__["createBooking"])(booking));
+    },
     fetchSpot: function fetchSpot(id) {
       return dispatch(Object(_actions_spot_actions__WEBPACK_IMPORTED_MODULE_3__["fetchSpot"])(id));
     }

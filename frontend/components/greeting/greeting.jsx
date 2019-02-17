@@ -1,6 +1,7 @@
 import React from 'react';
 import { openModal } from '../../actions/modal_actions';
 import { Link } from 'react-router-dom';
+import BookingIndexContainer from '../bookings/booking_index_container';
 
 const Greeting = ({currentUser, logout}) => {
   const sessionLinks = () => {
@@ -28,6 +29,7 @@ const Greeting = ({currentUser, logout}) => {
           What can I, Cher, do for you, {currentUser.username}? I am Cher.
         </h2>
         <br/>
+        <button className="header-button" onClick={() => dispatch(openModal('booking'))}>Bookings</button>
         <button className="header-button" onClick={logout}>Logout</button>
       </hgroup>
     );

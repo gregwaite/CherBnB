@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import SignupFormContainer from '../session_form/signup_form_container';
 import LoginFormContainer from '../session_form/login_form_container';
 import React from 'react';
+import BookingIndexContainer from '../bookings/booking_index_container';
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -15,6 +16,9 @@ function Modal({ modal, closeModal }) {
       break;
     case 'signup':
       component = <SignupFormContainer />;
+      break;
+    case 'booking':
+      component= <BookingIndexContainer />;
       break;
     default:
       return null;

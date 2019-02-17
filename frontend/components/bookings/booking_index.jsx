@@ -19,7 +19,7 @@ class BookingIndex extends React.Component {
     )
     
     return (
-      <div>
+      <div className='booking-index-modal'>
         {bookings}
       </div>
     )

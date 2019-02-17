@@ -3,6 +3,7 @@ import GreetingContainer from '../greeting/greeting_container';
 import Modal from '../session_form/session_modal';
 import DatePicker from 'react-datepicker';
 import ReviewIndexContainer from '../reviews/review_index_container';
+import { openModal } from '../../actions/modal_actions';
 
 class SpotShow extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class SpotShow extends React.Component {
       status: 'Approved',
       spot_id: this.props.match.params.spotId,
     };
-    this.props.createBooking(booking);
+    this.props.createBooking(booking).then(booking => dispatch(openModal('booking')));
   }
   componentDidMount() {
     this.props.fetchSpot(this.props.match.params.spotId);

@@ -500,10 +500,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _spots_spot_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./spots/spot_show_container */ "./frontend/components/spots/spot_show_container.jsx");
 /* harmony import */ var _splash_splash_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./splash/splash_container */ "./frontend/components/splash/splash_container.jsx");
 /* harmony import */ var _splash_date_picker__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./splash/date_picker */ "./frontend/components/splash/date_picker.jsx");
-/* harmony import */ var _reviews_review_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./reviews/review_index_container */ "./frontend/components/reviews/review_index_container.jsx");
-/* harmony import */ var _bookings_booking_index_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./bookings/booking_index_container */ "./frontend/components/bookings/booking_index_container.jsx");
-
-
 
 
 
@@ -522,14 +518,6 @@ var App = function App() {
     exact: true,
     path: "/datepicker",
     component: _splash_date_picker__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    exact: true,
-    path: "/bookings",
-    component: _bookings_booking_index_container__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    exact: true,
-    path: "/spots/:spotId/reviews",
-    component: _reviews_review_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
@@ -608,7 +596,9 @@ function (_React$Component) {
 
         }));
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, bookings);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "booking-index-modal"
+      }, bookings);
     }
   }]);
 
@@ -742,6 +732,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _bookings_booking_index_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../bookings/booking_index_container */ "./frontend/components/bookings/booking_index_container.jsx");
+
 
 
 
@@ -778,6 +770,11 @@ var Greeting = function Greeting(_ref) {
     }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
       className: "header-name"
     }, "What can I, Cher, do for you, ", currentUser.username, "? I am Cher."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "header-button",
+      onClick: function onClick() {
+        return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["openModal"])('booking'));
+      }
+    }, "Bookings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "header-button",
       onClick: logout
     }, "Logout"));
@@ -1665,6 +1662,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _bookings_booking_index_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../bookings/booking_index_container */ "./frontend/components/bookings/booking_index_container.jsx");
+
 
 
 
@@ -1688,6 +1687,10 @@ function Modal(_ref) {
 
     case 'signup':
       component = react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+      break;
+
+    case 'booking':
+      component = react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_bookings_booking_index_container__WEBPACK_IMPORTED_MODULE_5__["default"], null);
       break;
 
     default:
@@ -2363,6 +2366,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../session_form/session_modal */ "./frontend/components/session_form/session_modal.jsx");
 /* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/es/index.js");
 /* harmony import */ var _reviews_review_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../reviews/review_index_container */ "./frontend/components/reviews/review_index_container.jsx");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2380,6 +2384,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -2441,7 +2446,9 @@ function (_React$Component) {
         status: 'Approved',
         spot_id: this.props.match.params.spotId
       };
-      this.props.createBooking(booking);
+      this.props.createBooking(booking).then(function (booking) {
+        return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["openModal"])('booking'));
+      });
     }
   }, {
     key: "componentDidMount",

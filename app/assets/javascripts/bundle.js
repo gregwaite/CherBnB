@@ -580,16 +580,28 @@ function (_React$Component) {
   _createClass(BookingIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this = this;
+
       this.props.fetchBookings();
+      document.addEventListener("keydown", function (e) {
+        return _this.handleKeyDown(e);
+      });
+    }
+  }, {
+    key: "handleKeyDown",
+    value: function handleKeyDown(e) {
+      if (e.keyCode === 27) {
+        this.props.closeModal();
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       var bookings = this.props.bookings.map(function (booking) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: _this.className,
+          className: _this2.className,
           key: booking.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_booking_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           booking: booking // handleDeleteSubmit={this.handleDeleteSubmit}
@@ -622,6 +634,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _booking_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./booking_index */ "./frontend/components/bookings/booking_index.jsx");
 /* harmony import */ var _actions_booking_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/booking_actions */ "./frontend/actions/booking_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -643,6 +657,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     destroyBooking: function destroyBooking(id) {
       return dispatch(Object(_actions_booking_actions__WEBPACK_IMPORTED_MODULE_3__["destroyBooking"])(id));
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     }
   };
 };

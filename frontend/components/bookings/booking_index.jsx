@@ -4,6 +4,13 @@ import BookingIndexItem from './booking_index_item';
 class BookingIndex extends React.Component {
   componentDidMount(){
     this.props.fetchBookings();
+    document.addEventListener("keydown", (e) => this.handleKeyDown(e));
+  }
+
+  handleKeyDown(e) {
+    if (e.keyCode === 27) {
+      this.props.closeModal();
+    }
   }
 
   render(){

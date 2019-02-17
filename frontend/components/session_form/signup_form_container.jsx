@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { signup, destroyErrors } from '../../actions/session_actions';
 import sessionForm from './_session_form';
@@ -18,9 +17,6 @@ const mapDispatchToProps = dispatch => {
     processForm: user => {
       dispatch(signup(user))
     },
-    // otherModalForm: (
-    //   <a onClick={() => dispatch(openModal('login'))}>Log in</a>
-    // ),
     openModal: modal => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal()),
     destroyErrors: () => dispatch(destroyErrors()),

@@ -2,8 +2,10 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import SignupFormContainer from '../session_form/signup_form_container';
 import LoginFormContainer from '../session_form/login_form_container';
-import React from 'react';
 import BookingIndexContainer from '../bookings/booking_index_container';
+import { destroyErrors } from '../../actions/session_actions';
+import React from 'react';
+
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -12,24 +14,30 @@ function Modal({ modal, closeModal }) {
   let component;
   switch (modal) {
     case 'login':
-      component = <LoginFormContainer />;
-      break;
+    component = <LoginFormContainer />;
+    break;
     case 'signup':
-      component = <SignupFormContainer />;
-      break;
+    component = <SignupFormContainer />;
+    break;
     case 'booking':
-      component= <BookingIndexContainer />;
-      break;
+    component= <BookingIndexContainer />;
+    break;
     default:
-      return null;
+    return null;
   }
+
   return (
-    <div className="background-modal" onClick={closeModal}>
+    <div className="background-modal" onClick={handleModalClick}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
         {component}
       </div>
     </div>
   );
+}
+
+function handleModalClick() {
+  dispatch(destroyErrors());
+  dispatch(closeModal());
 }
 
 const mapStateToProps = state => {
@@ -38,10 +46,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    closeModal: () => dispatch(closeModal())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(mapStateToProps, null)(Modal);

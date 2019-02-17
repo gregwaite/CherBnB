@@ -13,6 +13,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.switchModals = this.switchModals.bind(this);
+    this.handleXPress = this.handleXPress.bind(this);
     this.demoCher = this.demoCher.bind(this);
   }
 
@@ -39,8 +40,11 @@ class SessionForm extends React.Component {
 
   switchModals() {
     this.props.destroyErrors();
-    debugger
     this.props.openModal(this.props.otherModalForm[0]);
+  }
+  handleXPress() {
+    this.props.destroyErrors();
+    this.props.closeModal();
   }
 
   renderErrors() {
@@ -179,7 +183,7 @@ class SessionForm extends React.Component {
     return (
       <div className="login-form-container" >
         <form onSubmit={this.handleSubmit} className="login-form-box">
-            <div onClick={this.props.closeModal} className="close-x">X</div>
+            <div onClick={this.handleXPress} className="close-x">X</div>
             {this.renderErrors()}
             <h2>{this.props.formType} to continue</h2>
 

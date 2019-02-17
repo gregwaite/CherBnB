@@ -1190,13 +1190,15 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var userId = this.props.userId;
       var reviews = this.props.reviews.map(function (review) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "show-index",
           key: review.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
           review: review,
-          handleDeleteSubmit: _this2.handleDeleteSubmit
+          handleDeleteSubmit: _this2.handleDeleteSubmit,
+          currentUserId: userId
         }));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, reviews, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_review_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
@@ -1232,7 +1234,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     reviews: Object.values(state.entities.reviews).filter(function (review) {
       return parseInt(ownProps.match.params.spotId) === review.spot_id;
-    })
+    }),
+    userId: state.session.id
   };
 };
 
@@ -1325,6 +1328,19 @@ function (_React$Component) {
           body = review.body,
           rating = review.rating,
           id = review.id;
+      var buttons;
+
+      if (review.user_id == this.props.currentUserId) {
+        buttons = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "review-buttons"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: function onClick() {
+            return _this2.props.handleDeleteSubmit(id);
+          }
+        }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.toggleEdit
+        }, "Edit"));
+      }
 
       if (this.state.edit) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_edit_review_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -1341,13 +1357,7 @@ function (_React$Component) {
           className: "body-item"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Review")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "rating-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, rating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Rating")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: function onClick() {
-            return _this2.props.handleDeleteSubmit(id);
-          }
-        }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: this.toggleEdit
-        }, "Edit"));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, rating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Rating")), buttons);
       }
     }
   }]);
@@ -2232,9 +2242,10 @@ function (_React$Component) {
           className: "spot-price"
         }, "$", spot.price, " per night")));
       });
+      var displaySpots = spots.slice(0, 6);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Some excellent places to be Cher"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, spots));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Some excellent places to be Cher"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, displaySpots));
     }
   }]);
 

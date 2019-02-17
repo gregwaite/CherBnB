@@ -26,11 +26,12 @@ class SpotIndex extends React.Component {
       </div>
       )
     });
+    const displaySpots = spots.slice(0,6)
     return (
       <div className='index'>
         <h2>Some excellent places to be Cher</h2>
         <section>
-          {spots}
+          {displaySpots}
         </section>
       </div>
     )

@@ -24,7 +24,7 @@
     list-style: none;
     display: flex;
 }
-.index-item > button {
+.review-buttons > button {
     list-style: none;
     text-decoration: none;
     border: none;
@@ -34,7 +34,7 @@
     border-radius: 3px
 }
 
-.index-item > button:hover {
+.review-buttons > button:hover {
     background: gray
 }
 

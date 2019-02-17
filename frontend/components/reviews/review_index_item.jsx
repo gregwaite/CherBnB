@@ -18,6 +18,14 @@ class ReviewIndexItem extends React.Component {
   render() {
     const {updateReview, review} = this.props;
     const {title, body, rating, id} = review;
+    let buttons;
+    if (review.user_id == this.props.currentUserId) {
+      buttons=
+      (<div className="review-buttons">
+        <button onClick={() => this.props.handleDeleteSubmit(id)}>Delete</button>
+        <button onClick={this.toggleEdit}>Edit</button>
+      </div>)
+    }
     if (this.state.edit) {
       return (
       <EditReviewContainer
@@ -27,7 +35,6 @@ class ReviewIndexItem extends React.Component {
       />
       )
     } else {
-
     return (
     <div className="index-item">
       <ul className="title-item">
@@ -41,9 +48,7 @@ class ReviewIndexItem extends React.Component {
         <li>{rating}</li>
         <li>Rating</li>
       </ul>
-
-      <button onClick={() => this.props.handleDeleteSubmit(id)}>Delete</button>
-      <button onClick={this.toggleEdit}>Edit</button>
+      {buttons}
     </div>
     )}
   }

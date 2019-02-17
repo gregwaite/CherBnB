@@ -1472,6 +1472,7 @@ function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleKeyDown = _this.handleKeyDown.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.switchModals = _this.switchModals.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.demoCher = _this.demoCher.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
@@ -1499,6 +1500,13 @@ function (_React$Component) {
         this.props.closeModal();
         this.props.destroyErrors();
       }
+    }
+  }, {
+    key: "switchModals",
+    value: function switchModals() {
+      this.props.destroyErrors();
+      debugger;
+      this.props.openModal(this.props.otherModalForm[0]);
     }
   }, {
     key: "renderErrors",
@@ -1660,7 +1668,9 @@ function (_React$Component) {
         className: "close-x"
       }, "X"), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h2", null, this.props.formType, " to continue"), labels), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "other-modal"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, text), this.props.otherModalForm));
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, text), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("a", {
+        onClick: this.switchModals
+      }, this.props.otherModalForm[1])));
     }
   }]);
 
@@ -1696,7 +1706,8 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     errors: state.errors,
     formType: 'Log in',
-    loggedIn: Boolean(state.session.id)
+    loggedIn: Boolean(state.session.id),
+    otherModalForm: ['signup', 'Sign up']
   };
 };
 
@@ -1705,11 +1716,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     processForm: function processForm(user) {
       dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["login"])(user));
     },
-    otherModalForm: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      onClick: function onClick() {
-        return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])('signup'));
-      }
-    }, "Sign up"),
+    // otherModalForm: (
+    //   <a onClick={() => dispatch(openModal('signup'))}>Sign up</a>
+    // ),
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal));
+    },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     },
@@ -1827,7 +1839,8 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     errors: state.errors,
     formType: "Sign up",
-    loggedIn: Boolean(state.session.id)
+    loggedIn: Boolean(state.session.id),
+    otherModalForm: ['login', 'Log in']
   };
 };
 
@@ -1836,11 +1849,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     processForm: function processForm(user) {
       dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["signup"])(user));
     },
-    otherModalForm: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      onClick: function onClick() {
-        return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])('login'));
-      }
-    }, "Log in"),
+    // otherModalForm: (
+    //   <a onClick={() => dispatch(openModal('login'))}>Log in</a>
+    // ),
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal));
+    },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     },

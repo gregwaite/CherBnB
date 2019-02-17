@@ -12,6 +12,7 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.switchModals = this.switchModals.bind(this);
     this.demoCher = this.demoCher.bind(this);
   }
 
@@ -34,6 +35,12 @@ class SessionForm extends React.Component {
       this.props.closeModal();
       this.props.destroyErrors();
     }
+  }
+
+  switchModals() {
+    this.props.destroyErrors();
+    debugger
+    this.props.openModal(this.props.otherModalForm[0]);
   }
 
   renderErrors() {
@@ -182,7 +189,7 @@ class SessionForm extends React.Component {
           <br/>
         <div className="other-modal">
           <p>{text}</p>
-          {this.props.otherModalForm}
+          <a onClick={this.switchModals}>{this.props.otherModalForm[1]}</a>
         </div>
       </div>
     )

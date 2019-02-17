@@ -30,6 +30,9 @@ class CreateReview extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createReview(this.state);
+    this.setState({["title"]: ""});
+    this.setState({["body"]: ""});
+    this.setState({["rating"]: ""});
   }
 
   update(field) {

@@ -954,6 +954,9 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.createReview(this.state);
+      this.setState(_defineProperty({}, "title", ""));
+      this.setState(_defineProperty({}, "body", ""));
+      this.setState(_defineProperty({}, "rating", ""));
     }
   }, {
     key: "update",

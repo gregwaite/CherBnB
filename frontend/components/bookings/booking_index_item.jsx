@@ -1,10 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class BookingIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(){
+    this.props.closeModal();
+  }
 
   render() {
     const { booking } = this.props;
     const { status, start_date, end_date } = booking;
+    const spot = this.props.spot || {};
     return (
     <div className="booking-index-item">
       <ul className="status-item">
@@ -18,6 +28,11 @@ class BookingIndexItem extends React.Component {
         <li>{end_date}</li>
         <li>End Date</li>
       </ul>
+      <Link to={`/spots/${booking.spot_id}`} onClick={this.handleClick}>
+        <li>
+          {spot.title}
+        </li>
+        </Link>
     </div>
     )
   }

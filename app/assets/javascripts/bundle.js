@@ -582,6 +582,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this = this;
 
+      this.props.fetchSpots();
       this.props.fetchBookings();
       document.addEventListener("keydown", function (e) {
         return _this.handleKeyDown(e);
@@ -599,12 +600,17 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var _this$props = this.props,
+          spots = _this$props.spots,
+          closeModal = _this$props.closeModal;
       var bookings = this.props.bookings.map(function (booking) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: _this2.className,
           key: booking.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_booking_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          booking: booking // handleDeleteSubmit={this.handleDeleteSubmit}
+          booking: booking,
+          spot: spots[booking.spot_id],
+          closeModal: closeModal // handleDeleteSubmit={this.handleDeleteSubmit}
 
         }));
       });
@@ -634,16 +640,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _booking_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./booking_index */ "./frontend/components/bookings/booking_index.jsx");
 /* harmony import */ var _actions_booking_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/booking_actions */ "./frontend/actions/booking_actions.js");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_spot_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/spot_actions */ "./frontend/actions/spot_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 
 
 
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    bookings: Object.values(state.entities.bookings)
+    bookings: Object.values(state.entities.bookings),
+    spots: state.entities.spots
   };
 };
 
@@ -659,7 +668,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch(Object(_actions_booking_actions__WEBPACK_IMPORTED_MODULE_3__["destroyBooking"])(id));
     },
     closeModal: function closeModal() {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["closeModal"])());
+    },
+    fetchSpots: function fetchSpots() {
+      return dispatch(Object(_actions_spot_actions__WEBPACK_IMPORTED_MODULE_4__["fetchSpots"])());
     }
   };
 };
@@ -679,6 +691,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -689,13 +702,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -704,19 +718,29 @@ var BookingIndexItem =
 function (_React$Component) {
   _inherits(BookingIndexItem, _React$Component);
 
-  function BookingIndexItem() {
+  function BookingIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, BookingIndexItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(BookingIndexItem).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BookingIndexItem).call(this, props));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(BookingIndexItem, [{
+    key: "handleClick",
+    value: function handleClick() {
+      this.props.closeModal();
+    }
+  }, {
     key: "render",
     value: function render() {
       var booking = this.props.booking;
       var status = booking.status,
           start_date = booking.start_date,
           end_date = booking.end_date;
+      var spot = this.props.spot || {};
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "booking-index-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -725,7 +749,10 @@ function (_React$Component) {
         className: "startDate-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, start_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Start Date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "endDate-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, end_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "End Date")));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, end_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "End Date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/spots/".concat(booking.spot_id),
+        onClick: this.handleClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.title)));
     }
   }]);
 

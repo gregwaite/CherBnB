@@ -840,7 +840,7 @@ function (_React$Component) {
       lat: 0,
       startDate: null,
       endDate: null,
-      focusedInput: 'startDate',
+      focusedInput: null,
       calendarFocused: null,
       openDatePicker: false,
       hideKeyboardShortcutsPanel: true

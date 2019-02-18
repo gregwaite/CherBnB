@@ -25,7 +25,7 @@ class DatePicker extends React.Component {
       lat: 0,
       startDate: null,
       endDate: null,
-      focusedInput: 'startDate',
+      focusedInput: null,
       calendarFocused: null,
       openDatePicker: false,
       hideKeyboardShortcutsPanel: true

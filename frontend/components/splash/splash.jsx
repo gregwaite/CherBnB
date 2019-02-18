@@ -1,7 +1,7 @@
 import React from 'react';
 import GreetingContainer from '../greeting/greeting_container';
 import Modal from '../session_form/session_modal';
-import DatePicker from 'react-datepicker';
+import DatePicker from '../datepicker/date_picker';
 
 class Splash extends React.Component {
   
@@ -10,10 +10,6 @@ class Splash extends React.Component {
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
-      focusedInput: 'startDate',
-      calendarFocused: null,
-      openDatePicker: false,
-      dropDownMode: 'scroll'
     };
 
     this.handleStartChange = this.handleStartChange.bind(this);
@@ -23,17 +19,11 @@ class Splash extends React.Component {
   handleStartChange(date) {
     this.setState({
       startDate: date,
-      focusedInput: 'startDate',
-      calendarFocused: null,
-      openDatePicker: false,
     });
   }
   handleEndChange(date) {
     this.setState({
       endDate: date,
-      focusedInput: 'startDate',
-      calendarFocused: null,
-      openDatePicker: false,
     });
   }
   
@@ -56,14 +46,13 @@ class Splash extends React.Component {
           </div>
           <section className="datepickers">
             <DatePicker
-              selected={this.state.startDate}
-              onChange={this.handleStartChange}
-              
+              handleStartChange={this.handleStartChange}
+              handleEndChange={this.handleEndChange}
             />
-            <DatePicker
+            {/* <DatePicker
               selected={this.state.endDate}
               onChange={this.handleEndChange}
-            />
+            /> */}
           </section>
           <section className='guests'>
             <p>Guests</p>

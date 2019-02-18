@@ -3,11 +3,12 @@ import React from 'react';
 import 'react-dates/initialize';
 import moment from 'moment';
 import { DateRangePicker } from 'react-dates';
+// import { start } from 'repl';
 
-const today = moment()
+const today = moment();
 
 const msp = state => {
-  return {}
+  return {};
 };
 
 const mdp = dispatch => {
@@ -22,8 +23,8 @@ class DatePicker extends React.Component {
       address: '',
       lng: 0,
       lat: 0,
-      startDate: '',
-      endDate: '',
+      startDate: null,
+      endDate: null,
       focusedInput: 'startDate',
       calendarFocused: null,
       openDatePicker: false,
@@ -31,7 +32,7 @@ class DatePicker extends React.Component {
     };
   }
 
-  render () {
+  render() {
     const { startDate, endDate } = this.state;
     const startDateString = startDate && startDate.format('ddd, MMM Do');
     const endDateString = endDate && endDate.format('ddd, MMM Do');
@@ -44,10 +45,16 @@ class DatePicker extends React.Component {
           endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
           startDatePlaceholderText="mm/dd/yyyy"
           endDatePlaceholderText="mm/dd/yyyy"
-          onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+          onDatesChange={({startDate, endDate}) =>{ 
+            this.setState({startDate, endDate});
+            this.props.handleStartChange(startDate._d);
+            const end = endDate || {}
+            this.props.handleEndChange(end._d);
+          }} // PropTypes.func.isRequired,
           focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
           onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
           numberOfMonths={1}
+          // openDatePicker={this.state.openDatePicker}
         />
       </section>
     );

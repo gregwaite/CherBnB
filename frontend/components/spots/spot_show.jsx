@@ -1,7 +1,7 @@
 import React from 'react';
 import GreetingContainer from '../greeting/greeting_container';
 import Modal from '../session_form/session_modal';
-import DatePicker from 'react-datepicker';
+import DatePicker from '../datepicker/date_picker';
 import ReviewIndexContainer from '../reviews/review_index_container';
 import { openModal } from '../../actions/modal_actions';
 
@@ -25,20 +25,14 @@ class SpotShow extends React.Component {
   handleStartChange(date) {
     this.setState({
       startDate: date,
-      focusedInput: 'startDate',
-      calendarFocused: null,
-      openDatePicker: false,
     });
   }
   handleEndChange(date) {
     this.setState({
       endDate: date,
-      focusedInput: 'startDate',
-      calendarFocused: null,
-      openDatePicker: false,
     });
   }
-  handleBookSubmit(){
+  handleBookSubmit() {
     const booking = {
       start_date: this.state.startDate,
       end_date: this.state.endDate,
@@ -51,8 +45,8 @@ class SpotShow extends React.Component {
     this.props.fetchSpot(this.props.match.params.spotId);
   }
 
-  render(){
-    const spot = this.props.spot || {photos: []};
+  render() {
+    const spot = this.props.spot || { photos: [] };
     return (
       <div id='show-greeting'>
         <section>
@@ -61,7 +55,7 @@ class SpotShow extends React.Component {
         </section>
         <div className="whole-show">
           <div className='show-div'>
-            <img src={spot.photos[0]}/>
+            <img src={spot.photos[0]} />
             <div className='basic-info'>
               <li className='show-spot-type'>
                 {spot.spot_type}
@@ -78,7 +72,7 @@ class SpotShow extends React.Component {
               <li>
                 {spot.description}
               </li>
-            </div>  
+            </div>
 
             <div className='show-ammenities'>
               <li>
@@ -96,14 +90,13 @@ class SpotShow extends React.Component {
             </div>
             <section className="datepickers">
               <DatePicker
-                selected={this.state.startDate}
-                onChange={this.handleStartChange}
-
+              handleStartChange={this.handleStartChange}
+              handleEndChange={this.handleEndChange}
               />
-              <DatePicker
+              {/* <DatePicker
                 selected={this.state.endDate}
                 onChange={this.handleEndChange}
-              />
+              /> */}
             </section>
             <section className='guests'>
               <p>Guests</p>
@@ -112,8 +105,8 @@ class SpotShow extends React.Component {
 
             <button className='search-button' onClick={this.handleBookSubmit}>Book</button>
           </div>
-          
-          
+
+
         </div>
         <div className="reviews-container">
           <ReviewIndexContainer></ReviewIndexContainer>

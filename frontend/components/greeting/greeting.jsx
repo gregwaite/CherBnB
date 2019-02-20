@@ -1,7 +1,6 @@
 import React from 'react';
 import { openModal } from '../../actions/modal_actions';
 import { Link } from 'react-router-dom';
-import BookingIndexContainer from '../bookings/booking_index_container';
 
 const Greeting = ({currentUser, logout}) => {
   const sessionLinks = () => {

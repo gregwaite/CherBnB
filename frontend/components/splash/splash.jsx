@@ -49,10 +49,6 @@ class Splash extends React.Component {
               handleStartChange={this.handleStartChange}
               handleEndChange={this.handleEndChange}
             />
-            {/* <DatePicker
-              selected={this.state.endDate}
-              onChange={this.handleEndChange}
-            /> */}
           </section>
           <section className='guests'>
             <p>Guests</p>

@@ -10,7 +10,6 @@ const App = () => (
   <div className="app-div">
     <Switch>
       <Route exact path="/spots/:spotId" component={SpotShowContainer} />
-      {/* <Route exact path='/datepicker' component={DatePicker}></Route> */}
       <Route exact path='/' component={SplashContainer}></Route>
     </Switch>
       <Route exact path="/" component={SpotIndexContainer} />

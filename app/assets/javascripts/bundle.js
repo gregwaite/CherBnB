@@ -624,7 +624,9 @@ function (_React$Component) {
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "booking-index-modal"
-      }, bookings);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "bookings-index-h1"
+      }, "Your reservations"), bookings);
     }
   }]);
 
@@ -745,22 +747,28 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var booking = this.props.booking;
-      var status = booking.status,
-          start_date = booking.start_date,
+      var start_date = booking.start_date,
           end_date = booking.end_date;
-      var spot = this.props.spot || {};
+      start_date = start_date.toString().slice(5, 10) + '-' + start_date.toString().slice(0, 4);
+      end_date = end_date.toString().slice(5, 10) + '-' + end_date.toString().slice(0, 4);
+      var spot = this.props.spot || {
+        photoUrls: []
+      };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "booking-index-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "status-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, status)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "bookings_photo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/spots/".concat(booking.spot_id),
+        onClick: this.handleClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: spot.photoUrls[0],
+        alt: ""
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "startDate-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, start_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Start Date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "endDate-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, end_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "End Date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/spots/".concat(booking.spot_id),
-        onClick: this.handleClick
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.title)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, end_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "End Date")));
     }
   }]);
 
@@ -2530,7 +2538,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var spot = this.props.spot || {
-        photos: []
+        photoUrls: []
       };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "show-greeting"
@@ -2539,7 +2547,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: spot.photos[0]
+        src: spot.photoUrls[0]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "basic-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {

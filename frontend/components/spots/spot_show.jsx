@@ -46,7 +46,7 @@ class SpotShow extends React.Component {
   }
 
   render() {
-    const spot = this.props.spot || { photos: [] };
+    const spot = this.props.spot || { photoUrls: [] };
     return (
       <div id='show-greeting'>
         <section>
@@ -55,7 +55,7 @@ class SpotShow extends React.Component {
         </section>
         <div className="whole-show">
           <div className='show-div'>
-            <img src={spot.photos[0]} />
+            <img src={spot.photoUrls[0]} />
             <div className='basic-info'>
               <li className='show-spot-type'>
                 {spot.spot_type}

@@ -31,8 +31,8 @@ house = Spot.create!(
   long: -122.083739, 
   address:"123 Greg Rd", 
   owner_id: kanye.id, 
-  photos:["https://cdn.vox-cdn.com/thumbor/mlY5CB208mKNwbkOGjGUkRvTeSI=/0x0:2500x1663/1200x800/filters:focal(1050x632:1450x1032)/cdn.vox-cdn.com/uploads/chorus_image/image/60707371/9477_Gloaming_Dr_025_copy.0.jpg"],
 )
+
 house.pictures.attach(io: house_main_photo, filename: 'cher_house.jpg')
 
 apt = Spot.create!(
@@ -45,7 +45,6 @@ apt = Spot.create!(
   long: -123.083739, 
   address:"123 Greg Ave", 
   owner_id: kanye.id, 
-  photos:["https://www.thepinnaclelist.com/wp-content/uploads/2013/02/cher-italian-renaissance-style-mansion-overlooking-the-pacific-ocean-in-malibu-california-920x614-1840-the-pinnacle-list-tpl.jpg"],
 )
 apt.pictures.attach(io: apt_main_photo, filename:'cher_apt.jpg')
 
@@ -59,7 +58,6 @@ other_house = Spot.create!(
   long: -120.083739, 
   address:"123 Greg Hole", 
   owner_id: kanye.id, 
-  photos:["https://media.architecturaldigest.com/photos/55e78857302ba71f3017a639/master/pass/dam-images-celebrity-homes-2002-cher-cher-malibu-06-loggia.jpg"],
 )
 other_house.pictures.attach(io: other_house__main_photo, filename: 'cher_other_house.jpg')
 
@@ -73,7 +71,6 @@ aquatic = Spot.create!(
   long: -127.083739, 
   address:"123 Greg St", 
   owner_id: kanye.id, 
-  photos:["https://icdn7.digitaltrends.com/image/poseidon-undersea-resorts-970x546-c-640x640.jpg?ver=1.jpg"],
 )
 aquatic.pictures.attach(io: aquatic_main_photo, filename: 'aquatic_fortress.jpg')
 
@@ -87,7 +84,6 @@ horse = Spot.create!(
   long: -118.083739, 
   address:"123 Greg Dr", 
   owner_id: kanye.id, 
-  photos:["https://media.gq.com/photos/56e71c0b14cbe0637b261d7f/3:2/w_560/horseinsuit2.jpg"],
 )
 horse.pictures.attach(io: horse_main_photo, filename:'cher_horse.jpg')
 
@@ -101,7 +97,6 @@ horseman = Spot.create!(
   long: -110.083739, 
   address:"123 Greg Horse", 
   owner_id: kanye.id, 
-  photos:["https://m.media-amazon.com/images/M/MV5BYTdmOTljNGUtMGJkMC00MmE2LTkwYzEtNmVlYjBmZjliNTlkXkEyXkFqcGdeQW1yb3NzZXI@._V1_UX477_CR0,0,477,268_AL_.jpg"],
 )
 horseman.pictures.attach(io: horseman_main_photo, filename:'cher_horseman.jpg')
 

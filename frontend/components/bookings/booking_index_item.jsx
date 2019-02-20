@@ -13,12 +13,16 @@ class BookingIndexItem extends React.Component {
 
   render() {
     const { booking } = this.props;
-    const { status, start_date, end_date } = booking;
-    const spot = this.props.spot || {};
+    let { start_date, end_date } = booking;
+    start_date = start_date.toString().slice(5, 10) + '-' + start_date.toString().slice(0, 4);
+    end_date = end_date.toString().slice(5, 10) + '-' + end_date.toString().slice(0,4);
+    const spot = this.props.spot || {photoUrls: []};
     return (
     <div className="booking-index-item">
-      <ul className="status-item">
-        <li>{status}</li>
+      <ul className="bookings_photo">
+          <Link to={`/spots/${booking.spot_id}`} onClick={this.handleClick}>
+            <img src={spot.photoUrls[0]} alt=""/>
+          </Link>
       </ul>
       <ul className="startDate-item">
         <li>{start_date}</li>
@@ -28,11 +32,7 @@ class BookingIndexItem extends React.Component {
         <li>{end_date}</li>
         <li>End Date</li>
       </ul>
-      <Link to={`/spots/${booking.spot_id}`} onClick={this.handleClick}>
-        <li>
-          {spot.title}
-        </li>
-        </Link>
+   
     </div>
     )
   }

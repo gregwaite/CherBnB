@@ -1,7 +1,7 @@
 class Api::SpotsController < ApplicationController
 
   def show
-    @spot = Spot.with_attached_photos.find(params[:id])
+    @spot = Spot.with_attached_pictures.find(params[:id])
   end
 
   def create

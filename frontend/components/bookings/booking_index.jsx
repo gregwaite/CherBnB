@@ -27,10 +27,11 @@ class BookingIndex extends React.Component {
           ></BookingIndexItem>
         </div>
       )}
-    )
-    
-    return (
+      )
+      
+      return (
       <div className='booking-index-modal'>
+        <h1 className='bookings-index-h1'>Your reservations</h1>
         {bookings}
       </div>
     )

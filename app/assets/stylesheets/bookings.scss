@@ -1,7 +1,8 @@
 .booking-index-modal {
   background: white;
   border-radius: 3px;
-  height: 500px;
+  height: 700px;
+  width: 1000px;
   scroll-behavior: auto;
   overflow: scroll;
 }
@@ -16,4 +17,9 @@
   list-style: none;
   margin: 3px;
   padding: 3px;
+}
+
+.bookings_photo > a > img {
+  height: 200px;
+  width: 300px;
 }

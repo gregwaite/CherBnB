@@ -11,12 +11,15 @@ class Search extends React.Component {
           <SpotIndex
             spots={this.props.spots}
             fetchSpots={this.props.fetchSpots}
+            updateFilter={this.props.updateFilter}
+            bounds={this.props.bounds}
           ></SpotIndex>
         </ul>
         <ul>
           <SpotMap 
             spots={this.props.spots} 
             fetchSpots={this.props.fetchSpots}
+            updateFilter={this.props.updateFilter}
           ></SpotMap>
         </ul>
       </div>

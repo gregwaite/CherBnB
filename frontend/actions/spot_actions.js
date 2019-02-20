@@ -18,8 +18,8 @@ const receiveSpot = spot => {
   };
 };
 
-export const fetchSpots = () => dispatch => {
-  return APIUtil.fetchSpots().then(spots => dispatch(receiveAllSpots(spots)));
+export const fetchSpots = (filter) => dispatch => {
+  return APIUtil.fetchSpots(filter).then(spots => dispatch(receiveAllSpots(spots)));
 };
 
 export const fetchSpot = id => dispatch => {

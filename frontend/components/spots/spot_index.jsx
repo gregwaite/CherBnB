@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 
 class SpotIndex extends React.Component {
   componentDidMount(){
-    this.props.fetchSpots();
+    this.props.updateFilter('bounds', this.props.bounds);
   }
+
   render() {
     const spots = this.props.spots.map(spot => {
       return (

@@ -2,6 +2,7 @@ import React from 'react';
 import GreetingContainer from '../greeting/greeting_container';
 import Modal from '../session_form/session_modal';
 import DatePicker from '../datepicker/date_picker';
+import { Link } from 'react-router-dom';
 
 class Splash extends React.Component {
   
@@ -55,6 +56,7 @@ class Splash extends React.Component {
             <input type="text" placeholder='Guests dropdown will go here'/>
           </section>
 
+          <Link className= 'search-button' to='/search'>Search</Link>
           <button className='search-button'>Search</button>
       </div>
     </div>

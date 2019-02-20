@@ -6,13 +6,12 @@ class SpotIndex extends React.Component {
   componentDidMount(){
     this.props.fetchSpots();
   }
-
   render() {
     const spots = this.props.spots.map(spot => {
       return (
       <div key={spot.id}>
         <Link className='spot-link' to={`/spots/${spot.id}`}>
-        <img src={spot.photos[0]}/>
+          <img src={spot.photoUrls[0]}/>
         <span className='spot-address'>
           {`${spot.spot_type} : ${spot.address}`}
         </span>

@@ -1,7 +1,7 @@
 class Api::SpotsController < ApplicationController
 
   def show
-    @spot = Spot.find(params[:id])
+    @spot = Spot.with_attached_photos.find(params[:id])
   end
 
   def create
@@ -18,6 +18,6 @@ class Api::SpotsController < ApplicationController
   end
  
   def spot_params
-    params.require(:spot).permit(:spot_type, :title, :description, :ammenities, :price, :long, :lat, :address, :owner_id, :photos)
+    params.require(:spot).permit(:spot_type, :title, :description, :ammenities, :price, :long, :lat, :address, :owner_id, pictures:[])
   end
 end

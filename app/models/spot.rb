@@ -23,6 +23,8 @@ class Spot < ApplicationRecord
 
   has_many :reviews
 
+  has_many_attached :pictures
+
   belongs_to :user,
     class_name: "User",
     foreign_key: :owner_id

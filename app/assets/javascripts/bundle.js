@@ -2255,7 +2255,7 @@ function (_React$Component) {
           className: "spot-link",
           to: "/spots/".concat(spot.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: spot.photos[0]
+          src: spot.photoUrls[0]
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "spot-address"
         }, "".concat(spot.spot_type, " : ").concat(spot.address)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {

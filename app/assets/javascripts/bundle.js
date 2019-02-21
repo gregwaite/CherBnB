@@ -1602,6 +1602,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../greeting/greeting_container */ "./frontend/components/greeting/greeting_container.jsx");
 /* harmony import */ var _spots_spot_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../spots/spot_index */ "./frontend/components/spots/spot_index.jsx");
 /* harmony import */ var _spots_spot_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../spots/spot_map */ "./frontend/components/spots/spot_map.jsx");
+/* harmony import */ var _session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../session_form/session_modal */ "./frontend/components/session_form/session_modal.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1619,6 +1620,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1646,15 +1648,15 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spots_spot_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        spots: this.props.spots,
-        updateFilter: this.props.updateFilter,
-        bounds: this.props.bounds
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spots_spot_map__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spots_spot_map__WEBPACK_IMPORTED_MODULE_3__["default"], {
         spots: this.props.spots,
         updateFilter: this.props.updateFilter,
         center: this.props.center
-      })));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spots_spot_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        spots: this.props.spots,
+        updateFilter: this.props.updateFilter,
+        bounds: this.props.bounds
+      }))));
     }
   }]);
 
@@ -2269,6 +2271,7 @@ function (_React$Component) {
         lat: this.state.lat,
         lng: this.state.long
       });
+      this.props.updateFilter('bounds', this.props.bounds);
       this.props.history.push('/search');
     }
   }, {
@@ -2282,10 +2285,7 @@ function (_React$Component) {
         className: "bookings-search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Share homes and experiences exclusively with Cher."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "where"
-      }, "Where"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        placeholder: "Anywhere that you, Cher, own, because you are Cher"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      }, "Where"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_4___default.a, {
         value: this.state.address,
         onChange: this.handleChange,
         onSelect: this.handleSelect
@@ -2295,7 +2295,7 @@ function (_React$Component) {
             getSuggestionItemProps = _ref.getSuggestionItemProps,
             loading = _ref.loading;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps({
-          placeholder: 'Search Places ...',
+          placeholder: 'Anywhere that you, Cher, own, because you are Cher',
           className: 'location-search-input'
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "autocomplete-dropdown-container"
@@ -2368,6 +2368,9 @@ var mdp = function mdp(dispatch) {
   return {
     updateCenter: function updateCenter(filter, center) {
       return dispatch(Object(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_2__["updateCenter"])(filter, center));
+    },
+    updateFilter: function updateFilter(filter, bounds) {
+      return dispatch(Object(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_2__["updateFilter"])(filter, bounds));
     }
   };
 };
@@ -2429,12 +2432,10 @@ function (_React$Component) {
         className: "spot-search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spot_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
         spots: this.props.spots,
-        fetchSpots: this.props.fetchSpots,
         updateFilter: this.props.updateFilter,
         bounds: this.props.bounds
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spot_map__WEBPACK_IMPORTED_MODULE_2__["default"], {
         spots: this.props.spots,
-        fetchSpots: this.props.fetchSpots,
         updateFilter: this.props.updateFilter
       })));
     }

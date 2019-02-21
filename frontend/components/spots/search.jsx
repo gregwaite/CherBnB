@@ -10,7 +10,6 @@ class Search extends React.Component {
         <ul>
           <SpotIndex
             spots={this.props.spots}
-            fetchSpots={this.props.fetchSpots}
             updateFilter={this.props.updateFilter}
             bounds={this.props.bounds}
           ></SpotIndex>
@@ -18,7 +17,6 @@ class Search extends React.Component {
         <ul>
           <SpotMap 
             spots={this.props.spots} 
-            fetchSpots={this.props.fetchSpots}
             updateFilter={this.props.updateFilter}
           ></SpotMap>
         </ul>

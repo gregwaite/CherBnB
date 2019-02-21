@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Splash from './splash';
-import { updateCenter } from '../../actions/filter_actions';
+import { updateCenter, updateFilter } from '../../actions/filter_actions';
 import { withRouter } from 'react-router-dom';
 
 const msp = state => {
@@ -11,6 +11,7 @@ const msp = state => {
 const mdp = dispatch => {
   return {
     updateCenter: (filter, center) => dispatch(updateCenter(filter, center)),
+    updateFilter: (filter, bounds) => dispatch(updateFilter(filter, bounds)),
   };
 };
 

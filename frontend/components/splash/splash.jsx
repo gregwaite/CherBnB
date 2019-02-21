@@ -58,6 +58,7 @@ class Splash extends React.Component {
 
   handleClick(){
     this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long });
+    this.props.updateFilter('bounds', this.props.bounds);
     this.props.history.push('/search');
   }
   
@@ -72,7 +73,6 @@ class Splash extends React.Component {
       <div className='bookings-search'>
         <h1>Share homes and experiences exclusively with Cher.</h1>
         <p className='where'>Where</p>
-        <input type="text" placeholder="Anywhere that you, Cher, own, because you are Cher"/>
           <PlacesAutocomplete
             value={this.state.address}
             onChange={this.handleChange}
@@ -82,7 +82,7 @@ class Splash extends React.Component {
               <div>
                 <input
                   {...getInputProps({
-                    placeholder: 'Search Places ...',
+                    placeholder: 'Anywhere that you, Cher, own, because you are Cher',
                     className: 'location-search-input',
                   })}
                 />

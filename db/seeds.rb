@@ -32,7 +32,6 @@ house = Spot.create!(
   address:"123 Greg Rd", 
   owner_id: kanye.id, 
 )
-
 house.pictures.attach(io: house_main_photo, filename: 'cher_house.jpg')
 
 apt = Spot.create!(
@@ -102,16 +101,16 @@ horseman.pictures.attach(io: horseman_main_photo, filename:'cher_horseman.jpg')
 
 Booking.create!(
   status: "Approved", 
-  start_date: '28/11/2019', 
-  end_date: '01/11/2019', 
+  start_date: '01/11/2019', 
+  end_date: '02/11/2019', 
   spot_id: house.id, 
   owner_id: house.owner_id,
   guest_id: kanye.id
 )
 Booking.create!(
   status: "Approved", 
-  start_date: '28/09/2019', 
-  end_date: '01/09/2019', 
+  start_date: '01/09/2019', 
+  end_date: '02/09/2019', 
   spot_id: apt.id, 
   owner_id: apt.owner_id,
   guest_id: kanye.id

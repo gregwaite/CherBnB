@@ -2728,20 +2728,20 @@ function (_React$Component) {
           initialCenter = this.props.center;
         } else {
           initialCenter = {
-            lat: 44.7758,
-            lng: -122.435
+            lat: 37.426680015860065,
+            lng: -122.02575927734374
           };
         }
       } else {
         initialCenter = {
-          lat: 44.7758,
-          lng: -122.435
+          lat: 37.426680015860065,
+          lng: -122.02575927734374
         };
       }
 
       var mapOptions = {
         center: initialCenter,
-        zoom: 5
+        zoom: 9
       };
       this.map = new google.maps.Map(this.mapNode, mapOptions);
       this.MarkerManager = new _util_marker_manager__WEBPACK_IMPORTED_MODULE_3__["default"](this.map, this.handleMarkerClick.bind(this));

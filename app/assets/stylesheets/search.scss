@@ -18,6 +18,21 @@
   background: gray
 }
 
+.search-show-div > div > input{
+  width: 87%;
+  margin-left: 5%;
+  height: 44px;
+  border-radius: 5px;
+  border-color: rgb(230, 230, 230);
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  padding-left: 10px;
+  color:#484848; 
+  margin-bottom: 1%;
+}
+
 .search-show-contents {
   display: flex;
   float: right;

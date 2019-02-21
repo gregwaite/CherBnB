@@ -73,6 +73,175 @@ aquatic = Spot.create!(
 )
 aquatic.pictures.attach(io: aquatic_main_photo, filename: 'aquatic_fortress.jpg')
 
+house1 = Spot.create!(
+  spot_type: "House", 
+  title: "Cher's House1", 
+  description: "Enormous mansion that you can't afford to live in unless you are Cher", 
+  ammenities: ["big old house"], 
+  price: 7, 
+  lat: 40.423099, 
+  long: -123.083799, 
+  address:"1234 Greg Rd", 
+  owner_id: kanye.id, 
+)
+house_main_photo = EzDownload.open("https://cdn.vox-cdn.com/thumbor/mlY5CB208mKNwbkOGjGUkRvTeSI=/0x0:2500x1663/1200x800/filters:focal(1050x632:1450x1032)/cdn.vox-cdn.com/uploads/chorus_image/image/60707371/9477_Gloaming_Dr_025_copy.0.jpg")
+house1.pictures.attach(io: house_main_photo, filename: 'cher_house.jpg')
+
+apt1 = Spot.create!(
+  spot_type: "Apt", 
+  title: "Cher's Apt1", 
+  description: "Apartment with lights and floors.", 
+  ammenities: ["big old apartment"], 
+  price: 7, 
+  lat: 37.423099, 
+  long: -122.083799, 
+  address:"1234 Greg Ave", 
+  owner_id: kanye.id, 
+)
+apt_main_photo = EzDownload.open("https://www.thepinnaclelist.com/wp-content/uploads/2013/02/cher-italian-renaissance-style-mansion-overlooking-the-pacific-ocean-in-malibu-california-920x614-1840-the-pinnacle-list-tpl.jpg")
+apt1.pictures.attach(io: apt_main_photo, filename:'cher_apt.jpg')
+
+other_house1 = Spot.create!(
+  spot_type: "House", 
+  title: "Cher's Other House1", 
+  description: "Another Enormous mansion that you can't afford to live in unless you are Cher", 
+  ammenities: ["big old house"], 
+  price: 7, 
+  lat: 48.423099, 
+  long: -127.083799, 
+  address:"1234 Greg Hole", 
+  owner_id: kanye.id, 
+)
+other_house__main_photo = EzDownload.open("https://media.architecturaldigest.com/photos/55e78857302ba71f3017a639/master/pass/dam-images-celebrity-homes-2002-cher-cher-malibu-06-loggia.jpg")
+other_house1.pictures.attach(io: other_house__main_photo, filename: 'cher_other_house.jpg')
+
+aquatic1 = Spot.create!(
+  spot_type: "Aquatic Fortress1", 
+  title: "Cher's Aqueous Domain", 
+  description: "Cher is half mermaid and has this home for visiting relatives", 
+  ammenities: ["big old aquatic fortress"], 
+  price: 7, 
+  lat: 45.423099, 
+  long: -120.083799, 
+  address:"1234 Greg St", 
+  owner_id: kanye.id, 
+)
+aquatic_main_photo = EzDownload.open("https://icdn7.digitaltrends.com/image/poseidon-undersea-resorts-970x546-c-640x640.jpg?ver=1.jpg")
+aquatic1.pictures.attach(io: aquatic_main_photo, filename: 'aquatic_fortress.jpg')
+
+house2 = Spot.create!(
+  spot_type: "House", 
+  title: "Cher's House2", 
+  description: "Enormous mansion that you can't afford to live in unless you are Cher", 
+  ammenities: ["big old house"], 
+  price: 7, 
+  lat: 45.423088, 
+  long: -120.083788, 
+  address:"1235 Greg Rd", 
+  owner_id: kanye.id, 
+)
+house_main_photo = EzDownload.open("https://cdn.vox-cdn.com/thumbor/mlY5CB208mKNwbkOGjGUkRvTeSI=/0x0:2500x1663/1200x800/filters:focal(1050x632:1450x1032)/cdn.vox-cdn.com/uploads/chorus_image/image/60707371/9477_Gloaming_Dr_025_copy.0.jpg")
+house2.pictures.attach(io: house_main_photo, filename: 'cher_house.jpg')
+
+apt2 = Spot.create!(
+  spot_type: "Apt", 
+  title: "Cher's Apt2", 
+  description: "Apartment with lights and floors.", 
+  ammenities: ["big old apartment"], 
+  price: 7, 
+  lat: 48.423088, 
+  long: -127.083788, 
+  address:"1235 Greg Ave", 
+  owner_id: kanye.id, 
+)
+apt_main_photo = EzDownload.open("https://www.thepinnaclelist.com/wp-content/uploads/2013/02/cher-italian-renaissance-style-mansion-overlooking-the-pacific-ocean-in-malibu-california-920x614-1840-the-pinnacle-list-tpl.jpg")
+apt2.pictures.attach(io: apt_main_photo, filename:'cher_apt.jpg')
+
+other_house2 = Spot.create!(
+  spot_type: "House", 
+  title: "Cher's Other House2", 
+  description: "Another Enormous mansion that you can't afford to live in unless you are Cher", 
+  ammenities: ["big old house"], 
+  price: 7, 
+  lat: 37.423088, 
+  long: -122.083788, 
+  address:"1235 Greg Hole", 
+  owner_id: kanye.id, 
+)
+other_house__main_photo = EzDownload.open("https://media.architecturaldigest.com/photos/55e78857302ba71f3017a639/master/pass/dam-images-celebrity-homes-2002-cher-cher-malibu-06-loggia.jpg")
+other_house2.pictures.attach(io: other_house__main_photo, filename: 'cher_other_house.jpg')
+
+aquatic2 = Spot.create!(
+  spot_type: "Aquatic Fortress2", 
+  title: "Cher's Aqueous Domain", 
+  description: "Cher is half mermaid and has this home for visiting relatives", 
+  ammenities: ["big old aquatic fortress"], 
+  price: 7, 
+  lat: 40.423088, 
+  long: -123.083788,  
+  address:"1235 Greg St", 
+  owner_id: kanye.id, 
+)
+aquatic_main_photo = EzDownload.open("https://icdn7.digitaltrends.com/image/poseidon-undersea-resorts-970x546-c-640x640.jpg?ver=1.jpg")
+aquatic2.pictures.attach(io: aquatic_main_photo, filename: 'aquatic_fortress.jpg')
+
+house3 = Spot.create!(
+  spot_type: "House", 
+  title: "Cher's House3", 
+  description: "Enormous mansion that you can't afford to live in unless you are Cher", 
+  ammenities: ["big old house"], 
+  price: 7, 
+  lat: 40.7830603,
+  long: -73.97124880000001,
+  address:"1236 Greg Rd", 
+  owner_id: kanye.id, 
+)
+house_main_photo = EzDownload.open("https://cdn.vox-cdn.com/thumbor/mlY5CB208mKNwbkOGjGUkRvTeSI=/0x0:2500x1663/1200x800/filters:focal(1050x632:1450x1032)/cdn.vox-cdn.com/uploads/chorus_image/image/60707371/9477_Gloaming_Dr_025_copy.0.jpg")
+house3.pictures.attach(io: house_main_photo, filename: 'cher_house.jpg')
+
+apt3 = Spot.create!(
+  spot_type: "Apt", 
+  title: "Cher's Apt3", 
+  description: "Apartment with lights and floors.", 
+  ammenities: ["big old apartment"], 
+  price: 7, 
+  lat: 40.7830111,
+  long: -73.97124880000111,
+  address:"1236 Greg Ave", 
+  owner_id: kanye.id, 
+)
+apt_main_photo = EzDownload.open("https://www.thepinnaclelist.com/wp-content/uploads/2013/02/cher-italian-renaissance-style-mansion-overlooking-the-pacific-ocean-in-malibu-california-920x614-1840-the-pinnacle-list-tpl.jpg")
+apt3.pictures.attach(io: apt_main_photo, filename:'cher_apt.jpg')
+
+other_house3 = Spot.create!(
+  spot_type: "House3", 
+  title: "Cher's Other House", 
+  description: "Another Enormous mansion that you can't afford to live in unless you are Cher", 
+  ammenities: ["big old house"], 
+  price: 7, 
+  lat: 40.7830222,
+  long: -73.97124880000222,
+  address:"1236 Greg Hole", 
+  owner_id: kanye.id, 
+)
+other_house__main_photo = EzDownload.open("https://media.architecturaldigest.com/photos/55e78857302ba71f3017a639/master/pass/dam-images-celebrity-homes-2002-cher-cher-malibu-06-loggia.jpg")
+other_house3.pictures.attach(io: other_house__main_photo, filename: 'cher_other_house.jpg')
+
+aquatic3 = Spot.create!(
+  spot_type: "Aquatic Fortress3", 
+  title: "Cher's Aqueous Domain", 
+  description: "Cher is half mermaid and has this home for visiting relatives", 
+  ammenities: ["big old aquatic fortress"], 
+  price: 7, 
+  lat: 40.7830333,
+  long: -73.97124880000333, 
+  address:"1236 Greg St", 
+  owner_id: kanye.id, 
+)
+aquatic_main_photo = EzDownload.open("https://icdn7.digitaltrends.com/image/poseidon-undersea-resorts-970x546-c-640x640.jpg?ver=1.jpg")
+aquatic3.pictures.attach(io: aquatic_main_photo, filename: 'aquatic_fortress.jpg')
+
+
 horse = Spot.create!(
   spot_type: "Horse", 
   title: "Cher's Horse", 

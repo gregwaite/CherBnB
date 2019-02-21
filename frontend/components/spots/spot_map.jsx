@@ -19,15 +19,15 @@ class SpotMap extends React.Component {
       if (this.props.center.lat) {
         initialCenter = this.props.center;
       } else {
-        initialCenter = { lat: 44.7758, lng: -122.435 }
+        initialCenter = { lat: 37.426680015860065, lng: -122.02575927734374 };
       }
     } else {
-      initialCenter = { lat: 44.7758, lng: -122.435 }
+      initialCenter = { lat: 37.426680015860065, lng: -122.02575927734374 };
     }
 
     const mapOptions = {
       center: initialCenter,
-      zoom: 5,
+      zoom: 9,
     };
     this.map = new google.maps.Map(this.mapNode, mapOptions);
     

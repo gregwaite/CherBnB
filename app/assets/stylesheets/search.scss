@@ -1,8 +1,23 @@
+.autocomplete-dropdown-container {
+  position: absolute;
+  z-index: 1;
+}
+
+
+
 .search-show-div{
   background: gray
 }
 
-.autocomplete-dropdown-container {
-  position: absolute;
-  z-index: 1;
+.search-show-contents {
+  display: flex;
+  float: right;
+}
+
+
+.search-show-map {
+}
+.search-show-map #map-container {
+  height: 1000px;
+  width: 500px;
 }

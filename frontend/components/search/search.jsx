@@ -12,23 +12,25 @@ class Search extends React.Component {
   render() {
     return (
       <div className='search-show-div'>
-        <Modal></Modal>
-        <Greeting></Greeting>
-        <div>
-          <ul>
-            <SpotMap
-              spots={this.props.spots}
-              updateFilter={this.props.updateFilter}
-              center={this.props.center}
-            ></SpotMap>
-          </ul>
-          <ul>
+        <div className='search-show-greeting'>
+          <Modal></Modal>
+          <Greeting></Greeting>
+        </div>
+        <div className='search-show-contents'>
+          <div className='search-show-index'>
             <SpotIndex
               spots={this.props.spots}
               updateFilter={this.props.updateFilter}
               bounds={this.props.bounds}
             ></SpotIndex>
-          </ul>
+          </div>
+          <div className='search-show-map'>
+            <SpotMap
+              spots={this.props.spots}
+              updateFilter={this.props.updateFilter}
+              center={this.props.center}
+            ></SpotMap>
+          </div>
         </div>
       </div>
     )

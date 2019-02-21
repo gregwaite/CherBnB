@@ -1649,14 +1649,22 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spots_spot_map__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        spots: this.props.spots,
-        updateFilter: this.props.updateFilter,
-        center: this.props.center
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spots_spot_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-show-greeting"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-show-contents"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-show-index"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spots_spot_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         spots: this.props.spots,
         updateFilter: this.props.updateFilter,
         bounds: this.props.bounds
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-show-map"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spots_spot_map__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        spots: this.props.spots,
+        updateFilter: this.props.updateFilter,
+        center: this.props.center
       }))));
     }
   }]);

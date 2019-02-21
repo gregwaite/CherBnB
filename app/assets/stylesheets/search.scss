@@ -1,6 +1,15 @@
 .autocomplete-dropdown-container {
   position: absolute;
   z-index: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.bookings-search > div > div {
+  margin-top: none;
+  margin-left: 2%;
+  border: 2px solid #ebebeb;
+  border-radius: 3px;
 }
 
 
@@ -16,8 +25,9 @@
 
 
 .search-show-map {
+  margin-right: 3%;
 }
 .search-show-map #map-container {
-  height: 1000px;
+  height: 800px;
   width: 500px;
 }

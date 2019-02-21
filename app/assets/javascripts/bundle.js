@@ -1604,6 +1604,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _spots_spot_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../spots/spot_index */ "./frontend/components/spots/spot_index.jsx");
 /* harmony import */ var _spots_spot_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../spots/spot_map */ "./frontend/components/spots/spot_map.jsx");
 /* harmony import */ var _session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../session_form/session_modal */ "./frontend/components/session_form/session_modal.jsx");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1614,13 +1616,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -1633,10 +1636,22 @@ var Search =
 function (_React$Component) {
   _inherits(Search, _React$Component);
 
-  function Search() {
+  function Search(props) {
+    var _this;
+
     _classCallCheck(this, Search);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Search).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Search).call(this, props));
+    _this.state = {
+      address: "",
+      long: "",
+      lat: "",
+      center: _this.props.center,
+      bounds: _this.props.bounds
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(Search, [{
@@ -1645,26 +1660,93 @@ function (_React$Component) {
       this.props.updateFilter('bounds', this.props.bounds);
     }
   }, {
+    key: "handleChange",
+    value: function handleChange(address) {
+      this.setState({
+        address: address
+      });
+    }
+  }, {
+    key: "handleSelect",
+    value: function handleSelect(address) {
+      var _this2 = this;
+
+      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5__["geocodeByAddress"])(address).then(function (results) {
+        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5__["getLatLng"])(results[0]);
+      }).then(function (latLng) {
+        return _this2.setState({
+          long: parseFloat(latLng.lng),
+          lat: parseFloat(latLng.lat),
+          center: {
+            lat: parseFloat(latLng.lat),
+            lng: parseFloat(latLng.lng)
+          },
+          address: address
+        }, function () {
+          _this2.search();
+        });
+      }).catch(function (error) {
+        return console.error('Error', error);
+      });
+    }
+  }, {
+    key: "search",
+    value: function search() {
+      this.props.updateCenter('center', {
+        lat: this.state.lat,
+        lng: this.state.long
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-greeting"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        value: this.state.address,
+        onChange: this.handleChange,
+        onSelect: this.handleSelect
+      }, function (_ref) {
+        var getInputProps = _ref.getInputProps,
+            suggestions = _ref.suggestions,
+            getSuggestionItemProps = _ref.getSuggestionItemProps,
+            loading = _ref.loading;
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps({
+          placeholder: 'Anywhere that you, Cher, own, because you are Cher',
+          className: 'location-search-input'
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "autocomplete-dropdown-container"
+        }, loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), suggestions.map(function (suggestion) {
+          var className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item'; // inline style for demonstration purpose
+
+          var style = suggestion.active ? {
+            backgroundColor: '#fafafa',
+            cursor: 'pointer'
+          } : {
+            backgroundColor: '#ffffff',
+            cursor: 'pointer'
+          };
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", getSuggestionItemProps(suggestion, {
+            className: className,
+            style: style
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, suggestion.description));
+        })));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-contents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-index"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spots_spot_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
         spots: this.props.spots,
         updateFilter: this.props.updateFilter,
-        bounds: this.props.bounds
+        bounds: this.state.bounds
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-map"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_spots_spot_map__WEBPACK_IMPORTED_MODULE_3__["default"], {
         spots: this.props.spots,
         updateFilter: this.props.updateFilter,
-        center: this.props.center
+        center: this.state.center
       }))));
     }
   }]);
@@ -1706,6 +1788,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     updateFilter: function updateFilter(filter, value) {
       return dispatch(Object(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_3__["updateFilter"])(filter, value));
+    },
+    updateCenter: function updateCenter(filter, center) {
+      return dispatch(Object(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_3__["updateCenter"])(filter, center));
     }
   };
 };
@@ -2665,8 +2750,18 @@ function (_React$Component) {
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate() {
+    value: function componentDidUpdate(prevProps) {
+      var center = this.props.center;
       this.MarkerManager.updateMarkers(this.props.spots);
+
+      if (prevProps.center) {
+        if (prevProps.center.lat !== center.lat) {
+          this.map.setCenter({
+            lat: center.lat,
+            lng: center.lng
+          });
+        }
+      }
     }
   }, {
     key: "registerListeners",

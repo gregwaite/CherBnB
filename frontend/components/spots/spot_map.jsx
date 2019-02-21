@@ -24,6 +24,7 @@ class SpotMap extends React.Component {
     } else {
       initialCenter = { lat: 44.7758, lng: -122.435 }
     }
+
     const mapOptions = {
       center: initialCenter,
       zoom: 5,
@@ -38,10 +39,16 @@ class SpotMap extends React.Component {
     
   }
 
-  componentDidUpdate(){
-    this.MarkerManager.updateMarkers(this.props.spots);
-  }
+  componentDidUpdate(prevProps) {
+    const { center } = this.props;
 
+    this.MarkerManager.updateMarkers(this.props.spots);
+    if (prevProps.center){
+      if (prevProps.center.lat !== center.lat) {
+        this.map.setCenter({ lat: center.lat, lng: center.lng });
+      }
+    }
+  }
 
 
   registerListeners() {

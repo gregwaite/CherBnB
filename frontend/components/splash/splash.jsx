@@ -57,9 +57,9 @@ class Splash extends React.Component {
   }
 
   handleClick(){
-    this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long });
-    this.props.updateFilter('bounds', this.props.bounds);
-    this.props.history.push('/search');
+    this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long }).then(() => {
+      this.props.history.push('/search');
+    });
   }
   
   render() {

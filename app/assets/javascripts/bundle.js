@@ -211,6 +211,7 @@ var updateFilter = function updateFilter(filter, value) {
 var updateCenter = function updateCenter(filter, center) {
   return function (dispatch) {
     dispatch(changeCenter(filter, center));
+    return Object(_spot_actions__WEBPACK_IMPORTED_MODULE_0__["fetchSpots"])(getState().ui.filter)(dispatch);
   };
 };
 
@@ -2267,12 +2268,14 @@ function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick() {
+      var _this3 = this;
+
       this.props.updateCenter('center', {
         lat: this.state.lat,
         lng: this.state.long
+      }).then(function () {
+        _this3.props.history.push('/search');
       });
-      this.props.updateFilter('bounds', this.props.bounds);
-      this.props.history.push('/search');
     }
   }, {
     key: "render",
@@ -2682,6 +2685,26 @@ function (_React$Component) {
 
         _this.props.updateFilter('bounds', bounds);
       });
+      google.maps.event.addListener(this.map, 'tilesloaded', function () {
+        var _this$map$getBounds$t2 = _this.map.getBounds().toJSON(),
+            north = _this$map$getBounds$t2.north,
+            south = _this$map$getBounds$t2.south,
+            east = _this$map$getBounds$t2.east,
+            west = _this$map$getBounds$t2.west;
+
+        var bounds = {
+          northEast: {
+            lat: north,
+            lng: east
+          },
+          southWest: {
+            lat: south,
+            lng: west
+          }
+        };
+
+        _this.props.updateFilter('bounds', bounds);
+      });
       google.maps.event.addListener(this.map, 'click', function (event) {
         var coords = getCoords(event.latLng);
 
@@ -3042,23 +3065,7 @@ var filtersReducer = function filtersReducer() {
     default:
       return state;
   }
-}; // const filtersReducer = (state = defaultFilters, action) => {
-//   Object.freeze(state);
-//   if (action.type === UPDATE_FILTER) {
-//     const newFilter = {
-//       [action.filter]: action.value
-//     };
-//     return merge({}, state, newFilter);
-//   } else if (action.type === UPDATE_CENTER) {
-//       const newCenter = {
-//         [action.filter]: action.center
-//       };
-//     return merge({}, state, newCenter);
-//   } else {
-//     return state;
-//   }
-// };
-
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (filtersReducer);
 

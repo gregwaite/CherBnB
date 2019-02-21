@@ -24,4 +24,5 @@ export const updateFilter = (filter, value) => dispatch => {
 };
 export const updateCenter = (filter, center) => dispatch => {
   dispatch(changeCenter(filter, center));
+  return fetchSpots(getState().ui.filter)(dispatch);
 };

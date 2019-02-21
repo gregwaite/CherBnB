@@ -101,25 +101,25 @@ horseman = Spot.create!(
 horseman.pictures.attach(io: horseman_main_photo, filename:'cher_horseman.jpg')
 
 Booking.create!(
-  status: "Pending", 
-  start_date: '28/02/2019', 
-  end_date: '01/03/2019', 
+  status: "Approved", 
+  start_date: '28/11/2019', 
+  end_date: '01/11/2019', 
   spot_id: house.id, 
   owner_id: house.owner_id,
   guest_id: kanye.id
 )
 Booking.create!(
-  status: "Pending", 
-  start_date: '28/02/2019', 
-  end_date: '01/03/2019', 
+  status: "Approved", 
+  start_date: '28/09/2019', 
+  end_date: '01/09/2019', 
   spot_id: apt.id, 
   owner_id: apt.owner_id,
   guest_id: kanye.id
 )
 Booking.create!(
-  status: "Pending", 
-  start_date: '03/03/2019', 
-  end_date: '10/03/2019', 
+  status: "Approved", 
+  start_date: '03/10/2019', 
+  end_date: '10/10/2019', 
   spot_id: house.id, 
   owner_id: house.owner_id,
   guest_id: cher.id

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {withRouter} from 'react-router-dom';
 import MarkerManager from '../../util/marker_manager';
 
+
 const getCoords = latLong => {
   return {
     lat: latLong.lat(),
@@ -10,21 +11,31 @@ const getCoords = latLong => {
   };
 };
 
-const mapOptions = {
-  center: {lat: 44.7758, lng: -122.435},
-  zoom: 5,
-};
-
 class SpotMap extends React.Component {
   
   componentDidMount(){
+    let initialCenter;
+    if (this.props.center) {
+      if (this.props.center.lat) {
+        initialCenter = this.props.center;
+      } else {
+        initialCenter = { lat: 44.7758, lng: -122.435 }
+      }
+    } else {
+      initialCenter = { lat: 44.7758, lng: -122.435 }
+    }
+    const mapOptions = {
+      center: initialCenter,
+      zoom: 5,
+    };
     this.map = new google.maps.Map(this.mapNode, mapOptions);
-  
+    
     this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
     
     this.registerListeners();
     
     this.MarkerManager.updateMarkers(this.props.spots);
+    
   }
 
   componentDidUpdate(){

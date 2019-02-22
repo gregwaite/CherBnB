@@ -48,6 +48,7 @@ class Search extends React.Component {
   search() {
     this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long });
   }
+
   
   render() {
     return (

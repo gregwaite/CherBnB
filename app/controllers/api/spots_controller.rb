@@ -9,7 +9,16 @@ class Api::SpotsController < ApplicationController
   end
 
   def index
-    spots = bounds ? Spot.in_bounds(bounds) : Spot.all
+    if bounds && guest_request
+      spots = Spot.in_bounds(bounds, guest_request)
+    elsif bounds && !guest_request
+      guest_request = { num: 10 }
+      spots = Spot.in_bounds(bounds, guest_request)
+    else
+      spots = Spot.all
+    end
+    # spots = bounds ? Spot.in_bounds(bounds) : Spot.all
+    # spots = guest_request ? spots.enough_space(guest_request) : spots
     @spots = spots
     render :index
   end
@@ -25,4 +34,9 @@ class Api::SpotsController < ApplicationController
   def bounds
     params[:bounds]
   end
+
+  def guest_request
+   params[:guest_request]
+  end
+
 end

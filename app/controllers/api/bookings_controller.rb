@@ -2,12 +2,16 @@ class Api::BookingsController < ApplicationController
   before_action :ensure_logged_in
 
   def create
-    @booking = Booking.new (booking_params)
+    @booking = Booking.new(booking_params)
     @booking.guest_id = @current_user.id
     @spot = Spot.find(@booking.spot_id)
-    @booking.owner_id = @spot.owner_id
-    @booking.save!
-    render "api/bookings/show"
+    if @booking.num_guests > @spot.max_guests
+      render json:["Too many guests, honey. Stop AJAXING ME BRO --Cher"], status: 401
+    else
+      @booking.owner_id = @spot.owner_id
+      @booking.save!
+      render "api/bookings/show"
+    end
   end
 
   def show
@@ -35,6 +39,6 @@ class Api::BookingsController < ApplicationController
 
 
   def booking_params
-    params.require(:booking).permit(:status, :start_date, :end_date, :spot_id)
+    params.require(:booking).permit(:status, :start_date, :end_date, :spot_id, :num_guests)
   end
 end

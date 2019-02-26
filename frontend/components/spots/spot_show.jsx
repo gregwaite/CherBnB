@@ -69,6 +69,7 @@ class SpotShow extends React.Component {
       end_date: this.state.endDate,
       status: 'Approved',
       spot_id: this.props.match.params.spotId,
+      num_guests: this.state.guestsNum,
     };
     this.props.createBooking(booking).then(booking => dispatch(openModal('booking')));
   }
@@ -122,6 +123,11 @@ class SpotShow extends React.Component {
             <div className='show-ammenities'>
               <li>
                 {spot.ammenities}
+              </li>
+            </div>
+            <div className='show-ammenities'>
+              <li>
+                {spot.max_guests}
               </li>
             </div>
 

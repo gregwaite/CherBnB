@@ -29,11 +29,12 @@ class Spot < ApplicationRecord
     class_name: "User",
     foreign_key: :owner_id
 
-  def self.in_bounds(bounds)
+  def self.in_bounds(bounds, guest_request)
     self.where("lat < ?", bounds[:northEast][:lat])
       .where("lat > ?", bounds[:southWest][:lat])
       .where("long > ?", bounds[:southWest][:lng])
       .where("long < ?", bounds[:northEast][:lng])
+      .where("max_guests >= ?", guest_request[:num])
   end
 
 end

@@ -31,6 +31,7 @@ house = Spot.create!(
   long: -122.083739, 
   address:"123 Greg Rd", 
   owner_id: kanye.id, 
+  max_guests: 7
 )
 house.pictures.attach(io: house_main_photo, filename: 'cher_house.jpg')
 
@@ -44,6 +45,7 @@ apt = Spot.create!(
   long: -123.083739, 
   address:"123 Greg Ave", 
   owner_id: kanye.id, 
+  max_guests: 10
 )
 apt.pictures.attach(io: apt_main_photo, filename:'cher_apt.jpg')
 
@@ -57,6 +59,7 @@ other_house = Spot.create!(
   long: -120.083739, 
   address:"123 Greg Hole", 
   owner_id: kanye.id, 
+  max_guests: 6
 )
 other_house.pictures.attach(io: other_house__main_photo, filename: 'cher_other_house.jpg')
 
@@ -70,6 +73,7 @@ aquatic = Spot.create!(
   long: -127.083739, 
   address:"123 Greg St", 
   owner_id: kanye.id, 
+  max_guests: 7
 )
 aquatic.pictures.attach(io: aquatic_main_photo, filename: 'aquatic_fortress.jpg')
 
@@ -83,6 +87,7 @@ house1 = Spot.create!(
   long: -123.083799, 
   address:"1234 Greg Rd", 
   owner_id: kanye.id, 
+  max_guests: 8
 )
 house_main_photo = EzDownload.open("https://cdn.vox-cdn.com/thumbor/mlY5CB208mKNwbkOGjGUkRvTeSI=/0x0:2500x1663/1200x800/filters:focal(1050x632:1450x1032)/cdn.vox-cdn.com/uploads/chorus_image/image/60707371/9477_Gloaming_Dr_025_copy.0.jpg")
 house1.pictures.attach(io: house_main_photo, filename: 'cher_house.jpg')
@@ -97,6 +102,7 @@ apt1 = Spot.create!(
   long: -122.083799, 
   address:"1234 Greg Ave", 
   owner_id: kanye.id, 
+  max_guests: 7
 )
 apt_main_photo = EzDownload.open("https://www.thepinnaclelist.com/wp-content/uploads/2013/02/cher-italian-renaissance-style-mansion-overlooking-the-pacific-ocean-in-malibu-california-920x614-1840-the-pinnacle-list-tpl.jpg")
 apt1.pictures.attach(io: apt_main_photo, filename:'cher_apt.jpg')
@@ -111,6 +117,7 @@ other_house1 = Spot.create!(
   long: -127.083799, 
   address:"1234 Greg Hole", 
   owner_id: kanye.id, 
+  max_guests: 7
 )
 other_house__main_photo = EzDownload.open("https://media.architecturaldigest.com/photos/55e78857302ba71f3017a639/master/pass/dam-images-celebrity-homes-2002-cher-cher-malibu-06-loggia.jpg")
 other_house1.pictures.attach(io: other_house__main_photo, filename: 'cher_other_house.jpg')
@@ -125,6 +132,7 @@ aquatic1 = Spot.create!(
   long: -120.083799, 
   address:"1234 Greg St", 
   owner_id: kanye.id, 
+  max_guests: 5
 )
 aquatic_main_photo = EzDownload.open("https://icdn7.digitaltrends.com/image/poseidon-undersea-resorts-970x546-c-640x640.jpg?ver=1.jpg")
 aquatic1.pictures.attach(io: aquatic_main_photo, filename: 'aquatic_fortress.jpg')
@@ -139,6 +147,7 @@ house2 = Spot.create!(
   long: -120.083788, 
   address:"1235 Greg Rd", 
   owner_id: kanye.id, 
+  max_guests: 4
 )
 house_main_photo = EzDownload.open("https://cdn.vox-cdn.com/thumbor/mlY5CB208mKNwbkOGjGUkRvTeSI=/0x0:2500x1663/1200x800/filters:focal(1050x632:1450x1032)/cdn.vox-cdn.com/uploads/chorus_image/image/60707371/9477_Gloaming_Dr_025_copy.0.jpg")
 house2.pictures.attach(io: house_main_photo, filename: 'cher_house.jpg')
@@ -153,6 +162,7 @@ apt2 = Spot.create!(
   long: -127.083788, 
   address:"1235 Greg Ave", 
   owner_id: kanye.id, 
+  max_guests: 7
 )
 apt_main_photo = EzDownload.open("https://www.thepinnaclelist.com/wp-content/uploads/2013/02/cher-italian-renaissance-style-mansion-overlooking-the-pacific-ocean-in-malibu-california-920x614-1840-the-pinnacle-list-tpl.jpg")
 apt2.pictures.attach(io: apt_main_photo, filename:'cher_apt.jpg')
@@ -167,6 +177,7 @@ other_house2 = Spot.create!(
   long: -122.083788, 
   address:"1235 Greg Hole", 
   owner_id: kanye.id, 
+  max_guests: 5
 )
 other_house__main_photo = EzDownload.open("https://media.architecturaldigest.com/photos/55e78857302ba71f3017a639/master/pass/dam-images-celebrity-homes-2002-cher-cher-malibu-06-loggia.jpg")
 other_house2.pictures.attach(io: other_house__main_photo, filename: 'cher_other_house.jpg')
@@ -181,6 +192,7 @@ aquatic2 = Spot.create!(
   long: -123.083788,  
   address:"1235 Greg St", 
   owner_id: kanye.id, 
+  max_guests: 3
 )
 aquatic_main_photo = EzDownload.open("https://icdn7.digitaltrends.com/image/poseidon-undersea-resorts-970x546-c-640x640.jpg?ver=1.jpg")
 aquatic2.pictures.attach(io: aquatic_main_photo, filename: 'aquatic_fortress.jpg')
@@ -195,6 +207,7 @@ house3 = Spot.create!(
   long: -73.97124880000001,
   address:"1236 Greg Rd", 
   owner_id: kanye.id, 
+  max_guests: 7
 )
 house_main_photo = EzDownload.open("https://cdn.vox-cdn.com/thumbor/mlY5CB208mKNwbkOGjGUkRvTeSI=/0x0:2500x1663/1200x800/filters:focal(1050x632:1450x1032)/cdn.vox-cdn.com/uploads/chorus_image/image/60707371/9477_Gloaming_Dr_025_copy.0.jpg")
 house3.pictures.attach(io: house_main_photo, filename: 'cher_house.jpg')
@@ -209,6 +222,7 @@ apt3 = Spot.create!(
   long: -73.97124880000111,
   address:"1236 Greg Ave", 
   owner_id: kanye.id, 
+  max_guests: 6
 )
 apt_main_photo = EzDownload.open("https://www.thepinnaclelist.com/wp-content/uploads/2013/02/cher-italian-renaissance-style-mansion-overlooking-the-pacific-ocean-in-malibu-california-920x614-1840-the-pinnacle-list-tpl.jpg")
 apt3.pictures.attach(io: apt_main_photo, filename:'cher_apt.jpg')
@@ -223,6 +237,7 @@ other_house3 = Spot.create!(
   long: -73.97124880000222,
   address:"1236 Greg Hole", 
   owner_id: kanye.id, 
+  max_guests: 2
 )
 other_house__main_photo = EzDownload.open("https://media.architecturaldigest.com/photos/55e78857302ba71f3017a639/master/pass/dam-images-celebrity-homes-2002-cher-cher-malibu-06-loggia.jpg")
 other_house3.pictures.attach(io: other_house__main_photo, filename: 'cher_other_house.jpg')
@@ -237,6 +252,7 @@ aquatic3 = Spot.create!(
   long: -73.97124880000333, 
   address:"1236 Greg St", 
   owner_id: kanye.id, 
+  max_guests: 7
 )
 aquatic_main_photo = EzDownload.open("https://icdn7.digitaltrends.com/image/poseidon-undersea-resorts-970x546-c-640x640.jpg?ver=1.jpg")
 aquatic3.pictures.attach(io: aquatic_main_photo, filename: 'aquatic_fortress.jpg')
@@ -252,6 +268,7 @@ horse = Spot.create!(
   long: -118.083739, 
   address:"123 Greg Dr", 
   owner_id: kanye.id, 
+  max_guests: 4
 )
 horse.pictures.attach(io: horse_main_photo, filename:'cher_horse.jpg')
 
@@ -265,6 +282,7 @@ horseman = Spot.create!(
   long: -110.083739, 
   address:"123 Greg Horse", 
   owner_id: kanye.id, 
+  max_guests: 7
 )
 horseman.pictures.attach(io: horseman_main_photo, filename:'cher_horseman.jpg')
 
@@ -274,7 +292,8 @@ Booking.create!(
   end_date: '02/11/2019', 
   spot_id: house.id, 
   owner_id: house.owner_id,
-  guest_id: kanye.id
+  guest_id: kanye.id,
+  num_guests: 3,
 )
 Booking.create!(
   status: "Approved", 
@@ -282,7 +301,8 @@ Booking.create!(
   end_date: '02/09/2019', 
   spot_id: apt.id, 
   owner_id: apt.owner_id,
-  guest_id: kanye.id
+  guest_id: kanye.id,
+  num_guests: 4,
 )
 Booking.create!(
   status: "Approved", 
@@ -290,7 +310,8 @@ Booking.create!(
   end_date: '10/10/2019', 
   spot_id: house.id, 
   owner_id: house.owner_id,
-  guest_id: cher.id
+  guest_id: cher.id,
+  num_guests: 1,
 )
 
 

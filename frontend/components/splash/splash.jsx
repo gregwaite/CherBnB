@@ -89,7 +89,7 @@ class Splash extends React.Component {
 
   handleClick(){
     this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long }).then(() => {
-      this.props.history.push('/search');
+      this.props.updateFilter('guest_request', {num: this.state.guestsNum}).then( () => this.props.history.push('/search'));
     });
   }
 

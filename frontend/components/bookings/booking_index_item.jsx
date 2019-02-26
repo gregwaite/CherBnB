@@ -13,7 +13,7 @@ class BookingIndexItem extends React.Component {
 
   render() {
     const { booking } = this.props;
-    let { start_date, end_date } = booking;
+    let { start_date, end_date, num_guests } = booking;
     start_date = start_date.toString().slice(5, 10) + '-' + start_date.toString().slice(0, 4);
     end_date = end_date.toString().slice(5, 10) + '-' + end_date.toString().slice(0,4);
     const spot = this.props.spot || {photoUrls: []};
@@ -31,6 +31,10 @@ class BookingIndexItem extends React.Component {
       <ul className="endDate-item">
         <li>{end_date}</li>
         <li>End Date</li>
+      </ul>
+      <ul className="booking-guests-num">
+        <li>{num_guests}</li>
+        <li>This many Chers</li>
       </ul>
    
     </div>

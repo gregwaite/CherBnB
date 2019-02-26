@@ -784,7 +784,8 @@ function (_React$Component) {
     value: function render() {
       var booking = this.props.booking;
       var start_date = booking.start_date,
-          end_date = booking.end_date;
+          end_date = booking.end_date,
+          num_guests = booking.num_guests;
       start_date = start_date.toString().slice(5, 10) + '-' + start_date.toString().slice(0, 4);
       end_date = end_date.toString().slice(5, 10) + '-' + end_date.toString().slice(0, 4);
       var spot = this.props.spot || {
@@ -804,7 +805,9 @@ function (_React$Component) {
         className: "startDate-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, start_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Start Date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "endDate-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, end_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "End Date")));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, end_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "End Date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "booking-guests-num"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, num_guests), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "This many Chers")));
     }
   }]);
 
@@ -2399,7 +2402,11 @@ function (_React$Component) {
         lat: this.state.lat,
         lng: this.state.long
       }).then(function () {
-        _this3.props.history.push('/search');
+        _this3.props.updateFilter('guest_request', {
+          num: _this3.state.guestsNum
+        }).then(function () {
+          return _this3.props.history.push('/search');
+        });
       });
     }
   }, {
@@ -2684,7 +2691,9 @@ function (_React$Component) {
           className: "spot-title"
         }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "spot-price"
-        }, "$", spot.price, " per night")));
+        }, "$", spot.price, " per night"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "spot-price"
+        }, spot.max_guests)));
       });
       var displaySpots = spots.slice(0, 6);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3036,7 +3045,8 @@ function (_React$Component) {
         start_date: this.state.startDate,
         end_date: this.state.endDate,
         status: 'Approved',
-        spot_id: this.props.match.params.spotId
+        spot_id: this.props.match.params.spotId,
+        num_guests: this.state.guestsNum
       };
       this.props.createBooking(booking).then(function (booking) {
         return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["openModal"])('booking'));
@@ -3096,7 +3106,9 @@ function (_React$Component) {
         className: "show-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-ammenities"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.ammenities))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.ammenities)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-ammenities"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.max_guests))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bookings-search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Book this spot, me. I am Cher."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "checkin-checkout"

@@ -22,6 +22,9 @@ class SpotIndex extends React.Component {
         <li className='spot-price'>
           ${spot.price} per night
         </li>
+        <li className='spot-price'>
+          {spot.max_guests}
+        </li>
         </Link>
       </div>
       )

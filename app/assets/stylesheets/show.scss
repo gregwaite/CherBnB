@@ -69,6 +69,8 @@
   border-radius: 3px;
   border: .6px solid gray;
   height: 360px;
+  width: 420px;
+
 
 }
 .whole-show .guests  {
@@ -80,4 +82,11 @@
   margin-top: 10px;
   margin-bottom: 4%;
 
+}
+
+.show-datepickers .datepickers .date-pickers .DateRangePicker > div > div {
+  border-radius: 2px;
+  border: 1px solid #dbdbdb;
+  width: 103.2%;
+  border-radius: 5px;
 }

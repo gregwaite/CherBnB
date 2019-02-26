@@ -3100,12 +3100,14 @@ function (_React$Component) {
         className: "bookings-search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Book this spot, me. I am Cher."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "checkin-checkout"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-datepickers"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "datepickers"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_datepicker_date_picker__WEBPACK_IMPORTED_MODULE_3__["default"], {
         handleStartChange: this.handleStartChange,
         handleEndChange: this.handleEndChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "guests"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Guests"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",

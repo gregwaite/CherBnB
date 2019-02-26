@@ -133,12 +133,14 @@ class SpotShow extends React.Component {
               <p>Check In</p>
               <p>Check Out</p>
             </div>
-            <section className="datepickers">
-              <DatePicker
-              handleStartChange={this.handleStartChange}
-              handleEndChange={this.handleEndChange}
-              />
-            </section>
+            <div className="show-datepickers">
+              <section className="datepickers">
+                  <DatePicker
+                  handleStartChange={this.handleStartChange}
+                  handleEndChange={this.handleEndChange}
+                  />
+              </section>
+            </div>
             <section className='guests'>
               <p>Guests</p>
               <input type="text" placeholder="How many guests, sugar?" value={`${this.state.guestsNum} ${this.guestPluralSingle}`} readOnly={true} onClick={this.openGuests} />

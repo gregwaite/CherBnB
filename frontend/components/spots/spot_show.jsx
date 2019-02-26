@@ -14,12 +14,43 @@ class SpotShow extends React.Component {
       focusedInput: 'startDate',
       calendarFocused: null,
       openDatePicker: false,
-      dropDownMode: 'scroll'
+      dropDownMode: 'scroll',
+      guestsNum: 1,
+      guestDropHidden: true,
+      guestHideReveal: "hidden-guest-dropdown",
     };
+    
+    this.guestPluralSingle = "Cher";
 
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
     this.handleBookSubmit = this.handleBookSubmit.bind(this);
+    this.openGuests = this.openGuests.bind(this);
+    this.event = this.event.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchSpot(this.props.match.params.spotId);
+    this.elementCheck = document.querySelector('#guest-dropdown');
+    document.body.addEventListener('click', this.event);
+  }
+
+  componentWillUnmount() {
+    document.body.removeEventListener('click', this.event);
+  }
+
+  event(event) {
+    if (this.elementCheck.contains(event.target)) {
+      this.setState({
+        guestHideReveal: "revealed-guest-dropdown",
+        guestDropHidden: false
+      });
+    } else {
+      this.setState({
+        guestHideReveal: "hidden-guest-dropdown",
+        guestDropHidden: true
+      });
+    }
   }
 
   handleStartChange(date) {
@@ -41,8 +72,22 @@ class SpotShow extends React.Component {
     };
     this.props.createBooking(booking).then(booking => dispatch(openModal('booking')));
   }
-  componentDidMount() {
-    this.props.fetchSpot(this.props.match.params.spotId);
+
+  openGuests() {
+    this.setState({ guestHideReveal: "revealed-guest-dropdown" });
+  }
+
+  handleGuestChange(value) {
+    if (this.state.guestsNum === 1 && value === "add") {
+      this.guestPluralSingle = "Chers";
+    } else if (this.state.guestsNum === 2 && value === "subtract") {
+      this.guestPluralSingle = "Cher";
+    }
+    if (value === "add" && this.state.guestsNum < 10) {
+      this.setState({ guestsNum: this.state.guestsNum + 1 });
+    } else if (value === "subtract" && this.state.guestsNum > 1) {
+      this.setState({ guestsNum: this.state.guestsNum - 1 });
+    }
   }
 
   render() {
@@ -96,8 +141,15 @@ class SpotShow extends React.Component {
             </section>
             <section className='guests'>
               <p>Guests</p>
-              <input type="text" placeholder='Guests dropdown will go here' />
-            </section>
+              <input type="text" placeholder="How many guests, sugar?" value={`${this.state.guestsNum} ${this.guestPluralSingle}`} readOnly={true} onClick={this.openGuests} />
+              <div id="guest-dropdown" className={this.state.guestHideReveal}>
+                <section>
+                  <span>{`${this.state.guestsNum} ${this.guestPluralSingle}`}</span>
+                  <button onClick={() => this.handleGuestChange("subtract")}>-</button>
+                  <button onClick={() => this.handleGuestChange("add")}>+</button>
+                </section>
+              </div>
+            </section> 
 
             <button className='search-button' onClick={this.handleBookSubmit}>Book</button>
           </div>

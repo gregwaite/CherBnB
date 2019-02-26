@@ -17,12 +17,43 @@ class Splash extends React.Component {
       address: '',
       lat: '',
       long: '',
+      guestsNum: 1,
+      guestDropHidden: false,
+      guestHideReveal: "hidden-guest-dropdown",
     };
+
+    this.guestPluralSingle = "Cher";
+
     this.handleClick = this.handleClick.bind(this);
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+    this.openGuests = this.openGuests.bind(this);
+    this.event = this.event.bind(this);
+  }
+
+  componentDidMount() {
+    this.elementCheck = document.querySelector('#guest-dropdown');
+    document.body.addEventListener('click', this.event);
+  }
+
+  componentWillUnmount() {
+    document.body.removeEventListener('click', this.event);
+  }
+
+  event(event) {
+    if (this.elementCheck.contains(event.target)) {
+      this.setState({
+        guestHideReveal: "revealed-guest-dropdown",
+        guestDropHidden: false
+      });
+    } else {
+      this.setState({
+        guestHideReveal: "hidden-guest-dropdown",
+        guestDropHidden: true
+      });
+    }
   }
 
   handleStartChange(date) {
@@ -60,6 +91,23 @@ class Splash extends React.Component {
     this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long }).then(() => {
       this.props.history.push('/search');
     });
+  }
+
+  openGuests(){
+    this.setState({guestHideReveal: "revealed-guest-dropdown"});
+  }
+
+  handleGuestChange(value){
+    if (this.state.guestsNum === 1 && value === "add") {
+      this.guestPluralSingle = "Chers";
+    } else if (this.state.guestsNum === 2 && value === "subtract") {
+      this.guestPluralSingle = "Cher";
+    }
+    if (value === "add" && this.state.guestsNum < 10) {
+      this.setState({guestsNum: this.state.guestsNum + 1});
+    } else if (value === "subtract" && this.state.guestsNum > 1) {
+      this.setState({guestsNum: this.state.guestsNum - 1});
+    }
   }
   
   render() {
@@ -124,8 +172,15 @@ class Splash extends React.Component {
           </section>
           <section className='guests'>
             <p>Guests</p>
-            <input type="text" placeholder='Guests dropdown will go here'/>
-          </section>
+            <input type="text" placeholder="How many guests, sugar?" value={`${this.state.guestsNum} ${this.guestPluralSingle}`} readOnly={true} onClick={this.openGuests}/>
+            <div id="guest-dropdown"className={this.state.guestHideReveal}>
+                <section>
+                  <span>{`${this.state.guestsNum} ${this.guestPluralSingle}`}</span>
+                  <button onClick={() => this.handleGuestChange("subtract")}>-</button>
+                  <button onClick={() => this.handleGuestChange("add")}>+</button>
+                </section>
+            </div>
+          </section> 
 
           <button className='search-button' onClick={this.handleClick}>Search</button>
       </div>

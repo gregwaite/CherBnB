@@ -12,10 +12,17 @@ const filtersReducer = (state = defaultFilters, action) => {
   Object.freeze(state);
   switch (action.type) {
     case UPDATE_FILTER:
-      const newFilter = {
-        [action.filter]: action.value
-      };
-      return merge({}, state, newFilter);
+      if (!action.value){
+        let newState = merge({}, state);
+        delete newState[action.filter];
+        return newState;
+      } else {
+        const newFilter = {
+          [action.filter]: action.value
+        };
+        return merge({}, state, newFilter);
+      }
+      
     case UPDATE_CENTER:
       const newCenter = {
         [action.filter]: action.center

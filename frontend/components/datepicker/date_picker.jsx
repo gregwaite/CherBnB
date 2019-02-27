@@ -46,8 +46,8 @@ class DatePicker extends React.Component {
 
   render() {
     const { startDate, endDate } = this.state;
-    const startDateString = startDate && startDate.format('ddd, MMM Do');
-    const endDateString = endDate && endDate.format('ddd, MMM Do');
+    // const startDateString = startDate && startDate.format('ddd, MMM Do');
+    // const endDateString = endDate && endDate.format('ddd, MMM Do');
     return ( 
       <section className='date-pickers'>
         <DateRangePicker

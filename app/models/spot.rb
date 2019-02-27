@@ -30,12 +30,24 @@ class Spot < ApplicationRecord
     class_name: "User",
     foreign_key: :owner_id
 
-  def self.in_bounds(bounds, guest_request)
-    self.where("lat < ?", bounds[:northEast][:lat])
-      .where("lat > ?", bounds[:southWest][:lat])
-      .where("long > ?", bounds[:southWest][:lng])
-      .where("long < ?", bounds[:northEast][:lng])
-      .where("max_guests >= ?", guest_request[:num])
+  def self.in_bounds(bounds, guest_request, dates)
+    if dates
+      self.joins(:bookings)
+        .where("lat < ?", bounds[:northEast][:lat])
+        .where("lat > ?", bounds[:southWest][:lat])
+        .where("long > ?", bounds[:southWest][:lng])
+        .where("long < ?", bounds[:northEast][:lng])
+        .where("max_guests >= ?", guest_request[:num])
+        .where.not('start_date > :end_date OR end_date < :start_date', 
+        start_date: dates[:start_date].to_datetime, 
+        end_date: dates[:end_date].to_datetime)
+    else
+      self.where("lat < ?", bounds[:northEast][:lat])
+        .where("lat > ?", bounds[:southWest][:lat])
+        .where("long > ?", bounds[:southWest][:lng])
+        .where("long < ?", bounds[:northEast][:lng])
+        .where("max_guests >= ?", guest_request[:num])
+    end
   end
 
 end

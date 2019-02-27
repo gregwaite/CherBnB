@@ -1,4 +1,5 @@
 export const fetchSpots = (data) => {
+  debugger
   return $.ajax({
     method: "GET",
     url: 'api/spots',

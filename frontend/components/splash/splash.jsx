@@ -12,8 +12,8 @@ class Splash extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: null,
+      endDate: null,
       address: '',
       lat: '',
       long: '',
@@ -57,6 +57,7 @@ class Splash extends React.Component {
   }
 
   handleStartChange(date) {
+    debugger
     this.setState({
       startDate: date,
     });
@@ -88,9 +89,20 @@ class Splash extends React.Component {
   }
 
   handleClick(){
-    this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long }).then(() => {
-      this.props.updateFilter('guest_request', {num: this.state.guestsNum}).then( () => this.props.history.push('/search'));
-    });
+    debugger
+    if (this.state.startDate && this.state.endDate) {
+      this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long }).then(() => {
+        this.props.updateFilter('guest_request', {num: this.state.guestsNum}).then(() => 
+        this.props.updateFilter('dates', {start_date: this.state.startDate, end_date: this.state.endDate})).then(() => 
+        this.props.history.push('/search'));
+      });
+    } else {
+      this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long }).then(() => {
+        this.props.updateFilter('guest_request', { num: this.state.guestsNum }).then(() =>
+        this.props.updateFilter('dates', null)).then(() =>
+        this.props.history.push('/search'));
+      });
+    }
   }
 
   openGuests(){

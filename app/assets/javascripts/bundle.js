@@ -916,9 +916,9 @@ function (_React$Component) {
 
       var _this$state = this.state,
           startDate = _this$state.startDate,
-          endDate = _this$state.endDate;
-      var startDateString = startDate && startDate.format('ddd, MMM Do');
-      var endDateString = endDate && endDate.format('ddd, MMM Do');
+          endDate = _this$state.endDate; // const startDateString = startDate && startDate.format('ddd, MMM Do');
+      // const endDateString = endDate && endDate.format('ddd, MMM Do');
+
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
         className: "date-pickers"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_dates__WEBPACK_IMPORTED_MODULE_4__["DateRangePicker"], {
@@ -2320,8 +2320,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Splash).call(this, props));
     _this.state = {
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: null,
+      endDate: null,
       address: '',
       lat: '',
       long: '',
@@ -2369,6 +2369,7 @@ function (_React$Component) {
   }, {
     key: "handleStartChange",
     value: function handleStartChange(date) {
+      debugger;
       this.setState({
         startDate: date
       });
@@ -2419,16 +2420,38 @@ function (_React$Component) {
     value: function handleClick() {
       var _this3 = this;
 
-      this.props.updateCenter('center', {
-        lat: this.state.lat,
-        lng: this.state.long
-      }).then(function () {
-        _this3.props.updateFilter('guest_request', {
-          num: _this3.state.guestsNum
+      debugger;
+
+      if (this.state.startDate && this.state.endDate) {
+        this.props.updateCenter('center', {
+          lat: this.state.lat,
+          lng: this.state.long
         }).then(function () {
-          return _this3.props.history.push('/search');
+          _this3.props.updateFilter('guest_request', {
+            num: _this3.state.guestsNum
+          }).then(function () {
+            return _this3.props.updateFilter('dates', {
+              start_date: _this3.state.startDate,
+              end_date: _this3.state.endDate
+            });
+          }).then(function () {
+            return _this3.props.history.push('/search');
+          });
         });
-      });
+      } else {
+        this.props.updateCenter('center', {
+          lat: this.state.lat,
+          lng: this.state.long
+        }).then(function () {
+          _this3.props.updateFilter('guest_request', {
+            num: _this3.state.guestsNum
+          }).then(function () {
+            return _this3.props.updateFilter('dates', null);
+          }).then(function () {
+            return _this3.props.history.push('/search');
+          });
+        });
+      }
     }
   }, {
     key: "openGuests",
@@ -3337,9 +3360,15 @@ var filtersReducer = function filtersReducer() {
 
   switch (action.type) {
     case _actions_filter_actions__WEBPACK_IMPORTED_MODULE_1__["UPDATE_FILTER"]:
-      var newFilter = _defineProperty({}, action.filter, action.value);
+      if (!action.value) {
+        var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
+        delete newState[action.filter];
+        return newState;
+      } else {
+        var newFilter = _defineProperty({}, action.filter, action.value);
 
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, newFilter);
+        return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, newFilter);
+      }
 
     case _actions_filter_actions__WEBPACK_IMPORTED_MODULE_1__["UPDATE_CENTER"]:
       var newCenter = _defineProperty({}, action.filter, action.center);
@@ -3909,6 +3938,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createSpot", function() { return createSpot; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateSpot", function() { return updateSpot; });
 var fetchSpots = function fetchSpots(data) {
+  debugger;
   return $.ajax({
     method: "GET",
     url: 'api/spots',

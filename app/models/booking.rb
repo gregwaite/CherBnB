@@ -35,7 +35,7 @@ class Booking < ApplicationRecord
 
     def no_conflicts
       return true if conflicting_dates.empty?
-      errors[:base] << 'Can\'t book these dates, honey. Somebody is already staying then'
+      errors[:base] << 'Can\'t book these dates, honey. SomeCherbody is already staying then'
     end
 
     def chronological_start_end

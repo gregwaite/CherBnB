@@ -60,7 +60,8 @@ class DatePicker extends React.Component {
           endDatePlaceholderText="mm/dd/yyyy"
           onDatesChange={({startDate, endDate}) =>{ 
             this.setState({startDate, endDate});
-            this.props.handleStartChange(startDate._d);
+            const start = startDate || {}
+            this.props.handleStartChange(start._d);
             const end = endDate || {}
             this.props.handleEndChange(end._d);
           }} // PropTypes.func.isRequired,
@@ -68,6 +69,7 @@ class DatePicker extends React.Component {
           onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
           numberOfMonths={2}
           isDayBlocked={day => this.checkBlockedDays(day)}
+          showClearDates={true}
           // openDatePicker={this.state.openDatePicker}
         />
       </section>

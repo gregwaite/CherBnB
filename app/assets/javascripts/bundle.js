@@ -942,7 +942,9 @@ function (_React$Component) {
             endDate: endDate
           });
 
-          _this3.props.handleStartChange(startDate._d);
+          var start = startDate || {};
+
+          _this3.props.handleStartChange(start._d);
 
           var end = endDate || {};
 
@@ -960,7 +962,8 @@ function (_React$Component) {
         numberOfMonths: 2,
         isDayBlocked: function isDayBlocked(day) {
           return _this3.checkBlockedDays(day);
-        } // openDatePicker={this.state.openDatePicker}
+        },
+        showClearDates: true // openDatePicker={this.state.openDatePicker}
 
       }));
     }

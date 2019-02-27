@@ -51,6 +51,7 @@ class DatePicker extends React.Component {
     return ( 
       <section className='date-pickers'>
         <DateRangePicker
+          readOnly={true}
           startDate={startDate} // momentPropTypes.momentObj or null,
           startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
           endDate={endDate} // momentPropTypes.momentObj or null,
@@ -65,7 +66,7 @@ class DatePicker extends React.Component {
           }} // PropTypes.func.isRequired,
           focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
           onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-          numberOfMonths={1}
+          numberOfMonths={2}
           isDayBlocked={day => this.checkBlockedDays(day)}
           // openDatePicker={this.state.openDatePicker}
         />

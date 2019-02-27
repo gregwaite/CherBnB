@@ -922,6 +922,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
         className: "date-pickers"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_dates__WEBPACK_IMPORTED_MODULE_4__["DateRangePicker"], {
+        readOnly: true,
         startDate: startDate // momentPropTypes.momentObj or null,
         ,
         startDateId: "your_unique_start_date_id" // PropTypes.string.isRequired,
@@ -956,7 +957,7 @@ function (_React$Component) {
           });
         } // PropTypes.func.isRequired,
         ,
-        numberOfMonths: 1,
+        numberOfMonths: 2,
         isDayBlocked: function isDayBlocked(day) {
           return _this3.checkBlockedDays(day);
         } // openDatePicker={this.state.openDatePicker}

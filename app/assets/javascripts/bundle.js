@@ -846,21 +846,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
 
  // import { start } from 'repl';
-
-var today = moment__WEBPACK_IMPORTED_MODULE_3___default()();
+// const today = moment();
 
 var msp = function msp(state) {
   return {};
@@ -892,13 +891,28 @@ function (_React$Component) {
       openDatePicker: false,
       hideKeyboardShortcutsPanel: true
     };
+    _this.checkBlockedDays = _this.checkBlockedDays.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.moment = moment__WEBPACK_IMPORTED_MODULE_3___default.a;
     return _this;
   }
 
   _createClass(DatePicker, [{
+    key: "checkBlockedDays",
+    value: function checkBlockedDays(day) {
+      var _this2 = this;
+
+      if (this.props.spot) {
+        return this.props.spot.bookings.filter(function (booking) {
+          return day.isBetween(_this2.moment(booking.start_date), _this2.moment(booking.end_date));
+        }).length > 0;
+      } else {
+        return false;
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var _this$state = this.state,
           startDate = _this$state.startDate,
@@ -922,27 +936,30 @@ function (_React$Component) {
           var startDate = _ref.startDate,
               endDate = _ref.endDate;
 
-          _this2.setState({
+          _this3.setState({
             startDate: startDate,
             endDate: endDate
           });
 
-          _this2.props.handleStartChange(startDate._d);
+          _this3.props.handleStartChange(startDate._d);
 
           var end = endDate || {};
 
-          _this2.props.handleEndChange(end._d);
+          _this3.props.handleEndChange(end._d);
         } // PropTypes.func.isRequired,
         ,
         focusedInput: this.state.focusedInput // PropTypes.oneOf([START_DATE, END_DATE]) or null,
         ,
         onFocusChange: function onFocusChange(focusedInput) {
-          return _this2.setState({
+          return _this3.setState({
             focusedInput: focusedInput
           });
         } // PropTypes.func.isRequired,
         ,
-        numberOfMonths: 1 // openDatePicker={this.state.openDatePicker}
+        numberOfMonths: 1,
+        isDayBlocked: function isDayBlocked(day) {
+          return _this3.checkBlockedDays(day);
+        } // openDatePicker={this.state.openDatePicker}
 
       }));
     }
@@ -3118,7 +3135,9 @@ function (_React$Component) {
         className: "datepickers"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_datepicker_date_picker__WEBPACK_IMPORTED_MODULE_3__["default"], {
         handleStartChange: this.handleStartChange,
-        handleEndChange: this.handleEndChange
+        handleEndChange: this.handleEndChange,
+        spot: spot,
+        blockSome: true
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "guests"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Guests"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {

@@ -144,6 +144,8 @@ class SpotShow extends React.Component {
                   <DatePicker
                   handleStartChange={this.handleStartChange}
                   handleEndChange={this.handleEndChange}
+                  spot={spot}
+                  blockSome={true}
                   />
               </section>
             </div>

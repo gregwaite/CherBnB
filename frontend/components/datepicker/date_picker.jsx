@@ -5,7 +5,7 @@ import moment from 'moment';
 import { DateRangePicker } from 'react-dates';
 // import { start } from 'repl';
 
-const today = moment();
+// const today = moment();
 
 const msp = state => {
   return {};
@@ -30,6 +30,18 @@ class DatePicker extends React.Component {
       openDatePicker: false,
       hideKeyboardShortcutsPanel: true
     };
+    this.checkBlockedDays = this.checkBlockedDays.bind(this);
+    this.moment = moment;
+  }
+
+  checkBlockedDays(day) {
+    if (this.props.spot) {
+      return (this.props.spot.bookings.filter(booking => {
+        return day.isBetween(this.moment(booking.start_date), this.moment(booking.end_date));
+      }).length > 0);
+    } else {
+      return false;
+    }
   }
 
   render() {
@@ -54,6 +66,7 @@ class DatePicker extends React.Component {
           focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
           onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
           numberOfMonths={1}
+          isDayBlocked={day => this.checkBlockedDays(day)}
           // openDatePicker={this.state.openDatePicker}
         />
       </section>

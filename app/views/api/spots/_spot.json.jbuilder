@@ -1,1 +1,1 @@
-json.extract! spot, :id, :spot_type, :title, :description, :ammenities, :price, :long, :lat, :address, :owner_id, :max_guests
+json.extract! spot, :id, :spot_type, :title, :description, :ammenities, :price, :long, :lat, :address, :owner_id, :max_guests, :bookings

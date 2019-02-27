@@ -22,6 +22,7 @@ class Spot < ApplicationRecord
   validates :lat, :long, :address, presence: true, uniqueness: true
 
   has_many :reviews
+  has_many :bookings
 
   has_many_attached :pictures
 

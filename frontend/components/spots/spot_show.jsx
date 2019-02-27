@@ -84,7 +84,7 @@ class SpotShow extends React.Component {
     } else if (this.state.guestsNum === 2 && value === "subtract") {
       this.guestPluralSingle = "Cher";
     }
-    if (value === "add" && this.state.guestsNum < 10) {
+    if (value === "add" && this.state.guestsNum < this.props.spot.max_guests) {
       this.setState({ guestsNum: this.state.guestsNum + 1 });
     } else if (value === "subtract" && this.state.guestsNum > 1) {
       this.setState({ guestsNum: this.state.guestsNum - 1 });

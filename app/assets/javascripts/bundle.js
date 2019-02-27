@@ -3068,7 +3068,7 @@ function (_React$Component) {
         this.guestPluralSingle = "Cher";
       }
 
-      if (value === "add" && this.state.guestsNum < 10) {
+      if (value === "add" && this.state.guestsNum < this.props.spot.max_guests) {
         this.setState({
           guestsNum: this.state.guestsNum + 1
         });

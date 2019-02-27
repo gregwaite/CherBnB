@@ -12,7 +12,7 @@ class Api::SpotsController < ApplicationController
     if bounds && guest_request
       spots = Spot.in_bounds(bounds, guest_request)
     elsif bounds && !guest_request
-      guest_request = { num: 10 }
+      guest_request = { num: 1 }
       spots = Spot.in_bounds(bounds, guest_request)
     else
       spots = Spot.all

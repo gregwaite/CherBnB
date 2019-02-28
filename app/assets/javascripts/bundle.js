@@ -2850,20 +2850,20 @@ function (_React$Component) {
           initialCenter = this.props.center;
         } else {
           initialCenter = {
-            lat: 37.426680015860065,
-            lng: -122.02575927734374
+            lat: 37.43359094828676,
+            lng: -122.06441938162396
           };
         }
       } else {
         initialCenter = {
-          lat: 37.426680015860065,
-          lng: -122.02575927734374
+          lat: 37.43359094828676,
+          lng: -122.06441938162396
         };
       }
 
       var mapOptions = {
         center: initialCenter,
-        zoom: 9
+        zoom: 13
       };
       this.map = new google.maps.Map(this.mapNode, mapOptions);
       this.MarkerManager = new _util_marker_manager__WEBPACK_IMPORTED_MODULE_3__["default"](this.map, this.handleMarkerClick.bind(this));

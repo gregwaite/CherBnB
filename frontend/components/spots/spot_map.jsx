@@ -19,15 +19,15 @@ class SpotMap extends React.Component {
       if (this.props.center.lat) {
         initialCenter = this.props.center;
       } else {
-        initialCenter = { lat: 37.426680015860065, lng: -122.02575927734374 };
+        initialCenter = { lat: 37.43359094828676, lng: -122.06441938162396 };
       }
     } else {
-      initialCenter = { lat: 37.426680015860065, lng: -122.02575927734374 };
+      initialCenter = { lat: 37.43359094828676, lng: -122.06441938162396 };
     }
 
     const mapOptions = {
       center: initialCenter,
-      zoom: 9,
+      zoom: 13,
     };
     this.map = new google.maps.Map(this.mapNode, mapOptions);
     
@@ -45,6 +45,7 @@ class SpotMap extends React.Component {
     this.MarkerManager.updateMarkers(this.props.spots);
     if (prevProps.center){
       if (prevProps.center.lat !== center.lat) {
+        
         this.map.setCenter({ lat: center.lat, lng: center.lng });
       }
     }

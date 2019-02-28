@@ -41,7 +41,7 @@ class DatePicker extends React.Component {
       }).length > 0);
     } else {
       return false;
-    }
+    } 
   }
 
   render() {

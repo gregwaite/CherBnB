@@ -203,13 +203,13 @@ var changeCenter = function changeCenter(filter, center) {
 };
 
 var updateFilter = function updateFilter(filter, value) {
-  return function (dispatch) {
+  return function (dispatch, getState) {
     dispatch(changeFilter(filter, value));
     return Object(_spot_actions__WEBPACK_IMPORTED_MODULE_0__["fetchSpots"])(getState().ui.filter)(dispatch);
   };
 };
 var updateCenter = function updateCenter(filter, center) {
-  return function (dispatch) {
+  return function (dispatch, getState) {
     dispatch(changeCenter(filter, center));
     return Object(_spot_actions__WEBPACK_IMPORTED_MODULE_0__["fetchSpots"])(getState().ui.filter)(dispatch);
   };
@@ -519,8 +519,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('hashchange', function () {
     window.scrollTo(0, 0);
   });
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);

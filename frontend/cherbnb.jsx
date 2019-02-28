@@ -23,7 +23,5 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0);
   });
 
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
   ReactDOM.render(<Root store={store}></Root>, root);
 });

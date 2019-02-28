@@ -18,11 +18,11 @@ const changeCenter = (filter, center) => {
   };
 };
 
-export const updateFilter = (filter, value) => dispatch => {
+export const updateFilter = (filter, value) => (dispatch, getState) => {
   dispatch(changeFilter(filter, value));
   return fetchSpots(getState().ui.filter)(dispatch);
 };
-export const updateCenter = (filter, center) => dispatch => {
+export const updateCenter = (filter, center) => (dispatch, getState) => {
   dispatch(changeCenter(filter, center));
   return fetchSpots(getState().ui.filter)(dispatch);
 };

@@ -57,7 +57,6 @@ class Splash extends React.Component {
   }
 
   handleStartChange(date) {
-    debugger
     this.setState({
       startDate: date,
     });
@@ -89,7 +88,6 @@ class Splash extends React.Component {
   }
 
   handleClick(){
-    debugger
     if (this.state.startDate && this.state.endDate) {
       this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long }).then(() => {
         this.props.updateFilter('guest_request', {num: this.state.guestsNum}).then(() => 

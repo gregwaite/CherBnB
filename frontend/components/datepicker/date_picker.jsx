@@ -37,7 +37,7 @@ class DatePicker extends React.Component {
   checkBlockedDays(day) {
     if (this.props.spot) {
       return (this.props.spot.bookings.filter(booking => {
-        return day.isBetween(this.moment(booking.start_date), this.moment(booking.end_date));
+        return day >= this.moment(booking.start_date) && day <= this.moment(booking.end_date);
       }).length > 0);
     } else {
       return false;

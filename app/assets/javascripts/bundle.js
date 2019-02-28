@@ -903,7 +903,7 @@ function (_React$Component) {
 
       if (this.props.spot) {
         return this.props.spot.bookings.filter(function (booking) {
-          return day.isBetween(_this2.moment(booking.start_date), _this2.moment(booking.end_date));
+          return day >= _this2.moment(booking.start_date) && day <= _this2.moment(booking.end_date);
         }).length > 0;
       } else {
         return false;
@@ -2369,7 +2369,6 @@ function (_React$Component) {
   }, {
     key: "handleStartChange",
     value: function handleStartChange(date) {
-      debugger;
       this.setState({
         startDate: date
       });
@@ -2419,8 +2418,6 @@ function (_React$Component) {
     key: "handleClick",
     value: function handleClick() {
       var _this3 = this;
-
-      debugger;
 
       if (this.state.startDate && this.state.endDate) {
         this.props.updateCenter('center', {
@@ -3938,7 +3935,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createSpot", function() { return createSpot; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateSpot", function() { return updateSpot; });
 var fetchSpots = function fetchSpots(data) {
-  debugger;
   return $.ajax({
     method: "GET",
     url: 'api/spots',

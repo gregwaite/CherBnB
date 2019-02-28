@@ -38,7 +38,8 @@ class Spot < ApplicationRecord
         .where("long < ?", bounds[:northEast][:lng])
         .where("max_guests >= ?", guest_request[:num])
         .left_outer_joins(:bookings)
-        .where('start_date > :end_date OR start_date IS NULL OR end_date < :start_date OR end_date IS NULL', end_date: dates[:end_date].to_datetime, start_date: dates[:start_date].to_datetime)
+        .where('start_date > :end_date OR start_date IS NULL OR end_date < :start_date OR end_date IS NULL', 
+        end_date: dates[:end_date].to_datetime, start_date: dates[:start_date].to_datetime)
         
         # .where('start_date < :end_date OR end_date > :start_date', 
         # start_date: dates[:start_date].to_datetime, 

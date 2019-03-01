@@ -587,6 +587,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _booking_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./booking_index_item */ "./frontend/components/bookings/booking_index_item.jsx");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -608,26 +610,31 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var BookingIndex =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(BookingIndex, _React$Component);
 
-  function BookingIndex() {
+  function BookingIndex(props) {
+    var _this;
+
     _classCallCheck(this, BookingIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(BookingIndex).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BookingIndex).call(this, props));
+    _this.today = moment__WEBPACK_IMPORTED_MODULE_2___default()();
+    return _this;
   }
 
   _createClass(BookingIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this = this;
+      var _this2 = this;
 
       this.props.fetchSpots();
       this.props.fetchBookings();
       document.addEventListener("keydown", function (e) {
-        return _this.handleKeyDown(e);
+        return _this2.handleKeyDown(e);
       });
     }
   }, {
@@ -640,14 +647,29 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var _this$props = this.props,
           spots = _this$props.spots,
           closeModal = _this$props.closeModal;
-      var bookings = this.props.bookings.map(function (booking) {
+      var nextBook = this.props.bookings[0] ? [this.props.bookings[0]] : [];
+      var pastBookings = this.props.bookings.filter(function (booking) {
+        return new Date(_this3.today) > new Date(booking.start_date);
+      });
+      var upcomingBookings = this.props.bookings.filter(function (booking) {
+        return new Date(_this3.today) <= new Date(booking.start_date);
+      });
+      upcomingBookings.forEach(function (booking) {
+        if (new Date(_this3.today) - new Date(booking.start_date) > new Date(_this3.today) - new Date(nextBook.start_date)) {
+          nextBook = booking;
+        }
+      });
+      var sortedBookings = upcomingBookings.slice(1).sort(function (a, b) {
+        return new Date(a.start_date) - new Date(b.start_date);
+      });
+      var bookings = sortedBookings.map(function (booking) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: _this2.className,
+          className: _this3.className,
           key: booking.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_booking_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           booking: booking,
@@ -656,11 +678,37 @@ function (_React$Component) {
 
         }));
       });
+      nextBook = nextBook.map(function (booking) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: _this3.className,
+          key: booking.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_booking_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          booking: booking,
+          spot: spots[booking.spot_id],
+          closeModal: closeModal // handleDeleteSubmit={this.handleDeleteSubmit}
+
+        }));
+      });
+      var pastBe = pastBookings.length > 0 ? pastBookings.map(function (booking) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: _this3.className,
+          key: booking.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_booking_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          booking: booking,
+          spot: spots[booking.spot_id],
+          closeModal: closeModal // handleDeleteSubmit={this.handleDeleteSubmit}
+
+        }));
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You have none, you big lug");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "booking-index-modal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "bookings-index-h1"
-      }, "Your reservations"), bookings);
+      }, "Your next res, sugar"), nextBook, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "bookings-index-h1"
+      }, "Other upcoming reservations, darling"), bookings, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "bookings-index-h1"
+      }, "Your previous reservations, you big lug"), pastBe);
     }
   }]);
 
@@ -3210,7 +3258,6 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "amenities"
       }, Object.values(amenities).filter(function (a) {
-        debugger;
         return spot.ammenities.map(function (a) {
           return parseInt(a);
         }).includes(a.id);

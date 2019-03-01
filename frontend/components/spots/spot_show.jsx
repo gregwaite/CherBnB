@@ -154,7 +154,6 @@ class SpotShow extends React.Component {
             <div className='show-ammenities'>
               <div className="amenities">
                 {Object.values(amenities).filter(a => { 
-                  debugger
                   return spot.ammenities.map(a => parseInt(a)).includes(a.id)
                 }).map(amenity => {
                   const Amenity = amenityList[amenity.icon];

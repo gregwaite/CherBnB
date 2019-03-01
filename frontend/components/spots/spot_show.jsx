@@ -71,7 +71,7 @@ class SpotShow extends React.Component {
       spot_id: this.props.match.params.spotId,
       num_guests: this.state.guestsNum,
     };
-    this.props.createBooking(booking).then(booking => dispatch(openModal('booking')));
+    this.props.createBooking(booking).then(booking => this.props.openModal('booking'));
   }
 
   openGuests() {

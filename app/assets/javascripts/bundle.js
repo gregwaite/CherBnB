@@ -3108,6 +3108,8 @@ function (_React$Component) {
   }, {
     key: "handleBookSubmit",
     value: function handleBookSubmit() {
+      var _this2 = this;
+
       var booking = {
         start_date: this.state.startDate,
         end_date: this.state.endDate,
@@ -3116,7 +3118,7 @@ function (_React$Component) {
         num_guests: this.state.guestsNum
       };
       this.props.createBooking(booking).then(function (booking) {
-        return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["openModal"])('booking'));
+        return _this2.props.openModal('booking');
       });
     }
   }, {
@@ -3148,7 +3150,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var spot = this.props.spot || {
         photoUrls: []
@@ -3204,11 +3206,11 @@ function (_React$Component) {
         className: this.state.guestHideReveal
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "".concat(this.state.guestsNum, " ").concat(this.guestPluralSingle)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this2.handleGuestChange("subtract");
+          return _this3.handleGuestChange("subtract");
         }
       }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this2.handleGuestChange("add");
+          return _this3.handleGuestChange("add");
         }
       }, "+")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-button",
@@ -3263,6 +3265,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchSpot: function fetchSpot(id) {
       return dispatch(Object(_actions_spot_actions__WEBPACK_IMPORTED_MODULE_3__["fetchSpot"])(id));
+    },
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["openModal"])(modal));
     },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["closeModal"])());

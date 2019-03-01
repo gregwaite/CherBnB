@@ -652,33 +652,39 @@ function (_React$Component) {
       var _this$props = this.props,
           spots = _this$props.spots,
           closeModal = _this$props.closeModal;
-      var nextBook = this.props.bookings[0] ? [this.props.bookings[0]] : [];
       var pastBookings = this.props.bookings.filter(function (booking) {
         return new Date(_this3.today) > new Date(booking.start_date);
       });
       var upcomingBookings = this.props.bookings.filter(function (booking) {
         return new Date(_this3.today) <= new Date(booking.start_date);
       });
-      upcomingBookings.forEach(function (booking) {
-        if (new Date(_this3.today) - new Date(booking.start_date) > new Date(_this3.today) - new Date(nextBook.start_date)) {
-          nextBook = booking;
-        }
-      });
-      var sortedBookings = upcomingBookings.slice(1).sort(function (a, b) {
+      var that = this;
+      var nextBook = upcomingBookings[0] ? [upcomingBookings[0]] : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You have no upcoming reservations, you big lug");
+
+      if (nextBook[0]) {
+        upcomingBookings.forEach(function (booking) {
+          if (new Date(that.today) - new Date(booking.start_date) > new Date(that.today) - new Date(nextBook[0].start_date)) nextBook = [booking];
+        });
+        upcomingBookings = upcomingBookings.filter(function (booking) {
+          return booking !== nextBook[0];
+        });
+        nextBook = nextBook.map(function (booking) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: _this3.className,
+            key: booking.id
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_booking_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            booking: booking,
+            spot: spots[booking.spot_id],
+            closeModal: closeModal // handleDeleteSubmit={this.handleDeleteSubmit}
+
+          }));
+        });
+      }
+
+      var sortedBookings = upcomingBookings.sort(function (a, b) {
         return new Date(a.start_date) - new Date(b.start_date);
       });
       var bookings = sortedBookings.map(function (booking) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: _this3.className,
-          key: booking.id
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_booking_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          booking: booking,
-          spot: spots[booking.spot_id],
-          closeModal: closeModal // handleDeleteSubmit={this.handleDeleteSubmit}
-
-        }));
-      });
-      nextBook = nextBook.map(function (booking) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: _this3.className,
           key: booking.id

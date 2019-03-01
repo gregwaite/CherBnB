@@ -21,34 +21,41 @@ class BookingIndex extends React.Component {
 
   render(){
     const { spots, closeModal } = this.props;
-    let nextBook = this.props.bookings[0] ? [this.props.bookings[0]] : [];
     const pastBookings = this.props.bookings.filter(booking => {
       return (new Date(this.today) > new Date(booking.start_date));
     });
-    const upcomingBookings = this.props.bookings.filter(booking => {
+    let upcomingBookings = this.props.bookings.filter(booking => {
       return (new Date(this.today) <= new Date(booking.start_date));
     });
-    upcomingBookings.forEach(booking => {
-      if ((new Date(this.today) - new Date(booking.start_date)) > (new Date(this.today) - new Date(nextBook.start_date))) {
-        nextBook = booking;
-      }
-    });
-    const sortedBookings = upcomingBookings.slice(1).sort((a,b) => {
+    
+    const that = this;
+    let nextBook = upcomingBookings[0] ? [upcomingBookings[0]] : (<li>You have no upcoming reservations, you big lug</li>);
+    if (nextBook[0]) {
+      upcomingBookings.forEach(booking => {
+        if ((new Date(that.today) - new Date(booking.start_date)) > (new Date(that.today) - new Date(nextBook[0].start_date))) 
+          nextBook = [booking];
+        }
+      );
+      upcomingBookings = upcomingBookings.filter(booking => {
+        return booking !== nextBook[0];
+      });
+      nextBook = nextBook.map(booking => {
+        return (
+          <div className={this.className} key={booking.id}>
+            <BookingIndexItem
+              booking={booking}
+              spot={spots[booking.spot_id]}
+              closeModal={closeModal}
+              // handleDeleteSubmit={this.handleDeleteSubmit}
+            ></BookingIndexItem>
+          </div>
+        )}
+        )
+    }
+    const sortedBookings = upcomingBookings.sort((a,b) => {
       return new Date(a.start_date) - new Date(b.start_date);
     });
     const bookings = sortedBookings.map(booking => {
-      return (
-        <div className={this.className} key={booking.id}>
-          <BookingIndexItem
-            booking={booking}
-            spot={spots[booking.spot_id]}
-            closeModal={closeModal}
-            // handleDeleteSubmit={this.handleDeleteSubmit}
-          ></BookingIndexItem>
-        </div>
-      )}
-      )
-    nextBook = nextBook.map(booking => {
       return (
         <div className={this.className} key={booking.id}>
           <BookingIndexItem

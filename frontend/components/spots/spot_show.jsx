@@ -10,7 +10,12 @@ import {
   Kitchen,
   TV,
   Washer,
-  Dryer
+  Dryer,
+  Parking,
+  HairDryer,
+  HotTub,
+  Coffee,
+  Laptop
 } from '../../static_assets/amenity_icons';
 
 class SpotShow extends React.Component {
@@ -108,7 +113,12 @@ class SpotShow extends React.Component {
       Kitchen,
       TV,
       Washer,
-      Dryer
+      Dryer,
+      Parking,
+      HairDryer,
+      HotTub,
+      Coffee,
+      Laptop
     };
     const {amenities} = this.props;
     return (

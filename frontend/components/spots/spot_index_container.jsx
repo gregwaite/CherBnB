@@ -6,7 +6,8 @@ const mapStateToProps = state => {
   return {
     spots: Object.values(state.entities.spots),
     bounds: state.ui.filter.bounds,
-    initialCenter: state.ui.filter.initialCenter
+    initialCenter: state.ui.filter.initialCenter,
+    amenities: state.entities.amenities,
   };
 };
 

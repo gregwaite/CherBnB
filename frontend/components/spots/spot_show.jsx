@@ -3,7 +3,15 @@ import GreetingContainer from '../greeting/greeting_container';
 import Modal from '../session_form/session_modal';
 import DatePicker from '../datepicker/date_picker';
 import ReviewIndexContainer from '../reviews/review_index_container';
-import { openModal } from '../../actions/modal_actions';
+import {
+  AirCon,
+  Iron,
+  Wifi,
+  Kitchen,
+  TV,
+  Washer,
+  Dryer
+} from '../../static_assets/amenity_icons';
 
 class SpotShow extends React.Component {
   constructor(props) {
@@ -92,7 +100,17 @@ class SpotShow extends React.Component {
   }
 
   render() {
-    const spot = this.props.spot || { photoUrls: [] };
+    const spot = this.props.spot || { photoUrls: [], ammenities: []};
+    const amenityList = {
+      AirCon,
+      Iron,
+      Wifi,
+      Kitchen,
+      TV,
+      Washer,
+      Dryer
+    };
+    const {amenities} = this.props;
     return (
       <div id='show-greeting'>
         <section>
@@ -124,9 +142,15 @@ class SpotShow extends React.Component {
             </div>
 
             <div className='show-ammenities'>
-              <li>
-                {spot.ammenities}
-              </li>
+              <div className="amenities">
+                {Object.values(amenities).filter(a => { 
+                  debugger
+                  return spot.ammenities.map(a => parseInt(a)).includes(a.id)
+                }).map(amenity => {
+                  const Amenity = amenityList[amenity.icon];
+                  return <div className="grid--50 amenity" key={amenity.id}><Amenity /> {amenity.name}</div>
+                })}
+              </div>
             </div>
             <div className='show-ammenities'>
               <li>

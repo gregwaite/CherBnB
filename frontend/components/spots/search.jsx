@@ -12,6 +12,7 @@ class Search extends React.Component {
             spots={this.props.spots}
             updateFilter={this.props.updateFilter}
             bounds={this.props.bounds}
+            amenities={this.props.amenities}
           ></SpotIndex>
         </ul>
         <ul>

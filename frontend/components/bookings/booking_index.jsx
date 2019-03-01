@@ -52,10 +52,10 @@ class BookingIndex extends React.Component {
         )}
         )
     }
-    const sortedBookings = upcomingBookings.sort((a,b) => {
+    const upcomingSortedBookings = upcomingBookings.sort((a,b) => {
       return new Date(a.start_date) - new Date(b.start_date);
     });
-    const bookings = sortedBookings.map(booking => {
+    const upcomingBookingsDivs = upcomingSortedBookings.map(booking => {
       return (
         <div className={this.className} key={booking.id}>
           <BookingIndexItem
@@ -85,7 +85,7 @@ class BookingIndex extends React.Component {
         <h1 className='bookings-index-h1'>Your next res, sugar</h1>
           {nextBook}
         <h1 className='bookings-index-h1'>Other upcoming reservations, darling</h1>
-          {bookings}
+          {upcomingBookingsDivs}
         <h1 className='bookings-index-h1'>Your previous reservations, you big lug</h1>
           {pastBe}
       </div>

@@ -25,7 +25,7 @@ class SpotIndexItem extends React.Component {
   }
 
   handleGeocode(response) {
-    const location = response.plus_code.compound_code.split(" ").slice(1).join(" ");
+    const location = response.plus_code.compound_code.split(" ").slice(1).join(" ").split(",")[0];
     if (this.state.location !== location) {
       this.setState({ location: location });
     }

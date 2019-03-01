@@ -2939,7 +2939,7 @@ function (_React$Component) {
   }, {
     key: "handleGeocode",
     value: function handleGeocode(response) {
-      var location = response.plus_code.compound_code.split(" ").slice(1).join(" ");
+      var location = response.plus_code.compound_code.split(" ").slice(1).join(" ").split(",")[0];
 
       if (this.state.location !== location) {
         this.setState({
@@ -3329,7 +3329,7 @@ function (_React$Component) {
   }, {
     key: "handleGeocode",
     value: function handleGeocode(response) {
-      var location = response.plus_code.compound_code.split(" ").slice(1).join(" ");
+      var location = response.plus_code.compound_code.split(" ").slice(1).join(" ").split(",")[0];
 
       if (this.state.location !== location) {
         this.setState({

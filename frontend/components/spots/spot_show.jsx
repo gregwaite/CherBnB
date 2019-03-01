@@ -96,7 +96,10 @@ class SpotShow extends React.Component {
     return (
       <div id='show-greeting'>
         <section>
-          <Modal />
+          <Modal
+            closeModal={this.props.closeModal}
+            destroyErrors={this.props.destroyErrors}
+          />
           <GreetingContainer></GreetingContainer>
         </section>
         <div className="whole-show">

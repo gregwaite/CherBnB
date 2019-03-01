@@ -1,18 +1,17 @@
 import React from 'react';
-import { openModal } from '../../actions/modal_actions';
 import { Link } from 'react-router-dom';
 
-const Greeting = ({currentUser, logout}) => {
+const Greeting = ({currentUser, logout, openModal}) => {
   const sessionLinks = () => {
     return (
       <nav className="login-signup">
         <Link className='home-link' to='/'>Home</Link>
         <section className='session-menu'>
-          <button onClick={() => dispatch(openModal('login'))}>
+          <button onClick={() => openModal('login')}>
             Log In Sugar
           </button>
           <br/>
-          <button onClick={() => dispatch(openModal('signup'))}>
+          <button onClick={() => openModal('signup')}>
             Sign Up Honey
           </button>
         </section>
@@ -28,7 +27,7 @@ const Greeting = ({currentUser, logout}) => {
           What can I, Cher, do for you, {currentUser.username}? I am Cher.
         </h2>
         <br/>
-        <button className="header-button" onClick={() => dispatch(openModal('booking'))}>Bookings</button>
+        <button className="header-button" onClick={() => openModal('booking')}>Bookings</button>
         <button className="header-button" onClick={logout}>Logout</button>
       </hgroup>
     );

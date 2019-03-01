@@ -6,6 +6,7 @@ import { UPDATE_FILTER, UPDATE_CENTER } from '../actions/filter_actions';
 const defaultFilters = Object.freeze({
   bounds: {},
   center: {},
+  guest_request: {num: 1},
 });
 
 const filtersReducer = (state = defaultFilters, action) => {

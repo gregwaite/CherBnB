@@ -123,7 +123,10 @@ class Splash extends React.Component {
   render() {
     return (
     <div className="home-page">
-      <Modal />
+      <Modal 
+        closeModal={this.props.closeModal} 
+        destroyErrors={this.props.destroyErrors}
+      />
       <header className="home-header">
         <GreetingContainer></GreetingContainer>
         <h1>Take Me Home, to CherBnB</h1>

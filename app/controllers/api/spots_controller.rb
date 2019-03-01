@@ -11,11 +11,7 @@ class Api::SpotsController < ApplicationController
   def index
     if bounds && guest_request && dates
       spots = Spot.in_bounds(bounds, guest_request, dates)
-    elsif bounds && dates && !guest_request
-      guest_request = { num: 1 }
-      spots = Spot.in_bounds(bounds, guest_request, dates)
-    elsif bounds && !dates && !guest_request
-      guest_request = { num: 1 }
+    elsif bounds && !dates
       dates = nil
       spots = Spot.in_bounds(bounds, guest_request, dates)
     else

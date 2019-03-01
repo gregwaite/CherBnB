@@ -7,7 +7,7 @@ import { destroyErrors } from '../../actions/session_actions';
 import React from 'react';
 
 
-function Modal({ modal, closeModal }) {
+function Modal({ modal, closeModal, destroyErrors }) {
   if (!modal) {
     return null;
   }
@@ -27,7 +27,7 @@ function Modal({ modal, closeModal }) {
   }
 
   return (
-    <div className="background-modal" onClick={handleModalClick}>
+    <div className="background-modal" onClick={() => handleModalClick(destroyErrors, closeModal)}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
         {component}
       </div>
@@ -35,9 +35,9 @@ function Modal({ modal, closeModal }) {
   );
 }
 
-function handleModalClick() {
-  dispatch(destroyErrors());
-  dispatch(closeModal());
+function handleModalClick(destroyErrors, closeModal) {
+  destroyErrors();
+  closeModal();
 }
 
 const mapStateToProps = state => {

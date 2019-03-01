@@ -2,6 +2,8 @@ import Search from './search';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { updateFilter, updateCenter } from '../../actions/filter_actions';
+import { closeModal } from '../../actions/modal_actions';
+import { destroyErrors } from '../../actions/session_actions';
 
 const mapStateToProps = state => {
   return {
@@ -15,6 +17,8 @@ const mapDispatchToProps = dispatch => {
   return {
     updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
     updateCenter: (filter, center) => dispatch(updateCenter(filter, center)),
+    closeModal: () => dispatch(closeModal()),
+    destroyErrors: () => dispatch(destroyErrors()),
   };
 };
 

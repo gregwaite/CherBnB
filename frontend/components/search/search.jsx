@@ -54,7 +54,10 @@ class Search extends React.Component {
     return (
       <div className='search-show-div'>
         <div className='search-show-greeting'>
-          <Modal></Modal>
+          <Modal
+            closeModal={this.props.closeModal}
+            destroyErrors={this.props.destroyErrors}
+          />
           <Greeting></Greeting>
         </div>
         <PlacesAutocomplete

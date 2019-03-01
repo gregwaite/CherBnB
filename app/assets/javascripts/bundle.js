@@ -1095,8 +1095,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/review_actions */ "./frontend/actions/review_actions.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1122,13 +1123,15 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     review: {
       title: "",
       body: "",
       rating: "",
-      spot_id: ownProps.match.params.spotId
+      spot_id: ownProps.match.params.spotId,
+      loggedIn: Boolean(state.session.id)
     }
   };
 };
@@ -1137,6 +1140,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     createReview: function createReview(review) {
       return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_2__["createReview"])(review));
+    },
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
     }
   };
 };
@@ -1161,10 +1167,15 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.createReview(this.state);
-      this.setState(_defineProperty({}, "title", ""));
-      this.setState(_defineProperty({}, "body", ""));
-      this.setState(_defineProperty({}, "rating", ""));
+
+      if (this.state.loggedIn) {
+        this.props.createReview(this.state);
+        this.setState(_defineProperty({}, "title", ""));
+        this.setState(_defineProperty({}, "body", ""));
+        this.setState(_defineProperty({}, "rating", ""));
+      } else {
+        this.props.openModal("login");
+      }
     }
   }, {
     key: "update",
@@ -1178,34 +1189,34 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("form", {
         className: "create-form",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
         className: "create-review-title"
-      }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("li", null, "Title"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("li", null, "Title"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("input", {
         type: "text",
         value: this.state.title,
         onChange: this.update("title")
-      })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
         className: "create-review-body"
-      }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("li", null, "Review"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("textarea", {
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("li", null, "Review"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("textarea", {
         onChange: this.update("body"),
         value: this.state.body
-      })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
         className: "create-review-rating"
-      }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("li", null, "Rating"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("li", null, "Rating"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("input", {
         type: "number",
         value: this.state.rating,
         onChange: this.update("rating")
-      })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("button", {
         onClick: this.handleSubmit
       }, "Submit")));
     }
   }]);
 
   return CreateReview;
-}(react__WEBPACK_IMPORTED_MODULE_3___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_4___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(CreateReview)));
 

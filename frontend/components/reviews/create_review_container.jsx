@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { createReview } from '../../actions/review_actions';
+import { openModal } from '../../actions/modal_actions';
 import React from 'react';
 
 const mapStateToProps = (state, ownProps) => {
@@ -10,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
       body: "",
       rating: "",      
       spot_id: ownProps.match.params.spotId,
+      loggedIn: Boolean(state.session.id),
     }
   };
 };
@@ -17,6 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     createReview: (review) => dispatch(createReview(review)),
+    openModal: (modal) => dispatch(openModal(modal)),
   };
 };
 
@@ -29,10 +32,14 @@ class CreateReview extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createReview(this.state);
-    this.setState({["title"]: ""});
-    this.setState({["body"]: ""});
-    this.setState({["rating"]: ""});
+    if (this.state.loggedIn) {
+      this.props.createReview(this.state);
+      this.setState({["title"]: ""});
+      this.setState({["body"]: ""});
+      this.setState({["rating"]: ""});
+    } else {
+      this.props.openModal("login");
+    }
   }
 
   update(field) {

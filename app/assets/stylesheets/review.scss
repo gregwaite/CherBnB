@@ -258,6 +258,38 @@
   margin-bottom: 10px;
 }
 
+.edit-review-rating {
+  .flex-container--no-justify {
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+  .read-only-rating,
+  .rating-selector {
+    margin-left:2.4rem;
+  }
+  .profile-thumb {
+    min-width: 48px;
+    min-height: 48px;
+    width: 48px;
+    height: 48px;
+    background-size: cover;
+    border-radius: 50%;
+  }
+
+  .fa {
+    width: 20px;
+    height: 30px;
+    font-size: 1.8rem;
+    color: teal;
+  }
+}
+
+.rating-selector {
+  .fa {
+    margin-right: .6rem;
+  }
+}
+
 .edit-form > button {
     list-style: none;
     text-decoration: none;

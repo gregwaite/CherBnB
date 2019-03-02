@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateReview } from '../../actions/review_actions';
+import Rating from 'react-rating';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -51,6 +52,20 @@ class EditReview extends React.Component {
 
           <div className="edit-review-rating">
             <li>Rating:</li>
+            <Rating
+              name="rating"
+              className="rating-selector"
+              emptySymbol="fa fa-star-o fa-2x"
+              fullSymbol="fa fa-star fa-2x"
+              fractions={2}
+              initialRating={this.state.rating}
+              onChange={(e) => this.setState({
+                rating: e
+              })}
+              onClick={(e) => this.setState({
+                rating: e
+              })}
+            />
             <input
               type="number"
               value={this.state.rating}

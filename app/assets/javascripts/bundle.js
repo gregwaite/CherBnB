@@ -1311,6 +1311,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/review_actions */ "./frontend/actions/review_actions.js");
+/* harmony import */ var react_rating__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-rating */ "./node_modules/react-rating/lib/react-rating.js");
+/* harmony import */ var react_rating__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_rating__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1330,6 +1332,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -1378,6 +1381,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-index-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -1396,7 +1401,24 @@ function (_React$Component) {
         value: this.state.body
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-review-rating"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Rating:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Rating:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        name: "rating",
+        className: "rating-selector",
+        emptySymbol: "fa fa-star-o fa-2x",
+        fullSymbol: "fa fa-star fa-2x",
+        fractions: 2,
+        initialRating: this.state.rating,
+        onChange: function onChange(e) {
+          return _this3.setState({
+            rating: e
+          });
+        },
+        onClick: function onClick(e) {
+          return _this3.setState({
+            rating: e
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "number",
         value: this.state.rating,
         onChange: this.update("rating")
@@ -1663,6 +1685,7 @@ function (_React$Component) {
           readonly: true,
           emptySymbol: "fa fa-star-o fa-2x",
           fullSymbol: "fa fa-star fa-2x",
+          fractions: 2,
           initialRating: rating
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, rating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Rating")), buttons);
       }

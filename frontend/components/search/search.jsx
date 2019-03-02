@@ -18,9 +18,13 @@ class Search extends React.Component {
       lat: "",
       center: this.props.center,
       bounds: this.props.bounds,
+      guestsNum: 1,
     };
+    
+    this.guestPluralSingle = "Cher";
     this.handleChange = this.handleChange.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+    this.handleGuestChange = this.handleGuestChange.bind(this);
   }
 
   componentDidMount() {
@@ -47,6 +51,21 @@ class Search extends React.Component {
 
   search() {
     this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long });
+  }
+
+  handleGuestChange(value) {
+    if (this.state.guestsNum === 1 && value === "add") {
+      this.guestPluralSingle = "Chers";
+    } else if (this.state.guestsNum === 2 && value === "subtract") {
+      this.guestPluralSingle = "Cher";
+    }
+    if (value === "add" && this.state.guestsNum < 10) {
+      this.setState({ guestsNum: this.state.guestsNum + 1 });
+      this.props.updateFilter('guest_request', { num: this.state.guestsNum + 1 });
+    } else if (value === "subtract" && this.state.guestsNum > 1) {
+      this.setState({ guestsNum: this.state.guestsNum - 1 })
+      this.props.updateFilter('guest_request', { num: this.state.guestsNum - 1});
+    }
   }
 
   
@@ -98,6 +117,17 @@ class Search extends React.Component {
             </div>
           )}
         </PlacesAutocomplete>
+        <section className='guests'>
+          <p>Guests</p>
+          <input type="text" placeholder="How many guests, sugar?" value={`${this.state.guestsNum} ${this.guestPluralSingle}`} readOnly={true} onClick={this.openGuests} />
+          <div id="guest-dropdown" className={this.state.guestHideReveal}>
+            <section>
+              <span>{`${this.state.guestsNum} ${this.guestPluralSingle}`}</span>
+              <button onClick={() => this.handleGuestChange("subtract")}>-</button>
+              <button onClick={() => this.handleGuestChange("add")}>+</button>
+            </section>
+          </div>
+        </section> 
         <div className='search-show-contents'>
           <div className='search-show-index'>
             <SpotIndex

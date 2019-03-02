@@ -54,7 +54,10 @@ class SpotIndexItem extends React.Component {
           </li>
           <li className='spot-price'>
             ${spot.price} per night
-        </li>
+          </li>
+          <li className='spot-price'>
+            This many Chers {spot.max_guests}
+          </li>
         </Link>
       </div>
     )

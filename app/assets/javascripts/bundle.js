@@ -1831,10 +1831,13 @@ function (_React$Component) {
       long: "",
       lat: "",
       center: _this.props.center,
-      bounds: _this.props.bounds
+      bounds: _this.props.bounds,
+      guestsNum: 1
     };
+    _this.guestPluralSingle = "Cher";
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleGuestChange = _this.handleGuestChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1882,8 +1885,35 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "handleGuestChange",
+    value: function handleGuestChange(value) {
+      if (this.state.guestsNum === 1 && value === "add") {
+        this.guestPluralSingle = "Chers";
+      } else if (this.state.guestsNum === 2 && value === "subtract") {
+        this.guestPluralSingle = "Cher";
+      }
+
+      if (value === "add" && this.state.guestsNum < 10) {
+        this.setState({
+          guestsNum: this.state.guestsNum + 1
+        });
+        this.props.updateFilter('guest_request', {
+          num: this.state.guestsNum + 1
+        });
+      } else if (value === "subtract" && this.state.guestsNum > 1) {
+        this.setState({
+          guestsNum: this.state.guestsNum - 1
+        });
+        this.props.updateFilter('guest_request', {
+          num: this.state.guestsNum - 1
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1920,7 +1950,26 @@ function (_React$Component) {
             style: style
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, suggestion.description));
         })));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "guests"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Guests"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "How many guests, sugar?",
+        value: "".concat(this.state.guestsNum, " ").concat(this.guestPluralSingle),
+        readOnly: true,
+        onClick: this.openGuests
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "guest-dropdown",
+        className: this.state.guestHideReveal
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "".concat(this.state.guestsNum, " ").concat(this.guestPluralSingle)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.handleGuestChange("subtract");
+        }
+      }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.handleGuestChange("add");
+        }
+      }, "+")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-contents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-index"
@@ -3070,7 +3119,9 @@ function (_React$Component) {
         className: "spot-title"
       }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "spot-price"
-      }, "$", spot.price, " per night")));
+      }, "$", spot.price, " per night"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "spot-price"
+      }, "This many Chers ", spot.max_guests)));
     }
   }]);
 
@@ -3915,6 +3966,8 @@ var filtersReducer = function filtersReducer() {
 
   switch (action.type) {
     case _actions_filter_actions__WEBPACK_IMPORTED_MODULE_1__["UPDATE_FILTER"]:
+      debugger;
+
       if (!action.value) {
         var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
         delete newState[action.filter];

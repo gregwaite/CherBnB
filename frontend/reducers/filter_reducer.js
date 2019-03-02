@@ -13,6 +13,7 @@ const filtersReducer = (state = defaultFilters, action) => {
   Object.freeze(state);
   switch (action.type) {
     case UPDATE_FILTER:
+    debugger
       if (!action.value){
         let newState = merge({}, state);
         delete newState[action.filter];

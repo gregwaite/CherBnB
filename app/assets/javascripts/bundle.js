@@ -998,8 +998,8 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
           className: "date-pickers"
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_dates__WEBPACK_IMPORTED_MODULE_4__["DayPickerRangeController"], {
-          startDate: startDate,
-          endDate: endDate,
+          startDate: null,
+          endDate: null,
           numberOfMonths: 2,
           noBorder: true,
           isDayBlocked: function isDayBlocked(day) {

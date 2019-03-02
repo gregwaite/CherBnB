@@ -71,8 +71,8 @@ class DatePicker extends React.Component {
       return (
         <section className='date-pickers'>
           <DayPickerRangeController
-            startDate={startDate}
-            endDate={endDate}
+            startDate={null}
+            endDate={null}
             numberOfMonths={2}
             noBorder
             isDayBlocked={day => this.checkBlockedDays(day)}

@@ -189,6 +189,18 @@ class SpotShow extends React.Component {
               </div>
             </div>
 
+            <div className="show-datepickers">
+                  <h1>Availabity</h1>
+              <section className="datepickers">
+                <DatePicker
+                  handleStartChange={this.handleStartChange}
+                  handleEndChange={this.handleEndChange}
+                  spot={spot}
+                  blockSome={true}
+                  availCal={true}
+                />
+              </section>
+            </div>
           </div>
 
           <div className="bookings-search">
@@ -200,10 +212,10 @@ class SpotShow extends React.Component {
             <div className="show-datepickers">
               <section className="datepickers">
                   <DatePicker
-                  handleStartChange={this.handleStartChange}
-                  handleEndChange={this.handleEndChange}
-                  spot={spot}
-                  blockSome={true}
+                    handleStartChange={this.handleStartChange}
+                    handleEndChange={this.handleEndChange}
+                    spot={spot}
+                    blockSome={true}
                   />
               </section>
             </div>
@@ -224,6 +236,7 @@ class SpotShow extends React.Component {
 
 
         </div>
+
         <div className="reviews-container">
           <ReviewIndexContainer></ReviewIndexContainer>
         </div>

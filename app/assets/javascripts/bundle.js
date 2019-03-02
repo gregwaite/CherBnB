@@ -921,6 +921,8 @@ var mdp = function mdp(dispatch) {
   return {};
 };
 
+var today = moment__WEBPACK_IMPORTED_MODULE_3___default()();
+
 var DatePicker =
 /*#__PURE__*/
 function (_React$Component) {
@@ -943,7 +945,9 @@ function (_React$Component) {
       openDatePicker: false,
       hideKeyboardShortcutsPanel: true
     };
+    _this.availCal = _this.props.availCal || false;
     _this.checkBlockedDays = _this.checkBlockedDays.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.checkHighlightDays = _this.checkHighlightDays.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.moment = moment__WEBPACK_IMPORTED_MODULE_3___default.a;
     return _this;
   }
@@ -953,10 +957,29 @@ function (_React$Component) {
     value: function checkBlockedDays(day) {
       var _this2 = this;
 
-      if (this.props.spot) {
+      if (this.props.spot && this.props.spot.bookings) {
+        if (this.availCal) {
+          return this.props.spot.bookings.filter(function (booking) {
+            return day >= _this2.moment(booking.start_date).subtract(1, 'd') && day <= _this2.moment(booking.end_date);
+          }).length > 0;
+        } else {
+          return this.props.spot.bookings.filter(function (booking) {
+            return day >= _this2.moment(booking.start_date) && day <= _this2.moment(booking.end_date);
+          }).length > 0;
+        }
+      } else {
+        return false;
+      }
+    }
+  }, {
+    key: "checkHighlightDays",
+    value: function checkHighlightDays(day) {
+      var _this3 = this;
+
+      if (this.props.spot && this.props.spot.bookings && this.availCal) {
         return this.props.spot.bookings.filter(function (booking) {
-          return day >= _this2.moment(booking.start_date) && day <= _this2.moment(booking.end_date);
-        }).length > 0;
+          return day < _this3.moment(booking.start_date).subtract(1, 'd') && day > _this3.moment(booking.end_date);
+        }).length === 0;
       } else {
         return false;
       }
@@ -964,60 +987,88 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var _this$state = this.state,
           startDate = _this$state.startDate,
           endDate = _this$state.endDate; // const startDateString = startDate && startDate.format('ddd, MMM Do');
       // const endDateString = endDate && endDate.format('ddd, MMM Do');
 
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
-        className: "date-pickers"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_dates__WEBPACK_IMPORTED_MODULE_4__["DateRangePicker"], {
-        readOnly: true,
-        startDate: startDate // momentPropTypes.momentObj or null,
-        ,
-        startDateId: "your_unique_start_date_id" // PropTypes.string.isRequired,
-        ,
-        endDate: endDate // momentPropTypes.momentObj or null,
-        ,
-        endDateId: "your_unique_end_date_id" // PropTypes.string.isRequired,
-        ,
-        startDatePlaceholderText: "mm/dd/yyyy",
-        endDatePlaceholderText: "mm/dd/yyyy",
-        onDatesChange: function onDatesChange(_ref) {
-          var startDate = _ref.startDate,
-              endDate = _ref.endDate;
+      if (this.props.availCal) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
+          className: "date-pickers"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_dates__WEBPACK_IMPORTED_MODULE_4__["DayPickerRangeController"], {
+          startDate: startDate,
+          endDate: endDate,
+          numberOfMonths: 2,
+          noBorder: true,
+          isDayBlocked: function isDayBlocked(day) {
+            return _this4.checkBlockedDays(day);
+          },
+          isDayHighlighted: function isDayHighlighted(day) {
+            return _this4.checkHighlightDays(day);
+          },
+          isOutsideRange: function isOutsideRange(day) {
+            return Object(react_dates__WEBPACK_IMPORTED_MODULE_4__["isInclusivelyAfterDay"])(today, day);
+          },
+          onPrevMonthClick: react_dates__WEBPACK_IMPORTED_MODULE_4__["DayPickerRangeController"].onPrevMonthClick,
+          onNextMonthClick: react_dates__WEBPACK_IMPORTED_MODULE_4__["DayPickerRangeController"].onNextMonthClick,
+          focusedInput: null,
+          onFocusChange: function onFocusChange(focusedInput) {
+            return _this4.setState({
+              focusedInput: focusedInput
+            });
+          }
+        }));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
+          className: "date-pickers"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_dates__WEBPACK_IMPORTED_MODULE_4__["DateRangePicker"], {
+          readOnly: true,
+          startDate: startDate // momentPropTypes.momentObj or null,
+          ,
+          startDateId: "your_unique_start_date_id" // PropTypes.string.isRequired,
+          ,
+          endDate: endDate // momentPropTypes.momentObj or null,
+          ,
+          endDateId: "your_unique_end_date_id" // PropTypes.string.isRequired,
+          ,
+          startDatePlaceholderText: "mm/dd/yyyy",
+          endDatePlaceholderText: "mm/dd/yyyy",
+          onDatesChange: function onDatesChange(_ref) {
+            var startDate = _ref.startDate,
+                endDate = _ref.endDate;
 
-          _this3.setState({
-            startDate: startDate,
-            endDate: endDate
-          });
+            _this4.setState({
+              startDate: startDate,
+              endDate: endDate
+            });
 
-          var start = startDate || {};
+            var start = startDate || {};
 
-          _this3.props.handleStartChange(start._d);
+            _this4.props.handleStartChange(start._d);
 
-          var end = endDate || {};
+            var end = endDate || {};
 
-          _this3.props.handleEndChange(end._d);
-        } // PropTypes.func.isRequired,
-        ,
-        focusedInput: this.state.focusedInput // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-        ,
-        onFocusChange: function onFocusChange(focusedInput) {
-          return _this3.setState({
-            focusedInput: focusedInput
-          });
-        } // PropTypes.func.isRequired,
-        ,
-        numberOfMonths: 2,
-        isDayBlocked: function isDayBlocked(day) {
-          return _this3.checkBlockedDays(day);
-        },
-        showClearDates: true // openDatePicker={this.state.openDatePicker}
+            _this4.props.handleEndChange(end._d);
+          } // PropTypes.func.isRequired,
+          ,
+          focusedInput: this.state.focusedInput // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+          ,
+          onFocusChange: function onFocusChange(focusedInput) {
+            return _this4.setState({
+              focusedInput: focusedInput
+            });
+          } // PropTypes.func.isRequired,
+          ,
+          numberOfMonths: 2,
+          isDayBlocked: function isDayBlocked(day) {
+            return _this4.checkBlockedDays(day);
+          },
+          showClearDates: true // openDatePicker={this.state.openDatePicker}
 
-      }));
+        }));
+      }
     }
   }]);
 
@@ -3461,6 +3512,16 @@ function (_React$Component) {
           className: "grid--50 amenity",
           key: amenity.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Amenity, null), " ", amenity.name);
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-datepickers"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Availabity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "datepickers"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_datepicker_date_picker__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        handleStartChange: this.handleStartChange,
+        handleEndChange: this.handleEndChange,
+        spot: spot,
+        blockSome: true,
+        availCal: true
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bookings-search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Book this spot, me. I am Cher."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

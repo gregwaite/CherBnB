@@ -328,13 +328,13 @@
   color: #cacccd
 }
 .CalendarDay__highlighted_calendar {
-  background: #ffe8bc;
-  color: #484848
+  background: #008489;
+  color: #fff
 }
 .CalendarDay__highlighted_calendar:active,
 .CalendarDay__highlighted_calendar:hover {
-  background: #ffce71;
-  color: #484848
+  background: #008489;
+  color: #fff
 }
 .CalendarDay__selected_span {
   background: #66e2da;

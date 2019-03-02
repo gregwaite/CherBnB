@@ -1,5 +1,6 @@
 import React from 'react';
 import EditReviewContainer from './edit_review_container';
+import Rating from 'react-rating';
 
 class ReviewIndexItem extends React.Component {
   constructor(props){
@@ -45,6 +46,14 @@ class ReviewIndexItem extends React.Component {
         <li>Review</li>
       </ul>
       <ul className="rating-item">
+          <Rating
+            className="read-only-rating"
+            readonly
+            emptySymbol="fa fa-star-o fa-2x"
+            fullSymbol="fa fa-star fa-2x"
+            fractions={2}
+            initialRating={rating}
+          />
         <li>{rating}</li>
         <li>Rating</li>
       </ul>

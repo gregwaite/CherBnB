@@ -1,32 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SpotIndexItem from './spot_index_item';
 
 
 class SpotIndex extends React.Component {
+
   componentDidMount(){
     this.props.updateFilter('bounds', this.props.bounds);
   }
 
+
   render() {
     const spots = this.props.spots.map(spot => {
       return (
-      <div key={spot.id}>
-        <Link className='spot-link' to={`/spots/${spot.id}`}>
-          <img src={spot.photoUrls[0]}/>
-        <span className='spot-address'>
-          {`${spot.spot_type} : ${spot.address}`}
-        </span>
-        <li className='spot-title'>
-          {spot.title}
-        </li>
-        <li className='spot-price'>
-          ${spot.price} per night
-        </li>
-        <li className='spot-price'>
-          {spot.max_guests}
-        </li>
-        </Link>
-      </div>
+        <SpotIndexItem
+          spot={spot}
+          key={spot.id}
+        ></SpotIndexItem>
       )
     });
     const displaySpots = spots.slice(0,6)

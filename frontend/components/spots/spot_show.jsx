@@ -3,6 +3,7 @@ import GreetingContainer from '../greeting/greeting_container';
 import Modal from '../session_form/session_modal';
 import DatePicker from '../datepicker/date_picker';
 import ReviewIndexContainer from '../reviews/review_index_container';
+import Geocode from 'react-geocode';
 import {
   AirCon,
   Iron,
@@ -31,15 +32,20 @@ class SpotShow extends React.Component {
       guestsNum: 1,
       guestDropHidden: true,
       guestHideReveal: "hidden-guest-dropdown",
+      location: "",
     };
     
     this.guestPluralSingle = "Cher";
+    
 
+    this.handleGeocode = this.handleGeocode.bind(this);
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
     this.handleBookSubmit = this.handleBookSubmit.bind(this);
     this.openGuests = this.openGuests.bind(this);
     this.event = this.event.bind(this);
+    
+    Geocode.setApiKey("AIzaSyAPjYkDq0-iiCd6W5-qCw46J-r0EW39L1U");
   }
 
   componentDidMount() {
@@ -104,8 +110,19 @@ class SpotShow extends React.Component {
     }
   }
 
+  handleGeocode(response) {
+    const location = response.plus_code.compound_code.split(" ").slice(1).join(" ").split(",")[0];
+    if (this.state.location !== location){
+      this.setState({location: location});
+    }
+  }
+//   else if(this.state.location !== response.plus_code.compound_code.split(" ")[1] + " " + response.plus_code.compound_code.split(" ")[2]) {
+//   this.setState({ location: response.plus_code.compound_code.split(" ")[1] + " " + response.plus_code.compound_code.split(" ")[2] });
+// }
+
   render() {
-    const spot = this.props.spot || { photoUrls: [], ammenities: []};
+    const spot = this.props.spot || {
+      photoUrls: [], ammenities: [], lat: "", long: ""};
     const amenityList = {
       AirCon,
       Iron,
@@ -121,6 +138,15 @@ class SpotShow extends React.Component {
       Laptop
     };
     const {amenities} = this.props;
+    Geocode.fromLatLng(spot.lat, spot.long).then(
+      response => {
+        this.handleGeocode(response);
+      },
+      error => {
+        console.error(error);
+      }
+    );
+    spot.location = this.state.location;
     return (
       <div id='show-greeting'>
         <section>
@@ -141,7 +167,10 @@ class SpotShow extends React.Component {
                 {spot.title}
               </li>
               <li className='show-address'>
-                {spot.address}
+                {spot.location}
+              </li>
+              <li>
+                {spot.max_guests} Chers
               </li>
             </div>
 
@@ -154,18 +183,12 @@ class SpotShow extends React.Component {
             <div className='show-ammenities'>
               <div className="amenities">
                 {Object.values(amenities).filter(a => { 
-                  debugger
                   return spot.ammenities.map(a => parseInt(a)).includes(a.id)
                 }).map(amenity => {
                   const Amenity = amenityList[amenity.icon];
                   return <div className="grid--50 amenity" key={amenity.id}><Amenity /> {amenity.name}</div>
                 })}
               </div>
-            </div>
-            <div className='show-ammenities'>
-              <li>
-                {spot.max_guests}
-              </li>
             </div>
 
           </div>

@@ -20,11 +20,15 @@ aquatic_main_photo = EzDownload.open("https://icdn7.digitaltrends.com/image/pose
 horse_main_photo = EzDownload.open("https://media.gq.com/photos/56e71c0b14cbe0637b261d7f/3:2/w_560/horseinsuit2.jpg")
 horseman_main_photo = EzDownload.open("https://m.media-amazon.com/images/M/MV5BYTdmOTljNGUtMGJkMC00MmE2LTkwYzEtNmVlYjBmZjliNTlkXkEyXkFqcGdeQW1yb3NzZXI@._V1_UX477_CR0,0,477,268_AL_.jpg")
 
-diff = 0.03
+diff = 0.027
+mnLongDiff = 0.009
+mnLatDiff = 0.087
 sfLatStart = 37.77438675752185
 sfLongStart = -122.42216208203126
 mnLatStart = 40.7830603
-mnLongStart = -73.97124880000222
+mnLongStart = -73.97124880000001
+nyLatStart = 40.7127753
+nyLongStart = -74.0059728
 bkLatStart = 40.6781784
 bkLongStart = -73.9441579
 
@@ -106,8 +110,8 @@ apt1 = Spot.create!(
   description: "Apartment with lights and floors.", 
   ammenities: [1,2,3,4,5,6,7,8], 
   price: 7, 
-  lat: (mnLatStart + (diff * (rand))), 
-  long: (mnLongStart + (diff * (rand))), 
+  lat: (mnLatStart + (mnLatDiff * (rand))), 
+  long: (mnLongStart + (mnLongDiff * (rand))), 
   address:"1234 Greg Ave", 
   owner_id: kanye.id, 
   max_guests: 7
@@ -121,8 +125,8 @@ other_house1 = Spot.create!(
   description: "Another Enormous mansion that you can't afford to live in unless you are Cher", 
   ammenities: [1,2,3,4,5,6,7,8], 
   price: 7, 
-  lat: (mnLatStart + (diff * (rand))), 
-  long: (mnLongStart + (diff * (rand))), 
+  lat: (mnLatStart + (mnLatDiff * (rand))), 
+  long: (mnLongStart + (mnLongDiff * (rand))), 
   address:"1234 Greg Hole", 
   owner_id: kanye.id, 
   max_guests: 7
@@ -136,8 +140,8 @@ aquatic1 = Spot.create!(
   description: "Cher is half mermaid and has this home for visiting relatives", 
   ammenities: [1,2,3,4,5,6,9,10], 
   price: 7, 
-  lat: (mnLatStart + (diff * (rand))), 
-  long: (mnLongStart + (diff * (rand))), 
+  lat: (mnLatStart + (mnLatDiff * (rand))), 
+  long: (mnLongStart + (mnLongDiff * (rand))), 
   address:"1234 Greg St", 
   owner_id: kanye.id, 
   max_guests: 5
@@ -151,8 +155,8 @@ house2 = Spot.create!(
   description: "Enormous mansion that you can't afford to live in unless you are Cher", 
   ammenities: [1,2,3,4,5,6,9,10], 
   price: 7, 
-  lat: (mnLatStart + (diff * (rand))), 
-  long: (mnLongStart + (diff * (rand))), 
+  lat: (nyLatStart + (mnLatDiff * (rand))), 
+  long: (nyLongStart + (mnLongDiff * (rand))), 
   address:"1235 Greg Rd", 
   owner_id: kanye.id, 
   max_guests: 4
@@ -166,8 +170,8 @@ apt2 = Spot.create!(
   description: "Apartment with lights and floors.", 
   ammenities: [1,2,3,4,5,6,9,10], 
   price: 7, 
-  lat: (mnLatStart + (diff * (rand))), 
-  long: (mnLongStart + (diff * (rand))), 
+  lat: (nyLatStart + (mnLatDiff * (rand))), 
+  long: (nyLongStart + (mnLongDiff * (rand))), 
   address:"1235 Greg Ave", 
   owner_id: kanye.id, 
   max_guests: 7

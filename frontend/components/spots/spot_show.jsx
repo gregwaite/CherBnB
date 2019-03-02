@@ -116,10 +116,6 @@ class SpotShow extends React.Component {
       this.setState({location: location});
     }
   }
-//   else if(this.state.location !== response.plus_code.compound_code.split(" ")[1] + " " + response.plus_code.compound_code.split(" ")[2]) {
-//   this.setState({ location: response.plus_code.compound_code.split(" ")[1] + " " + response.plus_code.compound_code.split(" ")[2] });
-// }
-
   render() {
     const spot = this.props.spot || {
       photoUrls: [], ammenities: [], lat: "", long: ""};
@@ -138,14 +134,16 @@ class SpotShow extends React.Component {
       Laptop
     };
     const {amenities} = this.props;
-    Geocode.fromLatLng(spot.lat, spot.long).then(
-      response => {
-        this.handleGeocode(response);
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    if (spot.lat !== "") {
+      Geocode.fromLatLng(spot.lat, spot.long).then(
+        response => {
+          this.handleGeocode(response);
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
     spot.location = this.state.location;
     return (
       <div id='show-greeting'>

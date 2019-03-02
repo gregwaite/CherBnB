@@ -3202,6 +3202,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "map-container",
         ref: function ref(map) {
@@ -3389,10 +3390,7 @@ function (_React$Component) {
           location: location
         });
       }
-    } //   else if(this.state.location !== response.plus_code.compound_code.split(" ")[1] + " " + response.plus_code.compound_code.split(" ")[2]) {
-    //   this.setState({ location: response.plus_code.compound_code.split(" ")[1] + " " + response.plus_code.compound_code.split(" ")[2] });
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -3419,11 +3417,15 @@ function (_React$Component) {
         Laptop: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["Laptop"]
       };
       var amenities = this.props.amenities;
-      react_geocode__WEBPACK_IMPORTED_MODULE_5___default.a.fromLatLng(spot.lat, spot.long).then(function (response) {
-        _this3.handleGeocode(response);
-      }, function (error) {
-        console.error(error);
-      });
+
+      if (spot.lat !== "") {
+        react_geocode__WEBPACK_IMPORTED_MODULE_5___default.a.fromLatLng(spot.lat, spot.long).then(function (response) {
+          _this3.handleGeocode(response);
+        }, function (error) {
+          console.error(error);
+        });
+      }
+
       spot.location = this.state.location;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "show-greeting"

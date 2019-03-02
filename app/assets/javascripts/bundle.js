@@ -3098,6 +3098,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-geocode */ "./node_modules/react-geocode/lib/index.js");
 /* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_geocode__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_rating__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-rating */ "./node_modules/react-rating/lib/react-rating.js");
+/* harmony import */ var react_rating__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_rating__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3120,6 +3122,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
 var SpotIndexItem =
 /*#__PURE__*/
 function (_React$Component) {
@@ -3135,6 +3138,7 @@ function (_React$Component) {
       location: ""
     };
     _this.handleGeocode = _this.handleGeocode.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.checkAverage = _this.checkAverage.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     react_geocode__WEBPACK_IMPORTED_MODULE_2___default.a.setApiKey("AIzaSyAPjYkDq0-iiCd6W5-qCw46J-r0EW39L1U");
     return _this;
   }
@@ -3163,6 +3167,19 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "checkAverage",
+    value: function checkAverage() {
+      if (this.props.spot) {
+        var total = 0;
+        this.props.spot.reviews.forEach(function (review) {
+          total += review.rating;
+        });
+        this.averageRating = parseFloat(total) / this.props.spot.reviews.length;
+      } else {
+        this.averageRating = 0;
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -3173,6 +3190,7 @@ function (_React$Component) {
       }, function (error) {
         console.error(error);
       });
+      this.checkAverage();
       spot.location = this.state.location;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         key: spot.id
@@ -3189,7 +3207,16 @@ function (_React$Component) {
         className: "spot-price"
       }, "$", spot.price, " per night"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "spot-price"
-      }, "This many Chers ", spot.max_guests)));
+      }, "This many Chers ", spot.max_guests), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "rating-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        className: "read-only-rating",
+        readonly: true,
+        emptySymbol: "fa fa-star-o fa-2x",
+        fullSymbol: "fa fa-star fa-2x",
+        fractions: 2,
+        initialRating: this.averageRating
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.averageRating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Average Rating"))));
     }
   }]);
 
@@ -3395,11 +3422,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../session_form/session_modal */ "./frontend/components/session_form/session_modal.jsx");
 /* harmony import */ var _datepicker_date_picker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../datepicker/date_picker */ "./frontend/components/datepicker/date_picker.jsx");
 /* harmony import */ var _reviews_review_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../reviews/review_index_container */ "./frontend/components/reviews/review_index_container.jsx");
-/* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-geocode */ "./node_modules/react-geocode/lib/index.js");
-/* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_geocode__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../static_assets/amenity_icons */ "./frontend/static_assets/amenity_icons.jsx");
-/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
-/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react_rating__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-rating */ "./node_modules/react-rating/lib/react-rating.js");
+/* harmony import */ var react_rating__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_rating__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-geocode */ "./node_modules/react-geocode/lib/index.js");
+/* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_geocode__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../static_assets/amenity_icons */ "./frontend/static_assets/amenity_icons.jsx");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_8__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3417,6 +3446,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -3459,8 +3489,9 @@ function (_React$Component) {
     _this.handleEndChange = _this.handleEndChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleBookSubmit = _this.handleBookSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.openGuests = _this.openGuests.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.checkAverage = _this.checkAverage.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.event = _this.event.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    react_geocode__WEBPACK_IMPORTED_MODULE_5___default.a.setApiKey("AIzaSyAPjYkDq0-iiCd6W5-qCw46J-r0EW39L1U");
+    react_geocode__WEBPACK_IMPORTED_MODULE_6___default.a.setApiKey("AIzaSyAPjYkDq0-iiCd6W5-qCw46J-r0EW39L1U");
     return _this;
   }
 
@@ -3574,8 +3605,8 @@ function (_React$Component) {
     value: function handleSelect(address) {
       var _this3 = this;
 
-      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7__["geocodeByAddress"])(address).then(function (results) {
-        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7__["getLatLng"])(results[0]);
+      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_8__["geocodeByAddress"])(address).then(function (results) {
+        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_8__["getLatLng"])(results[0]);
       }).then(function (latLng) {
         return _this3.setState({
           long: parseFloat(latLng.lng),
@@ -3605,6 +3636,19 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "checkAverage",
+    value: function checkAverage() {
+      if (this.props.spot) {
+        var total = 0;
+        this.props.spot.reviews.forEach(function (review) {
+          total += review.rating;
+        });
+        this.averageRating = parseFloat(total) / this.props.spot.reviews.length;
+      } else {
+        this.averageRating = 0;
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this5 = this;
@@ -3613,26 +3657,27 @@ function (_React$Component) {
         photoUrls: [],
         ammenities: [],
         lat: "",
-        long: ""
+        long: "",
+        reviews: []
       };
       var amenityList = {
-        AirCon: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["AirCon"],
-        Iron: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["Iron"],
-        Wifi: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["Wifi"],
-        Kitchen: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["Kitchen"],
-        TV: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["TV"],
-        Washer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["Washer"],
-        Dryer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["Dryer"],
-        Parking: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["Parking"],
-        HairDryer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["HairDryer"],
-        HotTub: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["HotTub"],
-        Coffee: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["Coffee"],
-        Laptop: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_6__["Laptop"]
+        AirCon: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__["AirCon"],
+        Iron: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__["Iron"],
+        Wifi: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__["Wifi"],
+        Kitchen: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__["Kitchen"],
+        TV: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__["TV"],
+        Washer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__["Washer"],
+        Dryer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__["Dryer"],
+        Parking: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__["Parking"],
+        HairDryer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__["HairDryer"],
+        HotTub: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__["HotTub"],
+        Coffee: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__["Coffee"],
+        Laptop: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_7__["Laptop"]
       };
       var amenities = this.props.amenities;
 
       if (spot.lat !== "") {
-        react_geocode__WEBPACK_IMPORTED_MODULE_5___default.a.fromLatLng(spot.lat, spot.long).then(function (response) {
+        react_geocode__WEBPACK_IMPORTED_MODULE_6___default.a.fromLatLng(spot.lat, spot.long).then(function (response) {
           _this5.handleGeocode(response);
         }, function (error) {
           console.error(error);
@@ -3640,12 +3685,13 @@ function (_React$Component) {
       }
 
       spot.location = this.state.location;
+      this.checkAverage();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "show-greeting"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
         closeModal: this.props.closeModal,
         destroyErrors: this.props.destroyErrors
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7___default.a, {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_8___default.a, {
         value: this.state.address,
         onChange: this.handleChange,
         onSelect: this.handleSelect
@@ -3704,7 +3750,16 @@ function (_React$Component) {
           className: "grid--50 amenity",
           key: amenity.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Amenity, null), " ", amenity.name);
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "rating-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        className: "read-only-rating",
+        readonly: true,
+        emptySymbol: "fa fa-star-o fa-2x",
+        fullSymbol: "fa fa-star fa-2x",
+        fractions: 2,
+        initialRating: this.averageRating
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.averageRating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Average Rating")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-datepickers"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Availabity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "datepickers"
@@ -4034,8 +4089,6 @@ var filtersReducer = function filtersReducer() {
 
   switch (action.type) {
     case _actions_filter_actions__WEBPACK_IMPORTED_MODULE_1__["UPDATE_FILTER"]:
-      debugger;
-
       if (!action.value) {
         var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
         delete newState[action.filter];

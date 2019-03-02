@@ -3,6 +3,7 @@ import GreetingContainer from '../greeting/greeting_container';
 import Modal from '../session_form/session_modal';
 import DatePicker from '../datepicker/date_picker';
 import ReviewIndexContainer from '../reviews/review_index_container';
+import Rating from 'react-rating';
 import Geocode from 'react-geocode';
 import {
   AirCon,
@@ -41,7 +42,6 @@ class SpotShow extends React.Component {
     };
     
     this.guestPluralSingle = "Cher";
-    
 
     this.handleGeocode = this.handleGeocode.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -50,6 +50,7 @@ class SpotShow extends React.Component {
     this.handleEndChange = this.handleEndChange.bind(this);
     this.handleBookSubmit = this.handleBookSubmit.bind(this);
     this.openGuests = this.openGuests.bind(this);
+    this.checkAverage = this.checkAverage.bind(this);
     this.event = this.event.bind(this);
     
     Geocode.setApiKey("AIzaSyAPjYkDq0-iiCd6W5-qCw46J-r0EW39L1U");
@@ -149,12 +150,24 @@ class SpotShow extends React.Component {
   search() {
     this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long }).then(
       () => this.props.history.push('/search')
-    )
+    );
+  }
+
+  checkAverage(){
+    if (this.props.spot) {
+      let total = 0;
+      this.props.spot.reviews.forEach(review => {
+        total += review.rating;
+      });
+      this.averageRating = parseFloat(total) / this.props.spot.reviews.length;
+    } else {
+      this.averageRating = 0;
+    }
   }
 
   render() {
     const spot = this.props.spot || {
-      photoUrls: [], ammenities: [], lat: "", long: ""};
+      photoUrls: [], ammenities: [], lat: "", long: "", reviews: []};
     const amenityList = {
       AirCon,
       Iron,
@@ -181,6 +194,8 @@ class SpotShow extends React.Component {
       );
     }
     spot.location = this.state.location;
+
+    this.checkAverage();
     return (
       <div id='show-greeting'>
         <section>
@@ -262,6 +277,18 @@ class SpotShow extends React.Component {
                 })}
               </div>
             </div>
+            <ul className="rating-item">
+              <Rating
+                className="read-only-rating"
+                readonly
+                emptySymbol="fa fa-star-o fa-2x"
+                fullSymbol="fa fa-star fa-2x"
+                fractions={2}
+                initialRating={this.averageRating}
+              />
+              <li>{this.averageRating}</li>
+              <li>Average Rating</li>
+            </ul>
 
             <div className="show-datepickers">
                   <h1>Availabity</h1>

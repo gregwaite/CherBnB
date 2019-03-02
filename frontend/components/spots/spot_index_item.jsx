@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Geocode from 'react-geocode';
+import Rating from 'react-rating';
 
 class SpotIndexItem extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class SpotIndexItem extends React.Component {
       location: ""
     };
     this.handleGeocode = this.handleGeocode.bind(this);
+    this.checkAverage = this.checkAverage.bind(this);
     Geocode.setApiKey("AIzaSyAPjYkDq0-iiCd6W5-qCw46J-r0EW39L1U");
   }
   
@@ -31,6 +33,18 @@ class SpotIndexItem extends React.Component {
     }
   }
 
+  checkAverage() {
+    if (this.props.spot) {
+      let total = 0;
+      this.props.spot.reviews.forEach(review => {
+        total += review.rating;
+      });
+      this.averageRating = parseFloat(total) / this.props.spot.reviews.length;
+    } else {
+      this.averageRating = 0;
+    }
+  }
+
   render() {
     const {spot} = this.props;
     Geocode.fromLatLng(spot.lat, spot.long).then(
@@ -41,6 +55,7 @@ class SpotIndexItem extends React.Component {
         console.error(error);
       }
     );
+    this.checkAverage();
     spot.location = this.state.location;
     return (
       <div key={spot.id}>
@@ -58,6 +73,18 @@ class SpotIndexItem extends React.Component {
           <li className='spot-price'>
             This many Chers {spot.max_guests}
           </li>
+          <ul className="rating-item">
+            <Rating
+              className="read-only-rating"
+              readonly
+              emptySymbol="fa fa-star-o fa-2x"
+              fullSymbol="fa fa-star fa-2x"
+              fractions={2}
+              initialRating={this.averageRating}
+            />
+            <li>{this.averageRating}</li>
+            <li>Average Rating</li>
+          </ul>
         </Link>
       </div>
     )

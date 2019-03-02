@@ -18,6 +18,10 @@ import {
   Coffee,
   Laptop
 } from '../../static_assets/amenity_icons';
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 
 class SpotShow extends React.Component {
   constructor(props) {
@@ -33,12 +37,15 @@ class SpotShow extends React.Component {
       guestDropHidden: true,
       guestHideReveal: "hidden-guest-dropdown",
       location: "",
+      address: "",
     };
     
     this.guestPluralSingle = "Cher";
     
 
     this.handleGeocode = this.handleGeocode.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
     this.handleBookSubmit = this.handleBookSubmit.bind(this);
@@ -120,6 +127,31 @@ class SpotShow extends React.Component {
       this.setState({location: location});
     }
   }
+
+  handleChange(address) {
+    this.setState({ address });
+  }
+
+  handleSelect(address) {
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      .then(latLng => this.setState({
+        long: parseFloat(latLng.lng),
+        lat: parseFloat(latLng.lat),
+        center: { lat: parseFloat(latLng.lat), lng: parseFloat(latLng.lng) },
+        address,
+      }, () => {
+        this.search();
+      }))
+      .catch(error => console.error('Error', error));
+  }
+
+  search() {
+    this.props.updateCenter('center', { lat: this.state.lat, lng: this.state.long }).then(
+      () => this.props.history.push('/search')
+    )
+  }
+
   render() {
     const spot = this.props.spot || {
       photoUrls: [], ammenities: [], lat: "", long: ""};
@@ -157,6 +189,44 @@ class SpotShow extends React.Component {
             destroyErrors={this.props.destroyErrors}
           />
           <GreetingContainer></GreetingContainer>
+          <PlacesAutocomplete
+            value={this.state.address}
+            onChange={this.handleChange}
+            onSelect={this.handleSelect}
+          >
+            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+              <div>
+                <input
+                  {...getInputProps({
+                    placeholder: 'Anywhere that you, Cher, own, because you are Cher',
+                    className: 'location-search-input',
+                  })}
+                />
+                <div className="autocomplete-dropdown-container">
+                  {loading && <div>Loading...</div>}
+                  {suggestions.map(suggestion => {
+                    const className = suggestion.active
+                      ? 'suggestion-item--active'
+                      : 'suggestion-item';
+                    // inline style for demonstration purpose
+                    const style = suggestion.active
+                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                      : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, {
+                          className,
+                          style,
+                        })}
+                      >
+                        <span>{suggestion.description}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </PlacesAutocomplete>
         </section>
         <div className="whole-show">
           <div className='show-div'>

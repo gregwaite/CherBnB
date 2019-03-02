@@ -5,6 +5,7 @@ import { fetchSpot } from '../../actions/spot_actions';
 import { createBooking } from '../../actions/booking_actions';
 import { closeModal, openModal } from '../../actions/modal_actions';
 import { destroyErrors } from '../../actions/session_actions';
+import { updateCenter } from '../../actions/filter_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -21,6 +22,7 @@ const mapDispatchToProps = dispatch => {
     openModal: (modal) => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal()),
     destroyErrors: () => dispatch(destroyErrors()),
+    updateCenter: (filter, center) => dispatch(updateCenter(filter, center)),
   };
 };
 

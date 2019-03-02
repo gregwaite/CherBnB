@@ -1788,8 +1788,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _spots_spot_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../spots/spot_index */ "./frontend/components/spots/spot_index.jsx");
 /* harmony import */ var _spots_spot_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../spots/spot_map */ "./frontend/components/spots/spot_map.jsx");
 /* harmony import */ var _session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../session_form/session_modal */ "./frontend/components/session_form/session_modal.jsx");
-/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
-/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _datepicker_date_picker__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../datepicker/date_picker */ "./frontend/components/datepicker/date_picker.jsx");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1815,6 +1816,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
 var Search =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1832,12 +1834,17 @@ function (_React$Component) {
       lat: "",
       center: _this.props.center,
       bounds: _this.props.bounds,
-      guestsNum: 1
+      guestsNum: 1,
+      startDate: null,
+      endDate: null
     };
     _this.guestPluralSingle = "Cher";
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleGuestChange = _this.handleGuestChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleStartChange = _this.handleStartChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleEndChange = _this.handleEndChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleApplyDate = _this.handleApplyDate.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1858,8 +1865,8 @@ function (_React$Component) {
     value: function handleSelect(address) {
       var _this2 = this;
 
-      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5__["geocodeByAddress"])(address).then(function (results) {
-        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5__["getLatLng"])(results[0]);
+      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6__["geocodeByAddress"])(address).then(function (results) {
+        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6__["getLatLng"])(results[0]);
       }).then(function (latLng) {
         return _this2.setState({
           long: parseFloat(latLng.lng),
@@ -1910,6 +1917,28 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "handleStartChange",
+    value: function handleStartChange(date) {
+      this.setState({
+        startDate: date
+      });
+    }
+  }, {
+    key: "handleEndChange",
+    value: function handleEndChange(date) {
+      this.setState({
+        endDate: date
+      });
+    }
+  }, {
+    key: "handleApplyDate",
+    value: function handleApplyDate() {
+      this.props.updateFilter('dates', {
+        start_date: this.state.startDate,
+        end_date: this.state.endDate
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -1921,7 +1950,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__["default"], {
         closeModal: this.props.closeModal,
         destroyErrors: this.props.destroyErrors
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5___default.a, {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6___default.a, {
         value: this.state.address,
         onChange: this.handleChange,
         onSelect: this.handleSelect
@@ -1969,7 +1998,14 @@ function (_React$Component) {
         onClick: function onClick() {
           return _this3.handleGuestChange("add");
         }
-      }, "+")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "+")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "datepickers"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_datepicker_date_picker__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        handleStartChange: this.handleStartChange,
+        handleEndChange: this.handleEndChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleApplyDate
+      }, "Apply")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-contents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-index"

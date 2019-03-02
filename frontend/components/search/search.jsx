@@ -3,6 +3,7 @@ import Greeting from '../greeting/greeting_container';
 import SpotIndex from '../spots/spot_index';
 import SpotMap from '../spots/spot_map';
 import Modal from '../session_form/session_modal';
+import DatePicker from '../datepicker/date_picker';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -19,12 +20,17 @@ class Search extends React.Component {
       center: this.props.center,
       bounds: this.props.bounds,
       guestsNum: 1,
+      startDate: null,
+      endDate: null,
     };
     
     this.guestPluralSingle = "Cher";
     this.handleChange = this.handleChange.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleGuestChange = this.handleGuestChange.bind(this);
+    this.handleStartChange = this.handleStartChange.bind(this);
+    this.handleEndChange = this.handleEndChange.bind(this);
+    this.handleApplyDate = this.handleApplyDate.bind(this);
   }
 
   componentDidMount() {
@@ -67,6 +73,21 @@ class Search extends React.Component {
       this.props.updateFilter('guest_request', { num: this.state.guestsNum - 1});
     }
   }
+
+  handleStartChange(date) {
+    this.setState({
+      startDate: date,
+    });
+  }
+  handleEndChange(date) {
+    this.setState({
+      endDate: date,
+    });
+  }
+  handleApplyDate() {
+    this.props.updateFilter('dates', { start_date: this.state.startDate, end_date: this.state.endDate });
+  }
+
 
   
   render() {
@@ -128,6 +149,13 @@ class Search extends React.Component {
             </section>
           </div>
         </section> 
+        <section className="datepickers">
+          <DatePicker
+            handleStartChange={this.handleStartChange}
+            handleEndChange={this.handleEndChange}
+          />
+          <button onClick={this.handleApplyDate}>Apply</button>
+        </section>
         <div className='search-show-contents'>
           <div className='search-show-index'>
             <SpotIndex

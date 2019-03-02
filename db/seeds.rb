@@ -21,7 +21,7 @@ horse_main_photo = EzDownload.open("https://media.gq.com/photos/56e71c0b14cbe063
 horseman_main_photo = EzDownload.open("https://m.media-amazon.com/images/M/MV5BYTdmOTljNGUtMGJkMC00MmE2LTkwYzEtNmVlYjBmZjliNTlkXkEyXkFqcGdeQW1yb3NzZXI@._V1_UX477_CR0,0,477,268_AL_.jpg")
 
 diff = 0.027
-mnLongDiff = 0.009
+mnLongDiff = 0.005
 mnLatDiff = 0.087
 sfLatStart = 37.77438675752185
 sfLongStart = -122.42216208203126

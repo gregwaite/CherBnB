@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     spot: state.entities.spots[ownProps.match.params.spotId],
     amenities: state.entities.amenities,
+    loggedIn: Boolean(state.session.id),
   };
 };
 

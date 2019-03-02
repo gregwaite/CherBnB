@@ -83,14 +83,18 @@ class SpotShow extends React.Component {
     });
   }
   handleBookSubmit() {
-    const booking = {
-      start_date: this.state.startDate,
-      end_date: this.state.endDate,
-      status: 'Approved',
-      spot_id: this.props.match.params.spotId,
-      num_guests: this.state.guestsNum,
-    };
-    this.props.createBooking(booking).then(booking => this.props.openModal('booking'));
+    if (this.props.loggedIn){
+      const booking = {
+        start_date: this.state.startDate,
+        end_date: this.state.endDate,
+        status: 'Approved',
+        spot_id: this.props.match.params.spotId,
+        num_guests: this.state.guestsNum,
+      };
+      this.props.createBooking(booking).then(booking => this.props.openModal('booking'));
+    } else {
+      this.props.openModal('login');
+    }
   }
 
   openGuests() {

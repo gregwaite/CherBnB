@@ -957,12 +957,10 @@ function (_React$Component) {
     value: function checkBlockedDays(day) {
       var _this2 = this;
 
-      var that = this;
-
-      if (that.props.spot && that.props.spot.bookings) {
-        if (that.availCal) {
-          return that.props.spot.bookings.filter(function (booking) {
-            return (day >= _this2.moment(booking.start_date) || day._i >= that.moment(booking.start_date)._i.slice(0, 10)) && day <= that.moment(booking.end_date);
+      if (this.props.spot && this.props.spot.bookings) {
+        if (this.availCal) {
+          return this.props.spot.bookings.filter(function (booking) {
+            return (day >= _this2.moment(booking.start_date) || day._i >= _this2.moment(booking.start_date)._i.slice(0, 10)) && day <= _this2.moment(booking.end_date);
           }).length > 0;
         } else {
           return this.props.spot.bookings.filter(function (booking) {
@@ -3387,16 +3385,20 @@ function (_React$Component) {
     value: function handleBookSubmit() {
       var _this2 = this;
 
-      var booking = {
-        start_date: this.state.startDate,
-        end_date: this.state.endDate,
-        status: 'Approved',
-        spot_id: this.props.match.params.spotId,
-        num_guests: this.state.guestsNum
-      };
-      this.props.createBooking(booking).then(function (booking) {
-        return _this2.props.openModal('booking');
-      });
+      if (this.props.loggedIn) {
+        var booking = {
+          start_date: this.state.startDate,
+          end_date: this.state.endDate,
+          status: 'Approved',
+          spot_id: this.props.match.params.spotId,
+          num_guests: this.state.guestsNum
+        };
+        this.props.createBooking(booking).then(function (booking) {
+          return _this2.props.openModal('booking');
+        });
+      } else {
+        this.props.openModal('login');
+      }
     }
   }, {
     key: "openGuests",
@@ -3591,7 +3593,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     spot: state.entities.spots[ownProps.match.params.spotId],
-    amenities: state.entities.amenities
+    amenities: state.entities.amenities,
+    loggedIn: Boolean(state.session.id)
   };
 };
 

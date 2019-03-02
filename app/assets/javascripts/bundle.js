@@ -3104,14 +3104,14 @@ function (_React$Component) {
           initialCenter = this.props.center;
         } else {
           initialCenter = {
-            lat: 37.43359094828676,
-            lng: -122.06441938162396
+            lat: 37.77438675752185,
+            lng: -122.42216208203126
           };
         }
       } else {
         initialCenter = {
-          lat: 37.43359094828676,
-          lng: -122.06441938162396
+          lat: 37.77438675752185,
+          lng: -122.42216208203126
         };
       }
 

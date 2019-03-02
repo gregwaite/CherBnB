@@ -20,13 +20,13 @@ aquatic_main_photo = EzDownload.open("https://icdn7.digitaltrends.com/image/pose
 horse_main_photo = EzDownload.open("https://media.gq.com/photos/56e71c0b14cbe0637b261d7f/3:2/w_560/horseinsuit2.jpg")
 horseman_main_photo = EzDownload.open("https://m.media-amazon.com/images/M/MV5BYTdmOTljNGUtMGJkMC00MmE2LTkwYzEtNmVlYjBmZjliNTlkXkEyXkFqcGdeQW1yb3NzZXI@._V1_UX477_CR0,0,477,268_AL_.jpg")
 
-diff = 0.014
-sfLatStart = 37.423021
-sfLongStart = -122.083739
+diff = 0.03
+sfLatStart = 37.77438675752185
+sfLongStart = -122.42216208203126
 mnLatStart = 40.7830603
 mnLongStart = -73.97124880000222
-bkLatStart = 40.673179
-bkLongStart = -73.991477
+bkLatStart = 40.6781784
+bkLongStart = -73.9441579
 
 
 house = Spot.create!(

@@ -3,13 +3,14 @@ import { withRouter } from 'react-router-dom';
 import { createReview } from '../../actions/review_actions';
 import { openModal } from '../../actions/modal_actions';
 import React from 'react';
+import Rating from 'react-rating';
 
 const mapStateToProps = (state, ownProps) => {
   return {
     review: {
       title: "",
       body: "",
-      rating: "",      
+      rating: 0,      
       spot_id: ownProps.match.params.spotId,
       loggedIn: Boolean(state.session.id),
     }
@@ -72,6 +73,20 @@ class CreateReview extends React.Component {
 
           <div className="create-review-rating">
             <li>Rating</li>
+            <Rating
+              name="rating"
+              className="rating-selector"
+              emptySymbol="fa fa-star-o fa-2x"
+              fullSymbol="fa fa-star fa-2x"
+              fractions={2}
+              initialRating={this.state.rating}
+              onChange={(e) => this.setState({
+                  rating: e
+              })}
+              onClick={(e) => this.setState({
+                  rating: e
+              })}
+            />
             <input 
               type="number"
               value={this.state.rating}

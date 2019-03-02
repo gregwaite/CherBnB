@@ -169,6 +169,9 @@ class SpotShow extends React.Component {
               <li className='show-address'>
                 {spot.location}
               </li>
+              <li>
+                {spot.max_guests} Chers
+              </li>
             </div>
 
             <div className='show-description'>
@@ -186,11 +189,6 @@ class SpotShow extends React.Component {
                   return <div className="grid--50 amenity" key={amenity.id}><Amenity /> {amenity.name}</div>
                 })}
               </div>
-            </div>
-            <div className='show-ammenities'>
-              <li>
-                {spot.max_guests}
-              </li>
             </div>
 
           </div>

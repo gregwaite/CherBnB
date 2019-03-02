@@ -957,10 +957,12 @@ function (_React$Component) {
     value: function checkBlockedDays(day) {
       var _this2 = this;
 
-      if (this.props.spot && this.props.spot.bookings) {
-        if (this.availCal) {
-          return this.props.spot.bookings.filter(function (booking) {
-            return day >= _this2.moment(booking.start_date).subtract(1, 'd') && day <= _this2.moment(booking.end_date);
+      var that = this;
+
+      if (that.props.spot && that.props.spot.bookings) {
+        if (that.availCal) {
+          return that.props.spot.bookings.filter(function (booking) {
+            return (day >= _this2.moment(booking.start_date) || day._i >= that.moment(booking.start_date)._i.slice(0, 10)) && day <= that.moment(booking.end_date);
           }).length > 0;
         } else {
           return this.props.spot.bookings.filter(function (booking) {
@@ -974,20 +976,12 @@ function (_React$Component) {
   }, {
     key: "checkHighlightDays",
     value: function checkHighlightDays(day) {
-      var _this3 = this;
-
-      if (this.props.spot && this.props.spot.bookings && this.availCal) {
-        return this.props.spot.bookings.filter(function (booking) {
-          return day < _this3.moment(booking.start_date).subtract(1, 'd') && day > _this3.moment(booking.end_date);
-        }).length === 0;
-      } else {
-        return false;
-      }
+      return true;
     }
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
 
       var _this$state = this.state,
           startDate = _this$state.startDate,
@@ -1003,19 +997,19 @@ function (_React$Component) {
           numberOfMonths: 2,
           noBorder: true,
           isDayBlocked: function isDayBlocked(day) {
-            return _this4.checkBlockedDays(day);
+            return _this3.checkBlockedDays(day);
           },
           isDayHighlighted: function isDayHighlighted(day) {
-            return _this4.checkHighlightDays(day);
+            return _this3.checkHighlightDays(day);
           },
           isOutsideRange: function isOutsideRange(day) {
             return Object(react_dates__WEBPACK_IMPORTED_MODULE_4__["isInclusivelyAfterDay"])(today, day);
           },
           onPrevMonthClick: react_dates__WEBPACK_IMPORTED_MODULE_4__["DayPickerRangeController"].onPrevMonthClick,
           onNextMonthClick: react_dates__WEBPACK_IMPORTED_MODULE_4__["DayPickerRangeController"].onNextMonthClick,
-          focusedInput: null,
+          focusedInput: this.state.focusedInput,
           onFocusChange: function onFocusChange(focusedInput) {
-            return _this4.setState({
+            return _this3.setState({
               focusedInput: focusedInput
             });
           }
@@ -1039,31 +1033,31 @@ function (_React$Component) {
             var startDate = _ref.startDate,
                 endDate = _ref.endDate;
 
-            _this4.setState({
+            _this3.setState({
               startDate: startDate,
               endDate: endDate
             });
 
             var start = startDate || {};
 
-            _this4.props.handleStartChange(start._d);
+            _this3.props.handleStartChange(start._d);
 
             var end = endDate || {};
 
-            _this4.props.handleEndChange(end._d);
+            _this3.props.handleEndChange(end._d);
           } // PropTypes.func.isRequired,
           ,
           focusedInput: this.state.focusedInput // PropTypes.oneOf([START_DATE, END_DATE]) or null,
           ,
           onFocusChange: function onFocusChange(focusedInput) {
-            return _this4.setState({
+            return _this3.setState({
               focusedInput: focusedInput
             });
           } // PropTypes.func.isRequired,
           ,
           numberOfMonths: 2,
           isDayBlocked: function isDayBlocked(day) {
-            return _this4.checkBlockedDays(day);
+            return _this3.checkBlockedDays(day);
           },
           showClearDates: true // openDatePicker={this.state.openDatePicker}
 

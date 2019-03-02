@@ -39,10 +39,11 @@ class DatePicker extends React.Component {
   }
 
   checkBlockedDays(day) {
-    if (this.props.spot && this.props.spot.bookings) {
-      if (this.availCal){
-        return (this.props.spot.bookings.filter(booking => {
-          return day >= this.moment(booking.start_date).subtract(1, 'd') && day <= this.moment(booking.end_date);
+    const that = this;
+    if (that.props.spot && that.props.spot.bookings) {
+      if (that.availCal){
+        return (that.props.spot.bookings.filter(booking => {
+          return (day >= this.moment(booking.start_date) || day._i >= that.moment(booking.start_date)._i.slice(0, 10)) && day <= that.moment(booking.end_date);
         }).length > 0);
       } else {
         return (this.props.spot.bookings.filter(booking => {
@@ -54,13 +55,7 @@ class DatePicker extends React.Component {
     } 
   }
   checkHighlightDays(day) {
-    if (this.props.spot && this.props.spot.bookings && this.availCal) {
-      return (this.props.spot.bookings.filter(booking => {
-        return day < this.moment(booking.start_date).subtract(1, 'd') && day > this.moment(booking.end_date);
-      }).length === 0);
-    } else {
-      return false;
-    } 
+    return true;
   }
 
   render() {
@@ -80,7 +75,7 @@ class DatePicker extends React.Component {
             isOutsideRange={day => isInclusivelyAfterDay(today, day)}
             onPrevMonthClick={DayPickerRangeController.onPrevMonthClick}
             onNextMonthClick={DayPickerRangeController.onNextMonthClick}
-            focusedInput={null}
+            focusedInput={this.state.focusedInput}
             onFocusChange={focusedInput => this.setState({ focusedInput })}
           />
         </section>

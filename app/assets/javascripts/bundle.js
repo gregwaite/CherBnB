@@ -1187,9 +1187,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
       title: "",
       body: "",
       rating: 0,
-      spot_id: ownProps.match.params.spotId,
-      loggedIn: Boolean(state.session.id)
-    }
+      spot_id: ownProps.match.params.spotId
+    },
+    loggedIn: Boolean(state.session.id)
   };
 };
 
@@ -1216,6 +1216,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CreateReview).call(this, props));
     _this.state = _this.props.review;
+    _this.loggedIn = _this.props.loggedIn;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
@@ -1225,7 +1226,7 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
 
-      if (this.state.loggedIn) {
+      if (this.props.loggedIn) {
         this.props.createReview(this.state);
         this.setState(_defineProperty({}, "title", ""));
         this.setState(_defineProperty({}, "body", ""));

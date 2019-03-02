@@ -12,8 +12,8 @@ const mapStateToProps = (state, ownProps) => {
       body: "",
       rating: 0,      
       spot_id: ownProps.match.params.spotId,
-      loggedIn: Boolean(state.session.id),
-    }
+    },
+    loggedIn: Boolean(state.session.id),
   };
 };
 
@@ -28,12 +28,13 @@ class CreateReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.review;
+    this.loggedIn = this.props.loggedIn;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   handleSubmit(e) {
     e.preventDefault();
-    if (this.state.loggedIn) {
+    if (this.props.loggedIn) {
       this.props.createReview(this.state);
       this.setState({["title"]: ""});
       this.setState({["body"]: ""});

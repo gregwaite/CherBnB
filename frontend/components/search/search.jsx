@@ -22,6 +22,7 @@ class Search extends React.Component {
       guestsNum: 1,
       startDate: null,
       endDate: null,
+      guestHideReveal: "hidden-guest-dropdown",
     };
     
     this.guestPluralSingle = "Cher";
@@ -31,11 +32,38 @@ class Search extends React.Component {
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
     this.handleApplyDate = this.handleApplyDate.bind(this);
+    this.openGuests = this.openGuests.bind(this);
+    this.event = this.event.bind(this);
   }
 
   componentDidMount() {
     this.props.updateFilter('bounds', this.props.bounds);
+    this.elementCheck = document.querySelector('#guest-dropdown');
+    document.body.addEventListener('click', this.event);
   }
+
+  componentWillUnmount() {
+    document.body.removeEventListener('click', this.event);
+  }
+
+  event(event) {
+    if (this.elementCheck.contains(event.target)) {
+      this.setState({
+        guestHideReveal: "revealed-guest-dropdown",
+        guestDropHidden: false
+      });
+    } else {
+      this.setState({
+        guestHideReveal: "hidden-guest-dropdown",
+        guestDropHidden: true
+      });
+    }
+  }
+
+  openGuests() {
+    this.setState({ guestHideReveal: "revealed-guest-dropdown" });
+  }
+
 
   handleChange(address) {
     this.setState({ address });
@@ -69,7 +97,7 @@ class Search extends React.Component {
       this.setState({ guestsNum: this.state.guestsNum + 1 });
       this.props.updateFilter('guest_request', { num: this.state.guestsNum + 1 });
     } else if (value === "subtract" && this.state.guestsNum > 1) {
-      this.setState({ guestsNum: this.state.guestsNum - 1 })
+      this.setState({ guestsNum: this.state.guestsNum - 1 });
       this.props.updateFilter('guest_request', { num: this.state.guestsNum - 1});
     }
   }

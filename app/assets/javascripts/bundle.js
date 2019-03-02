@@ -1836,7 +1836,8 @@ function (_React$Component) {
       bounds: _this.props.bounds,
       guestsNum: 1,
       startDate: null,
-      endDate: null
+      endDate: null,
+      guestHideReveal: "hidden-guest-dropdown"
     };
     _this.guestPluralSingle = "Cher";
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -1845,6 +1846,8 @@ function (_React$Component) {
     _this.handleStartChange = _this.handleStartChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleEndChange = _this.handleEndChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleApplyDate = _this.handleApplyDate.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.openGuests = _this.openGuests.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.event = _this.event.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1852,6 +1855,35 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.updateFilter('bounds', this.props.bounds);
+      this.elementCheck = document.querySelector('#guest-dropdown');
+      document.body.addEventListener('click', this.event);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      document.body.removeEventListener('click', this.event);
+    }
+  }, {
+    key: "event",
+    value: function event(_event) {
+      if (this.elementCheck.contains(_event.target)) {
+        this.setState({
+          guestHideReveal: "revealed-guest-dropdown",
+          guestDropHidden: false
+        });
+      } else {
+        this.setState({
+          guestHideReveal: "hidden-guest-dropdown",
+          guestDropHidden: true
+        });
+      }
+    }
+  }, {
+    key: "openGuests",
+    value: function openGuests() {
+      this.setState({
+        guestHideReveal: "revealed-guest-dropdown"
+      });
     }
   }, {
     key: "handleChange",

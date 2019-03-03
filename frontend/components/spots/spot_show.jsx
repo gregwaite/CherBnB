@@ -316,6 +316,9 @@ class SpotShow extends React.Component {
                 />
               </section>
             </div>
+        <div className="reviews-container">
+          <ReviewIndexContainer></ReviewIndexContainer>
+        </div>
           </div>
           <section className="spot-show-map-search">
             <h1>The Cherborhood</h1>
@@ -360,9 +363,6 @@ class SpotShow extends React.Component {
           </section>
         </div>
 
-        <div className="reviews-container">
-          <ReviewIndexContainer></ReviewIndexContainer>
-        </div>
       </div>
     )
   }

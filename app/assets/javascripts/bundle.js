@@ -3797,7 +3797,9 @@ function (_React$Component) {
         spot: spot,
         blockSome: true,
         availCal: true
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reviews-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_review_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "spot-show-map-search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "The Cherborhood"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spot-map"
@@ -3840,9 +3842,7 @@ function (_React$Component) {
       }, "+")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-button",
         onClick: this.handleBookSubmit
-      }, "Book")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "reviews-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_review_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
+      }, "Book")))));
     }
   }]);
 

@@ -2022,15 +2022,17 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "guest-dropdown",
         className: this.state.guestHideReveal
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "".concat(this.state.guestsNum, " ").concat(this.guestPluralSingle)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Chers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "guest-dropdown-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this3.handleGuestChange("subtract");
         }
-      }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.guestsNum), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this3.handleGuestChange("add");
         }
-      }, "+")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, "+"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "datepickers"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_datepicker_date_picker__WEBPACK_IMPORTED_MODULE_5__["default"], {
         handleStartChange: this.handleStartChange,
@@ -2834,15 +2836,17 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "guest-dropdown",
         className: this.state.guestHideReveal
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "".concat(this.state.guestsNum, " ").concat(this.guestPluralSingle)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Chers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "guest-dropdown-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this4.handleGuestChange("subtract");
         }
-      }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.guestsNum), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this4.handleGuestChange("add");
         }
-      }, "+")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "+"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-button",
         onClick: this.handleClick
       }, "Search")));
@@ -3856,15 +3860,17 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "guest-dropdown",
         className: this.state.guestHideReveal
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "".concat(this.state.guestsNum, " ").concat(this.guestPluralSingle)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Chers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "guest-dropdown-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this6.handleGuestChange("subtract");
         }
-      }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.guestsNum), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this6.handleGuestChange("add");
         }
-      }, "+")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "+"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-button",
         onClick: this.handleBookSubmit
       }, "Book")))));

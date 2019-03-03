@@ -355,9 +355,12 @@ class SpotShow extends React.Component {
                 <input type="text" placeholder="How many guests, sugar?" value={`${this.state.guestsNum} ${this.guestPluralSingle}`} readOnly={true} onClick={this.openGuests} />
                 <div id="guest-dropdown" className={this.state.guestHideReveal}>
                   <section>
-                    <span>{`${this.state.guestsNum} ${this.guestPluralSingle}`}</span>
-                    <button onClick={() => this.handleGuestChange("subtract")}>-</button>
-                    <button onClick={() => this.handleGuestChange("add")}>+</button>
+                    <span>Chers</span>
+                    <div className="guest-dropdown-buttons">
+                      <button onClick={() => this.handleGuestChange("subtract")}>-</button>
+                      <span>{this.state.guestsNum}</span>
+                      <button onClick={() => this.handleGuestChange("add")}>+</button>
+                    </div>
                   </section>
                 </div>
               </section> 

@@ -221,7 +221,6 @@ class SpotShow extends React.Component {
             destroyErrors={this.props.destroyErrors}
           />
           <GreetingContainer></GreetingContainer>
-        </section>
         <div className='spot-show-searchbar'>
           <SearchIcon options={{ 'height': '18px', 'width': '18px', 'fill': '#333' }} />
           <PlacesAutocomplete
@@ -263,6 +262,7 @@ class SpotShow extends React.Component {
             )}
           </PlacesAutocomplete>
         </div>
+        </section>
       </div>
         <div className="whole-show">
           <div className='show-div'>

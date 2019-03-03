@@ -88,11 +88,7 @@ class CreateReview extends React.Component {
                   rating: e
               })}
             />
-            <input 
-              type="number"
-              value={this.state.rating}
-              onChange={this.update("rating")}
-            ></input>
+            <p>{this.state.rating || ""}</p>
           </div>
 
           <button onClick={this.handleSubmit}>Submit</button>

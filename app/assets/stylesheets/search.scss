@@ -68,11 +68,14 @@
 
 .search-show-map {
   position: sticky;
+  top: 20px !important;
   margin-right: 3%;
   z-index: 30;
+  height: 700px;
 }
 .search-show-map #map-container {
-  position: sticky;
-  height: 500px;
+  position: sticky !important;
+  top: 20px !important;
+  height: 700px;
   width: 500px;
 }

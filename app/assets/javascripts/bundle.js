@@ -1053,7 +1053,7 @@ function (_React$Component) {
             });
           } // PropTypes.func.isRequired,
           ,
-          numberOfMonths: 2,
+          numberOfMonths: this.props.numMonths,
           isDayBlocked: function isDayBlocked(day) {
             return _this3.checkBlockedDays(day);
           },
@@ -2032,7 +2032,8 @@ function (_React$Component) {
         className: "datepickers"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_datepicker_date_picker__WEBPACK_IMPORTED_MODULE_5__["default"], {
         handleStartChange: this.handleStartChange,
-        handleEndChange: this.handleEndChange
+        handleEndChange: this.handleEndChange,
+        numMonths: 2
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleApplyDate
       }, "Apply"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2818,7 +2819,8 @@ function (_React$Component) {
         className: "datepickers"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_datepicker_date_picker__WEBPACK_IMPORTED_MODULE_3__["default"], {
         handleStartChange: this.handleStartChange,
-        handleEndChange: this.handleEndChange
+        handleEndChange: this.handleEndChange,
+        numMonths: 1
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "guests"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Guests"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -3835,7 +3837,8 @@ function (_React$Component) {
         handleStartChange: this.handleStartChange,
         handleEndChange: this.handleEndChange,
         spot: spot,
-        blockSome: true
+        blockSome: true,
+        numMonths: 1
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "guests"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Guests"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {

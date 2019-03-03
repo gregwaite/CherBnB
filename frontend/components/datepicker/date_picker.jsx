@@ -100,7 +100,7 @@ class DatePicker extends React.Component {
             }} // PropTypes.func.isRequired,
             focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
             onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-            numberOfMonths={2}
+            numberOfMonths={this.props.numMonths}
             isDayBlocked={day => this.checkBlockedDays(day)}
             showClearDates={true}
             // openDatePicker={this.state.openDatePicker}

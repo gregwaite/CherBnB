@@ -344,6 +344,7 @@ class SpotShow extends React.Component {
                       handleEndChange={this.handleEndChange}
                       spot={spot}
                       blockSome={true}
+                      numMonths={1}
                     />
                 </section>
               </div>

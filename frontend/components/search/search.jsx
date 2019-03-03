@@ -181,6 +181,7 @@ class Search extends React.Component {
             <DatePicker
               handleStartChange={this.handleStartChange}
               handleEndChange={this.handleEndChange}
+              numMonths={2}
             />
             <button onClick={this.handleApplyDate}>Apply</button>
           </section>

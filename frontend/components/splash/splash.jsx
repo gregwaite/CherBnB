@@ -181,6 +181,7 @@ class Splash extends React.Component {
             <DatePicker
               handleStartChange={this.handleStartChange}
               handleEndChange={this.handleEndChange}
+              numMonths={1}
             />
           </section>
           <section className='guests'>

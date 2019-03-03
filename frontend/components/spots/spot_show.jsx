@@ -215,6 +215,7 @@ class SpotShow extends React.Component {
             destroyErrors={this.props.destroyErrors}
           />
           <GreetingContainer></GreetingContainer>
+        </section>
           <PlacesAutocomplete
             value={this.state.address}
             onChange={this.handleChange}
@@ -253,10 +254,6 @@ class SpotShow extends React.Component {
               </div>
             )}
           </PlacesAutocomplete>
-        </section>
-        <section>
-          
-        </section>
         <div className="whole-show">
           <div className='show-div'>
             <img src={spot.photoUrls[0]} />

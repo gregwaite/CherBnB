@@ -1982,7 +1982,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__["default"], {
         closeModal: this.props.closeModal,
         destroyErrors: this.props.destroyErrors
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6___default.a, {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-show-filters"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6___default.a, {
         value: this.state.address,
         onChange: this.handleChange,
         onSelect: this.handleSelect
@@ -1992,7 +1994,7 @@ function (_React$Component) {
             getSuggestionItemProps = _ref.getSuggestionItemProps,
             loading = _ref.loading;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps({
-          placeholder: 'Anywhere that you, Cher, own, because you are Cher',
+          placeholder: 'Try San Francisco',
           className: 'location-search-input'
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "autocomplete-dropdown-container"
@@ -2013,7 +2015,7 @@ function (_React$Component) {
         })));
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "guests"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Guests"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "How many guests, sugar?",
         value: "".concat(this.state.guestsNum, " ").concat(this.guestPluralSingle),
@@ -2037,7 +2039,7 @@ function (_React$Component) {
         handleEndChange: this.handleEndChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleApplyDate
-      }, "Apply")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Apply"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-contents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-index"
@@ -3033,7 +3035,14 @@ function (_React$Component) {
           key: spot.id
         });
       });
-      var displaySpots = spots.slice(0, 6);
+      var displaySpots;
+
+      if (spots.length > 0) {
+        displaySpots = spots.slice(0, 6);
+      } else {
+        displaySpots = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "No results here, sugar. Try Manhattan, Brooklyn, or San Fran. That's where Cher lives ");
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Some excellent places to be Cher"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, displaySpots));
@@ -3174,7 +3183,12 @@ function (_React$Component) {
         this.props.spot.reviews.forEach(function (review) {
           total += review.rating;
         });
-        this.averageRating = parseFloat(total) / this.props.spot.reviews.length;
+
+        if (this.props.spot.reviews.length === 0) {
+          this.averageRating = "Not yet reviewed";
+        } else {
+          this.averageRating = parseFloat(total) / this.props.spot.reviews.length;
+        }
       } else {
         this.averageRating = 0;
       }
@@ -3671,7 +3685,12 @@ function (_React$Component) {
         this.props.spot.reviews.forEach(function (review) {
           total += review.rating;
         });
-        this.averageRating = parseFloat(total) / this.props.spot.reviews.length;
+
+        if (this.props.spot.reviews.length === 0) {
+          this.averageRating = "Not yet reviewed";
+        } else {
+          this.averageRating = parseFloat(total) / this.props.spot.reviews.length;
+        }
       } else {
         this.averageRating = 0;
       }
@@ -3729,7 +3748,7 @@ function (_React$Component) {
             getSuggestionItemProps = _ref.getSuggestionItemProps,
             loading = _ref.loading;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps({
-          placeholder: 'Anywhere that you, Cher, own, because you are Cher',
+          placeholder: 'Try Brooklyn',
           className: 'location-search-input'
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "autocomplete-dropdown-container"

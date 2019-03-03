@@ -128,62 +128,63 @@ class Search extends React.Component {
           />
           <Greeting></Greeting>
         </div>
-        <PlacesAutocomplete
-          value={this.state.address}
-          onChange={this.handleChange}
-          onSelect={this.handleSelect}
-        >
-          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-            <div>
-              <input
-                {...getInputProps({
-                  placeholder: 'Anywhere that you, Cher, own, because you are Cher',
-                  className: 'location-search-input',
-                })}
-              />
-              <div className="autocomplete-dropdown-container">
-                {loading && <div>Loading...</div>}
-                {suggestions.map(suggestion => {
-                  const className = suggestion.active
-                    ? 'suggestion-item--active'
-                    : 'suggestion-item';
-                  // inline style for demonstration purpose
-                  const style = suggestion.active
-                    ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                    : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                  return (
-                    <div
-                      {...getSuggestionItemProps(suggestion, {
-                        className,
-                        style,
-                      })}
-                    >
-                      <span>{suggestion.description}</span>
-                    </div>
-                  );
-                })}
+        <div className='search-show-filters'>
+          <PlacesAutocomplete
+            value={this.state.address}
+            onChange={this.handleChange}
+            onSelect={this.handleSelect}
+          >
+            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+              <div>
+                <input
+                  {...getInputProps({
+                    placeholder: 'Try San Francisco',
+                    className: 'location-search-input',
+                  })}
+                />
+                <div className="autocomplete-dropdown-container">
+                  {loading && <div>Loading...</div>}
+                  {suggestions.map(suggestion => {
+                    const className = suggestion.active
+                      ? 'suggestion-item--active'
+                      : 'suggestion-item';
+                    // inline style for demonstration purpose
+                    const style = suggestion.active
+                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                      : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, {
+                          className,
+                          style,
+                        })}
+                      >
+                        <span>{suggestion.description}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
+            )}
+          </PlacesAutocomplete>
+          <section className='guests'>
+            <input type="text" placeholder="How many guests, sugar?" value={`${this.state.guestsNum} ${this.guestPluralSingle}`} readOnly={true} onClick={this.openGuests} />
+            <div id="guest-dropdown" className={this.state.guestHideReveal}>
+              <section>
+                <span>{`${this.state.guestsNum} ${this.guestPluralSingle}`}</span>
+                <button onClick={() => this.handleGuestChange("subtract")}>-</button>
+                <button onClick={() => this.handleGuestChange("add")}>+</button>
+              </section>
             </div>
-          )}
-        </PlacesAutocomplete>
-        <section className='guests'>
-          <p>Guests</p>
-          <input type="text" placeholder="How many guests, sugar?" value={`${this.state.guestsNum} ${this.guestPluralSingle}`} readOnly={true} onClick={this.openGuests} />
-          <div id="guest-dropdown" className={this.state.guestHideReveal}>
-            <section>
-              <span>{`${this.state.guestsNum} ${this.guestPluralSingle}`}</span>
-              <button onClick={() => this.handleGuestChange("subtract")}>-</button>
-              <button onClick={() => this.handleGuestChange("add")}>+</button>
-            </section>
-          </div>
-        </section> 
-        <section className="datepickers">
-          <DatePicker
-            handleStartChange={this.handleStartChange}
-            handleEndChange={this.handleEndChange}
-          />
-          <button onClick={this.handleApplyDate}>Apply</button>
-        </section>
+          </section> 
+          <section className="datepickers">
+            <DatePicker
+              handleStartChange={this.handleStartChange}
+              handleEndChange={this.handleEndChange}
+            />
+            <button onClick={this.handleApplyDate}>Apply</button>
+          </section>
+        </div>
         <div className='search-show-contents'>
           <div className='search-show-index'>
             <SpotIndex

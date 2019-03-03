@@ -39,7 +39,11 @@ class SpotIndexItem extends React.Component {
       this.props.spot.reviews.forEach(review => {
         total += review.rating;
       });
-      this.averageRating = parseFloat(total) / this.props.spot.reviews.length;
+      if (this.props.spot.reviews.length === 0) {
+        this.averageRating = ("Not yet reviewed");
+      } else {
+        this.averageRating = parseFloat(total) / this.props.spot.reviews.length
+      }
     } else {
       this.averageRating = 0;
     }

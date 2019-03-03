@@ -1785,8 +1785,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _spots_spot_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../spots/spot_map */ "./frontend/components/spots/spot_map.jsx");
 /* harmony import */ var _session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../session_form/session_modal */ "./frontend/components/session_form/session_modal.jsx");
 /* harmony import */ var _datepicker_date_picker__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../datepicker/date_picker */ "./frontend/components/datepicker/date_picker.jsx");
-/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
-/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _static_assets_search_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../static_assets/search_icon */ "./frontend/static_assets/search_icon.jsx");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1804,6 +1805,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -1893,8 +1895,8 @@ function (_React$Component) {
     value: function handleSelect(address) {
       var _this2 = this;
 
-      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6__["geocodeByAddress"])(address).then(function (results) {
-        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6__["getLatLng"])(results[0]);
+      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7__["geocodeByAddress"])(address).then(function (results) {
+        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7__["getLatLng"])(results[0]);
       }).then(function (latLng) {
         return _this2.setState({
           long: parseFloat(latLng.lng),
@@ -1982,7 +1984,15 @@ function (_React$Component) {
         destroyErrors: this.props.destroyErrors
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-filters"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_6___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "spot-show-searchbar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_static_assets_search_icon__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        options: {
+          'height': '18px',
+          'width': '18px',
+          'fill': '#333'
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7___default.a, {
         value: this.state.address,
         onChange: this.handleChange,
         onSelect: this.handleSelect
@@ -1992,7 +2002,7 @@ function (_React$Component) {
             getSuggestionItemProps = _ref.getSuggestionItemProps,
             loading = _ref.loading;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps({
-          placeholder: 'Try San Francisco',
+          placeholder: 'Try "Brooklyn"',
           className: 'location-search-input'
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "autocomplete-dropdown-container"
@@ -2009,9 +2019,11 @@ function (_React$Component) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", getSuggestionItemProps(suggestion, {
             className: className,
             style: style
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, suggestion.description));
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "fas fa-map-marker-alt"
+          }), " ", suggestion.description));
         })));
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "guests"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -2578,8 +2590,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../greeting/greeting_container */ "./frontend/components/greeting/greeting_container.jsx");
 /* harmony import */ var _session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../session_form/session_modal */ "./frontend/components/session_form/session_modal.jsx");
 /* harmony import */ var _datepicker_date_picker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../datepicker/date_picker */ "./frontend/components/datepicker/date_picker.jsx");
-/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
-/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _static_assets_search_icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../static_assets/search_icon */ "./frontend/static_assets/search_icon.jsx");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2597,6 +2610,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -2688,8 +2702,8 @@ function (_React$Component) {
     value: function handleSelect(address) {
       var _this2 = this;
 
-      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_4__["geocodeByAddress"])(address).then(function (results) {
-        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_4__["getLatLng"])(results[0]);
+      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5__["geocodeByAddress"])(address).then(function (results) {
+        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5__["getLatLng"])(results[0]);
       }).then(function (latLng) {
         return _this2.setState({
           long: parseFloat(latLng.lng),
@@ -2788,7 +2802,15 @@ function (_React$Component) {
         className: "bookings-search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Share homes and experiences exclusively with Cher."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "where"
-      }, "Where"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      }, "Where"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "splash-searchbar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_static_assets_search_icon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        options: {
+          'height': '18px',
+          'width': '18px',
+          'fill': '#333'
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5___default.a, {
         value: this.state.address,
         onChange: this.handleChange,
         onSelect: this.handleSelect
@@ -2798,7 +2820,7 @@ function (_React$Component) {
             getSuggestionItemProps = _ref.getSuggestionItemProps,
             loading = _ref.loading;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps({
-          placeholder: 'Anywhere that you, Cher, own, because you are Cher',
+          placeholder: 'Try "Brooklyn"',
           className: 'location-search-input'
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "autocomplete-dropdown-container"
@@ -2815,9 +2837,11 @@ function (_React$Component) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", getSuggestionItemProps(suggestion, {
             className: className,
             style: style
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, suggestion.description));
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "fas fa-map-marker-alt"
+          }), " ", suggestion.description));
         })));
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "checkin-checkout"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "datepickers"
@@ -3452,9 +3476,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_rating__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_rating__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-geocode */ "./node_modules/react-geocode/lib/index.js");
 /* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_geocode__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../static_assets/amenity_icons */ "./frontend/static_assets/amenity_icons.jsx");
-/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
-/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _static_assets_search_icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../static_assets/search_icon */ "./frontend/static_assets/search_icon.jsx");
+/* harmony import */ var _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../static_assets/amenity_icons */ "./frontend/static_assets/amenity_icons.jsx");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_10__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3472,6 +3497,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -3652,8 +3678,8 @@ function (_React$Component) {
     value: function handleSelect(address) {
       var _this4 = this;
 
-      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_9__["geocodeByAddress"])(address).then(function (results) {
-        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_9__["getLatLng"])(results[0]);
+      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_10__["geocodeByAddress"])(address).then(function (results) {
+        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_10__["getLatLng"])(results[0]);
       }).then(function (latLng) {
         return _this4.setState({
           long: parseFloat(latLng.lng),
@@ -3713,18 +3739,18 @@ function (_React$Component) {
         reviews: []
       };
       var amenityList = {
-        AirCon: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__["AirCon"],
-        Iron: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__["Iron"],
-        Wifi: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__["Wifi"],
-        Kitchen: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__["Kitchen"],
-        TV: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__["TV"],
-        Washer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__["Washer"],
-        Dryer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__["Dryer"],
-        Parking: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__["Parking"],
-        HairDryer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__["HairDryer"],
-        HotTub: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__["HotTub"],
-        Coffee: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__["Coffee"],
-        Laptop: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_8__["Laptop"]
+        AirCon: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__["AirCon"],
+        Iron: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__["Iron"],
+        Wifi: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__["Wifi"],
+        Kitchen: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__["Kitchen"],
+        TV: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__["TV"],
+        Washer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__["Washer"],
+        Dryer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__["Dryer"],
+        Parking: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__["Parking"],
+        HairDryer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__["HairDryer"],
+        HotTub: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__["HotTub"],
+        Coffee: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__["Coffee"],
+        Laptop: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_9__["Laptop"]
       };
       var amenities = this.props.amenities;
 
@@ -3747,7 +3773,15 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
         closeModal: this.props.closeModal,
         destroyErrors: this.props.destroyErrors
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_9___default.a, {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "spot-show-searchbar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_static_assets_search_icon__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        options: {
+          'height': '18px',
+          'width': '18px',
+          'fill': '#333'
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_10___default.a, {
         value: this.state.address,
         onChange: this.handleChange,
         onSelect: this.handleSelect
@@ -3757,7 +3791,7 @@ function (_React$Component) {
             getSuggestionItemProps = _ref.getSuggestionItemProps,
             loading = _ref.loading;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps({
-          placeholder: 'Try Brooklyn',
+          placeholder: 'Try "Brooklyn"',
           className: 'location-search-input'
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "autocomplete-dropdown-container"
@@ -3774,9 +3808,11 @@ function (_React$Component) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", getSuggestionItemProps(suggestion, {
             className: className,
             style: style
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, suggestion.description));
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "fas fa-map-marker-alt"
+          }), " ", suggestion.description));
         })));
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "whole-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-div"
@@ -4699,6 +4735,41 @@ var Laptop = function Laptop() {
     fillRule: "evenodd"
   })));
 };
+
+/***/ }),
+
+/***/ "./frontend/static_assets/search_icon.jsx":
+/*!************************************************!*\
+  !*** ./frontend/static_assets/search_icon.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var options = _ref.options;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "search-icon"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    viewBox: "0 0 16 16",
+    role: "presentation",
+    "aria-hidden": "true",
+    focusable: "false",
+    style: _objectSpread({}, options, {
+      'display': 'block'
+    })
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "m2.5 7c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5-2 4.5-4.5 4.5-4.5-2-4.5-4.5m13.1 6.9-2.8-2.9c.7-1.1 1.2-2.5 1.2-4 0-3.9-3.1-7-7-7s-7 3.1-7 7 3.1 7 7 7c1.5 0 2.9-.5 4-1.2l2.9 2.8c.2.3.5.4.9.4.3 0 .6-.1.8-.4.5-.5.5-1.2 0-1.7"
+  })));
+});
 
 /***/ }),
 

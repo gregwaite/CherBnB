@@ -4,6 +4,7 @@ import SpotIndex from '../spots/spot_index';
 import SpotMap from '../spots/spot_map';
 import Modal from '../session_form/session_modal';
 import DatePicker from '../datepicker/date_picker';
+import SearchIcon from '../../static_assets/search_icon';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -131,44 +132,47 @@ class Search extends React.Component {
           <Greeting></Greeting>
         </div>
         <div className='search-show-filters'>
-          <PlacesAutocomplete
-            value={this.state.address}
-            onChange={this.handleChange}
-            onSelect={this.handleSelect}
-          >
-            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-              <div>
-                <input
-                  {...getInputProps({
-                    placeholder: 'Try San Francisco',
-                    className: 'location-search-input',
-                  })}
-                />
-                <div className="autocomplete-dropdown-container">
-                  {loading && <div>Loading...</div>}
-                  {suggestions.map(suggestion => {
-                    const className = suggestion.active
-                      ? 'suggestion-item--active'
-                      : 'suggestion-item';
-                    // inline style for demonstration purpose
-                    const style = suggestion.active
-                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                      : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                    return (
-                      <div
-                        {...getSuggestionItemProps(suggestion, {
-                          className,
-                          style,
-                        })}
-                      >
-                        <span>{suggestion.description}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </PlacesAutocomplete>
+            <div className='spot-show-searchbar'>
+              <SearchIcon options={{ 'height': '18px', 'width': '18px', 'fill': '#333' }} />
+              <PlacesAutocomplete
+                value={this.state.address}
+                onChange={this.handleChange}
+                onSelect={this.handleSelect}
+              >
+                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                  <div>
+                    <input
+                      {...getInputProps({
+                        placeholder: 'Try "Brooklyn"',
+                        className: 'location-search-input',
+                      })}
+                    />
+                    <div className="autocomplete-dropdown-container">
+                      {loading && <div>Loading...</div>}
+                      {suggestions.map(suggestion => {
+                        const className = suggestion.active
+                          ? 'suggestion-item--active'
+                          : 'suggestion-item';
+                        // inline style for demonstration purpose
+                        const style = suggestion.active
+                          ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                          : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                        return (
+                          <div
+                            {...getSuggestionItemProps(suggestion, {
+                              className,
+                              style,
+                            })}
+                          >
+                            <span><i className="fas fa-map-marker-alt"></i> {suggestion.description}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </PlacesAutocomplete>
+            </div>
           <section className='guests'>
             <input type="text" placeholder="How many guests, sugar?" value={`${this.state.guestsNum} ${this.guestPluralSingle}`} readOnly={true} onClick={this.openGuests} />
               <div id="guest-dropdown" className={this.state.guestHideReveal}>

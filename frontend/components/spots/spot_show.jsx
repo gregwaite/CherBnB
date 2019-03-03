@@ -6,6 +6,7 @@ import ReviewIndexContainer from '../reviews/review_index_container';
 import SpotMap from './spot_map';
 import Rating from 'react-rating';
 import Geocode from 'react-geocode';
+import SearchIcon from '../../static_assets/search_icon';
 import {
   AirCon,
   Iron,
@@ -221,6 +222,8 @@ class SpotShow extends React.Component {
           />
           <GreetingContainer></GreetingContainer>
         </section>
+        <div className='spot-show-searchbar'>
+          <SearchIcon options={{ 'height': '18px', 'width': '18px', 'fill': '#333' }} />
           <PlacesAutocomplete
             value={this.state.address}
             onChange={this.handleChange}
@@ -230,7 +233,7 @@ class SpotShow extends React.Component {
               <div>
                 <input
                   {...getInputProps({
-                    placeholder: 'Try Brooklyn',
+                    placeholder: 'Try "Brooklyn"',
                     className: 'location-search-input',
                   })}
                 />
@@ -251,7 +254,7 @@ class SpotShow extends React.Component {
                           style,
                         })}
                       >
-                        <span>{suggestion.description}</span>
+                        <span><i className="fas fa-map-marker-alt"></i> {suggestion.description}</span>
                       </div>
                     );
                   })}
@@ -259,6 +262,7 @@ class SpotShow extends React.Component {
               </div>
             )}
           </PlacesAutocomplete>
+        </div>
       </div>
         <div className="whole-show">
           <div className='show-div'>

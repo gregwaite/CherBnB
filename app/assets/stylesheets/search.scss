@@ -28,7 +28,7 @@
   background: white;
   border: 1px solid rgba(0,132,137,0.3);
 }
-.search-show-filters > div > input{
+.search-show-filters > div > div > input{
   width: 140%;
   height: 44px;
   border-right: 50px;
@@ -38,7 +38,7 @@
   border-width: 1px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
-  padding-left: 10px;
+  padding-left: 50px;
   color:#484848; 
   margin-bottom: 1%;
 }

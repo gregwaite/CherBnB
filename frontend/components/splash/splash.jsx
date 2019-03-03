@@ -2,6 +2,7 @@ import React from 'react';
 import GreetingContainer from '../greeting/greeting_container';
 import Modal from '../session_form/session_modal';
 import DatePicker from '../datepicker/date_picker';
+import SearchIcon from '../../static_assets/search_icon';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -134,44 +135,47 @@ class Splash extends React.Component {
       <div className='bookings-search'>
         <h1>Share homes and experiences exclusively with Cher.</h1>
         <p className='where'>Where</p>
-          <PlacesAutocomplete
-            value={this.state.address}
-            onChange={this.handleChange}
-            onSelect={this.handleSelect}
-          >
-            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-              <div>
-                <input
-                  {...getInputProps({
-                    placeholder: 'Anywhere that you, Cher, own, because you are Cher',
-                    className: 'location-search-input',
-                  })}
-                />
-                <div className="autocomplete-dropdown-container">
-                  {loading && <div>Loading...</div>}
-                  {suggestions.map(suggestion => {
-                    const className = suggestion.active
-                      ? 'suggestion-item--active'
-                      : 'suggestion-item';
-                    // inline style for demonstration purpose
-                    const style = suggestion.active
-                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                      : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                    return (
-                      <div
-                        {...getSuggestionItemProps(suggestion, {
-                          className,
-                          style,
-                        })}
-                      >
-                        <span>{suggestion.description}</span>
-                      </div>
-                    );
-                  })}
+          <div id="splash-searchbar">
+            <SearchIcon options={{ 'height': '18px', 'width': '18px', 'fill': '#333' }} />
+            <PlacesAutocomplete
+              value={this.state.address}
+              onChange={this.handleChange}
+              onSelect={this.handleSelect}
+            >
+              {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                <div>
+                  <input
+                    {...getInputProps({
+                      placeholder: 'Try "Brooklyn"',
+                      className: 'location-search-input',
+                    })}
+                  />
+                  <div className="autocomplete-dropdown-container">
+                    {loading && <div>Loading...</div>}
+                    {suggestions.map(suggestion => {
+                      const className = suggestion.active
+                        ? 'suggestion-item--active'
+                        : 'suggestion-item';
+                      // inline style for demonstration purpose
+                      const style = suggestion.active
+                        ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                        : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                      return (
+                        <div
+                          {...getSuggestionItemProps(suggestion, {
+                            className,
+                            style,
+                          })}
+                        >
+                          <span><i className="fas fa-map-marker-alt"></i> {suggestion.description}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            )}
-          </PlacesAutocomplete>
+              )}
+            </PlacesAutocomplete>
+          </div>
           
           <div className='checkin-checkout'>
             <p>Check In</p>

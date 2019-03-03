@@ -59,30 +59,31 @@
 
 .whole-show {
   display: flex;
-  justify-content: space-between
 }
 
 .whole-show .bookings-search {
-  position: fixed;
-  margin-left: 55%;
-  margin-top: 8%;
-  margin-right: none;
+  top: 40px;
+  position: sticky;
   border-radius: 3px;
   border: .6px solid gray;
   height: 360px;
   width: 420px;
-
-
 }
 .whole-show .guests  {
   width: 95%;
   margin-bottom: 4%;
 }
 .whole-show .bookings-search > button {
-  
   margin-top: 10px;
   margin-bottom: 4%;
+}
 
+.spot-show-map-search {
+  
+}
+.spot-show-map-search .spot-map #map-container{
+  width: 150%;
+  margin-bottom: 10%;
 }
 
 .show-datepickers .datepickers .date-pickers .DateRangePicker > div > div {

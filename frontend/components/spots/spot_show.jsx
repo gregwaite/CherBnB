@@ -3,6 +3,7 @@ import GreetingContainer from '../greeting/greeting_container';
 import Modal from '../session_form/session_modal';
 import DatePicker from '../datepicker/date_picker';
 import ReviewIndexContainer from '../reviews/review_index_container';
+import SpotMap from './spot_map';
 import Rating from 'react-rating';
 import Geocode from 'react-geocode';
 import {
@@ -39,9 +40,12 @@ class SpotShow extends React.Component {
       guestHideReveal: "hidden-guest-dropdown",
       location: "",
       address: "",
+      center: this.props.center,
+      bounds: this.props.bounds
     };
     
     this.guestPluralSingle = "Cher";
+    
 
     this.handleGeocode = this.handleGeocode.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -57,7 +61,14 @@ class SpotShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchSpot(this.props.match.params.spotId);
+    const that = this;
+    this.props.fetchSpot(this.props.match.params.spotId).then((result) => {
+      if (that.state.center.lat !== result.spot.lat){
+        that.setState({center: { lat: result.spot.lat, lng: result.spot.long }});
+        that.props.updateCenter("center", { lat: result.spot.lat, lng: result.spot.long });
+        this.props.updateFilter('bounds', this.props.bounds);
+      }
+    });
     this.elementCheck = document.querySelector('#guest-dropdown');
     document.body.addEventListener('click', this.event);
   }
@@ -243,6 +254,9 @@ class SpotShow extends React.Component {
             )}
           </PlacesAutocomplete>
         </section>
+        <section>
+          
+        </section>
         <div className="whole-show">
           <div className='show-div'>
             <img src={spot.photoUrls[0]} />
@@ -303,39 +317,47 @@ class SpotShow extends React.Component {
               </section>
             </div>
           </div>
+          <section className="spot-show-map-search">
+            <h1>The Cherborhood</h1>
+            <div className='spot-map'>
+              <SpotMap
+                spots={this.props.spots}
+                updateFilter={this.props.updateFilter}
+                center={this.state.center}
+              ></SpotMap>
+            </div>
 
-          <div className="bookings-search">
-            <h1>Book this spot, me. I am Cher.</h1>
-            <div className='checkin-checkout'>
-              <p>Check In</p>
-              <p>Check Out</p>
-            </div>
-            <div className="show-datepickers">
-              <section className="datepickers">
-                  <DatePicker
-                    handleStartChange={this.handleStartChange}
-                    handleEndChange={this.handleEndChange}
-                    spot={spot}
-                    blockSome={true}
-                  />
-              </section>
-            </div>
-            <section className='guests'>
-              <p>Guests</p>
-              <input type="text" placeholder="How many guests, sugar?" value={`${this.state.guestsNum} ${this.guestPluralSingle}`} readOnly={true} onClick={this.openGuests} />
-              <div id="guest-dropdown" className={this.state.guestHideReveal}>
-                <section>
-                  <span>{`${this.state.guestsNum} ${this.guestPluralSingle}`}</span>
-                  <button onClick={() => this.handleGuestChange("subtract")}>-</button>
-                  <button onClick={() => this.handleGuestChange("add")}>+</button>
+            <div className="bookings-search">
+              <h1>Book this spot, me. I am Cher.</h1>
+              <div className='checkin-checkout'>
+                <p>Check In</p>
+                <p>Check Out</p>
+              </div>
+              <div className="show-datepickers">
+                <section className="datepickers">
+                    <DatePicker
+                      handleStartChange={this.handleStartChange}
+                      handleEndChange={this.handleEndChange}
+                      spot={spot}
+                      blockSome={true}
+                    />
                 </section>
               </div>
-            </section> 
+              <section className='guests'>
+                <p>Guests</p>
+                <input type="text" placeholder="How many guests, sugar?" value={`${this.state.guestsNum} ${this.guestPluralSingle}`} readOnly={true} onClick={this.openGuests} />
+                <div id="guest-dropdown" className={this.state.guestHideReveal}>
+                  <section>
+                    <span>{`${this.state.guestsNum} ${this.guestPluralSingle}`}</span>
+                    <button onClick={() => this.handleGuestChange("subtract")}>-</button>
+                    <button onClick={() => this.handleGuestChange("add")}>+</button>
+                  </section>
+                </div>
+              </section> 
 
-            <button className='search-button' onClick={this.handleBookSubmit}>Book</button>
-          </div>
-
-
+              <button className='search-button' onClick={this.handleBookSubmit}>Book</button>
+            </div>
+          </section>
         </div>
 
         <div className="reviews-container">

@@ -9,7 +9,7 @@ const mapStateToProps = state => {
   return {
     spots: Object.values(state.entities.spots),
     center: state.ui.filter.center,
-    bounds: state.ui.filter.bounds
+    bounds: state.ui.filter.bounds,
   };
 };
 

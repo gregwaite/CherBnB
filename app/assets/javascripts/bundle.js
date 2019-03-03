@@ -3804,7 +3804,7 @@ function (_React$Component) {
         emptySymbol: "fa fa-star-o fa-2x",
         fullSymbol: "fa fa-star fa-2x",
         fractions: 2,
-        initialRating: this.averageRating
+        initialRating: this.initialRating
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.averageRating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Average Rating")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-datepickers"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Availabity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {

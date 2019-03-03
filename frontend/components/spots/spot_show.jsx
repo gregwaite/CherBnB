@@ -209,7 +209,7 @@ class SpotShow extends React.Component {
       );
     }
     spot.location = this.state.location;
-
+    
     this.checkAverage();
     return (
       <div id='show-greeting'>
@@ -299,7 +299,7 @@ class SpotShow extends React.Component {
                 emptySymbol="fa fa-star-o fa-2x"
                 fullSymbol="fa fa-star fa-2x"
                 fractions={2}
-                initialRating={this.averageRating}
+                initialRating={this.initialRating}
               />
               <li>{this.averageRating}</li>
               <li>Average Rating</li>

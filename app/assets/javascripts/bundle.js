@@ -3202,6 +3202,7 @@ function (_React$Component) {
       });
       this.checkAverage();
       spot.location = this.state.location;
+      this.initialRating = typeof this.averageRating === "string" ? 0 : this.averageRating;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         key: spot.id
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -3225,7 +3226,7 @@ function (_React$Component) {
         emptySymbol: "fa fa-star-o fa-2x",
         fullSymbol: "fa fa-star fa-2x",
         fractions: 2,
-        initialRating: this.averageRating
+        initialRating: this.initialRating
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.averageRating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Average Rating"))));
     }
   }]);

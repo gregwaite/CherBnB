@@ -61,6 +61,7 @@ class SpotIndexItem extends React.Component {
     );
     this.checkAverage();
     spot.location = this.state.location;
+    this.initialRating = typeof this.averageRating === "string" ? 0 : this.averageRating;
     return (
       <div key={spot.id}>
         <Link className='spot-link' to={`/spots/${spot.id}`}>
@@ -84,7 +85,7 @@ class SpotIndexItem extends React.Component {
               emptySymbol="fa fa-star-o fa-2x"
               fullSymbol="fa fa-star fa-2x"
               fractions={2}
-              initialRating={this.averageRating}
+              initialRating={this.initialRating }
             />
             <li>{this.averageRating}</li>
             <li>Average Rating</li>

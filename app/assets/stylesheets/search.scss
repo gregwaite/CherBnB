@@ -12,7 +12,11 @@
   border-radius: 3px;
 }
 
-
+.search-show-greeting-filter{
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
 
 .search-show-greeting{
   background: gray
@@ -21,6 +25,8 @@
 .search-show-filters {
   display: flex;
   height: 80px;
+  background: white;
+  border-bottom: 1px solid black ;
 }
 .search-show-filters > div > input{
   width: 140%;
@@ -63,18 +69,19 @@
 .search-show-contents {
   display: flex;
   float: right;
+  margin-top: 14%;
 }
 
 
 .search-show-map {
   position: sticky;
-  top: 20px !important;
+  top: 190px !important;
   margin-right: 3%;
-  height: 700px;
+  height: 600px;
 }
 .search-show-map #map-container {
   position: sticky !important;
   top: 20px !important;
-  height: 700px;
+  height: 600px;
   width: 500px;
 }

@@ -213,7 +213,8 @@ class SpotShow extends React.Component {
     this.checkAverage();
     return (
       <div id='show-greeting'>
-        <section>
+      <div className="show-navbar-div">
+        <section className="show-navbar">
           <Modal
             closeModal={this.props.closeModal}
             destroyErrors={this.props.destroyErrors}
@@ -258,6 +259,7 @@ class SpotShow extends React.Component {
               </div>
             )}
           </PlacesAutocomplete>
+      </div>
         <div className="whole-show">
           <div className='show-div'>
             <img src={spot.photoUrls[0]} />

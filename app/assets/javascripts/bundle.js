@@ -1974,6 +1974,8 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-show-greeting-filter"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-greeting"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__["default"], {
         closeModal: this.props.closeModal,
@@ -2036,7 +2038,7 @@ function (_React$Component) {
         numMonths: 2
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleApplyDate
-      }, "Apply"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Apply")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-contents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-index"
@@ -3734,7 +3736,11 @@ function (_React$Component) {
       this.checkAverage();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "show-greeting"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-navbar-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "show-navbar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
         closeModal: this.props.closeModal,
         destroyErrors: this.props.destroyErrors
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_9___default.a, {
@@ -3766,7 +3772,7 @@ function (_React$Component) {
             style: style
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, suggestion.description));
         })));
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "whole-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-div"

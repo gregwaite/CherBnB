@@ -121,6 +121,8 @@ class Search extends React.Component {
   render() {
     return (
       <div className='search-show-div'>
+      <div className='search-show-greeting-filter'>
+
         <div className='search-show-greeting'>
           <Modal
             closeModal={this.props.closeModal}
@@ -185,6 +187,7 @@ class Search extends React.Component {
             />
             <button onClick={this.handleApplyDate}>Apply</button>
           </section>
+      </div>
         </div>
         <div className='search-show-contents'>
           <div className='search-show-index'>

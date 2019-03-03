@@ -1,8 +1,11 @@
 
-#show-greeting > section {
+.show-navbar-div {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+.show-navbar {
   background: image-url('cherheader.original.jpg');
-  height: 105px;
-  
 }
 
 #show-greeting > li {
@@ -76,7 +79,7 @@
 }
 
 .whole-show .bookings-search {
-  top: 40px;
+  top: 130px;
   position: sticky;
   border-radius: 3px;
   border: .6px solid gray;

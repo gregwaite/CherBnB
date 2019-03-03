@@ -4,6 +4,12 @@
   top: 0;
   z-index: 4;
 }
+.show-navbar-div > div{
+  display: flex;
+  height: 80px;
+  background: white;
+  border: 1px solid rgba(0,132,137,0.3);
+}
 .show-navbar {
   background: image-url('cherheader.original.jpg');
 }
@@ -79,7 +85,7 @@
 }
 
 .whole-show .bookings-search {
-  top: 130px;
+  top: 220px;
   position: sticky;
   border-radius: 3px;
   border: .6px solid gray;

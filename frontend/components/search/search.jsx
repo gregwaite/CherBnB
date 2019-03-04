@@ -195,10 +195,10 @@ class Search extends React.Component {
               handleEndChange={this.handleEndChange}
               numMonths={2}
               type="search"
-              button= {<span onClick={this.handleApplyDate} className='date-apply-span'>Apply</span>}
             />
             
           </section>
+          <span onClick={this.handleApplyDate} className='date-apply-span'>Apply</span>
       </div>
         </div>
         <div className='search-show-contents'>

@@ -991,12 +991,10 @@ function (_React$Component) {
         this.startPlaceholder = date.format("MMM DD");
         this.endPlaceholder = date.add(1, 'd').format("MMM DD");
         this.showClear = false;
-        this.button = this.props.button;
       } else {
         this.startPlaceholder = "mm/dd/yyyy";
         this.endPlaceholder = "mm/dd/yyyy";
         this.showClear = true;
-        this.button = null;
       }
 
       if (this.props.availCal) {
@@ -1073,7 +1071,7 @@ function (_React$Component) {
           showClearDates: this.showClear,
           displayFormat: 'MMM DD' // openDatePicker={this.state.openDatePicker}
 
-        }), this.props.button);
+        }));
       }
     }
   }]);
@@ -2076,12 +2074,11 @@ function (_React$Component) {
         handleStartChange: this.handleStartChange,
         handleEndChange: this.handleEndChange,
         numMonths: 2,
-        type: "search",
-        button: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          onClick: this.handleApplyDate,
-          className: "date-apply-span"
-        }, "Apply")
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        type: "search"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.handleApplyDate,
+        className: "date-apply-span"
+      }, "Apply"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-contents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-index"

@@ -67,12 +67,10 @@ class DatePicker extends React.Component {
       this.startPlaceholder = date.format("MMM DD");
       this.endPlaceholder = date.add(1, 'd').format("MMM DD");
       this.showClear = false;
-      this.button = this.props.button;
     } else {
       this.startPlaceholder = "mm/dd/yyyy";
       this.endPlaceholder = "mm/dd/yyyy";
       this.showClear = true;
-      this.button = null;
     }
     if (this.props.availCal) {
       return (
@@ -118,7 +116,6 @@ class DatePicker extends React.Component {
             displayFormat={'MMM DD'}
             // openDatePicker={this.state.openDatePicker}
           />
-          {this.props.button}
         </section>
       );
     }

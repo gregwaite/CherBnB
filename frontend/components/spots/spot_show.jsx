@@ -220,7 +220,9 @@ class SpotShow extends React.Component {
             closeModal={this.props.closeModal}
             destroyErrors={this.props.destroyErrors}
           />
-          <GreetingContainer></GreetingContainer>
+          <GreetingContainer
+            noText={true}
+          ></GreetingContainer>
         <div className='spot-show-searchbar'>
           <SearchIcon options={{ 'height': '18px', 'width': '18px', 'fill': '#333' }} />
           <PlacesAutocomplete

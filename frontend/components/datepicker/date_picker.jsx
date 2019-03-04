@@ -62,6 +62,18 @@ class DatePicker extends React.Component {
     const { startDate, endDate } = this.state;
     // const startDateString = startDate && startDate.format('ddd, MMM Do');
     // const endDateString = endDate && endDate.format('ddd, MMM Do');
+    if (this.props.type === "search") {
+      const date = this.moment()
+      this.startPlaceholder = date.format("MMM DD");
+      this.endPlaceholder = date.add(1, 'd').format("MMM DD");
+      this.showClear = false;
+      this.button = this.props.button;
+    } else {
+      this.startPlaceholder = "mm/dd/yyyy";
+      this.endPlaceholder = "mm/dd/yyyy";
+      this.showClear = true;
+      this.button = null;
+    }
     if (this.props.availCal) {
       return (
         <section className='date-pickers'>
@@ -89,8 +101,8 @@ class DatePicker extends React.Component {
             startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
             endDate={endDate} // momentPropTypes.momentObj or null,
             endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-            startDatePlaceholderText="mm/dd/yyyy"
-            endDatePlaceholderText="mm/dd/yyyy"
+            startDatePlaceholderText={this.startPlaceholder}
+            endDatePlaceholderText={this.endPlaceholder}
             onDatesChange={({startDate, endDate}) =>{ 
               this.setState({startDate, endDate});
               const start = startDate || {}
@@ -102,9 +114,11 @@ class DatePicker extends React.Component {
             onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
             numberOfMonths={this.props.numMonths}
             isDayBlocked={day => this.checkBlockedDays(day)}
-            showClearDates={true}
+            showClearDates={this.showClear}
+            displayFormat={'MMM DD'}
             // openDatePicker={this.state.openDatePicker}
           />
+          {this.props.button}
         </section>
       );
     }

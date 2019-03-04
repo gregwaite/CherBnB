@@ -129,7 +129,10 @@ class Search extends React.Component {
             closeModal={this.props.closeModal}
             destroyErrors={this.props.destroyErrors}
           />
-          <Greeting></Greeting>
+          <Greeting
+            noText={true}
+          >
+          </Greeting>
         </div>
         <div className='search-show-filters'>
             <div className='spot-show-searchbar'>
@@ -191,8 +194,10 @@ class Search extends React.Component {
               handleStartChange={this.handleStartChange}
               handleEndChange={this.handleEndChange}
               numMonths={2}
+              type="search"
+              button= {<span onClick={this.handleApplyDate} className='date-apply-span'>Apply</span>}
             />
-            <button onClick={this.handleApplyDate}>Apply</button>
+            
           </section>
       </div>
         </div>

@@ -986,6 +986,19 @@ function (_React$Component) {
           endDate = _this$state.endDate; // const startDateString = startDate && startDate.format('ddd, MMM Do');
       // const endDateString = endDate && endDate.format('ddd, MMM Do');
 
+      if (this.props.type === "search") {
+        var date = this.moment();
+        this.startPlaceholder = date.format("MMM DD");
+        this.endPlaceholder = date.add(1, 'd').format("MMM DD");
+        this.showClear = false;
+        this.button = this.props.button;
+      } else {
+        this.startPlaceholder = "mm/dd/yyyy";
+        this.endPlaceholder = "mm/dd/yyyy";
+        this.showClear = true;
+        this.button = null;
+      }
+
       if (this.props.availCal) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
           className: "date-pickers"
@@ -1025,8 +1038,8 @@ function (_React$Component) {
           ,
           endDateId: "your_unique_end_date_id" // PropTypes.string.isRequired,
           ,
-          startDatePlaceholderText: "mm/dd/yyyy",
-          endDatePlaceholderText: "mm/dd/yyyy",
+          startDatePlaceholderText: this.startPlaceholder,
+          endDatePlaceholderText: this.endPlaceholder,
           onDatesChange: function onDatesChange(_ref) {
             var startDate = _ref.startDate,
                 endDate = _ref.endDate;
@@ -1057,9 +1070,10 @@ function (_React$Component) {
           isDayBlocked: function isDayBlocked(day) {
             return _this3.checkBlockedDays(day);
           },
-          showClearDates: true // openDatePicker={this.state.openDatePicker}
+          showClearDates: this.showClear,
+          displayFormat: 'MMM DD' // openDatePicker={this.state.openDatePicker}
 
-        }));
+        }), this.props.button);
       }
     }
   }]);
@@ -1089,7 +1103,8 @@ __webpack_require__.r(__webpack_exports__);
 var Greeting = function Greeting(_ref) {
   var currentUser = _ref.currentUser,
       logout = _ref.logout,
-      openModal = _ref.openModal;
+      openModal = _ref.openModal,
+      noText = _ref.noText;
 
   var sessionLinks = function sessionLinks() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -1111,6 +1126,14 @@ var Greeting = function Greeting(_ref) {
   };
 
   var personalGreeting = function personalGreeting() {
+    var text;
+
+    if (noText) {
+      text = "";
+    } else {
+      text = "What can I, Cher, do for you, ".concat(currentUser.username, " ? I am Cher.");
+    }
+
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hgroup", {
       className: "header-group"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1118,7 +1141,7 @@ var Greeting = function Greeting(_ref) {
       to: "/"
     }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
       className: "header-name"
-    }, "What can I, Cher, do for you, ", currentUser.username, "? I am Cher."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }, text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "header-button",
       onClick: function onClick() {
         return openModal('booking');
@@ -1157,11 +1180,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
+var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var session = _ref.session,
       users = _ref.entities.users;
   return {
-    currentUser: users[session.id]
+    currentUser: users[session.id],
+    noText: ownProps.noText
   };
 };
 
@@ -1982,7 +2006,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_4__["default"], {
         closeModal: this.props.closeModal,
         destroyErrors: this.props.destroyErrors
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        noText: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-filters"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spot-show-searchbar"
@@ -2049,10 +2075,13 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_datepicker_date_picker__WEBPACK_IMPORTED_MODULE_5__["default"], {
         handleStartChange: this.handleStartChange,
         handleEndChange: this.handleEndChange,
-        numMonths: 2
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleApplyDate
-      }, "Apply")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        numMonths: 2,
+        type: "search",
+        button: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          onClick: this.handleApplyDate,
+          className: "date-apply-span"
+        }, "Apply")
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-contents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-index"
@@ -3773,7 +3802,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_session_form_session_modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
         closeModal: this.props.closeModal,
         destroyErrors: this.props.destroyErrors
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        noText: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spot-show-searchbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_static_assets_search_icon__WEBPACK_IMPORTED_MODULE_8__["default"], {
         options: {

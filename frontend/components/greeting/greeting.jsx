@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Greeting = ({currentUser, logout, openModal}) => {
+const Greeting = ({currentUser, logout, openModal, noText}) => {
   const sessionLinks = () => {
     return (
       <nav className="login-signup">
@@ -20,11 +20,17 @@ const Greeting = ({currentUser, logout, openModal}) => {
   };
 
   const personalGreeting = () => {
+    let text;
+    if (noText) {
+      text = ""
+    } else {
+      text = `What can I, Cher, do for you, ${ currentUser.username } ? I am Cher.`
+    }
     return (
       <hgroup className="header-group">
         <Link className='home-link' to='/'>Home</Link>
         <h2 className="header-name">
-          What can I, Cher, do for you, {currentUser.username}? I am Cher.
+          {text}
         </h2>
         <br/>
         <button className="header-button" onClick={() => openModal('booking')}>Bookings</button>

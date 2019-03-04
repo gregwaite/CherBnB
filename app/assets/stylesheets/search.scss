@@ -19,14 +19,22 @@
 }
 
 .search-show-greeting{
-  background: image-url('cherheader.original.jpg');
+  background: white;
+  // height: 50px;
+}
+.search-show-greeting > hgroup > button{
+  color: black;
+}
+.search-show-greeting > nav > section > button{
+  color: black;
 }
 
 .search-show-filters {
   display: flex;
   height: 47px;
   background: white;
-  border: 1px solid rgba(0,132,137,0.3);
+  border-bottom: 1px solid #ebebeb;
+  padding-top: 13px;
 }
 .search-show-filters > div > div > input{
   width: 400px;
@@ -35,7 +43,7 @@
   border-radius: 3px;
   border-color: rgb(230, 230, 230);
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 15px;
   padding-left: 50px;
@@ -115,7 +123,7 @@
 
 .spot-show-searchbar {
   position: absolute;
-  top: 25px;
+  top: 7px;
   left: 250px;
 }
 
@@ -123,9 +131,8 @@
   color: #008489;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 14px;
-  position: fixed;
-  top: 110px;
-  left: 433px;
+  padding-left: 5px;
+  padding-top: 5px;
 }
 .date-apply-span:hover {
   cursor: pointer;

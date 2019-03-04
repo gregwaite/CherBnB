@@ -322,7 +322,7 @@ class SpotShow extends React.Component {
                 emptySymbol="fa fa-star-o fa-2x"
                 fullSymbol="fa fa-star fa-2x"
                 fractions={2}
-                initialRating={this.initialRating}
+                initialRating={typeof this.averageRating === "string" ? 0 : this.averageRating}
               />
               <li>{this.averageRating}</li>
               <li>Average Rating</li>

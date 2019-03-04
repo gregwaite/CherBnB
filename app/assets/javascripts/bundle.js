@@ -1094,7 +1094,9 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _static_assets_main_icon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../static_assets/main_icon */ "./frontend/static_assets/main_icon.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
 
 
 
@@ -1108,10 +1110,10 @@ var Greeting = function Greeting(_ref) {
   var sessionLinks = function sessionLinks() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
       className: "login-signup"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
       className: "home-link",
       to: "/"
-    }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_static_assets_main_icon__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
       className: "session-menu"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       onClick: function onClick() {
@@ -1135,10 +1137,10 @@ var Greeting = function Greeting(_ref) {
 
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hgroup", {
       className: other || "header-group"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
       className: "home-link",
       to: "/"
-    }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_static_assets_main_icon__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
       className: "header-name"
     }, text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "header-button",
@@ -2077,10 +2079,10 @@ function (_React$Component) {
         handleEndChange: this.handleEndChange,
         numMonths: 2,
         type: "search"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         onClick: this.handleApplyDate,
         className: "date-apply-span"
-      }, "Apply"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Apply")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-contents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-index"
@@ -3891,7 +3893,7 @@ function (_React$Component) {
         emptySymbol: "fa fa-star-o fa-2x",
         fullSymbol: "fa fa-star fa-2x",
         fractions: 2,
-        initialRating: this.initialRating
+        initialRating: typeof this.averageRating === "string" ? 0 : this.averageRating
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.averageRating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Average Rating")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reviews-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_review_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -4766,6 +4768,44 @@ var Laptop = function Laptop() {
     fillRule: "evenodd"
   })));
 };
+
+/***/ }),
+
+/***/ "./frontend/static_assets/main_icon.jsx":
+/*!**********************************************!*\
+  !*** ./frontend/static_assets/main_icon.jsx ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var style = {
+    'height': '2em',
+    'width': '2em',
+    'display': 'block',
+    'fill': "#FF5A5F"
+  };
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main-icon-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "svg-main-icon-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "svg-main-icon-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    viewBox: "0 0 1000 1000",
+    role: "presentation",
+    "aria-hidden": "true",
+    focusable: "false",
+    style: style
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "m499.3 736.7c-51-64-81-120.1-91-168.1-10-39-6-70 11-93 18-27 45-40 80-40s62 13 80 40c17 23 21 54 11 93-11 49-41 105-91 168.1zm362.2 43c-7 47-39 86-83 105-85 37-169.1-22-241.1-102 119.1-149.1 141.1-265.1 90-340.2-30-43-73-64-128.1-64-111 0-172.1 94-148.1 203.1 14 59 51 126.1 110 201.1-37 41-72 70-103 88-24 13-47 21-69 23-101 15-180.1-83-144.1-184.1 5-13 15-37 32-74l1-2c55-120.1 122.1-256.1 199.1-407.2l2-5 22-42c17-31 24-45 51-62 13-8 29-12 47-12 36 0 64 21 76 38 6 9 13 21 22 36l21 41 3 6c77 151.1 144.1 287.1 199.1 407.2l1 1 20 46 12 29c9.2 23.1 11.2 46.1 8.2 70.1zm46-90.1c-7-22-19-48-34-79v-1c-71-151.1-137.1-287.1-200.1-409.2l-4-6c-45-92-77-147.1-170.1-147.1-92 0-131.1 64-171.1 147.1l-3 6c-63 122.1-129.1 258.1-200.1 409.2v2l-21 46c-8 19-12 29-13 32-51 140.1 54 263.1 181.1 263.1 1 0 5 0 10-1h14c66-8 134.1-50 203.1-125.1 69 75 137.1 117.1 203.1 125.1h14c5 1 9 1 10 1 127.1.1 232.1-123 181.1-263.1z"
+  })))));
+});
 
 /***/ }),
 

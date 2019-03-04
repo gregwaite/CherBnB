@@ -10,6 +10,10 @@
   background-size: cover;
   position: absolute;
 }
+
+.home-header .login-signup {
+  border: none;
+}
 .home-header > h1{
   display: flex;
   margin-top:4%;
@@ -19,11 +23,17 @@
   font-weight: bold;
 }
 
+.home-header > nav > a > div > div > div > svg {
+  fill: white !important;
+}
+
 
 .login-signup {
   display: flex;
   align-items: center;
-  justify-content: space-between
+  justify-content: space-between;
+  border-bottom: 1px solid #ebebeb;
+  height: 60px;
 }
 
 .login-signup > a:link {
@@ -40,18 +50,18 @@
   margin-left: 10%;
   margin-top: 34px;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   outline: none;
   border: 3px solid transparent;
   outline: none;
 }
+// .login-signup > a > div > div > div > svg{
+//   fill: white !important;
+// }
 
 .login-signup > a:hover {
   cursor: pointer;
-  border-bottom-color: rgb(230, 230, 230);
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
 }
 
 
@@ -70,11 +80,7 @@
   outline: none;
   height: 100px;
   color: white;
-  text-shadow: -.3px -.3px 0 #000,
-		.3px -.3px 0 #000,
-		-.3px .3px 0 #000,
-		.3px .3px 0 #000;
-  font-size: 16px;
+  font-size: 14px;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
@@ -110,8 +116,7 @@
   height: 100px;
   margin-left: 10%;
   color: white;
-  font-size: 16px;
-  font-size: 16px;
+  font-size: 14px;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   outline: none;
   border: 3px solid transparent;
@@ -131,30 +136,22 @@
 }
 .header-group > a:link:hover {
   cursor: pointer;
-  border-bottom-color: rgb(230, 230, 230);
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
 }
 
 .header-group > a {
   display: flex;
-  border: none;
-  background-color: transparent;
-  height: 60px;
   margin-left: 10%;
-  margin-top: 40px;
-  color: white;
-  font-size: 16px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  margin-top: 33px;
   outline: none;
+  fill: white;
 }
 
 .header-group > a:hover {
-  text-decoration: none;
   cursor: pointer;
-  border-bottom-color: rgb(230, 230, 230);
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
+}
+
+.header-group > a:link > div > div .svg-main-icon-wrapper > svg {
+  fill: white;
 }
 
 
@@ -177,12 +174,7 @@
   height: 100px;
   margin-left: 10%;
   color: white;
-  text-shadow: -.3px -.3px 0 #000,
-  .3px -.3px 0 #000,
-  -.3px .3px 0 #000,
-  .3px .3px 0 #000;
-  font-size: 16px;
-  font-size: 16px;
+  font-size: 14px;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   outline: none;
   border: 3px solid transparent;
@@ -195,46 +187,17 @@
   border-bottom-width: 3px;
 }
 
-.header-group-other > a:link {
-  text-decoration: none;
-  color: white;
-  text-shadow: -.3px -.3px 0 #000,
-  .3px -.3px 0 #000,
-  -.3px .3px 0 #000,
-  .3px .3px 0 #000;
-  font-size: 16px;
-}
-.header-group-other > a:link:hover {
-  cursor: pointer;
-  border-bottom-color: rgb(230, 230, 230);
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-}
-
 .header-group-other > a {
   display: flex;
-  border: none;
-  background-color: transparent;
-  height: 60px;
   margin-left: 10%;
-  margin-top: 40px;
-  color: white;
-  text-shadow: -.3px -.3px 0 #000,
-  .3px -.3px 0 #000,
-  -.3px .3px 0 #000,
-  .3px .3px 0 #000;
-  font-size: 16px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  margin-top: 33px;
   outline: none;
 }
 
 .header-group-other > a:hover {
-  text-decoration: none;
   cursor: pointer;
-  border-bottom-color: rgb(230, 230, 230);
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
 }
+
 
 #guest-dropdown{
   border-radius: 3px;

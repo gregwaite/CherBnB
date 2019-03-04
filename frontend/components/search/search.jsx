@@ -198,8 +198,8 @@ class Search extends React.Component {
               type="search"
             />
             
-          </section>
           <span onClick={this.handleApplyDate} className='date-apply-span'>Apply</span>
+          </section>
       </div>
         </div>
         <div className='search-show-contents'>

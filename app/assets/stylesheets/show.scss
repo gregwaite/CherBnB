@@ -8,10 +8,17 @@
   display: flex;
   height: 70px;
   background: white;
-  border: 1px solid rgba(0,132,137,0.3);
+  border: 1px solid #ebebeb;
 }
 .show-navbar {
-  background: image-url('cherheader.original.jpg');
+  background: white;
+}
+.show-navbar > hgroup > button {
+  color: black;
+}
+
+.show-navbar > nav > section > button {
+  color: black;
 }
 
 

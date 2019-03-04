@@ -1,11 +1,15 @@
 import React from 'react';
+import MainLogo from '../../static_assets/main_icon';
 import { Link } from 'react-router-dom';
 
 const Greeting = ({currentUser, logout, openModal, noText, other}) => {
   const sessionLinks = () => {
     return (
       <nav className="login-signup">
-        <Link className='home-link' to='/'>Home</Link>
+        <Link className='home-link' to='/'>
+          <MainLogo>
+          </MainLogo>
+        </Link>
         <section className='session-menu'>
           <button onClick={() => openModal('login')}>
             Log In Sugar
@@ -28,7 +32,10 @@ const Greeting = ({currentUser, logout, openModal, noText, other}) => {
     }
     return (
       <hgroup className={other || "header-group"}>
-        <Link className='home-link' to='/'>Home</Link>
+        <Link className='home-link' to='/'>
+          <MainLogo>
+          </MainLogo>
+        </Link>
         <h2 className="header-name">
           {text}
         </h2>

@@ -10,10 +10,10 @@ class Api::SpotsController < ApplicationController
 
   def index
     if bounds && guest_request && dates
-      spots = Spot.in_bounds(bounds, guest_request, dates)
+      spots = Spot.with_attached_pictures.in_bounds(bounds, guest_request, dates).includes(:bookings, :reviews)
     elsif bounds && !dates
       dates = nil
-      spots = Spot.in_bounds(bounds, guest_request, dates)
+      spots = Spot.with_attached_pictures.in_bounds(bounds, guest_request, dates).includes(:bookings, :reviews)
     else
       spots = Spot.all
     end

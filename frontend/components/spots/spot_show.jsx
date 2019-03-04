@@ -212,6 +212,12 @@ class SpotShow extends React.Component {
     spot.location = this.state.location;
     
     this.checkAverage();
+
+    if (spot.reviews.length > 0) {
+      this.numOfRevs = spot.reviews.length;
+    } else {
+      this.numOfRevs = "";
+    }
     return (
       <div id='show-greeting'>
       <div className="show-navbar-div">
@@ -222,7 +228,6 @@ class SpotShow extends React.Component {
           />
           <GreetingContainer
             noText={true}
-            other="header-group-other"
           ></GreetingContainer>
         <div className='spot-show-searchbar'>
           <SearchIcon options={{ 'height': '18px', 'width': '18px', 'fill': '#333' }} />
@@ -315,18 +320,21 @@ class SpotShow extends React.Component {
                 />
               </section>
             </div>
-            <ul className="rating-item">
-              <Rating
-                className="read-only-rating"
-                readonly
-                emptySymbol="fa fa-star-o fa-2x"
-                fullSymbol="fa fa-star fa-2x"
-                fractions={2}
-                initialRating={typeof this.averageRating === "string" ? 0 : this.averageRating}
-              />
-              <li>{this.averageRating}</li>
-              <li>Average Rating</li>
-            </ul>
+            <div className="index-item-ratings">
+              <p>
+                {`${this.numOfRevs} Reviews`}
+              </p>
+              <p className="rating-item">
+                <Rating
+                  className="read-only-rating"
+                  readonly
+                  emptySymbol="fa fa-star-o"
+                  fullSymbol="fa fa-star"
+                  fractions={2}
+                  initialRating={typeof this.averageRating === "string" ? 0 : this.averageRating}
+                />
+              </p>
+            </div>
         <div className="reviews-container">
           <ReviewIndexContainer></ReviewIndexContainer>
         </div>

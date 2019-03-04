@@ -32,10 +32,6 @@ class BookingIndexItem extends React.Component {
         <li>{end_date}</li>
         <li>End Date</li>
       </ul>
-      <ul className="booking-guests-num">
-        <li>{num_guests}</li>
-        <li>This many Chers</li>
-      </ul>
    
     </div>
     )

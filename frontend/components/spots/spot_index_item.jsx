@@ -62,6 +62,13 @@ class SpotIndexItem extends React.Component {
     this.checkAverage();
     spot.location = this.state.location;
     this.initialRating = typeof this.averageRating === "string" ? 0 : this.averageRating;
+    if (this.props.spot) {
+      if (this.props.spot.reviews.length > 0) {
+        this.numOfRevs = this.props.spot.reviews.length;
+      }
+    } else {
+      this.numOfRevs = "";
+    }
     return (
       <div key={spot.id}>
         <Link className='spot-link' to={`/spots/${spot.id}`}>
@@ -75,21 +82,23 @@ class SpotIndexItem extends React.Component {
           <li className='spot-price'>
             ${spot.price} per night
           </li>
-          <li className='spot-price'>
-            This many Chers {spot.max_guests}
-          </li>
-          <ul className="rating-item">
-            <Rating
-              className="read-only-rating"
-              readonly
-              emptySymbol="fa fa-star-o fa-2x"
-              fullSymbol="fa fa-star fa-2x"
-              fractions={2}
-              initialRating={this.initialRating }
-            />
-            <li>{this.averageRating}</li>
-            <li>Average Rating</li>
-          </ul>
+          <div className="index-item-ratings">
+            <p className="index-item-average">{this.averageRating}</p>
+            <p className="rating-item">
+              <Rating
+                className="read-only-rating"
+                readonly
+                emptySymbol="fa fa-star-o"
+                fullSymbol="fa fa-star"
+                fractions={2}
+                initialRating={this.initialRating }
+              />
+              
+            </p>
+            <p>
+              {this.numOfRevs}
+            </p>
+          </div>
         </Link>
       </div>
     )

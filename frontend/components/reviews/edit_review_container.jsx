@@ -55,8 +55,8 @@ class EditReview extends React.Component {
             <Rating
               name="rating"
               className="rating-selector"
-              emptySymbol="fa fa-star-o fa-2x"
-              fullSymbol="fa fa-star fa-2x"
+              emptySymbol="fa fa-star-o"
+              fullSymbol="fa fa-star"
               fractions={2}
               initialRating={this.state.rating}
               onChange={(e) => this.setState({

@@ -857,9 +857,7 @@ function (_React$Component) {
         className: "startDate-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, start_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Start Date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "endDate-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, end_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "End Date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "booking-guests-num"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, num_guests), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "This many Chers")));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, end_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "End Date")));
     }
   }]);
 
@@ -1336,8 +1334,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("li", null, "Rating"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_5___default.a, {
         name: "rating",
         className: "rating-selector",
-        emptySymbol: "fa fa-star-o fa-2x",
-        fullSymbol: "fa fa-star fa-2x",
+        emptySymbol: "fa fa-star-o",
+        fullSymbol: "fa fa-star",
         fractions: 2,
         initialRating: this.state.rating,
         onChange: function onChange(e) {
@@ -1469,8 +1467,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Rating:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_3___default.a, {
         name: "rating",
         className: "rating-selector",
-        emptySymbol: "fa fa-star-o fa-2x",
-        fullSymbol: "fa fa-star fa-2x",
+        emptySymbol: "fa fa-star-o",
+        fullSymbol: "fa fa-star",
         fractions: 2,
         initialRating: this.state.rating,
         onChange: function onChange(e) {
@@ -1748,8 +1746,8 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_2___default.a, {
           className: "read-only-rating",
           readonly: true,
-          emptySymbol: "fa fa-star-o fa-2x",
-          fullSymbol: "fa fa-star fa-2x",
+          emptySymbol: "fa fa-star-o",
+          fullSymbol: "fa fa-star",
           fractions: 2,
           initialRating: rating
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, rating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Rating")), buttons);
@@ -2008,8 +2006,7 @@ function (_React$Component) {
         closeModal: this.props.closeModal,
         destroyErrors: this.props.destroyErrors
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        noText: true,
-        other: "header-group-other"
+        noText: true
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-filters"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3265,6 +3262,15 @@ function (_React$Component) {
       this.checkAverage();
       spot.location = this.state.location;
       this.initialRating = typeof this.averageRating === "string" ? 0 : this.averageRating;
+
+      if (this.props.spot) {
+        if (this.props.spot.reviews.length > 0) {
+          this.numOfRevs = this.props.spot.reviews.length;
+        }
+      } else {
+        this.numOfRevs = "";
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         key: spot.id
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -3278,18 +3284,20 @@ function (_React$Component) {
         className: "spot-title"
       }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "spot-price"
-      }, "$", spot.price, " per night"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "spot-price"
-      }, "This many Chers ", spot.max_guests), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "$", spot.price, " per night"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "index-item-ratings"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "index-item-average"
+      }, this.averageRating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "rating-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_3___default.a, {
         className: "read-only-rating",
         readonly: true,
-        emptySymbol: "fa fa-star-o fa-2x",
-        fullSymbol: "fa fa-star fa-2x",
+        emptySymbol: "fa fa-star-o",
+        fullSymbol: "fa fa-star",
         fractions: 2,
         initialRating: this.initialRating
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.averageRating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Average Rating"))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.numOfRevs))));
     }
   }]);
 
@@ -3794,6 +3802,13 @@ function (_React$Component) {
 
       spot.location = this.state.location;
       this.checkAverage();
+
+      if (spot.reviews.length > 0) {
+        this.numOfRevs = spot.reviews.length;
+      } else {
+        this.numOfRevs = "";
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "show-greeting"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3804,8 +3819,7 @@ function (_React$Component) {
         closeModal: this.props.closeModal,
         destroyErrors: this.props.destroyErrors
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        noText: true,
-        other: "header-group-other"
+        noText: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spot-show-searchbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_static_assets_search_icon__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -3885,16 +3899,18 @@ function (_React$Component) {
         spot: spot,
         blockSome: true,
         availCal: true
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "index-item-ratings"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "".concat(this.numOfRevs, " Reviews")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "rating-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_6___default.a, {
         className: "read-only-rating",
         readonly: true,
-        emptySymbol: "fa fa-star-o fa-2x",
-        fullSymbol: "fa fa-star fa-2x",
+        emptySymbol: "fa fa-star-o",
+        fullSymbol: "fa fa-star",
         fractions: 2,
         initialRating: typeof this.averageRating === "string" ? 0 : this.averageRating
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.averageRating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Average Rating")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reviews-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_review_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "spot-show-map-search"

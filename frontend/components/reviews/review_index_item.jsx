@@ -49,8 +49,8 @@ class ReviewIndexItem extends React.Component {
           <Rating
             className="read-only-rating"
             readonly
-            emptySymbol="fa fa-star-o fa-2x"
-            fullSymbol="fa fa-star fa-2x"
+            emptySymbol="fa fa-star-o"
+            fullSymbol="fa fa-star"
             fractions={2}
             initialRating={rating}
           />

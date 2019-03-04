@@ -67,3 +67,13 @@
   font-weight: lighter;
 }
 
+
+.index-item-ratings {
+  display: flex;
+  flex-direction: row;
+}
+
+.index-item-average {
+  color: teal;
+  font-weight: 300;
+}

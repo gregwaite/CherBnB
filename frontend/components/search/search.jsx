@@ -131,6 +131,7 @@ class Search extends React.Component {
           />
           <Greeting
             noText={true}
+            other="header-group-other"
           >
           </Greeting>
         </div>

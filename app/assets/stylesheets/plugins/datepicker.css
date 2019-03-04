@@ -633,6 +633,7 @@
   overflow-y: scroll
 }
 .DateInput {
+  position: unset !important;
   margin: 0;
   padding: 0;
   background: #fff;
@@ -726,9 +727,9 @@
   background: #f2f2f2
 }
 .DateRangePickerInput__withBorder {
-  border-radius: 2px;
+  border-radius: 3px !important;
   border: 1px solid #dbdbdb;
-  width: 95%;
+  width: 94.4%;
   border-radius: 5px;
 }
 .DateRangePickerInput__rtl {

@@ -222,6 +222,7 @@ class SpotShow extends React.Component {
           />
           <GreetingContainer
             noText={true}
+            other="header-group-other"
           ></GreetingContainer>
         <div className='spot-show-searchbar'>
           <SearchIcon options={{ 'height': '18px', 'width': '18px', 'fill': '#333' }} />
@@ -291,6 +292,7 @@ class SpotShow extends React.Component {
             </div>
 
             <div className='show-ammenities'>
+              <h4>Amenities</h4>
               <div className="amenities">
                 {Object.values(amenities).filter(a => { 
                   return spot.ammenities.map(a => parseInt(a)).includes(a.id)
@@ -299,6 +301,19 @@ class SpotShow extends React.Component {
                   return <div className="grid--50 amenity" key={amenity.id}><Amenity /> {amenity.name}</div>
                 })}
               </div>
+            </div>
+
+            <div className="show-datepickers">
+                  <h4>Availabity</h4>
+              <section className="datepickers">
+                <DatePicker
+                  handleStartChange={this.handleStartChange}
+                  handleEndChange={this.handleEndChange}
+                  spot={spot}
+                  blockSome={true}
+                  availCal={true}
+                />
+              </section>
             </div>
             <ul className="rating-item">
               <Rating
@@ -312,19 +327,6 @@ class SpotShow extends React.Component {
               <li>{this.averageRating}</li>
               <li>Average Rating</li>
             </ul>
-
-            <div className="show-datepickers">
-                  <h1>Availabity</h1>
-              <section className="datepickers">
-                <DatePicker
-                  handleStartChange={this.handleStartChange}
-                  handleEndChange={this.handleEndChange}
-                  spot={spot}
-                  blockSome={true}
-                  availCal={true}
-                />
-              </section>
-            </div>
         <div className="reviews-container">
           <ReviewIndexContainer></ReviewIndexContainer>
         </div>

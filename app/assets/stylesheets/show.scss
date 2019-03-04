@@ -25,7 +25,7 @@
 #show-greeting > li {
   height: 50px;
   width: 40px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 #show-greeting .location-search-input {
   width: 400px;
@@ -35,7 +35,7 @@
   border-color: rgb(230, 230, 230);
   border-style: solid;
   border-width: 1px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 15px;
   padding-left: 50px;
   color:#484848; 
@@ -74,6 +74,38 @@
 }
 
 
+
+
+.show-ammenities {
+  margin: 8px;
+  border-bottom: 1px solid #ebebeb;
+}
+.show-ammenities > h4{
+  font-weight: 500;
+  color: #484848;
+}
+
+.amenities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.amenities > div{
+  display: flex;
+  font-weight: 100;
+  margin: 20px;
+  width: 100px;
+}
+.amenities > div > div{
+  margin-right: 5px;
+}
+
+
+
+
+
 .show-description {
   border-bottom: 1px solid #ebebeb;
   margin-top: 8px;
@@ -83,9 +115,6 @@
 .show-description > li {
   margin: 8px;
   font-weight: lighter;
-}
-.show-ammenities {
-  margin: 8px;
 }
 
 .whole-show {
@@ -109,12 +138,22 @@
   margin-bottom: 4%;
 }
 
-.spot-show-map-search {
-  
+.spot-show-map-search > h1 {
+  padding-left: 28px;
 }
 .spot-show-map-search .spot-map #map-container{
-  width: 150%;
+  width: 130%;
   margin-bottom: 10%;
+}
+
+.show-datepickers {
+  border-bottom: 1px solid #ebebeb;
+}
+
+.show-datepickers > h4 {
+  font-weight: 500;
+  color: #484848; 
+  padding-left: 8px;
 }
 
 .show-datepickers .datepickers .date-pickers .DateRangePicker > div > div {
@@ -128,3 +167,4 @@
 .show-datepickers .datepickers .date-pickers .DateRangePickerInput_clearDates {
   margin: 0 30px 5px;
 }
+

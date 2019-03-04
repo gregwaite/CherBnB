@@ -15,7 +15,7 @@
   margin-top:4%;
   margin-left: 15%;
   color: antiquewhite;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-weight: bold;
 }
 
@@ -41,7 +41,7 @@
   margin-top: 34px;
   color: white;
   font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   outline: none;
   border: 3px solid transparent;
   outline: none;
@@ -75,7 +75,7 @@
 		-.3px .3px 0 #000,
 		.3px .3px 0 #000;
   font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
 .session-menu > button:hover {
@@ -86,25 +86,23 @@
   border-bottom-width: 3px;
 }
 
-.header-group > h2 {
-  color: white;
-  text-shadow: -.3px -.3px 0 #000,
-		.3px -.3px 0 #000,
-		-.3px .3px 0 #000,
-		.3px .3px 0 #000;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: normal;
-  font-size: 20px;
-  margin-top: 39px;
-  margin-right: 8%;
-}
 
+
+// homepage
 .header-group {
   display: flex;
   justify-content: space-between;
   height: 100px;
 }
 
+.header-group > h2 {
+  color: white;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+  margin-top: 39px;
+  margin-right: 8%;
+}
 .header-group > button {
   text-decoration: none;
   display: flex;
@@ -112,13 +110,9 @@
   height: 100px;
   margin-left: 10%;
   color: white;
-  text-shadow: -.3px -.3px 0 #000,
-  .3px -.3px 0 #000,
-  -.3px .3px 0 #000,
-  .3px .3px 0 #000;
   font-size: 16px;
   font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   outline: none;
   border: 3px solid transparent;
 }
@@ -133,14 +127,91 @@
 .header-group > a:link {
   text-decoration: none;
   color: white;
+  font-size: 16px;
+}
+.header-group > a:link:hover {
+  cursor: pointer;
+  border-bottom-color: rgb(230, 230, 230);
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+}
+
+.header-group > a {
+  display: flex;
+  border: none;
+  background-color: transparent;
+  height: 60px;
+  margin-left: 10%;
+  margin-top: 40px;
+  color: white;
+  font-size: 16px;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  outline: none;
+}
+
+.header-group > a:hover {
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom-color: rgb(230, 230, 230);
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+}
+
+
+
+
+
+
+
+// not homepage
+.header-group-other {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.header-group-other > button {
+  text-decoration: none;
+  display: flex;
+  background-color: transparent;
+  height: 100px;
+  margin-left: 10%;
+  color: white;
+  text-shadow: -.3px -.3px 0 #000,
+  .3px -.3px 0 #000,
+  -.3px .3px 0 #000,
+  .3px .3px 0 #000;
+  font-size: 16px;
+  font-size: 16px;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  outline: none;
+  border: 3px solid transparent;
+}
+
+.header-group-other > button:hover {
+  cursor: pointer;
+  border-bottom-color: rgb(230, 230, 230);
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+}
+
+.header-group-other > a:link {
+  text-decoration: none;
+  color: white;
   text-shadow: -.3px -.3px 0 #000,
   .3px -.3px 0 #000,
   -.3px .3px 0 #000,
   .3px .3px 0 #000;
   font-size: 16px;
 }
+.header-group-other > a:link:hover {
+  cursor: pointer;
+  border-bottom-color: rgb(230, 230, 230);
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+}
 
-.header-group > a {
+.header-group-other > a {
   display: flex;
   border: none;
   background-color: transparent;
@@ -153,11 +224,11 @@
   -.3px .3px 0 #000,
   .3px .3px 0 #000;
   font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   outline: none;
 }
 
-.header-group > a:hover {
+.header-group-other > a:hover {
   text-decoration: none;
   cursor: pointer;
   border-bottom-color: rgb(230, 230, 230);

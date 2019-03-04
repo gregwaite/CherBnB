@@ -1102,7 +1102,8 @@ var Greeting = function Greeting(_ref) {
   var currentUser = _ref.currentUser,
       logout = _ref.logout,
       openModal = _ref.openModal,
-      noText = _ref.noText;
+      noText = _ref.noText,
+      other = _ref.other;
 
   var sessionLinks = function sessionLinks() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -1133,7 +1134,7 @@ var Greeting = function Greeting(_ref) {
     }
 
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hgroup", {
-      className: "header-group"
+      className: other || "header-group"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       className: "home-link",
       to: "/"
@@ -2005,7 +2006,8 @@ function (_React$Component) {
         closeModal: this.props.closeModal,
         destroyErrors: this.props.destroyErrors
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        noText: true
+        noText: true,
+        other: "header-group-other"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-show-filters"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3800,7 +3802,8 @@ function (_React$Component) {
         closeModal: this.props.closeModal,
         destroyErrors: this.props.destroyErrors
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        noText: true
+        noText: true,
+        other: "header-group-other"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spot-show-searchbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_static_assets_search_icon__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -3858,7 +3861,7 @@ function (_React$Component) {
         className: "show-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-ammenities"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Amenities"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "amenities"
       }, Object.values(amenities).filter(function (a) {
         return spot.ammenities.map(function (a) {
@@ -3870,6 +3873,16 @@ function (_React$Component) {
           className: "grid--50 amenity",
           key: amenity.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Amenity, null), " ", amenity.name);
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-datepickers"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Availabity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "datepickers"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_datepicker_date_picker__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        handleStartChange: this.handleStartChange,
+        handleEndChange: this.handleEndChange,
+        spot: spot,
+        blockSome: true,
+        availCal: true
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "rating-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_6___default.a, {
@@ -3880,16 +3893,6 @@ function (_React$Component) {
         fractions: 2,
         initialRating: this.initialRating
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.averageRating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Average Rating")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "show-datepickers"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Availabity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "datepickers"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_datepicker_date_picker__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        handleStartChange: this.handleStartChange,
-        handleEndChange: this.handleEndChange,
-        spot: spot,
-        blockSome: true,
-        availCal: true
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reviews-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_review_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "spot-show-map-search"

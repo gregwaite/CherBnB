@@ -5,7 +5,7 @@
   height: 480px;
   width: 450px;
   border-radius: 3px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 .bookings-search > h1{
   font-size: 24px;
@@ -24,7 +24,7 @@
   border-color: rgb(230, 230, 230);
   border-style: solid;
   border-width: 1px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 15px;
   padding-left: 10px;
   color:#484848; 
@@ -39,11 +39,12 @@
   border-color: rgb(230, 230, 230);
   border-style: solid;
   border-width: 1px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 15px;
   padding-left: 50px;
   color:#484848; 
   margin-bottom: 1%;
+  outline: none !important;
 }
 
 .bookings-search > button {
@@ -52,7 +53,7 @@
   background:rgb(255, 90, 95);
   color: white; 
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   width: 25%;
   height: 45px;
   margin-top: 20px;
@@ -80,7 +81,7 @@
   border-color: rgb(230, 230, 230);
   border-style: solid;
   border-width: 1px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 15px;
   padding-left: 10px;
   color:#484848; 
@@ -126,16 +127,17 @@
 }
 
 .guests > input {
-  width: 91.5%;
+  width: 91.4%;
   height: 44px;
   border-radius: 3px;
   border-color: rgb(230, 230, 230);
   border-style: solid;
   border-width: 1px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 15px;
   padding-left: 10px;
   color:#484848; 
+  outline: none !important;
 }
 
 .revealed-guest-dropdown {
@@ -206,7 +208,7 @@
   padding-top: 3%;
   text-align: center;
   width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-weight: bold;
 }
 
@@ -225,7 +227,7 @@
   margin-right: 1.3px;
   width: 12%;
   padding-bottom: 5px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-weight: 100;
   font-size: 12px;
   color: gray;
@@ -248,7 +250,7 @@
   text-align: center;
   height: 30px;
   width: 14%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 14px;
   font-weight: 400;
   border: 0.5px solid #847b7f69;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Greeting = ({currentUser, logout, openModal, noText}) => {
+const Greeting = ({currentUser, logout, openModal, noText, other}) => {
   const sessionLinks = () => {
     return (
       <nav className="login-signup">
@@ -27,7 +27,7 @@ const Greeting = ({currentUser, logout, openModal, noText}) => {
       text = `What can I, Cher, do for you, ${ currentUser.username } ? I am Cher.`
     }
     return (
-      <hgroup className="header-group">
+      <hgroup className={other || "header-group"}>
         <Link className='home-link' to='/'>Home</Link>
         <h2 className="header-name">
           {text}

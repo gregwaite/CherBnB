@@ -63,7 +63,7 @@ class DatePicker extends React.Component {
     // const startDateString = startDate && startDate.format('ddd, MMM Do');
     // const endDateString = endDate && endDate.format('ddd, MMM Do');
     if (this.props.type === "search") {
-      const date = this.moment()
+      const date = this.moment();
       this.startPlaceholder = date.format("MMM DD");
       this.endPlaceholder = date.add(1, 'd').format("MMM DD");
       this.showClear = false;

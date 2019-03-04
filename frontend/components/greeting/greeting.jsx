@@ -31,7 +31,7 @@ const Greeting = ({currentUser, logout, openModal, noText, other}) => {
       text = `What can I, Cher, do for you, ${ currentUser.username } ? I am Cher.`
     }
     return (
-      <hgroup className={other || "header-group"}>
+      <nav className="login-signup">
         <Link className='home-link' to='/'>
           <MainLogo>
           </MainLogo>
@@ -40,9 +40,11 @@ const Greeting = ({currentUser, logout, openModal, noText, other}) => {
           {text}
         </h2>
         <br/>
-        <button className="header-button" onClick={() => openModal('booking')}>Bookings</button>
-        <button className="header-button" onClick={logout}>Logout</button>
-      </hgroup>
+        <section className="session-menu">
+          <button className="header-button" onClick={() => openModal('booking')}>Bookings</button>
+          <button className="header-button" onClick={logout}>Logout</button>
+        </section>
+      </nav>
     );
   }
 

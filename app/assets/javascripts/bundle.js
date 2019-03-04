@@ -1133,14 +1133,16 @@ var Greeting = function Greeting(_ref) {
       text = "What can I, Cher, do for you, ".concat(currentUser.username, " ? I am Cher.");
     }
 
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hgroup", {
-      className: other || "header-group"
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+      className: "login-signup"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
       className: "home-link",
       to: "/"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_static_assets_main_icon__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
       className: "header-name"
-    }, text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }, text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      className: "session-menu"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "header-button",
       onClick: function onClick() {
         return openModal('booking');
@@ -1148,7 +1150,7 @@ var Greeting = function Greeting(_ref) {
     }, "Bookings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "header-button",
       onClick: logout
-    }, "Logout"));
+    }, "Logout")));
   };
 
   return currentUser ? personalGreeting() : sessionLinks();

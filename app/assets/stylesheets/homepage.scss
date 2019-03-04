@@ -95,6 +95,16 @@
 
 
 // homepage
+
+.header-name {
+  color: white;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+  position: absolute;
+  left: 320px;
+  top: 4px;
+}
 .header-group {
   display: flex;
   justify-content: space-between;

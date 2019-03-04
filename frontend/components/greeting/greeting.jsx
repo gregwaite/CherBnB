@@ -2,7 +2,7 @@ import React from 'react';
 import MainLogo from '../../static_assets/main_icon';
 import { Link } from 'react-router-dom';
 
-const Greeting = ({currentUser, logout, openModal, noText, other}) => {
+const Greeting = ({currentUser, logout, openModal, noText}) => {
   const sessionLinks = () => {
     return (
       <nav className="login-signup">

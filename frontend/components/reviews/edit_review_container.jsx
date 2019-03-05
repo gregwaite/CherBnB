@@ -32,15 +32,6 @@ class EditReview extends React.Component {
     return (
       <div className="edit-index-item">
         <form className="edit-form" onSubmit={this.handleSubmit}>
-          <div className="edit-review-title">
-            <li>Title:</li>
-            <input
-              type="text"
-              value={this.state.title}
-              onChange={this.update("title")}
-            ></input>
-          </div> 
-
           <div className="edit-review-body">
             <li>Review:</li>
             <textarea

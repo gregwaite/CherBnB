@@ -1253,7 +1253,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     review: {
-      title: "not null",
       body: "",
       rating: 0,
       spot_id: ownProps.match.params.spotId
@@ -1297,9 +1296,8 @@ function (_React$Component) {
 
       if (this.props.loggedIn) {
         this.props.createReview(this.state);
-        this.setState(_defineProperty({}, "title", "not null"));
         this.setState(_defineProperty({}, "body", ""));
-        this.setState(_defineProperty({}, "rating", ""));
+        this.setState(_defineProperty({}, "rating", 0));
       } else {
         this.props.openModal("login");
       }
@@ -1322,14 +1320,8 @@ function (_React$Component) {
         className: "create-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
-        className: "create-review-title"
-      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("li", null, "Title"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("input", {
-        type: "text",
-        value: this.state.title,
-        onChange: this.update("title")
-      })), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
         className: "create-review-body"
-      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("li", null, "Review"), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("textarea", {
+      }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("li", null, "Leave a review if you dare to critque Cher."), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("textarea", {
         onChange: this.update("body"),
         value: this.state.body
       })), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", {
@@ -1455,12 +1447,6 @@ function (_React$Component) {
         className: "edit-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "edit-review-title"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Title:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.title,
-        onChange: this.update("title")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-review-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Review:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         onChange: this.update("body"),
@@ -1571,17 +1557,17 @@ function (_React$Component) {
           user = _this$props.user,
           reviews = _this$props.reviews;
       var showReviews = reviews.map(function (review) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "show-index",
-          key: review.id
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
           review: review,
           handleDeleteSubmit: _this2.handleDeleteSubmit,
           currentUserId: userId,
-          user: user
-        }));
+          user: user,
+          key: review.id
+        });
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, showReviews, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_review_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-index"
+      }, showReviews, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_review_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
@@ -1707,22 +1693,22 @@ function (_React$Component) {
           updateReview = _this$props.updateReview,
           review = _this$props.review,
           user = _this$props.user;
-      var title = review.title,
-          body = review.body,
+      var body = review.body,
           rating = review.rating,
           id = review.id;
       var buttons;
 
       if (review.user_id === this.props.currentUserId) {
         buttons = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "review-buttons"
+          className: "review-buttons",
+          id: "review-buttons"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.toggleEdit
+        }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: function onClick() {
             return _this2.props.handleDeleteSubmit(id);
           }
-        }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: this.toggleEdit
-        }, "Edit"));
+        }, "Delete"));
       }
 
       if (this.state.edit) {
@@ -1733,12 +1719,16 @@ function (_React$Component) {
         });
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "index-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "review-index-item"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "review-content"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "review-icon-rating"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "material-icons"
-        }, user.username[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-          className: "body-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        }, user.username[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "review-name-rating"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "rating-item"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_2___default.a, {
           className: "read-only-rating",
@@ -1747,7 +1737,9 @@ function (_React$Component) {
           fullSymbol: "fa fa-star",
           fractions: 2,
           initialRating: rating
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, rating))), buttons);
+        }))), buttons), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "body-item"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, body))));
       }
     }
   }]);
@@ -3897,8 +3889,8 @@ function (_React$Component) {
         blockSome: true,
         availCal: true
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index-item-ratings"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "".concat(this.numOfRevs, " Reviews")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "show-ratings"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "".concat(this.numOfRevs, " ").concat(this.numOfRevs !== 1 ? this.numOfRevs : 'Review')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "rating-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_6___default.a, {
         className: "read-only-rating",

@@ -8,7 +8,6 @@ import Rating from 'react-rating';
 const mapStateToProps = (state, ownProps) => {
   return {
     review: {
-      title: "not null",
       body: "",
       rating: 0,      
       spot_id: ownProps.match.params.spotId,
@@ -36,9 +35,8 @@ class CreateReview extends React.Component {
     e.preventDefault();
     if (this.props.loggedIn) {
       this.props.createReview(this.state);
-      this.setState({["title"]: "not null"});
       this.setState({["body"]: ""});
-      this.setState({["rating"]: ""});
+      this.setState({["rating"]: 0});
     } else {
       this.props.openModal("login");
     }
@@ -54,17 +52,9 @@ class CreateReview extends React.Component {
     return (
       <div>
         <form className="create-form" onSubmit={this.handleSubmit}>
-          <div className="create-review-title">
-            <li>Title</li>
-            <input
-              type="text"
-              value={this.state.title}
-              onChange={this.update("title")}
-            ></input>
-          </div>
           
           <div className="create-review-body">
-            <li>Review</li>
+            <li>Leave a review if you dare to critque Cher.</li>
             <textarea
               onChange={this.update("body")}
               value={this.state.body}

@@ -21,19 +21,17 @@ class ReviewShow extends React.Component {
     const { userId, user, reviews } = this.props;
     const showReviews = reviews.map(review =>{
       return (
-        <div className='show-index'key={review.id}>
           <ReviewIndexItem
             review={review}
             handleDeleteSubmit={this.handleDeleteSubmit}
             currentUserId={userId}
             user={user}
+            key={review.id}
           ></ReviewIndexItem>
-          
-        </div>
       )}
       )
       return (
-        <div>
+        <div className="show-index">
           {showReviews}
           <CreateReview></CreateReview>
         </div>

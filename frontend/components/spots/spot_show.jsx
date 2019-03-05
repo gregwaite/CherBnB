@@ -320,9 +320,9 @@ class SpotShow extends React.Component {
                 />
               </section>
             </div>
-            <div className="index-item-ratings">
+            <div className="show-ratings">
               <p>
-                {`${this.numOfRevs} Reviews`}
+                {`${this.numOfRevs} ${this.numOfRevs !== 1 ? this.numOfRevs : 'Review'}`}
               </p>
               <p className="rating-item">
                 <Rating

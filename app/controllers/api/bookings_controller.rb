@@ -15,12 +15,12 @@ class Api::BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
+    @booking = Booking.find(params[:id]).includes(:reviews)
     render "api/bookings/show"
   end
 
   def index
-    @bookings = Booking.where(guest_id: @current_user.id)
+    @bookings = Booking.where(guest_id: @current_user.id).includes(:reviews)
     render "api/bookings/index"
   end
 

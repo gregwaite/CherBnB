@@ -7,8 +7,6 @@ class ReviewShow extends React.Component {
   constructor(props) {
     super(props);
     this.handleDeleteSubmit = this.handleDeleteSubmit.bind(this);
-    // this.handleClassSwitch = this.handleClassSwitch.bind(this);
-    // this.className = "show-index";
   }
 
   componentDidMount() {
@@ -19,18 +17,9 @@ class ReviewShow extends React.Component {
     this.props.destroyReview(reviewId);
   }
 
-  // handleClassSwitch(){
-  //   if (this.className === "show-index") {
-  //     this.className = "show-edit";
-  //   } else {
-  //     this.className = "show-index";
-  //   }
-  //   this.forceUpdate();
-  // }
-
   render() {
-    const { userId, user } = this.props;
-    const reviews = this.props.reviews.map(review =>{
+    const { userId, user, reviews } = this.props;
+    const showReviews = reviews.map(review =>{
       return (
         <div className='show-index'key={review.id}>
           <ReviewIndexItem
@@ -45,7 +34,7 @@ class ReviewShow extends React.Component {
       )
       return (
         <div>
-          {reviews}
+          {showReviews}
           <CreateReview></CreateReview>
         </div>
     )

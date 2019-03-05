@@ -4,17 +4,16 @@ import Review from './review_index';
 import { fetchReviews, destroyReview, updateReview } from '../../actions/review_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  return {reviews: Object.values(state.entities.reviews).filter(review => {
-    return parseInt(ownProps.match.params.spotId) === review.spot_id;
-  }),
-  userId: state.session.id,
-  user: state.entities.users[state.session.id],
+  return {
+    reviews: Object.values(state.entities.reviews),
+    userId: state.session.id,
+    user: state.entities.users[state.session.id],
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchReviews: () => dispatch(fetchReviews()),
+    fetchReviews: (spotId) => dispatch(fetchReviews(spotId)),
     destroyReview: (id) => dispatch(destroyReview(id)),
     updateReview: (review) => dispatch(updateReview(review)),
   };

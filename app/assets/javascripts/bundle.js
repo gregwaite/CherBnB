@@ -292,7 +292,9 @@ var removeReview = function removeReview(reviewId) {
 
 var fetchReviews = function fetchReviews(spotId) {
   return function (dispatch) {
-    return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchReviews"](spotId).then(function (reviews) {
+    return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchReviews"]({
+      spot_id: parseInt(spotId)
+    }).then(function (reviews) {
       return dispatch(receiveAllReviews(reviews));
     });
   };
@@ -1545,9 +1547,7 @@ function (_React$Component) {
     _classCallCheck(this, ReviewShow);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ReviewShow).call(this, props));
-    _this.handleDeleteSubmit = _this.handleDeleteSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this))); // this.handleClassSwitch = this.handleClassSwitch.bind(this);
-    // this.className = "show-index";
-
+    _this.handleDeleteSubmit = _this.handleDeleteSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1560,15 +1560,7 @@ function (_React$Component) {
     key: "handleDeleteSubmit",
     value: function handleDeleteSubmit(reviewId) {
       this.props.destroyReview(reviewId);
-    } // handleClassSwitch(){
-    //   if (this.className === "show-index") {
-    //     this.className = "show-edit";
-    //   } else {
-    //     this.className = "show-index";
-    //   }
-    //   this.forceUpdate();
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -1576,8 +1568,9 @@ function (_React$Component) {
 
       var _this$props = this.props,
           userId = _this$props.userId,
-          user = _this$props.user;
-      var reviews = this.props.reviews.map(function (review) {
+          user = _this$props.user,
+          reviews = _this$props.reviews;
+      var showReviews = reviews.map(function (review) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "show-index",
           key: review.id
@@ -1588,7 +1581,7 @@ function (_React$Component) {
           user: user
         }));
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, reviews, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_review_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, showReviews, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_review_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
@@ -1619,9 +1612,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    reviews: Object.values(state.entities.reviews).filter(function (review) {
-      return parseInt(ownProps.match.params.spotId) === review.spot_id;
-    }),
+    reviews: Object.values(state.entities.reviews),
     userId: state.session.id,
     user: state.entities.users[state.session.id]
   };
@@ -1629,8 +1620,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchReviews: function fetchReviews() {
-      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_3__["fetchReviews"])());
+    fetchReviews: function fetchReviews(spotId) {
+      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_3__["fetchReviews"])(spotId));
     },
     destroyReview: function destroyReview(id) {
       return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_3__["destroyReview"])(id));
@@ -5051,10 +5042,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createReview", function() { return createReview; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateReview", function() { return updateReview; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyReview", function() { return destroyReview; });
-var fetchReviews = function fetchReviews() {
+var fetchReviews = function fetchReviews(data) {
   return $.ajax({
     method: "GET",
-    url: "api/reviews"
+    url: "api/reviews",
+    data: data
   });
 };
 var fetchReview = function fetchReview(id) {

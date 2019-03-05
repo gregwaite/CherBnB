@@ -26,7 +26,7 @@ const removeReview = reviewId => {
 };
 
 export const fetchReviews = spotId => dispatch => {
-  return APIUtil.fetchReviews(spotId).then(reviews => dispatch(receiveAllReviews(reviews)));
+  return APIUtil.fetchReviews({spot_id: parseInt(spotId)}).then(reviews => dispatch(receiveAllReviews(reviews)));
 };
 
 export const fetchReview = (id) => dispatch => {

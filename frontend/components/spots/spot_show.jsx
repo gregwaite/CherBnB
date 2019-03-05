@@ -277,7 +277,8 @@ class SpotShow extends React.Component {
             <img src={spot.photoUrls[0]} />
             <div className='basic-info'>
               <li className='show-spot-type'>
-                {spot.spot_type}
+                <i className="material-icons-home">home</i>
+                <p>{spot.spot_type}</p>
               </li>
               <li className='show-title'>
                 {spot.title}
@@ -285,7 +286,7 @@ class SpotShow extends React.Component {
               <li className='show-address'>
                 {spot.location}
               </li>
-              <li>
+              <li className='show-max-guests'>
                 {spot.max_guests} Chers
               </li>
             </div>

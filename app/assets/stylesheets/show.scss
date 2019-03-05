@@ -63,20 +63,53 @@
 
 .basic-info {
   border-bottom: 1px solid #ebebeb;
+  padding-bottom: 21px;
   margin: 8px;
+  color: #484848;
 }
 
 .show-spot-type {
+  display: flex;
   text-transform: uppercase;
   font-size: 14px;
+  height: 32px;
 }
+.show-spot-type > p {
+  color: #9b3143;
+}
+
+.material-icons-home {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  background-color: white;
+  background-color: white;
+  margin-top: 14px;
+  margin-right: 3px;
+}
+
 .show-title {
   font-size: 30px;
-  font-weight: bold;
+  font-weight: 600;
 }
 .show-address {
   font-size: 18px;
+  font-weight: 300;
   margin-bottom: 8px;
+}
+.show-max-guests {
+  font-weight: 100;
+  margin-top: 29px;
 }
 
 
@@ -120,6 +153,8 @@
 }
 .show-description > li {
   margin: 8px;
+  padding-top: 18px;
+  padding-bottom: 18px;
   font-weight: lighter;
 }
 

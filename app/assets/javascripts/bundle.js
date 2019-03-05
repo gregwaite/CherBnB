@@ -1725,7 +1725,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-icon-rating"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "material-icons"
+          className: "material-icons-review"
         }, user.username[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-name-rating"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -2814,7 +2814,7 @@ function (_React$Component) {
         destroyErrors: this.props.destroyErrors
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "home-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Take Me Home, to CherBnB")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bookings-search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Share homes and experiences exclusively with Cher."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "where"
@@ -3860,11 +3860,15 @@ function (_React$Component) {
         className: "basic-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "show-spot-type"
-      }, spot.spot_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "material-icons-home"
+      }, "home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, spot.spot_type)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "show-title"
       }, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "show-address"
-      }, spot.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.max_guests, " Chers")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, spot.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "show-max-guests"
+      }, spot.max_guests, " Chers")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, spot.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-ammenities"

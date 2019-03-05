@@ -130,7 +130,6 @@ class Splash extends React.Component {
       />
       <header className="home-header">
         <GreetingContainer></GreetingContainer>
-        <h1>Take Me Home, to CherBnB</h1>
       </header>
       <div className='bookings-search'>
         <h1>Share homes and experiences exclusively with Cher.</h1>

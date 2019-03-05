@@ -41,7 +41,7 @@ class ReviewIndexItem extends React.Component {
 
       <div className="review-content">
         <div className="review-icon-rating">
-          <i className="material-icons">{user.username[0]}</i>
+          <i className="material-icons-review">{user.username[0]}</i>
           <div className="review-name-rating">
             <p>{user.username}</p>
             <ul className="rating-item">

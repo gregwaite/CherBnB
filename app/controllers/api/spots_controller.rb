@@ -15,7 +15,7 @@ class Api::SpotsController < ApplicationController
       dates = nil
       spots = Spot.with_attached_pictures.in_bounds(bounds, guest_request, dates).includes(:bookings, :reviews)
     else
-      spots = Spot.all
+      spots = Spot.with_attached_pictures.all.includes(:bookings, :reviews)
     end
     # spots = bounds ? Spot.in_bounds(bounds) : Spot.all
     # spots = guest_request ? spots.enough_space(guest_request) : spots

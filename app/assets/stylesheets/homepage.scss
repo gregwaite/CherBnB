@@ -6,9 +6,9 @@
 .home-page {
   width: 100%;
   height: 98vh;
-  background: image-url('cher-house-01_46b8cd5d1b101c1646ec6d69f4ae58c3.fit-860w');
+  background: image-url('splash-background.jpg');
   background-size: cover;
-  position: absolute;
+  position: relative;
 }
 
 .home-header .login-signup {
@@ -20,7 +20,7 @@
   margin-left: 15%;
   color: antiquewhite;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-weight: 250;
 }
 
 .home-header > nav > a > div > div > div > svg {
@@ -100,7 +100,7 @@
 .header-name {
   color: white;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-  font-weight: normal;
+  font-weight: 100;
   font-size: 20px;
   position: absolute;
   left: 320px;

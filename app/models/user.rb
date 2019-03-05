@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   has_many :spots
   has_many :reviews
+  has_many :bookings
 
   attr_reader :password
 

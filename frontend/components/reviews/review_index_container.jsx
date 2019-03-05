@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => {
   return {reviews: Object.values(state.entities.reviews).filter(review => {
     return parseInt(ownProps.match.params.spotId) === review.spot_id;
   }),
-  userId: state.session.id
+  userId: state.session.id,
+  user: state.entities.users[state.session.id],
   };
 };
 

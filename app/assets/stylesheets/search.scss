@@ -66,6 +66,9 @@
   margin-bottom: 1%;
   outline: none !important;
 }
+.search-show-filters > .guests > input:hover{
+  cursor: pointer;
+}
 
 .search-show-filters .datepickers {
   height: 50%;
@@ -85,6 +88,9 @@
   color: white;
   border-radius: 3px;
   height: 10px;
+}
+.search-show-filters .datepickers .date-pickers .DateRangePicker > div > div > div .DateInput_input:hover{
+  cursor: pointer;
 }
 .search-show-filters .datepickers .date-pickers .DateRangePicker > div > div > .DateInput{
   position: unset;
@@ -124,7 +130,7 @@
 .spot-show-searchbar {
   position: absolute;
   top: 7px;
-  left: 250px;
+  left: 69px;
 }
 
 .date-apply-span {

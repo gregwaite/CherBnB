@@ -8,7 +8,7 @@ import Rating from 'react-rating';
 const mapStateToProps = (state, ownProps) => {
   return {
     review: {
-      title: "",
+      title: "not null",
       body: "",
       rating: 0,      
       spot_id: ownProps.match.params.spotId,
@@ -36,7 +36,7 @@ class CreateReview extends React.Component {
     e.preventDefault();
     if (this.props.loggedIn) {
       this.props.createReview(this.state);
-      this.setState({["title"]: ""});
+      this.setState({["title"]: "not null"});
       this.setState({["body"]: ""});
       this.setState({["rating"]: ""});
     } else {

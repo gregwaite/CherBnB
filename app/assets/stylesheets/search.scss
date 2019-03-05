@@ -14,6 +14,7 @@
 
 .search-show-greeting-filter{
   position: fixed;
+  top: 0;
   width: 100%;
   z-index: 1;
 }
@@ -110,12 +111,17 @@
 .search-show-contents {
   display: flex;
   float: right;
-  margin-top: 10%;
+  margin-top: 8.5%;
+}
+
+.search-show-index {
+  margin-left: 58px;
 }
 .search-show-index .index > section > div {
   border-bottom: 1px solid #ebebeb;
-  width: 600px;
+  width: 200px;
   margin-bottom: 5%;
+  margin-right: 10%;
 }
 
 

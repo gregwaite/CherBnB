@@ -25,7 +25,6 @@ class ReviewShow extends React.Component {
             review={review}
             handleDeleteSubmit={this.handleDeleteSubmit}
             currentUserId={userId}
-            user={user}
             key={review.id}
           ></ReviewIndexItem>
       )}

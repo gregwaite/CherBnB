@@ -3,11 +3,10 @@ import { withRouter } from 'react-router-dom';
 import Review from './review_index';
 import { fetchReviews, destroyReview, updateReview } from '../../actions/review_actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     reviews: Object.values(state.entities.reviews),
     userId: state.session.id,
-    user: state.entities.users[state.session.id],
   };
 };
 

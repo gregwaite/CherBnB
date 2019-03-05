@@ -17,7 +17,7 @@ class ReviewIndexItem extends React.Component {
   }
   
   render() {
-    const {updateReview, review, user} = this.props;
+    const {updateReview, review} = this.props;
     const {body, rating, id} = review;
     let buttons;
     if (review.user_id === this.props.currentUserId) {
@@ -41,9 +41,9 @@ class ReviewIndexItem extends React.Component {
 
       <div className="review-content">
         <div className="review-icon-rating">
-          <i className="material-icons-review">{user.username[0]}</i>
+          <i className="material-icons-review">{ review.user.username[0]}</i>
           <div className="review-name-rating">
-            <p>{user.username}</p>
+            <p>{review.user.username}</p>
             <ul className="rating-item">
                 <Rating
                   className="read-only-rating"

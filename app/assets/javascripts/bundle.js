@@ -1561,7 +1561,6 @@ function (_React$Component) {
           review: review,
           handleDeleteSubmit: _this2.handleDeleteSubmit,
           currentUserId: userId,
-          user: user,
           key: review.id
         });
       });
@@ -1596,11 +1595,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
+var mapStateToProps = function mapStateToProps(state) {
   return {
     reviews: Object.values(state.entities.reviews),
-    userId: state.session.id,
-    user: state.entities.users[state.session.id]
+    userId: state.session.id
   };
 };
 
@@ -1691,8 +1689,7 @@ function (_React$Component) {
 
       var _this$props = this.props,
           updateReview = _this$props.updateReview,
-          review = _this$props.review,
-          user = _this$props.user;
+          review = _this$props.review;
       var body = review.body,
           rating = review.rating,
           id = review.id;
@@ -1726,9 +1723,9 @@ function (_React$Component) {
           className: "review-icon-rating"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "material-icons-review"
-        }, user.username[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, review.user.username[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-name-rating"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, review.user.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "rating-item"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_2___default.a, {
           className: "read-only-rating",

@@ -15,7 +15,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.where(spot_id: params[:spot_id])
+    @reviews = Review.where(spot_id: params[:spot_id]).includes(:user)
     render "api/reviews/index"
   end
 

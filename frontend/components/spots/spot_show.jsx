@@ -44,7 +44,6 @@ class SpotShow extends React.Component {
       center: this.props.center,
       bounds: this.props.bounds
     };
-    
     this.guestPluralSingle = "Cher";
     
 
@@ -68,6 +67,7 @@ class SpotShow extends React.Component {
         that.setState({center: { lat: result.spot.lat, lng: result.spot.long }});
         that.props.updateCenter("center", { lat: result.spot.lat, lng: result.spot.long });
         this.props.updateFilter('bounds', this.props.bounds);
+        this.props.fetchReviews(result.spot.id);
       }
     });
     this.elementCheck = document.querySelector('#guest-dropdown');
@@ -168,13 +168,13 @@ class SpotShow extends React.Component {
   checkAverage(){
     if (this.props.spot) {
       let total = 0;
-      this.props.spot.reviews.forEach(review => {
+      this.props.reviews.forEach(review => {
         total += review.rating;
       });
-      if (this.props.spot.reviews.length === 0){
+      if (this.props.reviews.length === 0){
         this.averageRating = ("Not yet reviewed");
       } else {
-        this.averageRating = parseFloat(total) / this.props.spot.reviews.length
+        this.averageRating = parseFloat(total) / this.props.reviews.length;
       }
     } else {
       this.averageRating = 0;
@@ -213,8 +213,8 @@ class SpotShow extends React.Component {
     
     this.checkAverage();
 
-    if (spot.reviews.length > 0) {
-      this.numOfRevs = spot.reviews.length;
+    if (this.props.reviews.length > 0) {
+      this.numOfRevs = this.props.reviews.length;
     } else {
       this.numOfRevs = "";
     }
@@ -322,7 +322,7 @@ class SpotShow extends React.Component {
             </div>
             <div className="show-ratings">
               <p>
-                {`${this.numOfRevs} ${this.numOfRevs !== 1 ? this.numOfRevs : 'Review'}`}
+                {`${this.numOfRevs} ${this.numOfRevs !== 1 ? "Reviews" : 'Review'}`}
               </p>
               <p className="rating-item">
                 <Rating

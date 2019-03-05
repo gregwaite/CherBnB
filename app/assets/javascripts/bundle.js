@@ -3597,6 +3597,8 @@ function (_React$Component) {
           });
 
           _this2.props.updateFilter('bounds', _this2.props.bounds);
+
+          _this2.props.fetchReviews(result.spot.id);
         }
       });
       this.elementCheck = document.querySelector('#guest-dropdown');
@@ -3740,14 +3742,14 @@ function (_React$Component) {
     value: function checkAverage() {
       if (this.props.spot) {
         var total = 0;
-        this.props.spot.reviews.forEach(function (review) {
+        this.props.reviews.forEach(function (review) {
           total += review.rating;
         });
 
-        if (this.props.spot.reviews.length === 0) {
+        if (this.props.reviews.length === 0) {
           this.averageRating = "Not yet reviewed";
         } else {
-          this.averageRating = parseFloat(total) / this.props.spot.reviews.length;
+          this.averageRating = parseFloat(total) / this.props.reviews.length;
         }
       } else {
         this.averageRating = 0;
@@ -3792,8 +3794,8 @@ function (_React$Component) {
       spot.location = this.state.location;
       this.checkAverage();
 
-      if (spot.reviews.length > 0) {
-        this.numOfRevs = spot.reviews.length;
+      if (this.props.reviews.length > 0) {
+        this.numOfRevs = this.props.reviews.length;
       } else {
         this.numOfRevs = "";
       }
@@ -3890,7 +3892,7 @@ function (_React$Component) {
         availCal: true
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-ratings"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "".concat(this.numOfRevs, " ").concat(this.numOfRevs !== 1 ? this.numOfRevs : 'Review')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "".concat(this.numOfRevs, " ").concat(this.numOfRevs !== 1 ? "Reviews" : 'Review')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "rating-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_6___default.a, {
         className: "read-only-rating",
@@ -3971,10 +3973,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _actions_spot_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/spot_actions */ "./frontend/actions/spot_actions.js");
-/* harmony import */ var _actions_booking_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/booking_actions */ "./frontend/actions/booking_actions.js");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _actions_filter_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../actions/filter_actions */ "./frontend/actions/filter_actions.js");
+/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/review_actions */ "./frontend/actions/review_actions.js");
+/* harmony import */ var _actions_booking_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/booking_actions */ "./frontend/actions/booking_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_filter_actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../actions/filter_actions */ "./frontend/actions/filter_actions.js");
+
 
 
 
@@ -3990,6 +3994,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     bounds: state.ui.filter.bounds,
     center: state.ui.filter.center,
     amenities: state.entities.amenities,
+    reviews: Object.values(state.entities.reviews),
     loggedIn: Boolean(state.session.id)
   };
 };
@@ -3997,25 +4002,28 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     createBooking: function createBooking(booking) {
-      return dispatch(Object(_actions_booking_actions__WEBPACK_IMPORTED_MODULE_4__["createBooking"])(booking));
+      return dispatch(Object(_actions_booking_actions__WEBPACK_IMPORTED_MODULE_5__["createBooking"])(booking));
     },
     fetchSpot: function fetchSpot(id) {
       return dispatch(Object(_actions_spot_actions__WEBPACK_IMPORTED_MODULE_3__["fetchSpot"])(id));
     },
+    fetchReviews: function fetchReviews(id) {
+      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_4__["fetchReviews"])(id));
+    },
     openModal: function openModal(modal) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["openModal"])(modal));
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_6__["openModal"])(modal));
     },
     closeModal: function closeModal() {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["closeModal"])());
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_6__["closeModal"])());
     },
     destroyErrors: function destroyErrors() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_6__["destroyErrors"])());
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_7__["destroyErrors"])());
     },
     updateCenter: function updateCenter(filter, center) {
-      return dispatch(Object(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_7__["updateCenter"])(filter, center));
+      return dispatch(Object(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_8__["updateCenter"])(filter, center));
     },
     updateFilter: function updateFilter(filter, value) {
-      return dispatch(Object(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_7__["updateFilter"])(filter, value));
+      return dispatch(Object(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_8__["updateFilter"])(filter, value));
     }
   };
 };

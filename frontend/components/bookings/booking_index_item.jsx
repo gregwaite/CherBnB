@@ -24,19 +24,21 @@ class BookingIndexItem extends React.Component {
     const total = end_date.diff(start_date, 'days') * spot.price;
     return (
     <div className="booking-index-item">
-      <ul className="bookings_photo">
+      <div className="bookings_photo">
           <Link to={`/spots/${booking.spot_id}`} onClick={this.handleClick}>
             <img src={spot.photoUrls[0]} alt=""/>
           </Link>
-      </ul>
-      <p>{spot.title}</p>
-      <ul className="booking-item-details">
-        <p>Details</p>
-        <li>{`${start_date.format('MMMM Do')} - ${end_date.format('MMMM Do YYYY')}`}</li>
-        <li>{`Total cost $${total}`}</li>
-      </ul>
+      </div>
+      <div className="booking-index-item-contents">
+        <h1>{spot.title}</h1>
+          <div className="booking-index-item-detail">
+            <h5>Details</h5>
+            <p>{`${start_date.format('MMMM Do')} - ${end_date.format('MMMM Do YYYY')}`}</p>
+            <p>{`Total cost $${total}`}</p>
+            <button onClick={() => cancelBooking(booking.id)}>CANCEL BOOKING</button>
+          </div>
+      </div>
       
-      <button onClick={() => cancelBooking(booking.id)}>CANCEL BOOKING</button>
     </div>
     )
   }

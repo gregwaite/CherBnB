@@ -13,13 +13,19 @@
 }
 
 .booking-index-item {
-  
+  display: flex;
   padding: 10px;
 }
-.booking-index-item > ul {
-  list-style: none;
-  margin: 3px;
-  padding: 3px;
+.booking-index-item-contents {
+  padding-left: 20px;
+}
+.booking-index-item-detail > h5 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.booking-index-item-detail > p {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .bookings_photo > a > img {

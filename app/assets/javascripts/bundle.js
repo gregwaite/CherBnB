@@ -870,7 +870,7 @@ function (_React$Component) {
       var total = end_date.diff(start_date, 'days') * spot.price;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "booking-index-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bookings_photo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/spots/".concat(booking.spot_id),
@@ -878,13 +878,15 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: spot.photoUrls[0],
         alt: ""
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "booking-item-details"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Details"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "".concat(start_date.format('MMMM Do'), " - ").concat(end_date.format('MMMM Do YYYY'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Total cost $".concat(total))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "booking-index-item-contents"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "booking-index-item-detail"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Details"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "".concat(start_date.format('MMMM Do'), " - ").concat(end_date.format('MMMM Do YYYY'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total cost $".concat(total)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return cancelBooking(booking.id);
         }
-      }, "CANCEL BOOKING"));
+      }, "CANCEL BOOKING"))));
     }
   }]);
 

@@ -69,6 +69,7 @@
 }
 .search-show-filters > .guests > input:hover{
   cursor: pointer;
+  background: #43a9a9
 }
 
 .search-show-filters .datepickers {
@@ -83,6 +84,11 @@
 }
 .search-show-filters .datepickers .date-pickers .DateRangePicker > div > div {
   border-style: hidden;
+  background: #008489;
+}
+.search-show-filters .datepickers .date-pickers .DateRangePicker > div > div:hover {
+  border-style: hidden;
+  background: #43a9a9;
 }
 .search-show-filters .datepickers .date-pickers .DateRangePicker > div > div > div .DateInput_input{
   background: #008489;
@@ -92,6 +98,7 @@
 }
 .search-show-filters .datepickers .date-pickers .DateRangePicker > div > div > div .DateInput_input:hover{
   cursor: pointer;
+  background: #43a9a9;
 }
 .search-show-filters .datepickers .date-pickers .DateRangePicker > div > div > .DateInput{
   position: unset;

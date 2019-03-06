@@ -3,6 +3,7 @@ import GreetingContainer from '../greeting/greeting_container';
 import Modal from '../session_form/session_modal';
 import DatePicker from '../datepicker/date_picker';
 import ReviewIndexContainer from '../reviews/review_index_container';
+import CreateReview from '../reviews/create_review_container';
 import SpotMap from './spot_map';
 import Rating from 'react-rating';
 import Geocode from 'react-geocode';
@@ -326,18 +327,21 @@ class SpotShow extends React.Component {
                 {`${this.numOfRevs} ${this.numOfRevs !== 1 ? "Reviews" : 'Review'}`}
               </p>
               <p className="rating-item">
-                <Rating
+                {this.numOfRevs > 0 ? <Rating
                   className="read-only-rating"
                   readonly
                   emptySymbol="fa fa-star-o"
                   fullSymbol="fa fa-star"
                   fractions={2}
                   initialRating={typeof this.averageRating === "string" ? 0 : this.averageRating}
-                />
+                /> : ""}
               </p>
             </div>
         <div className="reviews-container">
-          <ReviewIndexContainer></ReviewIndexContainer>
+          {this.numOfRevs > 0 ? <ReviewIndexContainer></ReviewIndexContainer> : 
+            <div>
+                <p>Not yet reviewed</p> <CreateReview></CreateReview>
+            </div>}
         </div>
           </div>
           <section className="spot-show-map-search">

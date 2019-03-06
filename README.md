@@ -35,10 +35,6 @@ The search on the backend does not fetch spots unless the perameters of the sear
         .where("long < ?", bounds[:northEast][:lng])
         .where("max_guests >= ?", guest_request[:num])
         .where.not("id IN (?)", conflicts)
-        
-        # .where('start_date < :end_date OR end_date > :start_date', 
-        # start_date: dates[:start_date].to_datetime, 
-        # end_date: dates[:end_date].to_datetime)
     else
       self.where("lat < ?", bounds[:northEast][:lat])
         .where("lat > ?", bounds[:southWest][:lat])

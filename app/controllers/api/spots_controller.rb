@@ -17,8 +17,6 @@ class Api::SpotsController < ApplicationController
     else
       spots = Spot.with_attached_pictures.all.includes(:bookings, :reviews)
     end
-    # spots = bounds ? Spot.in_bounds(bounds) : Spot.all
-    # spots = guest_request ? spots.enough_space(guest_request) : spots
     @spots = spots
     render :index
   end

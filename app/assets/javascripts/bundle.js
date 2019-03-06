@@ -708,8 +708,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_booking_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           booking: booking,
           spot: spots[booking.spot_id],
-          closeModal: closeModal,
-          cancelBooking: destroyBooking
+          closeModal: closeModal
         }));
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You have none, you big lug");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -724,7 +723,7 @@ function (_React$Component) {
             showMore: !_this3.state.showMore
           });
         }
-      }, this.state.showMore ? "Hide" : "Show more"), this.state.showMore ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, this.state.showMore ? "Hide" : "Show more reservations"), this.state.showMore ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "booking-index-section"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "bookings-index-h1"
@@ -882,11 +881,11 @@ function (_React$Component) {
         className: "booking-index-item-contents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "booking-index-item-detail"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Details"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "".concat(start_date.format('MMMM Do'), " - ").concat(end_date.format('MMMM Do YYYY'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total cost $".concat(total)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Details"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "".concat(start_date.format('MMMM Do'), " - ").concat(end_date.format('MMMM Do YYYY'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total cost $".concat(total)), cancelBooking ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return cancelBooking(booking.id);
         }
-      }, "CANCEL BOOKING"))));
+      }, "CANCEL BOOKING") : "")));
     }
   }]);
 

@@ -77,7 +77,6 @@ class BookingIndex extends React.Component {
             booking={booking}
             spot={spots[booking.spot_id]}
             closeModal={closeModal}
-            cancelBooking={destroyBooking}
           ></BookingIndexItem>
         </div>
       )
@@ -90,7 +89,7 @@ class BookingIndex extends React.Component {
             {nextBook}
         </section>
           <button onClick={() => this.setState({ showMore: !this.state.showMore })}>
-            {this.state.showMore ? "Hide" : "Show more"}
+            {this.state.showMore ? "Hide" : "Show more reservations"}
           </button>
         {this.state.showMore ? <section className='booking-index-section'>
             <h1 className='bookings-index-h1'>Other upcoming reservations, darling</h1>

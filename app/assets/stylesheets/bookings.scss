@@ -2,30 +2,60 @@
   background: white;
   border-radius: 3px;
   height: 700px;
-  width: 1000px;
+  width: 700px;
   scroll-behavior: auto;
   overflow: scroll;
 }
 
+.booking-index-modal > button {
+  color: teal;
+  border: none;
+  outline: none;
+}
+.booking-index-modal > button:hover {
+  cursor: pointer;
+}
 
 .booking-index-section {
   border-bottom: 1px solid #ebebeb;
+}
+.booking-index-section > h1 {
+  padding-left: 20px;
+  font-weight: 200;
 }
 
 .booking-index-item {
   display: flex;
   padding: 10px;
+  padding-left: 35px;
+  padding-bottom: 27px;
 }
 .booking-index-item-contents {
   padding-left: 20px;
 }
-.booking-index-item-detail > h5 {
+.booking-index-item-contents > h1{
+  font-weight: 400
+}
+.booking-index-item-detail > h4 {
   margin-top: 8px;
   margin-bottom: 8px;
+  font-weight: 600;
 }
 .booking-index-item-detail > p {
   margin-top: 8px;
   margin-bottom: 8px;
+  font-weight: 100;
+}
+
+.booking-index-item-detail > button {
+  color: #9b3143;
+  font-weight: 600;
+  font-size: 12px;
+  border: none;
+  padding: 0;
+}
+.booking-index-item-detail > button:hover {
+  cursor: pointer;
 }
 
 .bookings_photo > a > img {

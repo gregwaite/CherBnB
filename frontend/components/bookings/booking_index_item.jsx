@@ -32,10 +32,10 @@ class BookingIndexItem extends React.Component {
       <div className="booking-index-item-contents">
         <h1>{spot.title}</h1>
           <div className="booking-index-item-detail">
-            <h5>Details</h5>
+            <h4>Details</h4>
             <p>{`${start_date.format('MMMM Do')} - ${end_date.format('MMMM Do YYYY')}`}</p>
             <p>{`Total cost $${total}`}</p>
-            <button onClick={() => cancelBooking(booking.id)}>CANCEL BOOKING</button>
+           {cancelBooking ?  <button onClick={() => cancelBooking(booking.id)}>CANCEL BOOKING</button> : ""}
           </div>
       </div>
       

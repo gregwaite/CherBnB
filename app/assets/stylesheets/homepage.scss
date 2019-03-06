@@ -132,6 +132,7 @@
 .guest-dropdown-buttons {
   display: flex;
   align-items: center;
+  outline: none;
 }
 
 .guest-dropdown-buttons > button {
@@ -144,6 +145,7 @@
   width: 32px;
   margin-right: 9px;
   margin-left: 9px;
+  outline: none;
 }
 
 

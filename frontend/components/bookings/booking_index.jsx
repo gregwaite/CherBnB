@@ -6,8 +6,8 @@ class BookingIndex extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      showPrev: false,
-    }
+      showMore: false,
+    };
     this.today = moment();
   }
   componentDidMount(){
@@ -89,10 +89,10 @@ class BookingIndex extends React.Component {
           <h1 className='bookings-index-h1'>Your next res, sugar</h1>
             {nextBook}
         </section>
-          <button onClick={() => this.setState({ showPrev: !this.state.showPrev })}>
-            {this.state.showPrev ? "Hide more upcoming bookings" : "Show more upcoming bookings"}
+          <button onClick={() => this.setState({ showMore: !this.state.showMore })}>
+            {this.state.showMore ? "Hide" : "Show more"}
           </button>
-        {this.state.showPrev ? <section className='booking-index-section'>
+        {this.state.showMore ? <section className='booking-index-section'>
             <h1 className='bookings-index-h1'>Other upcoming reservations, darling</h1>
             {upcomingBookingsDivs}
         </section> : ""}

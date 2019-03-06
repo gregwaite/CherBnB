@@ -625,7 +625,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BookingIndex).call(this, props));
     _this.state = {
-      showPrev: false
+      showMore: false
     };
     _this.today = moment__WEBPACK_IMPORTED_MODULE_2___default()();
     return _this;
@@ -721,10 +721,10 @@ function (_React$Component) {
       }, "Your next res, sugar"), nextBook), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this3.setState({
-            showPrev: !_this3.state.showPrev
+            showMore: !_this3.state.showMore
           });
         }
-      }, this.state.showPrev ? "Hide more upcoming bookings" : "Show more upcoming bookings"), this.state.showPrev ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, this.state.showMore ? "Hide" : "Show more"), this.state.showMore ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "booking-index-section"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "bookings-index-h1"

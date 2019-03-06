@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
+
 
 class BookingIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.moment = moment;
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -12,11 +15,13 @@ class BookingIndexItem extends React.Component {
   }
 
   render() {
-    const { booking } = this.props;
-    let { start_date, end_date, num_guests } = booking;
-    start_date = start_date.toString().slice(5, 10) + '-' + start_date.toString().slice(0, 4);
-    end_date = end_date.toString().slice(5, 10) + '-' + end_date.toString().slice(0,4);
-    const spot = this.props.spot || {photoUrls: []};
+    const { booking, cancelBooking } = this.props;
+    let { start_date, end_date } = booking;
+
+    start_date = this.moment(start_date);
+    end_date = this.moment(end_date);
+    const spot = this.props.spot || {photoUrls: [], price: 0};
+    const total = end_date.diff(start_date, 'days') * spot.price;
     return (
     <div className="booking-index-item">
       <ul className="bookings_photo">
@@ -24,15 +29,14 @@ class BookingIndexItem extends React.Component {
             <img src={spot.photoUrls[0]} alt=""/>
           </Link>
       </ul>
-      <ul className="startDate-item">
-        <li>{start_date}</li>
-        <li>Start Date</li>
+      <p>{spot.title}</p>
+      <ul className="booking-item-details">
+        <p>Details</p>
+        <li>{`${start_date.format('MMMM Do')} - ${end_date.format('MMMM Do YYYY')}`}</li>
+        <li>{`Total cost $${total}`}</li>
       </ul>
-      <ul className="endDate-item">
-        <li>{end_date}</li>
-        <li>End Date</li>
-      </ul>
-   
+      
+      <button onClick={() => cancelBooking(booking.id)}>CANCEL BOOKING</button>
     </div>
     )
   }

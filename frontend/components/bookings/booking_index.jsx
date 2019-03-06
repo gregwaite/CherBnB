@@ -5,6 +5,9 @@ import moment from 'moment';
 class BookingIndex extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      showPrev: false,
+    }
     this.today = moment();
   }
   componentDidMount(){
@@ -20,7 +23,7 @@ class BookingIndex extends React.Component {
   }
 
   render(){
-    const { spots, closeModal } = this.props;
+    const { spots, closeModal, destroyBooking } = this.props;
     const pastBookings = this.props.bookings.filter(booking => {
       return (new Date(this.today) > new Date(booking.start_date));
     });
@@ -46,27 +49,27 @@ class BookingIndex extends React.Component {
               booking={booking}
               spot={spots[booking.spot_id]}
               closeModal={closeModal}
-              // handleDeleteSubmit={this.handleDeleteSubmit}
+              cancelBooking={destroyBooking}
             ></BookingIndexItem>
           </div>
         )}
         )
     }
-    const upcomingSortedBookings = upcomingBookings.sort((a,b) => {
+    let upcomingSortedBookings = upcomingBookings.length > 0 ? upcomingBookings.sort((a,b) => {
       return new Date(a.start_date) - new Date(b.start_date);
-    });
-    const upcomingBookingsDivs = upcomingSortedBookings.map(booking => {
+    }) : (<li>You have none, you big lug</li>)
+    let upcomingBookingsDivs = upcomingSortedBookings.length > 0 ? upcomingSortedBookings.map(booking => {
       return (
         <div className={this.className} key={booking.id}>
           <BookingIndexItem
             booking={booking}
             spot={spots[booking.spot_id]}
             closeModal={closeModal}
-            // handleDeleteSubmit={this.handleDeleteSubmit}
+            cancelBooking={destroyBooking}
           ></BookingIndexItem>
         </div>
       )}
-      )
+      ) : (<li>You have none, you big lug</li>)
     let pastBe = pastBookings.length > 0 ? pastBookings.map(booking => {
       return (
         <div className={this.className} key={booking.id}>
@@ -74,7 +77,7 @@ class BookingIndex extends React.Component {
             booking={booking}
             spot={spots[booking.spot_id]}
             closeModal={closeModal}
-          // handleDeleteSubmit={this.handleDeleteSubmit}
+            cancelBooking={destroyBooking}
           ></BookingIndexItem>
         </div>
       )
@@ -82,12 +85,21 @@ class BookingIndex extends React.Component {
     ) : (<li>You have none, you big lug</li>)
       return (
       <div className='booking-index-modal'>
-        <h1 className='bookings-index-h1'>Your next res, sugar</h1>
-          {nextBook}
-        <h1 className='bookings-index-h1'>Other upcoming reservations, darling</h1>
-          {upcomingBookingsDivs}
-        <h1 className='bookings-index-h1'>Your previous reservations, you big lug</h1>
-          {pastBe}
+        <section className='booking-index-section'>
+          <h1 className='bookings-index-h1'>Your next res, sugar</h1>
+            {nextBook}
+        </section>
+          <button onClick={() => this.setState({ showPrev: !this.state.showPrev })}>
+            {this.state.showPrev ? "Hide more upcoming bookings" : "Show more upcoming bookings"}
+          </button>
+        {this.state.showPrev ? <section className='booking-index-section'>
+            <h1 className='bookings-index-h1'>Other upcoming reservations, darling</h1>
+            {upcomingBookingsDivs}
+        </section> : ""}
+        <section className='booking-index-section'>
+          <h1 className='bookings-index-h1'>Your previous reservations, you big lug</h1>
+            {pastBe}
+        </section>
       </div>
     )
   }

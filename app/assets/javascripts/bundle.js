@@ -624,6 +624,9 @@ function (_React$Component) {
     _classCallCheck(this, BookingIndex);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BookingIndex).call(this, props));
+    _this.state = {
+      showPrev: false
+    };
     _this.today = moment__WEBPACK_IMPORTED_MODULE_2___default()();
     return _this;
   }
@@ -653,7 +656,8 @@ function (_React$Component) {
 
       var _this$props = this.props,
           spots = _this$props.spots,
-          closeModal = _this$props.closeModal;
+          closeModal = _this$props.closeModal,
+          destroyBooking = _this$props.destroyBooking;
       var pastBookings = this.props.bookings.filter(function (booking) {
         return new Date(_this3.today) > new Date(booking.start_date);
       });
@@ -677,26 +681,26 @@ function (_React$Component) {
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_booking_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
             booking: booking,
             spot: spots[booking.spot_id],
-            closeModal: closeModal // handleDeleteSubmit={this.handleDeleteSubmit}
-
+            closeModal: closeModal,
+            cancelBooking: destroyBooking
           }));
         });
       }
 
-      var upcomingSortedBookings = upcomingBookings.sort(function (a, b) {
+      var upcomingSortedBookings = upcomingBookings.length > 0 ? upcomingBookings.sort(function (a, b) {
         return new Date(a.start_date) - new Date(b.start_date);
-      });
-      var upcomingBookingsDivs = upcomingSortedBookings.map(function (booking) {
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You have none, you big lug");
+      var upcomingBookingsDivs = upcomingSortedBookings.length > 0 ? upcomingSortedBookings.map(function (booking) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: _this3.className,
           key: booking.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_booking_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           booking: booking,
           spot: spots[booking.spot_id],
-          closeModal: closeModal // handleDeleteSubmit={this.handleDeleteSubmit}
-
+          closeModal: closeModal,
+          cancelBooking: destroyBooking
         }));
-      });
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You have none, you big lug");
       var pastBe = pastBookings.length > 0 ? pastBookings.map(function (booking) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: _this3.className,
@@ -704,19 +708,31 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_booking_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           booking: booking,
           spot: spots[booking.spot_id],
-          closeModal: closeModal // handleDeleteSubmit={this.handleDeleteSubmit}
-
+          closeModal: closeModal,
+          cancelBooking: destroyBooking
         }));
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You have none, you big lug");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "booking-index-modal"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "booking-index-section"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "bookings-index-h1"
-      }, "Your next res, sugar"), nextBook, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      }, "Your next res, sugar"), nextBook), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.setState({
+            showPrev: !_this3.state.showPrev
+          });
+        }
+      }, this.state.showPrev ? "Hide more upcoming bookings" : "Show more upcoming bookings"), this.state.showPrev ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "booking-index-section"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "bookings-index-h1"
-      }, "Other upcoming reservations, darling"), upcomingBookingsDivs, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      }, "Other upcoming reservations, darling"), upcomingBookingsDivs) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "booking-index-section"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "bookings-index-h1"
-      }, "Your previous reservations, you big lug"), pastBe);
+      }, "Your previous reservations, you big lug"), pastBe));
     }
   }]);
 
@@ -792,6 +808,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -813,6 +831,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
 var BookingIndexItem =
 /*#__PURE__*/
 function (_React$Component) {
@@ -824,6 +843,7 @@ function (_React$Component) {
     _classCallCheck(this, BookingIndexItem);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BookingIndexItem).call(this, props));
+    _this.moment = moment__WEBPACK_IMPORTED_MODULE_2___default.a;
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
@@ -836,15 +856,18 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var booking = this.props.booking;
+      var _this$props = this.props,
+          booking = _this$props.booking,
+          cancelBooking = _this$props.cancelBooking;
       var start_date = booking.start_date,
-          end_date = booking.end_date,
-          num_guests = booking.num_guests;
-      start_date = start_date.toString().slice(5, 10) + '-' + start_date.toString().slice(0, 4);
-      end_date = end_date.toString().slice(5, 10) + '-' + end_date.toString().slice(0, 4);
+          end_date = booking.end_date;
+      start_date = this.moment(start_date);
+      end_date = this.moment(end_date);
       var spot = this.props.spot || {
-        photoUrls: []
+        photoUrls: [],
+        price: 0
       };
+      var total = end_date.diff(start_date, 'days') * spot.price;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "booking-index-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -855,11 +878,13 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: spot.photoUrls[0],
         alt: ""
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "startDate-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, start_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Start Date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "endDate-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, end_date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "End Date")));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, spot.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "booking-item-details"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Details"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "".concat(start_date.format('MMMM Do'), " - ").concat(end_date.format('MMMM Do YYYY'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Total cost $".concat(total))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return cancelBooking(booking.id);
+        }
+      }, "CANCEL BOOKING"));
     }
   }]);
 

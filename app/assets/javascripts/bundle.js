@@ -1022,16 +1022,7 @@ function (_React$Component) {
         this.startPlaceholder = "mm/dd/yyyy";
         this.endPlaceholder = "mm/dd/yyyy";
         this.showClear = true;
-      } // if (this.props.focus && !this.state.startDate && !this.state.focusedInput) {
-      //   this.setState({focusedInput: START_DATE});
-      // }
-      // if (!this.props.focus && this.state.startDate && this.state.endDate && this.state.focusedInput) {
-      //   this.setState({focusedInput: null});
-      // }
-      // if (this.state.startDate && this.state.endDate && this.state.focusedInput) {
-      //   this.setState({focusedInput: null});
-      // }
-
+      }
 
       if (this.props.availCal) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
@@ -1093,7 +1084,7 @@ function (_React$Component) {
             _this3.props.handleEndChange(end._d);
           } // PropTypes.func.isRequired,
           ,
-          focusedInput: focusedInput // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+          focusedInput: this.props.focus ? react_dates_constants__WEBPACK_IMPORTED_MODULE_5__["START_DATE"] : focusedInput // PropTypes.oneOf([START_DATE, END_DATE]) or null,
           ,
           onFocusChange: function onFocusChange(focusedInput) {
             return _this3.setState({

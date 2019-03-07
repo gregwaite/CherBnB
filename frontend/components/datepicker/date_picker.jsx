@@ -68,15 +68,6 @@ class DatePicker extends React.Component {
       this.endPlaceholder = "mm/dd/yyyy";
       this.showClear = true;
     }
-    // if (this.props.focus && !this.state.startDate && !this.state.focusedInput) {
-    //   this.setState({focusedInput: START_DATE});
-    // }
-    // if (!this.props.focus && this.state.startDate && this.state.endDate && this.state.focusedInput) {
-    //   this.setState({focusedInput: null});
-    // }
-    // if (this.state.startDate && this.state.endDate && this.state.focusedInput) {
-    //   this.setState({focusedInput: null});
-    // }
     if (this.props.availCal) {
       return (
         <section className='date-pickers'>
@@ -114,7 +105,7 @@ class DatePicker extends React.Component {
               const end = endDate || {}
               this.props.handleEndChange(end._d);
             }} // PropTypes.func.isRequired,
-            focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+            focusedInput={this.props.focus ? START_DATE : focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
             onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
             numberOfMonths={this.props.numMonths}
             isDayBlocked={day => this.checkBlockedDays(day)}

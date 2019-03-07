@@ -68,12 +68,15 @@ class DatePicker extends React.Component {
       this.endPlaceholder = "mm/dd/yyyy";
       this.showClear = true;
     }
-    if (this.props.focus && !this.state.startDate && !this.state.focusedInput) {
-      this.setState({focusedInput: START_DATE});
-    }
-    if (this.state.startDate && this.state.endDate && this.state.focusedInput) {
-      this.setState({focusedInput: null});
-    }
+    // if (this.props.focus && !this.state.startDate && !this.state.focusedInput) {
+    //   this.setState({focusedInput: START_DATE});
+    // }
+    // if (!this.props.focus && this.state.startDate && this.state.endDate && this.state.focusedInput) {
+    //   this.setState({focusedInput: null});
+    // }
+    // if (this.state.startDate && this.state.endDate && this.state.focusedInput) {
+    //   this.setState({focusedInput: null});
+    // }
     if (this.props.availCal) {
       return (
         <section className='date-pickers'>

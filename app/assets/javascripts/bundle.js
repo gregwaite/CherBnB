@@ -914,6 +914,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_dates__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dates */ "./node_modules/react-dates/index.js");
 /* harmony import */ var react_dates__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dates__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_dates_constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-dates/constants */ "./node_modules/react-dates/constants.js");
+/* harmony import */ var react_dates_constants__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_dates_constants__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -936,8 +938,9 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
- // import { start } from 'repl';
-// const today = moment();
+
+
+var today = moment__WEBPACK_IMPORTED_MODULE_3___default()();
 
 var msp = function msp(state) {
   return {};
@@ -946,8 +949,6 @@ var msp = function msp(state) {
 var mdp = function mdp(dispatch) {
   return {};
 };
-
-var today = moment__WEBPACK_IMPORTED_MODULE_3___default()();
 
 var DatePicker =
 /*#__PURE__*/
@@ -1009,8 +1010,8 @@ function (_React$Component) {
 
       var _this$state = this.state,
           startDate = _this$state.startDate,
-          endDate = _this$state.endDate; // const startDateString = startDate && startDate.format('ddd, MMM Do');
-      // const endDateString = endDate && endDate.format('ddd, MMM Do');
+          endDate = _this$state.endDate,
+          focusedInput = _this$state.focusedInput;
 
       if (this.props.type === "search") {
         var date = this.moment();
@@ -1021,6 +1022,18 @@ function (_React$Component) {
         this.startPlaceholder = "mm/dd/yyyy";
         this.endPlaceholder = "mm/dd/yyyy";
         this.showClear = true;
+      }
+
+      if (this.props.focus && !this.state.startDate && !this.state.focusedInput) {
+        this.setState({
+          focusedInput: react_dates_constants__WEBPACK_IMPORTED_MODULE_5__["START_DATE"]
+        });
+      }
+
+      if (this.state.startDate && this.state.endDate && this.state.focusedInput) {
+        this.setState({
+          focusedInput: null
+        });
       }
 
       if (this.props.availCal) {
@@ -1042,12 +1055,13 @@ function (_React$Component) {
           },
           onPrevMonthClick: react_dates__WEBPACK_IMPORTED_MODULE_4__["DayPickerRangeController"].onPrevMonthClick,
           onNextMonthClick: react_dates__WEBPACK_IMPORTED_MODULE_4__["DayPickerRangeController"].onNextMonthClick,
-          focusedInput: this.state.focusedInput,
+          focusedInput: null,
           onFocusChange: function onFocusChange(focusedInput) {
             return _this3.setState({
               focusedInput: focusedInput
             });
-          }
+          },
+          hideKeyboardShortcutsPanel: true
         }));
       } else {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
@@ -1082,7 +1096,7 @@ function (_React$Component) {
             _this3.props.handleEndChange(end._d);
           } // PropTypes.func.isRequired,
           ,
-          focusedInput: this.state.focusedInput // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+          focusedInput: focusedInput // PropTypes.oneOf([START_DATE, END_DATE]) or null,
           ,
           onFocusChange: function onFocusChange(focusedInput) {
             return _this3.setState({
@@ -1095,8 +1109,7 @@ function (_React$Component) {
             return _this3.checkBlockedDays(day);
           },
           showClearDates: this.showClear,
-          displayFormat: 'MMM DD' // openDatePicker={this.state.openDatePicker}
-
+          displayFormat: 'MMM DD'
         }));
       }
     }
@@ -3528,9 +3541,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-geocode */ "./node_modules/react-geocode/lib/index.js");
 /* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_geocode__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _static_assets_search_icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../static_assets/search_icon */ "./frontend/static_assets/search_icon.jsx");
-/* harmony import */ var _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../static_assets/amenity_icons */ "./frontend/static_assets/amenity_icons.jsx");
-/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
-/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../static_assets/amenity_icons */ "./frontend/static_assets/amenity_icons.jsx");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-places-autocomplete */ "./node_modules/react-places-autocomplete/dist/index.js");
+/* harmony import */ var react_places_autocomplete__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_12__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3562,6 +3577,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
 var SpotShow =
 /*#__PURE__*/
 function (_React$Component) {
@@ -3574,9 +3590,9 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SpotShow).call(this, props));
     _this.state = {
-      startDate: new Date(),
-      endDate: new Date(),
-      focusedInput: 'startDate',
+      startDate: null,
+      endDate: null,
+      focus: false,
       calendarFocused: null,
       openDatePicker: false,
       dropDownMode: 'scroll',
@@ -3586,9 +3602,11 @@ function (_React$Component) {
       location: "",
       address: "",
       center: _this.props.center,
-      bounds: _this.props.bounds
+      bounds: _this.props.bounds,
+      openCal: false
     };
     _this.guestPluralSingle = "Cher";
+    _this.moment = moment__WEBPACK_IMPORTED_MODULE_10___default.a;
     _this.handleGeocode = _this.handleGeocode.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -3660,7 +3678,8 @@ function (_React$Component) {
     key: "handleEndChange",
     value: function handleEndChange(date) {
       this.setState({
-        endDate: date
+        endDate: date,
+        focus: false
       });
     }
   }, {
@@ -3669,16 +3688,22 @@ function (_React$Component) {
       var _this3 = this;
 
       if (this.props.loggedIn) {
-        var booking = {
-          start_date: this.state.startDate,
-          end_date: this.state.endDate,
-          status: 'Approved',
-          spot_id: this.props.match.params.spotId,
-          num_guests: this.state.guestsNum
-        };
-        this.props.createBooking(booking).then(function (booking) {
-          return _this3.props.openModal('booking');
-        });
+        if (this.state.startDate) {
+          var booking = {
+            start_date: this.state.startDate,
+            end_date: this.state.endDate,
+            status: 'Approved',
+            spot_id: this.props.match.params.spotId,
+            num_guests: this.state.guestsNum
+          };
+          this.props.createBooking(booking).then(function (booking) {
+            return _this3.props.openModal('booking');
+          });
+        } else {
+          this.setState({
+            focus: true
+          });
+        }
       } else {
         this.props.openModal('login');
       }
@@ -3732,8 +3757,8 @@ function (_React$Component) {
     value: function handleSelect(address) {
       var _this4 = this;
 
-      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_11__["geocodeByAddress"])(address).then(function (results) {
-        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_11__["getLatLng"])(results[0]);
+      Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_12__["geocodeByAddress"])(address).then(function (results) {
+        return Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_12__["getLatLng"])(results[0]);
       }).then(function (latLng) {
         return _this4.setState({
           long: parseFloat(latLng.lng),
@@ -3793,18 +3818,18 @@ function (_React$Component) {
         reviews: []
       };
       var amenityList = {
-        AirCon: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__["AirCon"],
-        Iron: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__["Iron"],
-        Wifi: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__["Wifi"],
-        Kitchen: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__["Kitchen"],
-        TV: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__["TV"],
-        Washer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__["Washer"],
-        Dryer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__["Dryer"],
-        Parking: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__["Parking"],
-        HairDryer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__["HairDryer"],
-        HotTub: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__["HotTub"],
-        Coffee: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__["Coffee"],
-        Laptop: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_10__["Laptop"]
+        AirCon: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__["AirCon"],
+        Iron: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__["Iron"],
+        Wifi: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__["Wifi"],
+        Kitchen: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__["Kitchen"],
+        TV: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__["TV"],
+        Washer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__["Washer"],
+        Dryer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__["Dryer"],
+        Parking: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__["Parking"],
+        HairDryer: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__["HairDryer"],
+        HotTub: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__["HotTub"],
+        Coffee: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__["Coffee"],
+        Laptop: _static_assets_amenity_icons__WEBPACK_IMPORTED_MODULE_11__["Laptop"]
       };
       var amenities = this.props.amenities;
 
@@ -3844,7 +3869,7 @@ function (_React$Component) {
           'width': '18px',
           'fill': '#333'
         }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_11___default.a, {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_12___default.a, {
         value: this.state.address,
         onChange: this.handleChange,
         onSelect: this.handleSelect
@@ -3953,7 +3978,9 @@ function (_React$Component) {
         handleEndChange: this.handleEndChange,
         spot: spot,
         blockSome: true,
-        numMonths: 1
+        numMonths: 1,
+        open: this.state.openCal,
+        focus: this.state.focus
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "guests"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Guests"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -53814,6 +53841,19 @@ function shallowCompare(instance, nextProps, nextState) {
 }
 
 module.exports = shallowCompare;
+
+
+/***/ }),
+
+/***/ "./node_modules/react-dates/constants.js":
+/*!***********************************************!*\
+  !*** ./node_modules/react-dates/constants.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// eslint-disable-next-line import/no-unresolved
+module.exports = __webpack_require__(/*! ./lib/constants */ "./node_modules/react-dates/lib/constants.js");
 
 
 /***/ }),

@@ -3,9 +3,9 @@ import React from 'react';
 import 'react-dates/initialize';
 import moment from 'moment';
 import { DateRangePicker, DayPickerRangeController, isInclusivelyAfterDay } from 'react-dates';
-// import { start } from 'repl';
+import { START_DATE } from 'react-dates/constants';
 
-// const today = moment();
+const today = moment();
 
 const msp = state => {
   return {};
@@ -14,8 +14,6 @@ const msp = state => {
 const mdp = dispatch => {
   return {};
 };
-
-const today = moment();
 
 class DatePicker extends React.Component {
 
@@ -59,9 +57,7 @@ class DatePicker extends React.Component {
   }
 
   render() {
-    const { startDate, endDate } = this.state;
-    // const startDateString = startDate && startDate.format('ddd, MMM Do');
-    // const endDateString = endDate && endDate.format('ddd, MMM Do');
+    const { startDate, endDate, focusedInput } = this.state;
     if (this.props.type === "search") {
       const date = this.moment();
       this.startPlaceholder = date.format("MMM DD");
@@ -71,6 +67,12 @@ class DatePicker extends React.Component {
       this.startPlaceholder = "mm/dd/yyyy";
       this.endPlaceholder = "mm/dd/yyyy";
       this.showClear = true;
+    }
+    if (this.props.focus && !this.state.startDate && !this.state.focusedInput) {
+      this.setState({focusedInput: START_DATE});
+    }
+    if (this.state.startDate && this.state.endDate && this.state.focusedInput) {
+      this.setState({focusedInput: null});
     }
     if (this.props.availCal) {
       return (
@@ -85,8 +87,9 @@ class DatePicker extends React.Component {
             isOutsideRange={day => isInclusivelyAfterDay(today, day)}
             onPrevMonthClick={DayPickerRangeController.onPrevMonthClick}
             onNextMonthClick={DayPickerRangeController.onNextMonthClick}
-            focusedInput={this.state.focusedInput}
-            onFocusChange={focusedInput => this.setState({ focusedInput })}
+            focusedInput={null}
+            onFocusChange={focusedInput => this.setState({focusedInput})}
+            hideKeyboardShortcutsPanel={true}
           />
         </section>
       );      
@@ -108,13 +111,12 @@ class DatePicker extends React.Component {
               const end = endDate || {}
               this.props.handleEndChange(end._d);
             }} // PropTypes.func.isRequired,
-            focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+            focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
             onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
             numberOfMonths={this.props.numMonths}
             isDayBlocked={day => this.checkBlockedDays(day)}
             showClearDates={this.showClear}
             displayFormat={'MMM DD'}
-            // openDatePicker={this.state.openDatePicker}
           />
         </section>
       );

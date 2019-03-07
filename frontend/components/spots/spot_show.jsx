@@ -8,6 +8,7 @@ import SpotMap from './spot_map';
 import Rating from 'react-rating';
 import Geocode from 'react-geocode';
 import SearchIcon from '../../static_assets/search_icon';
+import moment from 'moment';
 import {
   AirCon,
   Iron,
@@ -31,9 +32,9 @@ class SpotShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      startDate: new Date(),
-      endDate: new Date(),
-      focusedInput: 'startDate',
+      startDate: null,
+      endDate: null,
+      focus: false,
       calendarFocused: null,
       openDatePicker: false,
       dropDownMode: 'scroll',
@@ -43,10 +44,11 @@ class SpotShow extends React.Component {
       location: "",
       address: "",
       center: this.props.center,
-      bounds: this.props.bounds
+      bounds: this.props.bounds,
+      openCal: false,
     };
     this.guestPluralSingle = "Cher";
-    
+    this.moment = moment;    
 
     this.handleGeocode = this.handleGeocode.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -101,18 +103,23 @@ class SpotShow extends React.Component {
   handleEndChange(date) {
     this.setState({
       endDate: date,
+      focus: false,
     });
   }
   handleBookSubmit() {
     if (this.props.loggedIn){
-      const booking = {
-        start_date: this.state.startDate,
-        end_date: this.state.endDate,
-        status: 'Approved',
-        spot_id: this.props.match.params.spotId,
-        num_guests: this.state.guestsNum,
-      };
-      this.props.createBooking(booking).then(booking => this.props.openModal('booking'));
+      if (this.state.startDate){
+        const booking = {
+          start_date: this.state.startDate,
+          end_date: this.state.endDate,
+          status: 'Approved',
+          spot_id: this.props.match.params.spotId,
+          num_guests: this.state.guestsNum,
+        };
+        this.props.createBooking(booking).then(booking => this.props.openModal('booking'));
+      } else {
+        this.setState({ focus: true});
+      }
     } else {
       this.props.openModal('login');
     }
@@ -368,6 +375,8 @@ class SpotShow extends React.Component {
                       spot={spot}
                       blockSome={true}
                       numMonths={1}
+                      open={this.state.openCal}
+                      focus={this.state.focus}
                     />
                 </section>
               </div>

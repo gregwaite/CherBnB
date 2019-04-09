@@ -1,11 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { updateReview } from '../../actions/review_actions';
-import Rating from 'react-rating';
+import React from "react";
+import { connect } from "react-redux";
+import { updateReview } from "../../actions/review_actions";
+import Rating from "react-rating";
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateReview: (review) => dispatch(updateReview(review)),
+    updateReview: review => dispatch(updateReview(review))
   };
 };
 
@@ -23,7 +23,7 @@ class EditReview extends React.Component {
   }
 
   update(field) {
-    return (e) => {
+    return e => {
       this.setState({ [field]: e.target.value });
     };
   }
@@ -34,11 +34,7 @@ class EditReview extends React.Component {
         <form className="edit-form" onSubmit={this.handleSubmit}>
           <div className="edit-review-body">
             <li>Review:</li>
-            <textarea
-              onChange={this.update("body")}
-              value={this.state.body}
-            >
-            </textarea>
+            <textarea onChange={this.update("body")} value={this.state.body} />
           </div>
 
           <div className="edit-review-rating">
@@ -50,26 +46,27 @@ class EditReview extends React.Component {
               fullSymbol="fa fa-star"
               fractions={2}
               initialRating={this.state.rating}
-              onChange={(e) => this.setState({
-                rating: e
-              })}
-              onClick={(e) => this.setState({
-                rating: e
-              })}
+              onChange={e =>
+                this.setState({
+                  rating: e
+                })
+              }
+              onClick={e =>
+                this.setState({
+                  rating: e
+                })
+              }
             />
-            <input
-              type="number"
-              value={this.state.rating}
-              onChange={this.update("rating")}
-            />
+            <p>{this.state.rating || ""}</p>
           </div>
           <button onClick={this.handleSubmit}>Submit</button>
         </form>
-      </div >
+      </div>
     );
   }
-
 }
 
-
-export default connect(null, mapDispatchToProps)(EditReview);
+export default connect(
+  null,
+  mapDispatchToProps
+)(EditReview);

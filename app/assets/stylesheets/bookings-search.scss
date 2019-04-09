@@ -6,9 +6,10 @@
   height: 480px;
   width: 450px;
   border-radius: 3px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
 }
-.bookings-search > h1{
+.bookings-search > h1 {
   font-size: 24px;
   font-weight: 700;
   padding-top: 10%;
@@ -17,7 +18,7 @@
   color: #484848;
   margin-bottom: 4%;
 }
-.bookings-search > input{
+.bookings-search > input {
   width: 87%;
   margin-left: 5%;
   height: 44px;
@@ -25,14 +26,15 @@
   border-color: rgb(230, 230, 230);
   border-style: solid;
   border-width: 1px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-size: 15px;
   padding-left: 10px;
-  color:#484848; 
+  color: #484848;
   margin-bottom: 1%;
 }
 
-#splash-searchbar .location-search-input{
+#splash-searchbar .location-search-input {
   width: 80%;
   margin-left: 2.8%;
   height: 44px;
@@ -40,10 +42,11 @@
   border-color: rgb(230, 230, 230);
   border-style: solid;
   border-width: 1px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-size: 15px;
   padding-left: 50px;
-  color:#484848; 
+  color: #484848;
   margin-bottom: 1%;
   outline: none !important;
 }
@@ -51,10 +54,11 @@
 .bookings-search > button {
   display: table;
   vertical-align: middle;
-  background:rgb(255, 90, 95);
-  color: white; 
+  background: rgb(255, 90, 95);
+  color: white;
   font-size: 16px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   width: 25%;
   height: 45px;
   margin-top: 20px;
@@ -83,10 +87,11 @@
   border-color: rgb(230, 230, 230);
   border-style: solid;
   border-width: 1px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-size: 15px;
   padding-left: 10px;
-  color:#484848; 
+  color: #484848;
   width: 100%;
 }
 
@@ -96,7 +101,7 @@
   text-transform: uppercase;
   font-size: 12px;
   font-weight: bold;
-  color: #484848
+  color: #484848;
 }
 
 .checkin-checkout {
@@ -105,7 +110,7 @@
   text-transform: uppercase;
   font-size: 12px;
   font-weight: bold;
-  color: #484848
+  color: #484848;
 }
 .checkin-checkout > p {
   margin-bottom: 1%;
@@ -126,7 +131,7 @@
 
 .guests > p {
   margin-bottom: 1%;
-  margin-left: 2%
+  margin-left: 2%;
 }
 
 .guests > input {
@@ -136,10 +141,11 @@
   border-color: rgb(230, 230, 230);
   border-style: solid;
   border-width: 1px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-size: 15px;
   padding-left: 10px;
-  color:#484848; 
+  color: #484848;
   outline: none !important;
 }
 
@@ -152,21 +158,6 @@
   display: none;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // all below is the calendar
 
 .react-datepicker {
@@ -174,7 +165,7 @@
   height: 100%;
   width: 270px;
   padding-bottom: 6%;
-  border: .75px solid slategray;
+  border: 0.75px solid slategray;
   border-radius: 3px;
   margin-top: 3%;
 }
@@ -186,7 +177,7 @@
   position: absolute;
   top: 10px;
   padding: 0;
-  border: 0.40rem solid transparent;
+  border: 0.4rem solid transparent;
   z-index: 1;
   height: 10px;
   width: 10px;
@@ -211,7 +202,8 @@
   padding-top: 3%;
   text-align: center;
   width: 100%;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-weight: bold;
 }
 
@@ -230,7 +222,8 @@
   margin-right: 1.3px;
   width: 12%;
   padding-bottom: 5px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-weight: 100;
   font-size: 12px;
   color: gray;
@@ -253,7 +246,8 @@
   text-align: center;
   height: 30px;
   width: 14%;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-size: 14px;
   font-weight: 400;
   border: 0.5px solid #847b7f69;
@@ -261,5 +255,3 @@
 .react-datepicker__day:hover {
   background: #847b7f69;
 }
-
-

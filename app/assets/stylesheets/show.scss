@@ -3,7 +3,7 @@
   top: 0;
   z-index: 4;
 }
-.show-navbar-div > div{
+.show-navbar-div > div {
   display: flex;
   height: 70px;
   background: white;
@@ -20,18 +20,17 @@
   color: black;
 }
 
-
 .search-icon {
   z-index: 1;
   position: absolute;
   padding: 15px;
 }
 
-
 #show-greeting > li {
   height: 50px;
   width: 40px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
 }
 #show-greeting .location-search-input {
   width: 400px;
@@ -41,10 +40,11 @@
   border-color: rgb(230, 230, 230);
   border-style: solid;
   border-width: 1px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-size: 15px;
   padding-left: 50px;
-  color:#484848; 
+  color: #484848;
   margin-bottom: 1%;
 }
 
@@ -53,6 +53,8 @@
   width: 40%;
   margin-top: 5%;
   margin-left: 5%;
+  min-width: 720px;
+  overflow: hidden;
 }
 
 .show-div > img {
@@ -79,7 +81,7 @@
 }
 
 .material-icons-home {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
   font-size: 17px;
@@ -90,7 +92,7 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
+  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
   background-color: white;
   background-color: white;
@@ -112,14 +114,11 @@
   margin-top: 29px;
 }
 
-
-
-
 .show-ammenities {
   margin: 8px;
   border-bottom: 1px solid #ebebeb;
 }
-.show-ammenities > h4{
+.show-ammenities > h4 {
   font-weight: 500;
   color: #484848;
 }
@@ -131,19 +130,15 @@
   box-sizing: border-box;
 }
 
-.amenities > div{
+.amenities > div {
   display: flex;
   font-weight: 100;
   margin: 20px;
   width: 100px;
 }
-.amenities > div > div{
+.amenities > div > div {
   margin-right: 5px;
 }
-
-
-
-
 
 .show-description {
   border-bottom: 1px solid #ebebeb;
@@ -166,11 +161,12 @@
   top: 142px;
   position: sticky;
   border-radius: 3px;
-  border: .6px solid gray;
+  border: 0.6px solid gray;
   height: 360px;
   width: 420px;
+  margin-left: 6.7%;
 }
-.whole-show .guests  {
+.whole-show .guests {
   width: 95%;
   margin-bottom: 4%;
 }
@@ -185,7 +181,7 @@
 .spot-show-map-search > h1 {
   padding-left: 28px;
 }
-.spot-show-map-search .spot-map #map-container{
+.spot-show-map-search .spot-map #map-container {
   width: 130%;
   margin-bottom: 10%;
 }
@@ -196,7 +192,7 @@
 
 .show-datepickers > h4 {
   font-weight: 500;
-  color: #484848; 
+  color: #484848;
   padding-left: 8px;
 }
 
@@ -211,12 +207,6 @@
 .show-datepickers .datepickers .date-pickers .DateRangePickerInput_clearDates {
   margin: 0 30px 5px;
 }
-
-
-
-
-
-
 
 .show-ratings {
   display: flex;
@@ -253,7 +243,7 @@
 
 .rating-selector {
   .fa {
-    margin-right: .6rem;
+    margin-right: 0.6rem;
   }
 }
 

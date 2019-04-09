@@ -1,4 +1,4 @@
-.spot-search{
+.spot-search {
   // margin-top: 52%;
 }
 
@@ -10,9 +10,8 @@
   flex-wrap: wrap;
 }
 
-.index > h2{
+.index > h2 {
   margin-bottom: 50px;
-  margin-left: 2%;
   font-weight: 300;
 }
 
@@ -20,6 +19,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  margin-left: -9.8%;
 }
 .index > section > div {
   width: 300px;
@@ -30,8 +30,9 @@
 
 .spot-link {
   text-decoration: none;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-  color: black;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
+  color: #484848;
   font-size: 14px;
   list-style: none;
 }
@@ -51,7 +52,7 @@
 .spot-address {
   font-size: 14px;
   font-weight: bolder;
-  color: #0a7276; 
+  color: #0a7276;
   margin-bottom: 6px;
   text-transform: uppercase;
 }
@@ -65,13 +66,10 @@
   font-weight: lighter;
 }
 
-
 .index-item-ratings {
   display: flex;
   flex-direction: row;
 }
-
-
 
 .index-item-average {
   color: teal;

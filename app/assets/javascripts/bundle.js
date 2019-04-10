@@ -3122,7 +3122,7 @@ function (_React$Component) {
   _createClass(SpotIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.updateFilter('bounds', this.props.bounds);
+      this.props.updateFilter("bounds", this.props.bounds);
     }
   }, {
     key: "render",
@@ -3138,7 +3138,9 @@ function (_React$Component) {
       if (spots.length > 0) {
         displaySpots = spots.slice(0, 6);
       } else {
-        displaySpots = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "No results here, sugar. Try Manhattan, Brooklyn, or San Fran. That's where Cher lives ");
+        displaySpots = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          id: "index-section-li"
+        }, "No results here, sugar. Try Manhattan, Brooklyn, or San Fran. That's where Cher lives", " ");
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

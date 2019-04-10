@@ -1884,14 +1884,14 @@ function (_React$Component) {
   _createClass(Search, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.updateFilter('bounds', this.props.bounds);
-      this.elementCheck = document.querySelector('#guest-dropdown');
-      document.body.addEventListener('click', this.event);
+      this.props.updateFilter("bounds", this.props.bounds);
+      this.elementCheck = document.querySelector("#guest-dropdown");
+      document.body.addEventListener("click", this.event);
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      document.body.removeEventListener('click', this.event);
+      document.body.removeEventListener("click", this.event);
     }
   }, {
     key: "event",
@@ -1942,13 +1942,13 @@ function (_React$Component) {
           _this2.search();
         });
       }).catch(function (error) {
-        return console.error('Error', error);
+        return console.error("Error", error);
       });
     }
   }, {
     key: "search",
     value: function search() {
-      this.props.updateCenter('center', {
+      this.props.updateCenter("center", {
         lat: this.state.lat,
         lng: this.state.long
       });
@@ -1966,14 +1966,14 @@ function (_React$Component) {
         this.setState({
           guestsNum: this.state.guestsNum + 1
         });
-        this.props.updateFilter('guest_request', {
+        this.props.updateFilter("guest_request", {
           num: this.state.guestsNum + 1
         });
       } else if (value === "subtract" && this.state.guestsNum > 1) {
         this.setState({
           guestsNum: this.state.guestsNum - 1
         });
-        this.props.updateFilter('guest_request', {
+        this.props.updateFilter("guest_request", {
           num: this.state.guestsNum - 1
         });
       }
@@ -1995,7 +1995,7 @@ function (_React$Component) {
   }, {
     key: "handleApplyDate",
     value: function handleApplyDate() {
-      this.props.updateFilter('dates', {
+      this.props.updateFilter("dates", {
         start_date: this.state.startDate,
         end_date: this.state.endDate
       });
@@ -2022,9 +2022,9 @@ function (_React$Component) {
         className: "spot-show-searchbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_static_assets_search_icon__WEBPACK_IMPORTED_MODULE_6__["default"], {
         options: {
-          'height': '18px',
-          'width': '18px',
-          'fill': '#333'
+          height: "18px",
+          width: "18px",
+          fill: "#333"
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_7___default.a, {
         value: this.state.address,
@@ -2037,18 +2037,18 @@ function (_React$Component) {
             loading = _ref.loading;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps({
           placeholder: 'Try "Brooklyn"',
-          className: 'location-search-input'
+          className: "location-search-input"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "autocomplete-dropdown-container"
         }, loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), suggestions.map(function (suggestion) {
-          var className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item'; // inline style for demonstration purpose
+          var className = suggestion.active ? "suggestion-item--active" : "suggestion-item"; // inline style for demonstration purpose
 
           var style = suggestion.active ? {
-            backgroundColor: '#fafafa',
-            cursor: 'pointer'
+            backgroundColor: "#fafafa",
+            cursor: "pointer"
           } : {
-            backgroundColor: '#ffffff',
-            cursor: 'pointer'
+            backgroundColor: "#ffffff",
+            cursor: "pointer"
           };
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", getSuggestionItemProps(suggestion, {
             className: className,

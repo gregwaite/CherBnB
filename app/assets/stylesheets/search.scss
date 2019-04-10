@@ -1,7 +1,8 @@
 .autocomplete-dropdown-container {
   position: absolute;
   z-index: 1;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-size: 14px;
 }
 
@@ -12,21 +13,21 @@
   border-radius: 3px;
 }
 
-.search-show-greeting-filter{
+.search-show-greeting-filter {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1;
 }
 
-.search-show-greeting{
+.search-show-greeting {
   background: white;
   // height: 50px;
 }
-.search-show-greeting > hgroup > button{
+.search-show-greeting > hgroup > button {
   color: black;
 }
-.search-show-greeting > nav > section > button{
+.search-show-greeting > nav > section > button {
   color: black;
 }
 
@@ -37,7 +38,7 @@
   border-bottom: 1px solid #ebebeb;
   padding-top: 13px;
 }
-.search-show-filters > div > div > input{
+.search-show-filters > div > div > input {
   width: 400px;
   height: 44px;
   border-right: 50px;
@@ -45,20 +46,22 @@
   border-color: rgb(230, 230, 230);
   border-style: solid;
   border-width: 2px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-size: 15px;
   padding-left: 50px;
-  color:#484848; 
+  color: #484848;
   margin-bottom: 1%;
 }
-.search-show-filters > .guests > input{
+.search-show-filters > .guests > input {
   width: 76%;
   height: 29.6px;
   border-radius: 3px;
   border-color: #e6e6e6;
   border-style: hidden;
   border-width: 1px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-size: 14px;
   font-weight: 100;
   padding-left: 10px;
@@ -67,9 +70,9 @@
   margin-bottom: 1%;
   outline: none !important;
 }
-.search-show-filters > .guests > input:hover{
+.search-show-filters > .guests > input:hover {
   cursor: pointer;
-  background: #43a9a9
+  background: #43a9a9;
 }
 
 .search-show-filters .datepickers {
@@ -86,27 +89,66 @@
   border-style: hidden;
   background: #008489;
 }
-.search-show-filters .datepickers .date-pickers .DateRangePicker > div > div:hover {
+.search-show-filters
+  .datepickers
+  .date-pickers
+  .DateRangePicker
+  > div
+  > div:hover {
   border-style: hidden;
   background: #43a9a9;
 }
-.search-show-filters .datepickers .date-pickers .DateRangePicker > div > div > div .DateInput_input{
+.search-show-filters
+  .datepickers
+  .date-pickers
+  .DateRangePicker
+  > div
+  > div
+  > div
+  .DateInput_input {
   background: #008489;
   color: white;
   border-radius: 3px;
   height: 10px;
 }
-.search-show-filters .datepickers .date-pickers .DateRangePicker > div > div > div .DateInput_input:hover{
+.search-show-filters
+  .datepickers
+  .date-pickers
+  .DateRangePicker
+  > div
+  > div
+  > div
+  .DateInput_input:hover {
   cursor: pointer;
   background: #43a9a9;
 }
-.search-show-filters .datepickers .date-pickers .DateRangePicker > div > div > .DateInput{
+.search-show-filters
+  .datepickers
+  .date-pickers
+  .DateRangePicker
+  > div
+  > div
+  > .DateInput {
   position: unset;
 }
-.search-show-filters .datepickers .date-pickers .DateRangePicker > div > div > div .DateRangePickerInput_arrow_svg{
+.search-show-filters
+  .datepickers
+  .date-pickers
+  .DateRangePicker
+  > div
+  > div
+  > div
+  .DateRangePickerInput_arrow_svg {
   fill: white;
 }
-.search-show-filters .datepickers .date-pickers .DateRangePicker > div > div > div .DateInput_input::placeholder{
+.search-show-filters
+  .datepickers
+  .date-pickers
+  .DateRangePicker
+  > div
+  > div
+  > div
+  .DateInput_input::placeholder {
   color: white;
 }
 
@@ -117,12 +159,14 @@
 
 .search-show-contents {
   display: flex;
-  float: right;
-  margin-top: 8.5%;
+  margin-top: 105.8px;
 }
 
 .search-show-index {
   margin-left: 58px;
+  min-width: 670px;
+  min-height: 150%;
+  overflow: hidden;
 }
 .search-show-index .index > section > div {
   border-bottom: 1px solid #ebebeb;
@@ -131,10 +175,10 @@
   margin-right: 10%;
 }
 
-
 .search-show-map {
   position: sticky;
-  top: 190px !important;
+  top: 204px !important;
+  z-index: 4;
   margin-right: 3%;
   height: 600px;
 }
@@ -153,7 +197,8 @@
 
 .date-apply-span {
   color: #008489;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-size: 14px;
   padding-left: 5px;
   padding-top: 5px;

@@ -2039,7 +2039,8 @@ function (_React$Component) {
           placeholder: 'Try "Brooklyn"',
           className: "location-search-input"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "autocomplete-dropdown-container"
+          className: "autocomplete-dropdown-container",
+          id: "autodropdown-search"
         }, loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), suggestions.map(function (suggestion) {
           var className = suggestion.active ? "suggestion-item--active" : "suggestion-item"; // inline style for demonstration purpose
 
@@ -3578,7 +3579,7 @@ function (_React$Component) {
       focus: false,
       calendarFocused: null,
       openDatePicker: false,
-      dropDownMode: 'scroll',
+      dropDownMode: "scroll",
       guestsNum: 1,
       guestDropHidden: true,
       guestHideReveal: "hidden-guest-dropdown",
@@ -3622,18 +3623,18 @@ function (_React$Component) {
             lng: result.spot.long
           });
 
-          _this2.props.updateFilter('bounds', _this2.props.bounds);
+          _this2.props.updateFilter("bounds", _this2.props.bounds);
 
           _this2.props.fetchReviews(result.spot.id);
         }
       });
-      this.elementCheck = document.querySelector('#guest-dropdown');
-      document.body.addEventListener('click', this.event);
+      this.elementCheck = document.querySelector("#guest-dropdown");
+      document.body.addEventListener("click", this.event);
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      document.body.removeEventListener('click', this.event);
+      document.body.removeEventListener("click", this.event);
     }
   }, {
     key: "event",
@@ -3675,12 +3676,12 @@ function (_React$Component) {
           var booking = {
             start_date: this.state.startDate,
             end_date: this.state.endDate,
-            status: 'Approved',
+            status: "Approved",
             spot_id: this.props.match.params.spotId,
             num_guests: this.state.guestsNum
           };
           this.props.createBooking(booking).then(function (booking) {
-            return _this3.props.openModal('booking');
+            return _this3.props.openModal("booking");
           });
         } else {
           this.setState({
@@ -3688,7 +3689,7 @@ function (_React$Component) {
           });
         }
       } else {
-        this.props.openModal('login');
+        this.props.openModal("login");
       }
     }
   }, {
@@ -3755,7 +3756,7 @@ function (_React$Component) {
           _this4.search();
         });
       }).catch(function (error) {
-        return console.error('Error', error);
+        return console.error("Error", error);
       });
     }
   }, {
@@ -3763,11 +3764,11 @@ function (_React$Component) {
     value: function search() {
       var _this5 = this;
 
-      this.props.updateCenter('center', {
+      this.props.updateCenter("center", {
         lat: this.state.lat,
         lng: this.state.long
       }).then(function () {
-        return _this5.props.history.push('/search');
+        return _this5.props.history.push("/search");
       });
     }
   }, {
@@ -3848,9 +3849,9 @@ function (_React$Component) {
         className: "spot-show-searchbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_static_assets_search_icon__WEBPACK_IMPORTED_MODULE_9__["default"], {
         options: {
-          'height': '18px',
-          'width': '18px',
-          'fill': '#333'
+          height: "18px",
+          width: "18px",
+          fill: "#333"
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_12___default.a, {
         value: this.state.address,
@@ -3863,18 +3864,19 @@ function (_React$Component) {
             loading = _ref.loading;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps({
           placeholder: 'Try "Brooklyn"',
-          className: 'location-search-input'
+          className: "location-search-input"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "autocomplete-dropdown-container"
+          className: "autocomplete-dropdown-container",
+          id: "autodropdown-show"
         }, loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), suggestions.map(function (suggestion) {
-          var className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item'; // inline style for demonstration purpose
+          var className = suggestion.active ? "suggestion-item--active" : "suggestion-item"; // inline style for demonstration purpose
 
           var style = suggestion.active ? {
-            backgroundColor: '#fafafa',
-            cursor: 'pointer'
+            backgroundColor: "#fafafa",
+            cursor: "pointer"
           } : {
-            backgroundColor: '#ffffff',
-            cursor: 'pointer'
+            backgroundColor: "#ffffff",
+            cursor: "pointer"
           };
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", getSuggestionItemProps(suggestion, {
             className: className,
@@ -3929,7 +3931,7 @@ function (_React$Component) {
         availCal: true
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-ratings"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "".concat(this.numOfRevs, " ").concat(this.numOfRevs !== 1 ? "Reviews" : 'Review')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "".concat(this.numOfRevs, " ").concat(this.numOfRevs !== 1 ? "Reviews" : "Review")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "rating-item"
       }, this.numOfRevs > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_rating__WEBPACK_IMPORTED_MODULE_7___default.a, {
         className: "read-only-rating",

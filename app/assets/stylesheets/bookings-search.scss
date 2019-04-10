@@ -50,6 +50,9 @@
   margin-bottom: 1%;
   outline: none !important;
 }
+#splash-searchbar .location-search-input:focus {
+  outline: none !important;
+}
 
 .bookings-search > button {
   display: table;

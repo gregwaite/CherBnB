@@ -167,7 +167,10 @@ class Search extends React.Component {
                         className: "location-search-input"
                       })}
                     />
-                    <div className="autocomplete-dropdown-container">
+                    <div
+                      className="autocomplete-dropdown-container"
+                      id="autodropdown-search"
+                    >
                       {loading && <div>Loading...</div>}
                       {suggestions.map(suggestion => {
                         const className = suggestion.active

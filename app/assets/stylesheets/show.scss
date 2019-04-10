@@ -47,6 +47,9 @@
   color: #484848;
   margin-bottom: 1%;
 }
+#show-greeting .location-search-input:focus {
+  outline: none !important;
+}
 
 .show-div {
   list-style: none;

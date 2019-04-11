@@ -2773,9 +2773,9 @@ function (_React$Component) {
     _this.state = {
       startDate: null,
       endDate: null,
-      address: '',
-      lat: '',
-      long: '',
+      address: "",
+      lat: "",
+      long: "",
       guestsNum: 1,
       guestDropHidden: false,
       guestHideReveal: "hidden-guest-dropdown"
@@ -2794,13 +2794,13 @@ function (_React$Component) {
   _createClass(Splash, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.elementCheck = document.querySelector('#guest-dropdown');
-      document.body.addEventListener('click', this.event);
+      this.elementCheck = document.querySelector("#guest-dropdown");
+      document.body.addEventListener("click", this.event);
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      document.body.removeEventListener('click', this.event);
+      document.body.removeEventListener("click", this.event);
     }
   }, {
     key: "event",
@@ -2854,13 +2854,13 @@ function (_React$Component) {
           _this2.search();
         });
       }).catch(function (error) {
-        return console.error('Error', error);
+        return console.error("Error", error);
       });
     }
   }, {
     key: "search",
     value: function search() {
-      this.props.updateCenter('center', {
+      this.props.updateCenter("center", {
         lat: this.state.lat,
         lng: this.state.long
       });
@@ -2871,32 +2871,32 @@ function (_React$Component) {
       var _this3 = this;
 
       if (this.state.startDate && this.state.endDate) {
-        this.props.updateCenter('center', {
+        this.props.updateCenter("center", {
           lat: this.state.lat,
           lng: this.state.long
         }).then(function () {
-          _this3.props.updateFilter('guest_request', {
+          _this3.props.updateFilter("guest_request", {
             num: _this3.state.guestsNum
           }).then(function () {
-            return _this3.props.updateFilter('dates', {
+            return _this3.props.updateFilter("dates", {
               start_date: _this3.state.startDate,
               end_date: _this3.state.endDate
             });
           }).then(function () {
-            return _this3.props.history.push('/search');
+            return _this3.props.history.push("/search");
           });
         });
       } else {
-        this.props.updateCenter('center', {
+        this.props.updateCenter("center", {
           lat: this.state.lat,
           lng: this.state.long
         }).then(function () {
-          _this3.props.updateFilter('guest_request', {
+          _this3.props.updateFilter("guest_request", {
             num: _this3.state.guestsNum
           }).then(function () {
-            return _this3.props.updateFilter('dates', null);
+            return _this3.props.updateFilter("dates", null);
           }).then(function () {
-            return _this3.props.history.push('/search');
+            return _this3.props.history.push("/search");
           });
         });
       }
@@ -2940,6 +2940,38 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "home-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splash-links"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "http://www.greg-waite.com/",
+        className: "personal-site",
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-user-circle fa-2x"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "mailto: waite68@gmail.com",
+        className: "email",
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "far fa-envelope fa-2x"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://github.com/gregwaite/ShapeWars/",
+        className: "github",
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fab fa-github fa-2x"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://angel.co/gregory-douglas-waite?public_profile=1",
+        className: "angellist",
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fab fa-angellist fa-2x"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://www.linkedin.com/in/greg-waite-26a92a175/",
+        className: "linkedin",
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fab fa-linkedin fa-2x"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bookings-search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Share homes and experiences exclusively with Cher."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "where"
@@ -2947,9 +2979,9 @@ function (_React$Component) {
         id: "splash-searchbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_static_assets_search_icon__WEBPACK_IMPORTED_MODULE_4__["default"], {
         options: {
-          'height': '18px',
-          'width': '18px',
-          'fill': '#333'
+          height: "18px",
+          width: "18px",
+          fill: "#333"
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_5___default.a, {
         value: this.state.address,
@@ -2962,18 +2994,18 @@ function (_React$Component) {
             loading = _ref.loading;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps({
           placeholder: 'Try "Brooklyn"',
-          className: 'location-search-input'
+          className: "location-search-input"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "autocomplete-dropdown-container"
         }, loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), suggestions.map(function (suggestion) {
-          var className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item'; // inline style for demonstration purpose
+          var className = suggestion.active ? "suggestion-item--active" : "suggestion-item"; // inline style for demonstration purpose
 
           var style = suggestion.active ? {
-            backgroundColor: '#fafafa',
-            cursor: 'pointer'
+            backgroundColor: "#fafafa",
+            cursor: "pointer"
           } : {
-            backgroundColor: '#ffffff',
-            cursor: 'pointer'
+            backgroundColor: "#ffffff",
+            cursor: "pointer"
           };
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", getSuggestionItemProps(suggestion, {
             className: className,

@@ -60,7 +60,7 @@ class SpotShow extends React.Component {
     this.checkAverage = this.checkAverage.bind(this);
     this.event = this.event.bind(this);
 
-    Geocode.setApiKey("AIzaSyAPjYkDq0-iiCd6W5-qCw46J-r0EW39L1U");
+    Geocode.setApiKey("AIzaSyBRwWVDQ475F5ddLtc97Fc3LiTMV1umwr4");
   }
 
   componentDidMount() {

@@ -1143,11 +1143,11 @@ var Greeting = function Greeting(_ref) {
       className: "session-menu"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       onClick: function onClick() {
-        return openModal('login');
+        return openModal("login");
       }
     }, "Log In Sugar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       onClick: function onClick() {
-        return openModal('signup');
+        return openModal("signup");
       }
     }, "Sign Up Honey")));
   };
@@ -1158,7 +1158,7 @@ var Greeting = function Greeting(_ref) {
     if (noText) {
       text = "";
     } else {
-      text = "What can I, Cher, do for you, ".concat(currentUser.username, " ? I am Cher.");
+      text = "What can I, Cher, do for you, ".concat(currentUser.username, "? I am Cher.");
     }
 
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -1173,7 +1173,7 @@ var Greeting = function Greeting(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "header-button",
       onClick: function onClick() {
-        return openModal('booking');
+        return openModal("booking");
       }
     }, "Bookings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "header-button",

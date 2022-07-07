@@ -7,7 +7,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "lodash": "^4.17.11",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "^16.7.0",
     "react-datepicker": "^2.0.0",
     "react-dates": "^18.4.1",
